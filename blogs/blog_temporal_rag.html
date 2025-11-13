@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beyond Static RAG: Temporal Intelligence in Financial Information Retrieval | Aryan's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="../css/blogs/gradCAM(summary).css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="layout-container flex flex-col min-h-screen bg-white">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <a href="../index.html" class="logo-link" aria-label="Home">
+          <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_6_319)">
+              <path
+                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                fill="currentColor"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
+            </defs>
+          </svg>
+          <span class="site-title">Portfolio</span>
+        </a>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="../projects.html">Projects</a>
+        <a href="../resume.html">Resume/About Me</a>
+        <a href="../roadmap.html">Roadmap</a>
+        <a href="../blogs.html" class="active">Blogs/Insights</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="mode-toggle" aria-label="Toggle light/dark mode">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+          </svg>
+        </button>
+        <div class="profile-pic" style='background-image: url("../assets/profile.jpg");' aria-label="Profile picture"></div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <nav class="breadcrumb">
+        <a href="../blogs.html">Insights</a>
+        <span>/</span>
+        <span class="current">Temporal RAG Systems</span>
+      </nav>
+      <article class="blog-article">
+        <h1 class="blog-title">Beyond Static RAG: How Temporal Intelligence Changes Financial Information Retrieval</h1>
+        <p class="blog-date">Inter IIT Tech Meet | Pathway Problem Statement</p>
+
+        <section class="blog-section">
+          <h2>When Yesterday's Truth Becomes Today's Misinformation</h2>
+          <p>
+            "What's Apple's current revenue guidance?" A financial analyst asks this question on November 14, 2024. A standard RAG system retrieves Apple's 10-K filing from fiscal year 2023, which states revenue guidance of $380-395 billion. The analyst makes investment decisions based on this answer.
+          </p>
+          <p>
+            There's just one problem: Apple revised its guidance in an October 2024 earnings call to $410-420 billion, a 10% increase. The 10-K filing is authoritative and well-documented, but it's wrong. The earnings call transcript is recent and correct, but it's buried in a sea of financial news.
+          </p>
+          <p>
+            Traditional RAG systems don't understand time. They retrieve by semantic similarity, not temporal relevance. In finance, this can be catastrophic. Markets move on new information. Yesterday's data, no matter how authoritative, can be dangerously misleading.
+          </p>
+          <p>
+            For our Inter IIT project, I built a Hybrid RAG system that doesn't just retrieve information, it understands temporal relationships, detects contradictions between old and new sources, and weighs recency against authority.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>The Problem: Static Knowledge in Dynamic Markets</h2>
+          
+          <p><strong>Why Standard RAG Fails in Finance</strong></p>
+          <ul>
+            <li><strong>No Temporal Awareness:</strong> Treats a 2-year-old 10-K the same as yesterday's news</li>
+            <li><strong>No Contradiction Detection:</strong> Doesn't notice when new information conflicts with old</li>
+            <li><strong>No Recency Weighting:</strong> High-quality old information ranks above medium-quality new information</li>
+            <li><strong>No Authority Distinction:</strong> Treats official SEC filings and random tweets equally</li>
+          </ul>
+          
+          <p>
+            Financial analysis requires understanding that:
+          </p>
+          <ul>
+            <li>SEC filings are authoritative but infrequent (quarterly/annual)</li>
+            <li>Earnings calls provide updates but lack detail</li>
+            <li>News articles are timely but may lack accuracy</li>
+            <li>Social media is real-time but full of noise</li>
+          </ul>
+          
+          <p>
+            The challenge: build a system that balances recency with authority, detects when new information supersedes old, and handles contradictions intelligently.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>The Solution: Dual-Index Temporal RAG</h2>
+          <p>
+            I designed a hybrid architecture with two complementary knowledge bases:
+          </p>
+          
+          <p><strong>Static Index: Authoritative Historical Knowledge</strong></p>
+          <ul>
+            <li><strong>Content:</strong> SEC 10-K/10-Q filings, annual reports, audited financials</li>
+            <li><strong>Update Frequency:</strong> Quarterly/annual</li>
+            <li><strong>Authority Level:</strong> Very high (legal documents)</li>
+            <li><strong>Temporal Span:</strong> Years of historical data</li>
+          </ul>
+          
+          <p><strong>Live Index: Real-Time Market Intelligence</strong></p>
+          <ul>
+            <li><strong>Content:</strong> News articles, earnings call transcripts, analyst reports, social sentiment</li>
+            <li><strong>Update Frequency:</strong> Real-time streaming</li>
+            <li><strong>Authority Level:</strong> Variable (source-dependent)</li>
+            <li><strong>Temporal Span:</strong> Rolling 90-day window</li>
+          </ul>
+          
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">class HybridRAGSystem:
+    def __init__(self):
+        # Authoritative but infrequent
+        self.static_index = StaticDocumentIndex()  # 10-K filings
+        
+        # Real-time but noisy
+        self.live_index = StreamingNewsIndex()     # News/updates
+        
+        # Temporal relevance calculator
+        self.temporal_model = TemporalRelevanceModel()</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Temporal Weighting: When Is Information Valid?</h2>
+          <p>
+            Not all information has the same temporal validity period:
+          </p>
+          <ul>
+            <li><strong>Quarterly Revenue:</strong> Valid for 3 months, then superseded</li>
+            <li><strong>CEO Change:</strong> Event happens once, permanent effect</li>
+            <li><strong>Market Sentiment:</strong> Valid for hours/days, highly volatile</li>
+            <li><strong>Business Model:</strong> Valid for years, slowly evolving</li>
+          </ul>
+          
+          <p><strong>Exponential Temporal Decay</strong></p>
+          <p>
+            News items lose relevance over time. I implemented exponential decay with topic-specific half-lives:
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">class StreamingNewsIndex:
+    def __init__(self):
+        self.temporal_decay_factor = 0.95  # Decay per 24 hours
+        
+        # Topic-specific half-lives
+        self.half_lives = {
+            'earnings': 90,      # Quarterly validity
+            'sentiment': 7,      # Weekly relevance
+            'leadership': 365,   # Yearly impact
+            'breaking_news': 1   # Daily freshness
+        }
+    
+    def compute_temporal_weight(self, doc, topic):
+        age_days = (datetime.now() - doc.timestamp).days
+        half_life = self.half_lives.get(topic, 30)  # Default 30 days
+        
+        # Exponential decay: weight = 0.5^(age/half_life)
+        weight = 0.5 ** (age_days / half_life)
+        
+        return weight</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Contradiction Detection: When Sources Disagree</h2>
+          <p>
+            The most challenging problem: what happens when the 10-K says one thing and recent news says another?
+          </p>
+          
+          <p><strong>Example Contradiction</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">Static Index (2023 10-K):
+"Apple's revenue guidance for FY2024 is $380-395 billion"
+Authority: 10/10 | Recency: 2/10
+
+Live Index (Oct 2024 News):
+"Apple raises FY2024 guidance to $410-420 billion"
+Authority: 7/10 | Recency: 10/10
+
+CONTRADICTION DETECTED</pre>
+          
+          <p><strong>Resolution Strategy</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">def resolve_contradiction(static_claim, live_claim):
+    """Intelligent conflict resolution"""
+    
+    # Calculate confidence scores
+    static_confidence = (
+        static_claim.source_authority * 0.3 +  # Authority weight
+        static_claim.verification_score * 0.5 + # Verification
+        static_claim.recency_score * 0.2        # Recency (low for old data)
+    )
+    
+    live_confidence = (
+        live_claim.recency_score * 0.7 +        # High recency weight
+        live_claim.source_credibility * 0.2 +   # Medium authority
+        live_claim.corroboration_count * 0.1    # Multiple sources?
+    )
+    
+    # Resolution logic
+    if live_confidence > static_confidence + 0.2:
+        return ResolutionType.SUPERSEDED
+    elif static_confidence > live_confidence + 0.2:
+        return ResolutionType.AUTHORITATIVE
+    else:
+        return ResolutionType.UNCERTAIN</pre>
+          
+          <p><strong>Resolution Types and Responses</strong></p>
+          <ul>
+            <li><strong>SUPERSEDED:</strong> "Recent guidance (Oct 2024) updated to $410-420B, superseding previous $380-395B guidance"</li>
+            <li><strong>AUTHORITATIVE:</strong> "Official filing remains authoritative despite recent speculation"</li>
+            <li><strong>UNCERTAIN:</strong> "Mixed signals: filing suggests X while recent reports indicate Y"</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>The Retrieval and Synthesis Pipeline</h2>
+          
+          <p><strong>Step 1: Dual Retrieval</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">def synthesize_answer(query, symbol='AAPL'):
+    # Retrieve from both sources
+    static_docs = self.static_index.search(query, k=5)
+    live_news = self.live_index.search(query, k=10)
+    
+    # Extract key claims from each
+    static_claims = extract_claims(static_docs)
+    live_claims = extract_claims(live_news)</pre>
+          
+          <p><strong>Step 2: Temporal Relevance Scoring</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">    # Score each document by temporal relevance
+    temporal_scores = {}
+    
+    for doc in static_docs:
+        age = (datetime.now() - doc.filing_date).days
+        # Static docs are less sensitive to age (quarterly data)
+        temporal_scores[doc.id] = 1.0 if age < 180 else 0.7
+    
+    for doc in live_news:
+        age_hours = (datetime.now() - doc.timestamp).total_seconds() / 3600
+        # Live news decays exponentially
+        temporal_scores[doc.id] = 0.95 ** (age_hours / 24)</pre>
+          
+          <p><strong>Step 3: Contradiction Detection</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">    # Find contradictions between sources
+    contradictions = []
+    
+    for static_claim in static_claims:
+        for live_claim in live_claims:
+            similarity = semantic_similarity(static_claim, live_claim)
+            
+            # High similarity but different values = contradiction
+            if similarity > 0.8 and not values_match(static_claim, live_claim):
+                contradictions.append({
+                    'static': static_claim,
+                    'live': live_claim,
+                    'similarity': similarity
+                })</pre>
+          
+          <p><strong>Step 4: Conflict Resolution</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">    resolutions = []
+    
+    if contradictions:
+        for conflict in contradictions:
+            resolution = self.resolve_conflict(
+                conflict['static'],
+                conflict['live'],
+                recency_weight=0.7,    # Favor recent info
+                authority_weight=0.3   # But respect authority
+            )
+            resolutions.append(resolution)</pre>
+          
+          <p><strong>Step 5: Context Building and Response Generation</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">    # Build final context with temporal awareness
+    context = self.build_temporal_context(
+        static_docs=static_docs,
+        live_news=live_news,
+        temporal_scores=temporal_scores,
+        resolutions=resolutions
+    )
+    
+    # Generate response that acknowledges time
+    response = self.generate_response(query, context)
+    
+    return response</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Real Example: Apple Revenue Guidance Query</h2>
+          
+          <p><strong>User Query</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">"What is Apple's current revenue guidance for FY2024?"</pre>
+          
+          <p><strong>Static Index Results</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">Document: Apple 10-K (Filed: Nov 2023)
+Content: "Revenue guidance for FY2024: $380-395 billion"
+Authority Score: 10/10 (official SEC filing)
+Temporal Score: 3/10 (12 months old)
+Combined Relevance: 0.3*10 + 0.7*3 = 5.1</pre>
+          
+          <p><strong>Live Index Results</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">Document: Bloomberg News (Published: Oct 2024)
+Content: "Apple raises FY2024 guidance to $410-420 billion"
+Authority Score: 7/10 (credible news source)
+Temporal Score: 9/10 (1 month old)
+Combined Relevance: 0.3*7 + 0.7*9 = 8.4
+
+Document: Earnings Call Transcript (Oct 2024)
+Content: "We're revising our guidance upward to $410-420B"
+Authority Score: 9/10 (primary source)
+Temporal Score: 10/10 (recent)
+Combined Relevance: 0.3*9 + 0.7*10 = 9.7</pre>
+          
+          <p><strong>Contradiction Detected</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">Semantic similarity: 0.95 (both about revenue guidance)
+Value mismatch: $380-395B vs $410-420B
+Temporal gap: 12 months
+Resolution: SUPERSEDED (live info has higher confidence)</pre>
+          
+          <p><strong>Final Response</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">"Apple's current revenue guidance for FY2024 is $410-420 billion, 
+as revised in their October 2024 earnings call. This represents 
+an upward revision from the original guidance of $380-395 billion 
+stated in the November 2023 10-K filing.
+
+Sources:
+- Q4 2024 Earnings Call (Oct 31, 2024) [Primary]
+- Bloomberg News (Oct 31, 2024) [Corroboration]
+- 10-K Filing (Nov 2, 2023) [Historical Context]"</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Advanced Features: Entity-Centric Indexing</h2>
+          <p>
+            Financial queries often involve multiple entities (companies, executives, products). The system tracks entity mentions and their temporal relationships.
+          </p>
+          
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">class EntityTemporalGraph:
+    """Track how entity relationships evolve over time"""
+    
+    def add_relationship(self, entity1, entity2, relationship, timestamp):
+        self.graph.add_edge(
+            entity1,
+            entity2,
+            relationship=relationship,
+            valid_from=timestamp,
+            valid_until=None  # Still valid
+        )
+    
+    def invalidate_relationship(self, entity1, entity2, timestamp):
+        """Mark relationship as no longer valid"""
+        edge = self.graph.get_edge(entity1, entity2)
+        if edge:
+            edge.valid_until = timestamp
+
+# Example: CEO changes
+graph.add_relationship("Apple", "Tim Cook", "CEO", "2011-08-24")
+# This relationship is still valid today
+
+graph.add_relationship("Twitter", "Jack Dorsey", "CEO", "2015-10-05")
+graph.invalidate_relationship("Twitter", "Jack Dorsey", "2021-11-29")
+graph.add_relationship("Twitter", "Parag Agrawal", "CEO", "2021-11-29")
+# Historical relationships preserved with temporal bounds</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Handling Multiple Update Cycles</h2>
+          <p>
+            Different types of financial information update at different frequencies:
+          </p>
+          
+          <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <thead>
+              <tr style="background: #f5f5f5;">
+                <th style="padding: 10px; border: 1px solid #ddd;">Information Type</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Update Frequency</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Validity Period</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Authority Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><strong>10-K Filing</strong></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Annual</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">1 year</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Very High</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><strong>10-Q Filing</strong></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Quarterly</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">3 months</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Very High</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Earnings Call</strong></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Quarterly</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">3 months</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">High</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Press Release</strong></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Ad-hoc</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Until next update</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Medium-High</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><strong>News Article</strong></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Continuous</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Days to weeks</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Medium</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Social Media</strong></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Real-time</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Hours</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Low</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p>
+            The system uses this hierarchy to determine which source to trust when contradictions arise.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Performance Optimization: Incremental Updates</h2>
+          <p>
+            Re-indexing all documents every time new information arrives is expensive. The system uses incremental updates:
+          </p>
+          
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">class IncrementalIndex:
+    def update_with_new_document(self, doc):
+        # Extract entities and claims
+        entities = self.extract_entities(doc)
+        claims = self.extract_claims(doc)
+        
+        # Check for contradictions with existing knowledge
+        for claim in claims:
+            contradicting_claims = self.find_contradictions(claim)
+            
+            if contradicting_claims:
+                # Mark old claims as potentially superseded
+                for old_claim in contradicting_claims:
+                    old_claim.superseded_by = doc.id
+                    old_claim.superseded_at = doc.timestamp
+                
+                # Create versioned knowledge
+                self.knowledge_graph.add_version(
+                    claim=claim,
+                    supersedes=[c.id for c in contradicting_claims],
+                    valid_from=doc.timestamp
+                )
+        
+        # Add to searchable index
+        self.vector_index.add(
+            embedding=self.embed(doc),
+            metadata={
+                'timestamp': doc.timestamp,
+                'entities': entities,
+                'authority_score': doc.authority,
+                'source_type': doc.source_type
+            }
+        )</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>The Future: From RAG to True Continual Learning</h2>
+          <p>
+            Temporal RAG is powerful, but it's still fundamentally about retrieval. The system doesn't truly "learn" from new information, it just fetches it at query time.
+          </p>
+          
+          <p><strong>RAG Limitations</strong></p>
+          <ul>
+            <li><strong>No Weight Updates:</strong> Model parameters stay frozen</li>
+            <li><strong>Context Window Constraints:</strong> Limited by token limits</li>
+            <li><strong>Retrieval Overhead:</strong> Every query requires vector search</li>
+            <li><strong>No Pattern Internalization:</strong> Can't learn meta-patterns across documents</li>
+          </ul>
+          
+          <p><strong>The Dragon Hatchling Paradigm</strong></p>
+          <p>
+            Recent research (like the Dragon Hatchling paper) proposes true continual learning where models update their internal weights as new information arrives, without forgetting old knowledge.
+          </p>
+          
+          <p><strong>Key Differences</strong></p>
+          <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <thead>
+              <tr style="background: #f5f5f5;">
+                <th style="padding: 10px; border: 1px solid #ddd;">Aspect</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">RAG (Current)</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Continual Learning (Future)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Learning</strong></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Simulated via retrieval</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Real weight updates</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Memory</strong></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">External vector database</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Internal differentiable memory</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Inference</strong></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Retrieve then generate</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Direct generation from learned patterns</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Latency</strong></td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Higher (retrieval overhead)</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">Lower (no retrieval needed)</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p>
+            Temporal RAG is a bridge technology. It provides the temporal intelligence that standard RAG lacks, while paving the way for truly adaptive models that internalize knowledge over time.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Lessons Learned: Building Temporal AI Systems</h2>
+          
+          <p><strong>1. Time Is a First-Class Feature</strong></p>
+          <p>
+            Timestamps can't be metadata. They must be core to the retrieval and ranking logic.
+          </p>
+          
+          <p><strong>2. Authority and Recency Are Both Essential</strong></p>
+          <p>
+            You can't just favor recent information. A well-sourced old document beats a sketchy new rumor.
+          </p>
+          
+          <p><strong>3. Contradictions Are Signals, Not Errors</strong></p>
+          <p>
+            When sources disagree, that's valuable information. The system should surface contradictions, not hide them.
+          </p>
+          
+          <p><strong>4. Different Information Has Different Half-Lives</strong></p>
+          <p>
+            Quarterly earnings decay faster than business model descriptions. Topic-aware temporal weights are crucial.
+          </p>
+          
+          <p><strong>5. Versioned Knowledge Is Essential</strong></p>
+          <p>
+            Don't just overwrite old information. Maintain historical versions with temporal validity bounds.
+          </p>
+        </section>
+
+        <section class="blog-section" style="background: #f5f5f5; padding: 20px; border-left: 4px solid #3b82f6; margin: 30px 0;">
+          <p><strong>The Bottom Line:</strong> Static RAG systems retrieve information. Temporal RAG systems understand time. By combining authoritative historical knowledge with real-time updates, detecting contradictions between sources, and intelligently weighting recency against authority, we built a system that doesn't just find information, it understands when that information is valid. This is the difference between finding the right document and providing the right answer.</p>
+        </section>
+
+        <div class="back-link">
+          <a href="../blogs.html">&larr; Back to Insights</a>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>

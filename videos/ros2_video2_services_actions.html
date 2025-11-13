@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROS 2 for Beginners: Services, Actions, Python Nodes, and Launch Files | Videos | Aryan's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="../css/blogs/gradCAM(summary).css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="layout-container flex flex-col min-h-screen bg-white">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <a href="../index.html" class="logo-link" aria-label="Home">
+          <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_6_319)">
+              <path
+                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                fill="currentColor"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
+            </defs>
+          </svg>
+          <span class="site-title">Portfolio</span>
+        </a>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="../projects.html">Projects</a>
+        <a href="../resume.html">Resume/About Me</a>
+        <a href="../roadmap.html">Roadmap</a>
+        <a href="../blogs.html" class="active">Blogs/Insights</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="mode-toggle" aria-label="Toggle light/dark mode">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+          </svg>
+        </button>
+        <div class="profile-pic" style='background-image: url("../assets/profile.jpg");' aria-label="Profile picture"></div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <nav class="breadcrumb">
+        <a href="../blogs.html">Videos</a>
+        <span>/</span>
+        <span class="current">ROS 2 Services, Actions, and Launch Files</span>
+      </nav>
+      <article class="blog-article">
+        <h1 class="blog-title">ROS 2 for Beginners: Services, Actions, Python Nodes, and Launch Files (Ubuntu 22.04 Humble)</h1>
+        <p class="blog-date">Advanced ROS 2 Communication and System Management</p>
+        
+        <div style="margin: 30px 0;">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/7YmuUFp-6XQ?si=VRPlaxDIXUF37Kz7" title="ROS 2 Services, Actions, and Launch Files" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <section class="blog-section">
+          <h2>Introduction to Advanced ROS 2 Communication</h2>
+          <p>
+            Building on the fundamentals of topics and nodes, this guide explores three critical communication patterns in ROS 2: Services for request-response interactions, Actions for long-running tasks with feedback, and Launch Files for orchestrating complex multi-node systems.
+          </p>
+          <p>
+            These tools are essential for building sophisticated robot applications. While topics work great for continuous data streams like sensor readings, services and actions provide synchronous and task-oriented communication patterns that are crucial for robot control and coordination.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Understanding ROS 2 Services</h2>
+          
+          <p><strong>What are Services?</strong></p>
+          <p>
+            Services implement a request-response communication pattern. Unlike topics (which are one-way broadcasts), services allow one node to send a request to another node and wait for a response. This is similar to function calls across different processes.
+          </p>
+          
+          <p><strong>When to Use Services</strong></p>
+          <ul>
+            <li>Triggering specific actions (e.g., "take a picture now")</li>
+            <li>Querying information (e.g., "what is the current robot pose?")</li>
+            <li>Configuration changes (e.g., "set motor speed to X")</li>
+            <li>Any operation that needs confirmation of completion</li>
+          </ul>
+          
+          <p><strong>Service Structure</strong></p>
+          <p>
+            Services are defined by three components:
+          </p>
+          <ul>
+            <li><strong>Service Name:</strong> Unique identifier (e.g., /add_two_ints)</li>
+            <li><strong>Request:</strong> Data sent from client to server</li>
+            <li><strong>Response:</strong> Data sent back from server to client</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Creating a Service Server</h2>
+          
+          <p><strong>Service Server Example (Python)</strong></p>
+          <p>
+            Create a service that adds two integers:
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from example_interfaces.srv import AddTwoInts
+
+class ServiceServerNode(Node):
+    def __init__(self):
+        super().__init__('service_server')
+        # Create service
+        self.srv = self.create_service(
+            AddTwoInts,
+            'add_two_ints',
+            self.add_two_ints_callback
+        )
+        self.get_logger().info('Service server is ready')
+        
+    def add_two_ints_callback(self, request, response):
+        # Process request
+        response.sum = request.a + request.b
+        self.get_logger().info(f'Request: {request.a} + {request.b}')
+        self.get_logger().info(f'Response: {response.sum}')
+        return response
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = ServiceServerNode()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()</pre>
+    
+          <p><strong>Key Service Server Components</strong></p>
+          <ul>
+            <li><strong>create_service():</strong> Creates a service with message type, name, and callback</li>
+            <li><strong>Callback function:</strong> Receives request, processes it, and returns response</li>
+            <li><strong>Request object:</strong> Contains input parameters (request.a, request.b)</li>
+            <li><strong>Response object:</strong> Contains output data (response.sum)</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Creating a Service Client</h2>
+          
+          <p><strong>Service Client Example (Python)</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from example_interfaces.srv import AddTwoInts
+
+class ServiceClientNode(Node):
+    def __init__(self):
+        super().__init__('service_client')
+        # Create client
+        self.client = self.create_client(AddTwoInts, 'add_two_ints')
+        
+        # Wait for service to be available
+        while not self.client.wait_for_service(timeout_sec=1.0):
+            self.get_logger().info('Service not available, waiting...')
+            
+        self.send_request(10, 5)
+        
+    def send_request(self, a, b):
+        # Create request
+        request = AddTwoInts.Request()
+        request.a = a
+        request.b = b
+        
+        # Send request asynchronously
+        self.future = self.client.call_async(request)
+        self.future.add_done_callback(self.response_callback)
+        
+    def response_callback(self, future):
+        try:
+            response = future.result()
+            self.get_logger().info(f'Result: {response.sum}')
+        except Exception as e:
+            self.get_logger().error(f'Service call failed: {e}')
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = ServiceClientNode()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()</pre>
+    
+          <p><strong>Client Components</strong></p>
+          <ul>
+            <li><strong>create_client():</strong> Creates client for specific service</li>
+            <li><strong>wait_for_service():</strong> Blocks until service is available</li>
+            <li><strong>call_async():</strong> Sends request without blocking (asynchronous)</li>
+            <li><strong>add_done_callback():</strong> Registers function to handle response</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Service Commands</h2>
+          
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;"># List all services
+ros2 service list
+
+# Get service type
+ros2 service type /add_two_ints
+
+# Call service from command line
+ros2 service call /add_two_ints example_interfaces/srv/AddTwoInts "{a: 5, b: 3}"
+
+# Find services of a specific type
+ros2 service find example_interfaces/srv/AddTwoInts</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Understanding ROS 2 Actions</h2>
+          
+          <p><strong>What are Actions?</strong></p>
+          <p>
+            Actions are for long-running tasks that need:
+          </p>
+          <ul>
+            <li><strong>Goal:</strong> Specify what you want to achieve</li>
+            <li><strong>Feedback:</strong> Progress updates during execution</li>
+            <li><strong>Result:</strong> Final outcome when complete</li>
+            <li><strong>Cancellation:</strong> Ability to stop mid-execution</li>
+          </ul>
+          
+          <p><strong>Actions vs. Services</strong></p>
+          <p>
+            Use Actions when:
+          </p>
+          <ul>
+            <li>Task takes significant time (moving robot, processing image)</li>
+            <li>You need progress updates (percent complete, current position)</li>
+            <li>Task might need to be canceled (user intervention, emergency stop)</li>
+          </ul>
+          <p>
+            Use Services when:
+          </p>
+          <ul>
+            <li>Task completes quickly</li>
+            <li>No progress updates needed</li>
+            <li>Simple request-response pattern sufficient</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Creating an Action Server</h2>
+          
+          <p><strong>Action Server Example (Python)</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from rclpy.action import ActionServer
+from example_interfaces.action import Fibonacci
+import time
+
+class FibonacciActionServer(Node):
+    def __init__(self):
+        super().__init__('fibonacci_action_server')
+        self._action_server = ActionServer(
+            self,
+            Fibonacci,
+            'fibonacci',
+            self.execute_callback
+        )
+        self.get_logger().info('Action server ready')
+        
+    def execute_callback(self, goal_handle):
+        self.get_logger().info('Executing goal...')
+        
+        # Get goal order
+        order = goal_handle.request.order
+        
+        # Fibonacci sequence calculation with feedback
+        feedback_msg = Fibonacci.Feedback()
+        feedback_msg.sequence = [0, 1]
+        
+        for i in range(1, order):
+            # Check if goal was canceled
+            if goal_handle.is_cancel_requested:
+                goal_handle.canceled()
+                self.get_logger().info('Goal canceled')
+                return Fibonacci.Result()
+            
+            # Calculate next Fibonacci number
+            feedback_msg.sequence.append(
+                feedback_msg.sequence[i] + feedback_msg.sequence[i-1]
+            )
+            
+            # Publish feedback
+            goal_handle.publish_feedback(feedback_msg)
+            self.get_logger().info(f'Feedback: {feedback_msg.sequence}')
+            time.sleep(1)
+        
+        # Mark goal as succeeded
+        goal_handle.succeed()
+        
+        # Create result
+        result = Fibonacci.Result()
+        result.sequence = feedback_msg.sequence
+        self.get_logger().info('Goal succeeded')
+        return result
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = FibonacciActionServer()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()</pre>
+    
+          <p><strong>Action Server Components</strong></p>
+          <ul>
+            <li><strong>ActionServer:</strong> Handles incoming action goals</li>
+            <li><strong>execute_callback:</strong> Processes the goal and provides feedback</li>
+            <li><strong>goal_handle:</strong> Manages goal state (active, canceled, succeeded)</li>
+            <li><strong>publish_feedback():</strong> Sends progress updates to client</li>
+            <li><strong>is_cancel_requested:</strong> Check if client wants to cancel</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Creating an Action Client</h2>
+          
+          <p><strong>Action Client Example (Python)</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from rclpy.action import ActionClient
+from example_interfaces.action import Fibonacci
+
+class FibonacciActionClient(Node):
+    def __init__(self):
+        super().__init__('fibonacci_action_client')
+        self._action_client = ActionClient(self, Fibonacci, 'fibonacci')
+        
+    def send_goal(self, order):
+        goal_msg = Fibonacci.Goal()
+        goal_msg.order = order
+        
+        # Wait for server
+        self._action_client.wait_for_server()
+        
+        # Send goal
+        self._send_goal_future = self._action_client.send_goal_async(
+            goal_msg,
+            feedback_callback=self.feedback_callback
+        )
+        
+        self._send_goal_future.add_done_callback(self.goal_response_callback)
+        
+    def goal_response_callback(self, future):
+        goal_handle = future.result()
+        if not goal_handle.accepted:
+            self.get_logger().info('Goal rejected')
+            return
+            
+        self.get_logger().info('Goal accepted')
+        
+        # Get result
+        self._get_result_future = goal_handle.get_result_async()
+        self._get_result_future.add_done_callback(self.get_result_callback)
+        
+    def feedback_callback(self, feedback_msg):
+        feedback = feedback_msg.feedback
+        self.get_logger().info(f'Feedback: {feedback.sequence}')
+        
+    def get_result_callback(self, future):
+        result = future.result().result
+        self.get_logger().info(f'Result: {result.sequence}')
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = FibonacciActionClient()
+    node.send_goal(10)
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()</pre>
+    
+          <p><strong>Action Client Flow</strong></p>
+          <ol>
+            <li>Create goal message</li>
+            <li>Send goal with feedback callback</li>
+            <li>Handle goal acceptance/rejection</li>
+            <li>Process feedback as it arrives</li>
+            <li>Receive final result</li>
+          </ol>
+        </section>
+
+        <section class="blog-section">
+          <h2>Action Commands</h2>
+          
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;"># List all actions
+ros2 action list
+
+# Get action info
+ros2 action info /fibonacci
+
+# Send goal from command line
+ros2 action send_goal /fibonacci example_interfaces/action/Fibonacci "{order: 5}"
+
+# Send goal and see feedback
+ros2 action send_goal /fibonacci example_interfaces/action/Fibonacci "{order: 5}" --feedback</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Understanding Launch Files</h2>
+          
+          <p><strong>What are Launch Files?</strong></p>
+          <p>
+            Launch files allow you to start multiple nodes with a single command. Instead of opening many terminals and manually starting each node, a launch file automates this entire process.
+          </p>
+          
+          <p><strong>Benefits of Launch Files</strong></p>
+          <ul>
+            <li>Start entire robot systems with one command</li>
+            <li>Configure node parameters</li>
+            <li>Set up node remappings</li>
+            <li>Manage node namespaces</li>
+            <li>Include other launch files</li>
+            <li>Conditional node launching</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Creating a Launch File (Python)</h2>
+          
+          <p><strong>Basic Launch File</strong></p>
+          <p>
+            Create a file <code>my_launch.py</code> in the launch directory:
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        Node(
+            package='my_robot_package',
+            executable='publisher',
+            name='my_publisher',
+            output='screen'
+        ),
+        Node(
+            package='my_robot_package',
+            executable='subscriber',
+            name='my_subscriber',
+            output='screen'
+        ),
+    ])</pre>
+    
+          <p><strong>Launch File with Parameters</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">from launch import LaunchDescription
+from launch_ros.actions import Node
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+
+def generate_launch_description():
+    # Declare launch arguments
+    robot_name_arg = DeclareLaunchArgument(
+        'robot_name',
+        default_value='my_robot',
+        description='Name of the robot'
+    )
+    
+    publish_freq_arg = DeclareLaunchArgument(
+        'publish_frequency',
+        default_value='10.0',
+        description='Publishing frequency in Hz'
+    )
+    
+    return LaunchDescription([
+        robot_name_arg,
+        publish_freq_arg,
+        
+        Node(
+            package='my_robot_package',
+            executable='publisher',
+            name='publisher_node',
+            parameters=[{
+                'robot_name': LaunchConfiguration('robot_name'),
+                'frequency': LaunchConfiguration('publish_frequency')
+            }],
+            output='screen'
+        ),
+    ])</pre>
+    
+          <p><strong>Launch File with Namespace</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        Node(
+            package='my_robot_package',
+            executable='camera_node',
+            name='left_camera',
+            namespace='robot1',
+            output='screen'
+        ),
+        Node(
+            package='my_robot_package',
+            executable='camera_node',
+            name='right_camera',
+            namespace='robot1',
+            output='screen'
+        ),
+    ])</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Package Structure with Launch Files</h2>
+          
+          <p>
+            Organize your package to include launch files:
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">my_robot_package/
+├── my_robot_package/
+│   ├── __init__.py
+│   ├── publisher_node.py
+│   └── subscriber_node.py
+├── launch/
+│   ├── my_launch.py
+│   └── system_launch.py
+├── config/
+│   └── params.yaml
+├── package.xml
+├── setup.cfg
+└── setup.py</pre>
+          
+          <p><strong>Update setup.py for Launch Files</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">import os
+from glob import glob
+from setuptools import setup
+
+package_name = 'my_robot_package'
+
+setup(
+    name=package_name,
+    version='0.0.1',
+    packages=[package_name],
+    data_files=[
+        ('share/ament_index/resource_index/packages',
+            ['resource/' + package_name]),
+        ('share/' + package_name, ['package.xml']),
+        # Include launch files
+        (os.path.join('share', package_name, 'launch'),
+            glob('launch/*.py')),
+        # Include config files
+        (os.path.join('share', package_name, 'config'),
+            glob('config/*.yaml')),
+    ],
+    install_requires=['setuptools'],
+    zip_safe=True,
+    maintainer='Your Name',
+    maintainer_email='your@email.com',
+    description='My robot package',
+    license='Apache-2.0',
+    entry_points={
+        'console_scripts': [
+            'publisher = my_robot_package.publisher_node:main',
+            'subscriber = my_robot_package.subscriber_node:main',
+        ],
+    },
+)</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Running Launch Files</h2>
+          
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;"># Basic launch
+ros2 launch my_robot_package my_launch.py
+
+# Launch with arguments
+ros2 launch my_robot_package my_launch.py robot_name:=robot_A publish_frequency:=20.0
+
+# List available launch files
+ros2 launch my_robot_package --show-args</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Advanced Launch File Features</h2>
+          
+          <p><strong>Conditional Node Launching</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">from launch import LaunchDescription
+from launch_ros.actions import Node
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+from launch.conditions import IfCondition
+
+def generate_launch_description():
+    use_sim_arg = DeclareLaunchArgument(
+        'use_sim',
+        default_value='false',
+        description='Whether to use simulation'
+    )
+    
+    return LaunchDescription([
+        use_sim_arg,
+        
+        # Only launch if use_sim is true
+        Node(
+            package='gazebo_ros',
+            executable='gzserver',
+            condition=IfCondition(LaunchConfiguration('use_sim')),
+            output='screen'
+        ),
+    ])</pre>
+    
+          <p><strong>Including Other Launch Files</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from ament_index_python.packages import get_package_share_directory
+import os
+
+def generate_launch_description():
+    sensors_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(
+                get_package_share_directory('sensor_package'),
+                'launch',
+                'sensors.launch.py'
+            )
+        ])
+    )
+    
+    return LaunchDescription([
+        sensors_launch,
+    ])</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Working with Parameters</h2>
+          
+          <p><strong>Using Parameter Files (YAML)</strong></p>
+          <p>
+            Create <code>config/params.yaml</code>:
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">/**:
+  ros__parameters:
+    robot_name: "my_robot"
+    max_speed: 1.5
+    publish_frequency: 10.0
+    enable_sensors: true</pre>
+          
+          <p><strong>Load Parameters in Launch File</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">from launch import LaunchDescription
+from launch_ros.actions import Node
+from ament_index_python.packages import get_package_share_directory
+import os
+
+def generate_launch_description():
+    config = os.path.join(
+        get_package_share_directory('my_robot_package'),
+        'config',
+        'params.yaml'
+    )
+    
+    return LaunchDescription([
+        Node(
+            package='my_robot_package',
+            executable='my_node',
+            parameters=[config],
+            output='screen'
+        ),
+    ])</pre>
+    
+          <p><strong>Access Parameters in Python Node</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">class MyNode(Node):
+    def __init__(self):
+        super().__init__('my_node')
+        
+        # Declare parameters with default values
+        self.declare_parameter('robot_name', 'default_robot')
+        self.declare_parameter('max_speed', 1.0)
+        
+        # Get parameter values
+        robot_name = self.get_parameter('robot_name').value
+        max_speed = self.get_parameter('max_speed').value
+        
+        self.get_logger().info(f'Robot: {robot_name}, Max Speed: {max_speed}')</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Complete Example: Multi-Node System</h2>
+          
+          <p><strong>System Architecture</strong></p>
+          <p>
+            Let's build a complete system with:
+          </p>
+          <ul>
+            <li>A sensor node publishing data</li>
+            <li>A processing node subscribing and processing</li>
+            <li>A service for configuration</li>
+            <li>An action for long-running tasks</li>
+            <li>Launch file to start everything</li>
+          </ul>
+          
+          <p><strong>Complete Launch File</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">from launch import LaunchDescription
+from launch_ros.actions import Node
+from launch.actions import DeclareLaunchArgument, ExecuteProcess
+from launch.substitutions import LaunchConfiguration
+from ament_index_python.packages import get_package_share_directory
+import os
+
+def generate_launch_description():
+    # Get config file path
+    config = os.path.join(
+        get_package_share_directory('my_robot_package'),
+        'config',
+        'params.yaml'
+    )
+    
+    # Declare arguments
+    use_sim_arg = DeclareLaunchArgument(
+        'use_sim',
+        default_value='false',
+        description='Use simulation'
+    )
+    
+    return LaunchDescription([
+        use_sim_arg,
+        
+        # Sensor node
+        Node(
+            package='my_robot_package',
+            executable='sensor_node',
+            name='sensor',
+            parameters=[config],
+            output='screen'
+        ),
+        
+        # Processing node
+        Node(
+            package='my_robot_package',
+            executable='processing_node',
+            name='processor',
+            parameters=[config],
+            output='screen'
+        ),
+        
+        # Service server
+        Node(
+            package='my_robot_package',
+            executable='config_service',
+            name='config_server',
+            output='screen'
+        ),
+        
+        # Action server
+        Node(
+            package='my_robot_package',
+            executable='task_action',
+            name='task_server',
+            output='screen'
+        ),
+        
+        # Visualization tool
+        ExecuteProcess(
+            cmd=['rviz2'],
+            output='screen'
+        ),
+    ])</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Debugging and Monitoring Tools</h2>
+          
+          <p><strong>RQT Tools</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;"># Open RQT with all plugins
+rqt
+
+# Graph of node connections
+rqt_graph
+
+# Monitor topics
+rqt_topic
+
+# Plot numeric data
+rqt_plot
+
+# Service caller GUI
+rqt_service_caller</pre>
+          
+          <p><strong>Logging and Diagnostics</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;"># View logs
+ros2 run rqt_console rqt_console
+
+# Set log level
+ros2 run my_robot_package my_node --ros-args --log-level DEBUG
+
+# Record topics (bag files)
+ros2 bag record -a
+
+# Play back recordings
+ros2 bag play my_bag/</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Best Practices</h2>
+          
+          <p><strong>Service Design</strong></p>
+          <ul>
+            <li>Keep service calls short (under 1 second)</li>
+            <li>Use descriptive service names</li>
+            <li>Always check if service is available before calling</li>
+            <li>Handle service call failures gracefully</li>
+          </ul>
+          
+          <p><strong>Action Design</strong></p>
+          <ul>
+            <li>Provide meaningful feedback at regular intervals</li>
+            <li>Check for cancellation requests frequently</li>
+            <li>Include progress percentage in feedback</li>
+            <li>Make actions preemptable when possible</li>
+          </ul>
+          
+          <p><strong>Launch File Organization</strong></p>
+          <ul>
+            <li>Use separate launch files for different system components</li>
+            <li>Include launch files to build modular systems</li>
+            <li>Store parameters in YAML files, not hardcoded</li>
+            <li>Use launch arguments for flexibility</li>
+            <li>Document launch arguments in descriptions</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Common Patterns and Recipes</h2>
+          
+          <p><strong>Synchronous Service Call</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;"># Blocking service call (simple but not recommended for complex nodes)
+def call_service_sync(self, a, b):
+    request = AddTwoInts.Request()
+    request.a = a
+    request.b = b
+    
+    future = self.client.call_async(request)
+    rclpy.spin_until_future_complete(self, future)
+    
+    return future.result()</pre>
+    
+          <p><strong>Action with Timeout</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;"># Send goal with timeout
+send_goal_future = self._action_client.send_goal_async(goal_msg)
+rclpy.spin_until_future_complete(self, send_goal_future, timeout_sec=5.0)
+
+if not send_goal_future.done():
+    self.get_logger().error('Goal send timed out')</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Troubleshooting</h2>
+          
+          <p><strong>Service Not Found</strong></p>
+          <p>
+            Check if server is running: <code>ros2 service list</code>
+          </p>
+          
+          <p><strong>Action Goal Rejected</strong></p>
+          <p>
+            Verify action server is ready and goal message is valid
+          </p>
+          
+          <p><strong>Launch File Not Found</strong></p>
+          <p>
+            Ensure launch file is installed in setup.py data_files
+          </p>
+          
+          <p><strong>Parameters Not Loading</strong></p>
+          <p>
+            Check YAML syntax and file path in launch file
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Next Steps</h2>
+          <p>
+            With services, actions, and launch files in your toolkit, you can build sophisticated robotic systems. Consider exploring:
+          </p>
+          <ul>
+            <li>Custom service and action definitions</li>
+            <li>TF2 for coordinate frame transformations</li>
+            <li>ROS 2 Lifecycle nodes for managed node states</li>
+            <li>Component composition for efficient node deployment</li>
+            <li>Integration with robot simulation (Gazebo, Isaac Sim)</li>
+          </ul>
+        </section>
+
+        <div class="back-link">
+          <a href="../blogs.html">&larr; Back to Videos</a>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>

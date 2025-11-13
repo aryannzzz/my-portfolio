@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>When AI Forgets: Solving Catastrophic Forgetting in Financial Systems | Aryan's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="../css/blogs/gradCAM(summary).css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="layout-container flex flex-col min-h-screen bg-white">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <a href="../index.html" class="logo-link" aria-label="Home">
+          <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_6_319)">
+              <path
+                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                fill="currentColor"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
+            </defs>
+          </svg>
+          <span class="site-title">Portfolio</span>
+        </a>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="../projects.html">Projects</a>
+        <a href="../resume.html">Resume/About Me</a>
+        <a href="../roadmap.html">Roadmap</a>
+        <a href="../blogs.html" class="active">Blogs/Insights</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="mode-toggle" aria-label="Toggle light/dark mode">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+          </svg>
+        </button>
+        <div class="profile-pic" style='background-image: url("../assets/profile.jpg");' aria-label="Profile picture"></div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <nav class="breadcrumb">
+        <a href="../blogs.html">Insights</a>
+        <span>/</span>
+        <span class="current">Catastrophic Forgetting in Financial AI</span>
+      </nav>
+      <article class="blog-article">
+        <h1 class="blog-title">When AI Forgets: Solving Catastrophic Forgetting in Real-Time Financial Systems</h1>
+        <p class="blog-date">Inter IIT Tech Meet | Pathway Problem Statement</p>
+
+        <section class="blog-section">
+          <h2>The Million-Dollar Amnesia Problem</h2>
+          <p>
+            Imagine a trading algorithm that perfectly predicts market crashes in 2020, then completely forgets everything it learned when you retrain it on 2021 data. This isn't science fiction. It's called catastrophic forgetting, and it's one of the most dangerous failure modes in production machine learning systems.
+          </p>
+          <p>
+            For our Inter IIT Tech Meet project with Pathway, I tackled this exact problem: how do you build financial agents that continuously learn from streaming data without losing critical knowledge from the past? The stakes are real. A model that forgets could miss fraud patterns, ignore historical market correlations, or fail to recognize regime changes.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Why Financial Systems Catastrophically Forget</h2>
+          <p>
+            In traditional machine learning, you train a model once on historical data and deploy it. But financial markets don't stand still. New patterns emerge daily: novel fraud schemes, evolving trading behaviors, shifting correlations, and emerging risks.
+          </p>
+          <p>
+            When you update your model with new data, neural networks tend to overwrite old weights to accommodate new patterns. The model "forgets" what it learned before. In financial contexts, this is catastrophic because:
+          </p>
+          <ul>
+            <li><strong>Historical patterns remain relevant:</strong> The 2008 financial crisis patterns still matter in 2024</li>
+            <li><strong>Rare events are critical:</strong> You can't afford to forget fraud signatures just because they haven't appeared recently</li>
+            <li><strong>Market regimes cycle:</strong> Bull market behaviors from 2019 might return in 2025</li>
+            <li><strong>Regulatory requirements:</strong> Models must maintain performance on historical test sets</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>The Adaptive Memory Consolidation Network</h2>
+          <p>
+            I designed a hybrid architecture called AMCN (Adaptive Memory Consolidation Network) that combines multiple strategies to prevent forgetting while enabling continuous learning.
+          </p>
+          
+          <p><strong>1. Dynamic Memory Buffer with Importance Weighting</strong></p>
+          <p>
+            Not all past experiences are equally valuable. Some examples are critical to remember (like fraud cases), while others are redundant. The memory buffer uses gradient-based importance scoring to decide what to keep.
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">class DynamicMemoryBuffer:
+    def update(self, new_batch, model):
+        # Compute how important this example is
+        importance = self.compute_gradient_importance(new_batch, model)
+        
+        if len(self.buffer) < self.capacity:
+            self.buffer.append(new_batch)
+            self.importance_scores.append(importance)
+        else:
+            # Replace least important example if new one is more important
+            min_idx = np.argmin(self.importance_scores)
+            if importance > self.importance_scores[min_idx]:
+                self.buffer[min_idx] = new_batch
+                self.importance_scores[min_idx] = importance</pre>
+          
+          <p>
+            This is inspired by how human memory works. We remember significant events vividly while forgetting mundane details.
+          </p>
+
+          <p><strong>2. Elastic Weight Consolidation for Streaming Data</strong></p>
+          <p>
+            Some model weights are more important than others for past knowledge. EWC (Elastic Weight Consolidation) identifies these critical weights and makes them harder to change during updates.
+          </p>
+          <p>
+            The key insight: weights that had large gradients on past tasks are probably important for those tasks. We add a penalty term that discourages changing these weights:
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">Loss_total = Loss_current + λ * Σ F_i * (θ_i - θ*_i)²
+
+Where:
+- F_i is the Fisher Information (importance of weight i)
+- θ_i is current weight
+- θ*_i is the weight from previous task
+- λ controls the rigidity</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Distinguishing Noise from Concepts</h2>
+          <p>
+            Not every new pattern deserves to be learned. Market noise, temporary anomalies, and data quality issues should be filtered out. The system needs to distinguish between genuine concept drift and statistical noise.
+          </p>
+          
+          <p><strong>Two-Stage Drift Detection</strong></p>
+          <p>
+            I implemented a dual detection system:
+          </p>
+          <ul>
+            <li><strong>Page-Hinkley Test:</strong> Detects gradual shifts in data distribution</li>
+            <li><strong>ADWIN (Adaptive Windowing):</strong> Catches abrupt changes</li>
+          </ul>
+          <p>
+            Together, these tests identify when the market regime has actually changed versus when we're just seeing random variation.
+          </p>
+
+          <p><strong>Noise vs. Concept Classification</strong></p>
+          <p>
+            Once drift is detected, a classification framework decides whether to learn from the new data:
+          </p>
+          <ul>
+            <li><strong>Recurring Pattern:</strong> High similarity to known concepts (reinforcement learning, don't create new weights)</li>
+            <li><strong>New Concept:</strong> Novel but informative (learn this and expand model capacity)</li>
+            <li><strong>Noise:</strong> Low information gain, high variance (filter out, don't learn)</li>
+          </ul>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">def classify_data_batch(batch, historical_patterns):
+    # Compare to known patterns
+    similarity_scores = compute_similarity(batch, historical_patterns)
+    
+    # Calculate how much new information this provides
+    info_gain = calculate_information_gain(batch, historical_patterns)
+    
+    if max(similarity_scores) > 0.85:
+        return "RECURRING_PATTERN"  # Reinforce existing knowledge
+    elif info_gain > threshold and batch_size > min_samples:
+        return "NEW_CONCEPT"  # Learn this new pattern
+    else:
+        return "NOISE"  # Ignore this batch</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Measuring Success: Beyond Accuracy</h2>
+          <p>
+            Traditional ML metrics don't capture catastrophic forgetting. You need specialized metrics:
+          </p>
+          
+          <p><strong>Backward Transfer (BWT)</strong></p>
+          <p>
+            Measures how much performance degrades on old tasks after learning new ones. Negative BWT means the model forgot.
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">BWT = (1/T) * Σ(R_T,i - R_i,i)
+
+Where:
+- T is total number of tasks
+- R_i,j is accuracy on task i after training on task j
+- Negative BWT = forgetting occurred</pre>
+
+          <p><strong>Forward Transfer (FWT)</strong></p>
+          <p>
+            Measures whether learning new tasks actually helps with future tasks. Positive FWT means the model is generalizing knowledge.
+          </p>
+
+          <p><strong>Memory Efficiency</strong></p>
+          <p>
+            The ratio of memory buffer size to total data seen. Lower is better, showing the system is selective about what to remember.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Real-World Impact: ESG Risk Monitoring</h2>
+          <p>
+            To demonstrate this architecture, I built a Real-Time ESG Risk Intelligence System that continuously monitors environmental, social, and governance risks across portfolios.
+          </p>
+          <p>
+            The system ingests:
+          </p>
+          <ul>
+            <li>Satellite imagery for deforestation tracking</li>
+            <li>Social media for controversy detection</li>
+            <li>Regulatory filings for governance issues</li>
+            <li>News feeds for breaking scandals</li>
+          </ul>
+          <p>
+            Without continual learning, the model would forget historical ESG violations while learning about new ones. With AMCN, it maintains knowledge of past controversies while adapting to emerging risks.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>The Critical Failure Mode: Adversarial Data</h2>
+          <p>
+            The biggest risk isn't technical—it's adversarial. What happens when bad actors deliberately feed misleading data to your streaming system?
+          </p>
+          <p>
+            For the ESG system, I identified coordinated disinformation campaigns as the primary failure mode. Bot networks could flood social media with false ESG narratives, poisoning the model's training data.
+          </p>
+          
+          <p><strong>Defense Strategy</strong></p>
+          <ul>
+            <li><strong>Source Verification:</strong> Weight verified accounts 70% more than unverified</li>
+            <li><strong>Behavioral Profiling:</strong> Detect bot-like posting patterns (high frequency, new accounts, low follower ratios)</li>
+            <li><strong>Content Clustering:</strong> Identify coordinated campaigns through near-duplicate detection</li>
+            <li><strong>Robust Aggregation:</strong> Use trimmed means instead of regular averages to reduce outlier impact</li>
+          </ul>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">def robust_sentiment_analysis(social_stream):
+    # Detect coordinated bot campaigns
+    similarity_cluster = detect_coordinated_content(
+        social_stream.text,
+        time_window=3600  # Look for patterns in 1-hour windows
+    )
+    
+    if similarity_cluster.size > 100:
+        # Likely coordinated campaign, heavily downweight
+        weight = 0.1
+    else:
+        # Legitimate content, use normal weighting
+        weight = verified_weight * behavior_score
+    
+    # Use trimmed mean to ignore extreme values
+    sentiments = collect_sentiments(social_stream)
+    robust_sentiment = trimmed_mean(sentiments, trim_percent=0.2)
+    
+    return robust_sentiment * weight</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Key Lessons from Building Continual Learning Systems</h2>
+          
+          <p><strong>1. Not All Forgetting Is Bad</strong></p>
+          <p>
+            Sometimes you want to forget. Outdated patterns, temporary anomalies, or noise should be discarded. The art is in selective forgetting.
+          </p>
+          
+          <p><strong>2. Memory Is Expensive, Selectivity Is Essential</strong></p>
+          <p>
+            You can't store everything. Importance-based sampling is crucial for scaling to production.
+          </p>
+          
+          <p><strong>3. Detect Drift, Don't React Blindly</strong></p>
+          <p>
+            Every data shift doesn't warrant retraining. Statistical tests prevent overreaction to noise.
+          </p>
+          
+          <p><strong>4. Adversarial Robustness Can't Be an Afterthought</strong></p>
+          <p>
+            In financial systems, adversaries actively try to manipulate your models. Defense mechanisms must be built in from day one.
+          </p>
+          
+          <p><strong>5. The Future Isn't RAG, It's True Continual Learning</strong></p>
+          <p>
+            Current RAG systems fake learning by retrieving context. The next generation (like Dragon Hatchling) will actually update weights continuously while avoiding catastrophic forgetting.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>What's Next: From Memory to Intelligence</h2>
+          <p>
+            This work represents a step toward truly adaptive AI systems. But we're still far from human-like continual learning. Humans don't just remember facts; we build abstract concepts, reason about causality, and transfer knowledge across domains.
+          </p>
+          <p>
+            The next frontier involves:
+          </p>
+          <ul>
+            <li><strong>Causal reasoning:</strong> Understanding why patterns emerge, not just that they exist</li>
+            <li><strong>Meta-learning:</strong> Learning how to learn more efficiently over time</li>
+            <li><strong>Compositional knowledge:</strong> Combining learned concepts in novel ways</li>
+            <li><strong>Self-aware uncertainty:</strong> Knowing what you don't know and asking for help</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Implementation and Code</h2>
+          <p>
+            The complete implementation includes:
+          </p>
+          <ul>
+            <li>Dynamic memory buffer with reservoir sampling</li>
+            <li>Streaming Fisher Information computation for EWC</li>
+            <li>Page-Hinkley and ADWIN drift detectors</li>
+            <li>Noise vs. concept classification framework</li>
+            <li>ESG risk intelligence pipeline</li>
+            <li>Adversarial robustness mechanisms</li>
+          </ul>
+          <p>
+            Check out my <a href="https://github.com/aryannzzz" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">GitHub</a> for the full codebase, including benchmarks and ablation studies.
+          </p>
+        </section>
+
+        <section class="blog-section" style="background: #f5f5f5; padding: 20px; border-left: 4px solid #3b82f6; margin: 30px 0;">
+          <p><strong>Bottom Line:</strong> Catastrophic forgetting isn't just a theoretical problem. It's a production nightmare that can cost millions if your financial models forget critical patterns. The solution requires sophisticated memory management, drift detection, selective learning, and adversarial robustness. This Inter IIT project demonstrates that continual learning in high-stakes financial systems is not only possible but practically implementable with the right architecture.</p>
+        </section>
+
+        <div class="back-link">
+          <a href="../blogs.html">&larr; Back to Insights</a>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>

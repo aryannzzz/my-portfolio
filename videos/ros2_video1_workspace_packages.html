@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started with ROS 2: Workspace, Packages, and Communication | Videos | Aryan's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="../css/blogs/gradCAM(summary).css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="layout-container flex flex-col min-h-screen bg-white">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <a href="../index.html" class="logo-link" aria-label="Home">
+          <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_6_319)">
+              <path
+                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                fill="currentColor"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
+            </defs>
+          </svg>
+          <span class="site-title">Portfolio</span>
+        </a>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="../projects.html">Projects</a>
+        <a href="../resume.html">Resume/About Me</a>
+        <a href="../roadmap.html">Roadmap</a>
+        <a href="../blogs.html" class="active">Blogs/Insights</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="mode-toggle" aria-label="Toggle light/dark mode">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+          </svg>
+        </button>
+        <div class="profile-pic" style='background-image: url("../assets/profile.jpg");' aria-label="Profile picture"></div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <nav class="breadcrumb">
+        <a href="../blogs.html">Videos</a>
+        <span>/</span>
+        <span class="current">ROS 2 Workspace, Packages, and Communication</span>
+      </nav>
+      <article class="blog-article">
+        <h1 class="blog-title">Getting Started with ROS 2: Workspace, Packages, and Communication (Step-by-Step Guide)</h1>
+        <p class="blog-date">Ubuntu 22.04 | ROS 2 Humble</p>
+        
+        <div style="margin: 30px 0;">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/v97tuVxqKXM?si=DrQfI63zlhpNekUF" title="Getting Started with ROS 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <section class="blog-section">
+          <h2>Introduction to ROS 2</h2>
+          <p>
+            ROS 2 (Robot Operating System 2) is a flexible framework for writing robot software. It's a collection of tools, libraries, and conventions that simplify the task of creating complex and robust robot behavior across a wide variety of robotic platforms.
+          </p>
+          <p>
+            This comprehensive guide covers the fundamental concepts you need to get started with ROS 2: setting up workspaces, creating packages, and understanding communication between nodes. Whether you're building autonomous robots, manipulation systems, or perception pipelines, these fundamentals are essential.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Understanding ROS 2 Workspaces</h2>
+          
+          <p><strong>What is a Workspace?</strong></p>
+          <p>
+            A ROS 2 workspace is a directory that contains ROS 2 packages. It serves as the central location for organizing and developing your robot software. Think of it as a dedicated project folder that houses all your code, configuration files, and dependencies.
+          </p>
+          
+          <p><strong>Underlay vs. Overlay Concept</strong></p>
+          <p>
+            ROS 2 uses a concept of "underlay" and "overlay" workspaces:
+          </p>
+          <ul>
+            <li><strong>Underlay:</strong> Your main ROS 2 installation (typically in /opt/ros/humble). This is the base layer that provides core ROS 2 functionality.</li>
+            <li><strong>Overlay:</strong> Your custom workspace built on top of the underlay. This allows you to develop new packages without modifying the base installation.</li>
+          </ul>
+          <p>
+            This layered approach lets you work on multiple projects simultaneously, each with its own workspace, while sharing the same ROS 2 installation.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Creating Your First ROS 2 Workspace</h2>
+          
+          <p><strong>Step 1: Source the ROS 2 Installation</strong></p>
+          <p>
+            Before working with ROS 2, you must source the setup script in every new terminal:
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">source /opt/ros/humble/setup.bash</pre>
+          <p>
+            This command sets up environment variables that make ROS 2 commands and packages available in your terminal.
+          </p>
+          
+          <p><strong>Step 2: Create the Workspace Directory</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws</pre>
+          <p>
+            The workspace structure follows best practices:
+          </p>
+          <ul>
+            <li><strong>ros2_ws:</strong> Root of your workspace (you can name it anything)</li>
+            <li><strong>src:</strong> Directory where all your package source code will live</li>
+          </ul>
+          
+          <p><strong>Step 3: Build the Workspace</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">colcon build</pre>
+          <p>
+            This creates three additional directories:
+          </p>
+          <ul>
+            <li><strong>build:</strong> Stores intermediate build files</li>
+            <li><strong>install:</strong> Contains the installed packages (what you actually run)</li>
+            <li><strong>log:</strong> Build and runtime logs</li>
+          </ul>
+          
+          <p><strong>Step 4: Source the Workspace</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">source install/setup.bash</pre>
+          <p>
+            This makes your workspace packages available to ROS 2 commands.
+          </p>
+          
+          <p><strong>Step 5: Automate Sourcing (Optional but Recommended)</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
+source ~/.bashrc</pre>
+          <p>
+            This automatically sources your workspace in every new terminal, saving you from typing the source command repeatedly.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Understanding ROS 2 Packages</h2>
+          
+          <p><strong>What is a Package?</strong></p>
+          <p>
+            A ROS 2 package is the fundamental unit of organization in ROS 2. It's a directory that contains:
+          </p>
+          <ul>
+            <li>Source code (Python or C++ nodes)</li>
+            <li>Configuration files</li>
+            <li>Launch files</li>
+            <li>Message and service definitions</li>
+            <li>Documentation</li>
+            <li>Dependencies specification</li>
+          </ul>
+          
+          <p><strong>Package Types</strong></p>
+          <p>
+            ROS 2 supports two main build types:
+          </p>
+          <ul>
+            <li><strong>ament_python:</strong> For Python-based packages</li>
+            <li><strong>ament_cmake:</strong> For C++ packages or mixed C++/Python packages</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Creating a ROS 2 Package</h2>
+          
+          <p><strong>Python Package Creation</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_python my_robot_package</pre>
+          <p>
+            This creates a package with the following structure:
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">my_robot_package/
+├── my_robot_package/
+│   └── __init__.py
+├── resource/
+│   └── my_robot_package
+├── test/
+├── package.xml
+├── setup.cfg
+└── setup.py</pre>
+          
+          <p><strong>Adding Dependencies</strong></p>
+          <p>
+            To add dependencies, specify them during package creation:
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">ros2 pkg create --build-type ament_python my_robot_package \
+  --dependencies rclpy std_msgs geometry_msgs</pre>
+          
+          <p><strong>Important Files in a Package</strong></p>
+          <ul>
+            <li><strong>package.xml:</strong> Metadata about the package (name, version, dependencies, maintainer)</li>
+            <li><strong>setup.py:</strong> Python package configuration, similar to standard Python packages</li>
+            <li><strong>setup.cfg:</strong> Tells Python where to install executables</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>ROS 2 Communication: Topics and Nodes</h2>
+          
+          <p><strong>Understanding Nodes</strong></p>
+          <p>
+            A node is a running instance of a program in ROS 2. Nodes are the basic building blocks of ROS 2 applications. Each node should perform a specific task:
+          </p>
+          <ul>
+            <li>A camera driver node publishes images</li>
+            <li>A motion planning node computes robot trajectories</li>
+            <li>A motor controller node sends commands to hardware</li>
+          </ul>
+          
+          <p><strong>What are Topics?</strong></p>
+          <p>
+            Topics are named channels over which nodes exchange messages. Think of topics as broadcast channels:
+          </p>
+          <ul>
+            <li><strong>Publishers:</strong> Nodes that send messages on a topic</li>
+            <li><strong>Subscribers:</strong> Nodes that receive messages from a topic</li>
+          </ul>
+          <p>
+            Topics enable many-to-many communication. Multiple nodes can publish to the same topic, and multiple nodes can subscribe to it.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Creating a Publisher Node</h2>
+          
+          <p><strong>Publisher Node Example (Python)</strong></p>
+          <p>
+            Create a file <code>publisher_node.py</code> inside your package:
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class PublisherNode(Node):
+    def __init__(self):
+        super().__init__('publisher_node')
+        # Create publisher on 'chatter' topic
+        self.publisher_ = self.create_publisher(String, 'chatter', 10)
+        # Timer to publish every 1 second
+        self.timer = self.create_timer(1.0, self.timer_callback)
+        self.counter = 0
+        
+    def timer_callback(self):
+        msg = String()
+        msg.data = f'Hello ROS 2: {self.counter}'
+        self.publisher_.publish(msg)
+        self.get_logger().info(f'Publishing: {msg.data}')
+        self.counter += 1
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = PublisherNode()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()</pre>
+    
+          <p><strong>Key Components Explained</strong></p>
+          <ul>
+            <li><strong>rclpy.init():</strong> Initializes ROS 2 communication</li>
+            <li><strong>Node:</strong> Base class for all ROS 2 nodes</li>
+            <li><strong>create_publisher():</strong> Creates a publisher with topic name, message type, and queue size</li>
+            <li><strong>create_timer():</strong> Sets up periodic callback execution</li>
+            <li><strong>publish():</strong> Sends a message on the topic</li>
+            <li><strong>rclpy.spin():</strong> Keeps the node running and processing callbacks</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Creating a Subscriber Node</h2>
+          
+          <p><strong>Subscriber Node Example (Python)</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">#!/usr/bin/env python3
+
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class SubscriberNode(Node):
+    def __init__(self):
+        super().__init__('subscriber_node')
+        # Create subscription to 'chatter' topic
+        self.subscription = self.create_subscription(
+            String,
+            'chatter',
+            self.listener_callback,
+            10
+        )
+        
+    def listener_callback(self, msg):
+        self.get_logger().info(f'I heard: {msg.data}')
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = SubscriberNode()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()</pre>
+    
+          <p><strong>Subscriber Components</strong></p>
+          <ul>
+            <li><strong>create_subscription():</strong> Creates a subscriber with message type, topic name, callback function, and queue size</li>
+            <li><strong>listener_callback():</strong> Function called whenever a message arrives</li>
+            <li><strong>msg.data:</strong> Accesses the message content</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Registering Nodes in setup.py</h2>
+          
+          <p>
+            To make your nodes executable, add them to <code>setup.py</code>:
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">entry_points={
+    'console_scripts': [
+        'publisher = my_robot_package.publisher_node:main',
+        'subscriber = my_robot_package.subscriber_node:main',
+    ],
+},</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Building and Running Your Nodes</h2>
+          
+          <p><strong>Build the Package</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">cd ~/ros2_ws
+colcon build --packages-select my_robot_package
+source install/setup.bash</pre>
+          
+          <p><strong>Run the Publisher</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">ros2 run my_robot_package publisher</pre>
+          
+          <p><strong>Run the Subscriber (in a new terminal)</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">source ~/ros2_ws/install/setup.bash
+ros2 run my_robot_package subscriber</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Essential ROS 2 Commands</h2>
+          
+          <p><strong>Workspace and Build Commands</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;"># Build entire workspace
+colcon build
+
+# Build specific package
+colcon build --packages-select package_name
+
+# Build with symlink (faster for Python development)
+colcon build --symlink-install
+
+# Clean build
+rm -rf build install log
+colcon build</pre>
+          
+          <p><strong>Package Management Commands</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;"># List all packages
+ros2 pkg list
+
+# Get package info
+ros2 pkg prefix package_name
+
+# Create new package
+ros2 pkg create --build-type ament_python package_name</pre>
+          
+          <p><strong>Node Commands</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;"># List running nodes
+ros2 node list
+
+# Get node info
+ros2 node info /node_name
+
+# Run a node
+ros2 run package_name executable_name</pre>
+          
+          <p><strong>Topic Commands</strong></p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;"># List all topics
+ros2 topic list
+
+# Show messages on a topic
+ros2 topic echo /topic_name
+
+# Get topic info
+ros2 topic info /topic_name
+
+# Publish to a topic from command line
+ros2 topic pub /topic_name std_msgs/msg/String "data: 'Hello'"
+
+# Show topic publishing rate
+ros2 topic hz /topic_name</pre>
+        </section>
+
+        <section class="blog-section">
+          <h2>Common Message Types</h2>
+          
+          <p><strong>Standard Messages (std_msgs)</strong></p>
+          <ul>
+            <li><strong>String:</strong> Text messages</li>
+            <li><strong>Int32, Float32, Bool:</strong> Primitive data types</li>
+            <li><strong>Header:</strong> Timestamp and frame information</li>
+          </ul>
+          
+          <p><strong>Geometry Messages (geometry_msgs)</strong></p>
+          <ul>
+            <li><strong>Point:</strong> 3D position (x, y, z)</li>
+            <li><strong>Pose:</strong> Position and orientation</li>
+            <li><strong>Twist:</strong> Linear and angular velocity</li>
+            <li><strong>Transform:</strong> Coordinate frame transformations</li>
+          </ul>
+          
+          <p><strong>Sensor Messages (sensor_msgs)</strong></p>
+          <ul>
+            <li><strong>Image:</strong> Camera images</li>
+            <li><strong>LaserScan:</strong> Lidar data</li>
+            <li><strong>PointCloud2:</strong> 3D point clouds</li>
+            <li><strong>Imu:</strong> Inertial measurement data</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Best Practices and Tips</h2>
+          
+          <p><strong>Workspace Organization</strong></p>
+          <ul>
+            <li>Use one workspace per project</li>
+            <li>Keep package names descriptive and unique</li>
+            <li>Organize related packages in the same workspace</li>
+            <li>Use version control (Git) for your src directory</li>
+          </ul>
+          
+          <p><strong>Node Design Principles</strong></p>
+          <ul>
+            <li>Each node should do one thing well</li>
+            <li>Use meaningful topic names (e.g., /robot/camera/image instead of /img)</li>
+            <li>Include namespace prefixes to avoid topic name collisions</li>
+            <li>Log important information using get_logger()</li>
+          </ul>
+          
+          <p><strong>Development Workflow</strong></p>
+          <ul>
+            <li>Always source your workspace before running nodes</li>
+            <li>Rebuild after changing Python files (or use symlink install)</li>
+            <li>Use separate terminals for different nodes</li>
+            <li>Monitor topics with echo and hz commands during development</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>Troubleshooting Common Issues</h2>
+          
+          <p><strong>Node Not Found</strong></p>
+          <p>
+            Solution: Make sure you sourced the workspace and entry point is correct in setup.py
+          </p>
+          
+          <p><strong>Package Not Building</strong></p>
+          <p>
+            Solution: Check dependencies in package.xml and run rosdep:
+          </p>
+          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">rosdep install --from-paths src --ignore-src -r -y</pre>
+          
+          <p><strong>Messages Not Received</strong></p>
+          <p>
+            Solution: Verify topic names match exactly and check if nodes are running with ros2 node list
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Next Steps</h2>
+          <p>
+            Now that you understand workspaces, packages, and basic communication, you're ready to explore more advanced ROS 2 concepts:
+          </p>
+          <ul>
+            <li>Services for request-response patterns</li>
+            <li>Actions for long-running tasks with feedback</li>
+            <li>Launch files for starting multiple nodes</li>
+            <li>Parameters for runtime configuration</li>
+            <li>Custom message definitions</li>
+          </ul>
+          <p>
+            Check out the second video in this series for services, actions, and launch files!
+          </p>
+        </section>
+
+        <div class="back-link">
+          <a href="../blogs.html">&larr; Back to Videos</a>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
