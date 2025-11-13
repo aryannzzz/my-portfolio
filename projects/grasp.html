@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project GRASP | Aryan's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      margin-bottom: 24px;
+    }
+    .header-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .project-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #1a202c;
+      margin-bottom: 12px;
+    }
+    .status-badge {
+      display: inline-block;
+      background: #8b5cf6;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .timeline {
+      color: #6b7280;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .tech-tag {
+      background: #fce7f3;
+      color: #be185d;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 16px;
+      border-bottom: 3px solid #f5576c;
+      padding-bottom: 8px;
+    }
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #374151;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    p, li {
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li:before {
+      content: "🤖";
+      display: inline-block;
+      width: 1.5em;
+      margin-left: -1.5em;
+    }
+    .highlight-box {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .back-button {
+      display: inline-block;
+      background: #f5576c;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+    .back-button:hover {
+      background: #dc4558;
+    }
+    .availability-note {
+      background: #dbeafe;
+      border-left: 4px solid #3b82f6;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-weight: 500;
+      color: #1e40af;
+    }
+    .lab-badge {
+      background: #dcfce7;
+      color: #166534;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header-section">
+        <h1 class="project-title">Project GRASP</h1>
+        <div class="status-badge">Foundation Models for Robotic Control</div>
+        <p class="timeline">May 2025 – Present</p>
+        <span class="lab-badge">iBot club, IIT Madras</span>
+        <div class="tech-stack">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">PyTorch</span>
+          <span class="tech-tag">Transformers</span>
+          <span class="tech-tag">OpenCV</span>
+          <span class="tech-tag">Generability</span>
+          <span class="tech-tag">interpretability</span>
+        </div>
+      </div>
+
+      <div class="availability-note">
+        📦 <strong>Code Availability:</strong> Detailed codebase will be publicly available by end of April 2025 after research tenure completion.
+      </div>
+
+      <h2>Overview</h2>
+      <p>
+        Developing vision-language-action (VLA) models that combine visual perception, natural language understanding, and robotic control for generalizable manipulation tasks. This research represents the frontier of foundation models applied to robotics, bridging the gap between high-level understanding and low-level control.
+      </p>
+
+      <h2>Research Focus</h2>
+
+      <h3>1. Vision-Language-Action (VLA) Models</h3>
+      <ul>
+        <li>Combining CLIP-based encoders with transformer policies</li>
+        <li>Multimodal alignment for visuomotor tasks</li>
+        <li>Behavior cloning from human demonstrations</li>
+        <li>End-to-end learning from pixels to actions</li>
+      </ul>
+
+      <h3>2. In-Context Learning for Robotics</h3>
+      <ul>
+        <li><strong>RoboPrompt</strong> – Few-shot learning for robotic tasks</li>
+        <li>Object-centric representations for scene understanding</li>
+        <li>Adaptive control in unseen environments</li>
+        <li>Transfer learning across manipulation tasks</li>
+      </ul>
+
+      <h3>3. Key Technical Areas</h3>
+
+      <div style="margin-left: 20px;">
+        <h3>GradCAM Integration with RL</h3>
+        <ul>
+          <li>Visual attention mechanisms for policy interpretability</li>
+          <li>Saliency maps for understanding robot decision-making</li>
+          <li>Currently developing integration framework</li>
+        </ul>
+
+        <h3>VLA Architectures Explored</h3>
+        <ul>
+          <li><strong>MoleVLA</strong> – Molecular-level action representations</li>
+          <li><strong>SmolVLA</strong> – Lightweight VLA for edge deployment</li>
+          <li><strong>ATK (Action Tokenization Kernel)</strong> – Novel action encoding</li>
+        </ul>
+
+        <h3>Dataset Development</h3>
+        <ul>
+          <li><strong>SO-101 Dataset</strong> – Standard objects manipulation</li>
+          <li>Teleoperation systems for data collection</li>
+          <li>Large-scale demonstration datasets</li>
+        </ul>
+      </div>
+
+      <h2>Technical Achievements</h2>
+
+      <h3>Sim-to-Real Transfer</h3>
+      <ul>
+        <li>Diffusion-based policy generation for robust control</li>
+        <li>Domain randomization techniques for visual transfer</li>
+        <li>Reality gap bridging strategies</li>
+      </ul>
+
+      <h3>Object-Centric Representations</h3>
+      <ul>
+        <li>Decomposing scenes into manipulable objects</li>
+        <li>Compositional understanding for manipulation</li>
+        <li>Transfer learning across object categories</li>
+      </ul>
+
+      <h2>Research Contributions</h2>
+      <div class="highlight-box">
+        <ul>
+          <li>Comprehensive literature review on foundation models for robotics</li>
+          <li>Explored latest VLA architectures (MoleVLA, SmolVLA)</li>
+          <li>Investigated in-context learning paradigms for robots</li>
+          <li>Studied behavior cloning and imitation learning methodologies</li>
+        </ul>
+      </div>
+
+      <h2>Experimental Work</h2>
+      <ul>
+        <li>Building intuitive teleoperation interfaces</li>
+        <li>Collecting high-quality manipulation datasets</li>
+        <li>Training transformer-based policies from demonstrations</li>
+        <li>Evaluating sim-to-real transfer performance</li>
+      </ul>
+
+      <h2>Future Directions</h2>
+      <ul>
+        <li>Scaling up VLA models with larger, diverse datasets</li>
+        <li>Real robot deployment and validation in lab settings</li>
+        <li>Multi-task learning frameworks for generalization</li>
+        <li>Long-horizon task planning with foundation models</li>
+      </ul>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="../projects.html" class="back-button">← Back to Projects</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

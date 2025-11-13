@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokémon Tactical Strike | Aryan's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      margin-bottom: 24px;
+    }
+    .header-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .project-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #1a202c;
+      margin-bottom: 12px;
+    }
+    .status-badge {
+      display: inline-block;
+      background: #8b5cf6;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .availability-note {
+      background: #dbeafe;
+      border-left: 4px solid #3b82f6;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-weight: 500;
+      color: #1e40af;
+    }
+    .achievement-badge {
+      display: inline-block;
+      background: #fbbf24;
+      color: #78350f;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      margin-left: 8px;
+    }
+    .timeline {
+      color: #6b7280;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .tech-tag {
+      background: #e0e7ff;
+      color: #4338ca;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 16px;
+      border-bottom: 3px solid #a6c1ee;
+      padding-bottom: 8px;
+    }
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #374151;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #4b5563;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p, li {
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li:before {
+      content: "⚔️";
+      display: inline-block;
+      width: 1.5em;
+      margin-left: -1.5em;
+    }
+    .highlight-box {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .performance-box {
+      background: #dcfce7;
+      border-left: 4px solid #22c55e;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .back-button {
+      display: inline-block;
+      background: #a6c1ee;
+      color: #1e3a8a;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+    .back-button:hover {
+      background: #93b3e6;
+    }
+    .github-link {
+      display: inline-block;
+      background: #24292e;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-left: 12px;
+    }
+    .github-link:hover {
+      background: #1b1f23;
+    }
+    .code-box {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      margin: 16px 0;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header-section">
+        <h1 class="project-title">Pokémon Tactical Strike</h1>
+        <div class="status-badge">Multimodal RL System</div>
+        <div class="achievement-badge">🏆 IITM AI Hackathon Selection</div>
+        <p class="timeline">September 2025</p>
+        <div class="tech-stack">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">PyTorch</span>
+          <span class="tech-tag">Vision Transformers</span>
+          <span class="tech-tag">GPT</span>
+          <span class="tech-tag">Reinforcement Learning</span>
+        </div>
+      </div>
+
+      <div class="availability-note">
+        📦 <strong>Code Availability:</strong> The code that is provided in the github was only used for the submission for the hackathon. The RL version (mentioned about in this page) is not yet uploaded. Will upload it soon!
+      </div>
+
+      <div class="performance-box">
+        <h3 style="margin-top: 0;">🎯 Performance Metrics</h3>
+        <ul style="margin-bottom: 0;">
+          <li><strong>85% Win Rate</strong> vs Baseline Agents</li>
+          <li>Selected for <strong>IITM AI Hackathon</strong> (Top Ranking)</li>
+          <li>Real-time strategic planning with interpretable decisions</li>
+        </ul>
+      </div>
+
+      <h2>Overview</h2>
+      <p>
+        Built an advanced multimodal reinforcement learning system that combines computer vision and language models for strategic Pokémon battle decision-making. This project demonstrates the power of fusing visual understanding with strategic reasoning for complex game AI.
+      </p>
+
+      <h2>System Architecture</h2>
+
+      <h3>1. Simulator Development</h3>
+      <ul>
+        <li>Custom Pokémon battle environment from scratch</li>
+        <li>Complete game mechanics implementation (types, moves, status effects)</li>
+        <li>Rich state representation and comprehensive action spaces</li>
+        <li>Multi-agent battle scenarios with team composition</li>
+      </ul>
+
+      <h3>2. Vision Transformer Integration</h3>
+      <ul>
+        <li><strong>Visual Encoding:</strong> Processing battle state images in real-time</li>
+        <li>Feature extraction from game screens using ViT architecture</li>
+        <li>Spatial relationship understanding between Pokémon</li>
+        <li>Type effectiveness visual recognition from battle UI</li>
+      </ul>
+
+      <h3>3. GPT-Based Tactical Reasoning</h3>
+      <ul>
+        <li>Strategic move selection with natural language justifications</li>
+        <li>Type matchup analysis and advantage calculation</li>
+        <li>Predictive opponent modeling for counter-strategies</li>
+        <li>Natural language strategy generation for interpretability</li>
+      </ul>
+
+      <h2>Technical Innovations</h2>
+
+      <h3>Hierarchical Reinforcement Learning</h3>
+      <ul>
+        <li><strong>High-level Strategy:</strong> Long-term battle planning and team management</li>
+        <li><strong>Low-level Tactics:</strong> Move-by-move decision optimization</li>
+        <li>Reward-conditioned language primitives for flexible behavior</li>
+        <li>Interpretable decision-making at both levels</li>
+      </ul>
+
+      <h3>Multimodal Fusion</h3>
+      <ul>
+        <li>Combining visual and textual information seamlessly</li>
+        <li>Cross-attention mechanisms between vision and language</li>
+        <li>Joint vision-language representations for unified understanding</li>
+        <li>Unified decision architecture leveraging both modalities</li>
+      </ul>
+
+      <h3>Reward Shaping</h3>
+      <ul>
+        <li>Hybrid vision-text reward signals for guided learning</li>
+        <li>Strategic objective alignment with long-term goals</li>
+        <li>Type effectiveness rewards for intelligent matchups</li>
+        <li>Health management incentives for survival strategies</li>
+      </ul>
+
+      <h2>Key Technical Components</h2>
+
+      <h4>Vision Transformer (ViT)</h4>
+      <div class="code-box">
+class BattleVisionEncoder:
+    """
+    - Patch-based image encoding (16x16 patches)
+    - Multi-head self-attention over spatial features
+    - Battle state representation in latent space
+    - Team composition understanding from visual cues
+    """
+      </div>
+
+      <h4>Language Model Integration</h4>
+      <div class="code-box">
+class StrategyGenerator:
+    """
+    - GPT-based move reasoning with context
+    - Type matchup analysis using game knowledge
+    - Contextual decision-making for dynamic battles
+    - Natural language explanations for every move
+    """
+      </div>
+
+      <h4>RL Training Pipeline</h4>
+      <div class="code-box">
+class HierarchicalAgent:
+    """
+    - Policy network (high-level strategy + low-level tactics)
+    - Value function estimation for state evaluation
+    - Prioritized experience replay buffer
+    - Reward-conditioned training for goal-oriented behavior
+    """
+      </div>
+
+      <h2>Achievement: IITM AI Hackathon</h2>
+      <div class="highlight-box">
+        <ul>
+          <li><strong>Selection:</strong> Chosen for prestigious AI vertical among top projects</li>
+          <li><strong>Performance:</strong> Excellent ranking in competitive evaluation</li>
+          <li><strong>Innovation:</strong> Novel multimodal RL approach recognized by judges</li>
+          <li><strong>Impact:</strong> Demonstrated advanced RL capabilities in complex domain</li>
+        </ul>
+      </div>
+
+      <h2>Interpretability Features</h2>
+
+      <h3>Explainable Decisions</h3>
+      <ul>
+        <li>Natural language move justifications for every action</li>
+        <li>Visual attention maps showing what the model focuses on</li>
+        <li>Strategy reasoning chains explaining long-term planning</li>
+        <li>Type effectiveness analysis with confidence scores</li>
+      </ul>
+
+      <h3>Battle Insights</h3>
+      <ul>
+        <li>Predicted opponent moves with probability distributions</li>
+        <li>Win probability estimation throughout the battle</li>
+        <li>Optimal team suggestions based on matchups</li>
+        <li>Counter-strategy recommendations for future battles</li>
+      </ul>
+
+      <h2>Technical Challenges Solved</h2>
+      <ul>
+        <li><strong>Multimodal Alignment:</strong> Fusing vision and language effectively</li>
+        <li><strong>Strategic Planning:</strong> Long-horizon decision-making in stochastic environment</li>
+        <li><strong>Reward Design:</strong> Balancing immediate tactical rewards vs long-term strategic goals</li>
+        <li><strong>Generalization:</strong> Performance across diverse team compositions and strategies</li>
+      </ul>
+
+      <h2>Performance Validation</h2>
+      <div class="performance-box">
+        <ul>
+          <li><strong>Win Rate:</strong> 85% against rule-based baseline agents</li>
+          <li><strong>Decision Speed:</strong> Real-time strategic planning (<100ms per move)</li>
+          <li><strong>Interpretability:</strong> 100% of moves accompanied by explanations</li>
+          <li><strong>Generalization:</strong> Consistent performance across 50+ team compositions</li>
+        </ul>
+      </div>
+
+      <h2>Future Extensions</h2>
+      <ul>
+        <li>Multi-agent cooperative battles (2v2, 3v3 formats)</li>
+        <li>Tournament bracket simulation with adaptive strategies</li>
+        <li>Meta-strategy learning from competitive play data</li>
+        <li>Real-time opponent adaptation during battles</li>
+        <li>Integration with online battle simulators</li>
+      </ul>
+
+      <h2>Code Highlights</h2>
+      <ul>
+        <li>Custom Pokémon battle environment (1000+ lines)</li>
+        <li>Vision Transformer implementation with attention visualization</li>
+        <li>GPT integration for strategic reasoning and explanation</li>
+        <li>Hierarchical RL training loop with dual policies</li>
+        <li>Comprehensive evaluation suite with multiple baselines</li>
+      </ul>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="../projects.html" class="back-button">← Back to Projects</a>
+        <a href="https://github.com/aryannzzz/pokemon-tactical-strike" class="github-link" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

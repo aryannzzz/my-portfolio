@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AxiomML | Aryan's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      margin-bottom: 24px;
+    }
+    .header-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .project-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #1a202c;
+      margin-bottom: 12px;
+    }
+    .status-badge {
+      display: inline-block;
+      background: #f59e0b;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .timeline {
+      color: #6b7280;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .tech-tag {
+      background: #fef3c7;
+      color: #92400e;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 16px;
+      border-bottom: 3px solid #fee140;
+      padding-bottom: 8px;
+    }
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #374151;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #4b5563;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+    p, li {
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li:before {
+      content: "📚";
+      display: inline-block;
+      width: 1.5em;
+      margin-left: -1.5em;
+    }
+    .highlight-box {
+      background: #dbeafe;
+      border-left: 4px solid #3b82f6;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .back-button {
+      display: inline-block;
+      background: #fa709a;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+    .back-button:hover {
+      background: #e85d87;
+    }
+    .github-link {
+      display: inline-block;
+      background: #24292e;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-left: 12px;
+    }
+    .github-link:hover {
+      background: #1b1f23;
+    }
+    .impact-badge {
+      background: #dcfce7;
+      color: #166534;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 8px;
+    }
+    .code-box {
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      margin: 16px 0;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header-section">
+        <h1 class="project-title">AxiomML</h1>
+        <div class="status-badge">Educational ML Framework from Scratch</div>
+        <p class="timeline">August 2025 – Present</p>
+        <span class="impact-badge">Used by 50+ Students</span>
+        <div class="tech-stack">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">NumPy</span>
+          <span class="tech-tag">Machine Learning</span>
+        </div>
+      </div>
+
+      <h2>Overview</h2>
+      <p>
+        Built a complete machine learning framework from scratch using only NumPy, achieving <strong>99.9% accuracy parity</strong> with Scikit-learn while providing full mathematical transparency for educational purposes. Currently used by over 50 students to learn ML fundamentals.
+      </p>
+
+      <h2>Implemented Algorithms</h2>
+
+      <h3>1. Supervised Learning</h3>
+
+      <h4>Support Vector Machines (SVM)</h4>
+      <ul>
+        <li>Linear and kernel-based SVMs (RBF, Polynomial, Sigmoid)</li>
+        <li>SMO (Sequential Minimal Optimization) solver</li>
+        <li>Multi-class classification strategies (One-vs-Rest, One-vs-One)</li>
+        <li>Custom kernel functions for flexible decision boundaries</li>
+      </ul>
+
+      <h4>Random Forests</h4>
+      <ul>
+        <li>Decision tree implementation from scratch with CART algorithm</li>
+        <li>Bootstrap aggregating (bagging) for ensemble learning</li>
+        <li>Feature importance calculations using Gini impurity</li>
+        <li>Out-of-bag error estimation for model validation</li>
+      </ul>
+
+      <h3>2. Unsupervised Learning</h3>
+
+      <h4>K-Means Clustering</h4>
+      <ul>
+        <li>Lloyd's algorithm implementation with convergence guarantees</li>
+        <li>K-means++ initialization for better starting centroids</li>
+        <li>Elbow method for optimal K selection</li>
+        <li>Cluster analysis tools and visualization utilities</li>
+      </ul>
+
+      <h4>Principal Component Analysis (PCA)</h4>
+      <ul>
+        <li>Eigenvalue decomposition for dimensionality reduction</li>
+        <li>Singular Value Decomposition (SVD) approach</li>
+        <li>Explained variance analysis and scree plots</li>
+        <li>Data reconstruction and compression capabilities</li>
+      </ul>
+
+      <h2>Key Features</h2>
+
+      <h3>Mathematical Transparency</h3>
+      <div class="highlight-box">
+        <ul>
+          <li>Every algorithm implemented with clear mathematical foundations</li>
+          <li>Step-by-step computation visibility for learning</li>
+          <li>Educational comments and comprehensive documentation</li>
+          <li>No black-box operations – every line is understandable</li>
+        </ul>
+      </div>
+
+      <h3>Scikit-learn Compatible API</h3>
+      <div class="code-box">
+from axiomml.supervised import SVM
+from axiomml.unsupervised import KMeans
+
+# Familiar interface
+model = SVM(kernel='rbf', C=1.0)
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+
+# Just like scikit-learn!
+      </div>
+      <ul>
+        <li>Familiar <code>.fit()</code>, <code>.predict()</code>, <code>.transform()</code> interface</li>
+        <li>Drop-in replacement for learning and experimentation</li>
+        <li>Consistent parameter naming across all algorithms</li>
+        <li>Standardized return formats for seamless integration</li>
+      </ul>
+
+      <h3>Validation & Testing</h3>
+      <ul>
+        <li>Comprehensive test suite with 100+ unit tests</li>
+        <li><strong>99.9% accuracy parity</strong> with Scikit-learn validated</li>
+        <li>Performance benchmarking against industry standards</li>
+        <li>Robust edge case handling and error messages</li>
+      </ul>
+
+      <h2>Technical Implementation Example</h2>
+      <div class="code-box">
+class SVM:
+    def __init__(self, kernel='linear', C=1.0):
+        """
+        Support Vector Machine with full mathematical transparency
+        
+        Parameters:
+        - kernel: 'linear', 'rbf', 'poly', or custom function
+        - C: Regularization parameter
+        """
+        self.kernel = kernel
+        self.C = C
+        
+    def fit(self, X, y):
+        """
+        Train SVM using SMO algorithm
+        - Clear implementation of dual optimization
+        - Every step documented for educational purposes
+        """
+        # Explicit SMO iterations with mathematical clarity
+        
+    def predict(self, X):
+        """
+        Make predictions using learned support vectors
+        - Transparent decision function calculation
+        """
+      </div>
+
+      <h2>Educational Impact</h2>
+
+      <h3>Used By 50+ Students</h3>
+      <ul>
+        <li>Primary teaching tool for ML algorithm internals</li>
+        <li>Understanding the "why" behind algorithm mechanics</li>
+        <li>Hands-on debugging and experimentation platform</li>
+        <li>Solid foundation for advanced research projects</li>
+      </ul>
+
+      <h3>Learning Outcomes</h3>
+      <ul>
+        <li>Deep understanding of ML algorithms beyond black-box usage</li>
+        <li>Appreciation of optimization techniques (gradient descent, SMO)</li>
+        <li>Insight into computational complexity and efficiency trade-offs</li>
+        <li>Foundation for implementing novel algorithms and research</li>
+      </ul>
+
+      <h2>Modular Architecture</h2>
+      <div class="code-box">
+axiomml/
+├── supervised/
+│   ├── svm.py              # Support Vector Machines
+│   ├── random_forest.py    # Random Forest ensemble
+│   └── decision_tree.py    # Base decision tree
+├── unsupervised/
+│   ├── kmeans.py          # K-Means clustering
+│   └── pca.py             # Principal Component Analysis
+├── utils/
+│   ├── kernels.py         # Kernel functions (RBF, polynomial)
+│   ├── metrics.py         # Accuracy, precision, recall, F1
+│   └── preprocessing.py   # Normalization, standardization
+└── tests/
+    └── test_all.py        # Comprehensive test suite
+      </div>
+
+      <h2>Performance Validation</h2>
+      <div class="highlight-box">
+        <ul>
+          <li><strong>Accuracy Parity:</strong> 99.9% match with Scikit-learn on benchmark datasets</li>
+          <li><strong>Interpretability:</strong> Full algorithm visibility with educational comments</li>
+          <li><strong>Educational Value:</strong> Clear, well-documented implementations for learning</li>
+        </ul>
+      </div>
+
+      <h2>Use Cases</h2>
+      <ul>
+        <li><strong>Learning:</strong> Understanding ML algorithm internals and mathematics</li>
+        <li><strong>Teaching:</strong> Classroom demonstrations and assignments</li>
+        <li><strong>Research:</strong> Building custom ML pipelines and novel algorithms</li>
+        <li><strong>Experimentation:</strong> Algorithm modifications and comparative studies</li>
+      </ul>
+
+      <h2>Future Enhancements</h2>
+      <ul>
+        <li>Additional algorithms (Gradient Boosting, Neural Networks from scratch)</li>
+        <li>GPU acceleration with CuPy for large-scale datasets</li>
+        <li>More extensive documentation with tutorial notebooks</li>
+        <li>Interactive web-based tutorials and visualizations</li>
+      </ul>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="../projects.html" class="back-button">← Back to Projects</a>
+        <a href="https://github.com/aryannzzz/AxiomML" class="github-link" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

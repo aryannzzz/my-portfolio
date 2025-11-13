@@ -1,124 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects | Aryan's Portfolio</title>
-  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" />
-  <link rel="stylesheet" href="css/projects.css" />
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-</head>
-<body>
-  <div class="layout-container flex flex-col min-h-screen bg-white">
-    <!-- Header -->
-    <header class="header">
-      <div class="header-left">
-        <a href="index.html" class="logo-link" aria-label="Home">
-          <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_6_319)">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | Aryan's Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap"
+    />
+    <link rel="stylesheet" href="css/projects.css" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+
+  <body>
+    <div class="layout-container flex flex-col min-h-screen bg-white">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-left">
+          <a href="index.html" class="logo-link" aria-label="Home">
+            <svg
+              class="logo-icon"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_6_319)">
+                <path
+                  d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                  fill="currentColor"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_6_319">
+                  <rect width="48" height="48" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+            <span class="site-title">Portfolio</span>
+          </a>
+        </div>
+
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="projects.html" class="active">Projects</a>
+          <a href="resume.html">Resume/About Me</a>
+          <a href="roadmap.html">Roadmap</a>
+          <a href="blogs.html">Blogs/Insights</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="mode-toggle" aria-label="Toggle light/dark mode">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
               <path
-                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
-                fill="currentColor"
+                d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"
               ></path>
-            </g>
-            <defs>
-              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
-            </defs>
-          </svg>
-          <span class="site-title">Portfolio</span>
-        </a>
-      </div>
-      <nav class="header-nav" aria-label="Main navigation">
-        <a href="projects.html" class="active">Projects</a>
-        <a href="resume.html">Resume/About Me</a>
-        <a href="roadmap.html">Roadmap</a>
-        <a href="blogs.html">Blogs/Insights</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <button class="mode-toggle" aria-label="Toggle light/dark mode">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
-            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
-          </svg>
-        </button>
-        <div class="profile-pic" style='background-image: url("assets/profile.jpg");' aria-label="Profile picture"></div>
-      </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-      <section class="projects-header">
-        <h1>Projects</h1>
-      </section>
-
-      <section class="featured-project">
-        <h2>Featured Projects</h2>
-        <div class="featured-projects-list">
-          <!-- GRASP -->
-          <div class="featured-project-card project-hover">
-            <div class="featured-image" style='background-image: url("assets/projects/grasp.jpg");'></div>
-            <div class="featured-info">
-              <h3>GRASP</h3>
-              <p class="tech-stack">Python, PyTorch, Robotics, Transformers</p>
-              <p class="description">
-                Robotic foundation model for vision, language, and action.<br>
-                <a href="grasp.html" class="read-more">Read more &rarr;</a>
-              </p>
-            </div>
-          </div>
-          <!-- Neurospike -->
-          <div class="featured-project-card project-hover">
-            <div class="featured-image" style='background-image: url("assets/projects/neurospike.jpg");'></div>
-            <div class="featured-info">
-              <h3>Neurospike</h3>
-              <p class="tech-stack">Python, Brian2, Verilog, FPGA</p>
-              <p class="description">
-                Brain-inspired SNNs and neuromorphic hardware.<br>
-                <a href="neurospike.html" class="read-more">Read more &rarr;</a>
-              </p>
-            </div>
-          </div>
+            </svg>
+          </button>
+          <div
+            class="profile-pic"
+            style='background-image: url("assets/profile.jpg");'
+            aria-label="Profile picture"
+          ></div>
         </div>
-      </section>
+      </header>
 
-      <section class="all-projects">
-        <h2>All Projects</h2>
-        <div class="projects-grid">
-          <!-- GRASP -->
-          <div class="project-card project-hover">
-            <div class="project-image" style='background-image: url("assets/projects/grasp.jpg");'></div>
-            <div>
-              <p class="project-title">GRASP</p>
-              <p class="project-tech">Python, PyTorch, Robotics, Transformers</p>
-              <p class="project-desc">Robotic foundation model for vision, language, and action.</p>
-              <a href="grasp.html" class="read-more">Read more &rarr;</a>
+      <!-- Main Content -->
+      <main class="main-content">
+        <section class="projects-header">
+          <h1>Projects</h1>
+        </section>
+
+        <section class="featured-project">
+          <h2>Featured Projects</h2>
+          <div class="featured-projects-list">
+            <!-- Inter IIT Pathway PS -->
+            <div class="featured-project-card project-hover">
+              <div
+                class="featured-image"
+                style='background-image: url("assets/projects/pathway.jpg");'
+              ></div>
+              <div class="featured-info">
+                <h3>Inter IIT Pathway PS — Real-Time Agentic Systems</h3>
+                <p class="tech-stack">
+                  Python, Pathway, LLMs, LangChain, Multi-Agent Systems
+                </p>
+                <p class="description">
+                  Production-grade streaming GenAI pipeline for quantitative finance
+                  with sub-second latency, multi-agent coordination, and real-time RAG
+                  systems.<br />
+                  <a href="projects/pathway.html" class="read-more">Read more &rarr;</a>
+                </p>
+              </div>
+            </div>
+
+            <!-- GRASP -->
+            <div class="featured-project-card project-hover">
+              <div
+                class="featured-image"
+                style='background-image: url("assets/projects/grasp.jpg");'
+              ></div>
+              <div class="featured-info">
+                <h3>GRASP — Foundation Models for Robotic Control</h3>
+                <p class="tech-stack">
+                  Python, PyTorch, VLA, Transformers, Robotics
+                </p>
+                <p class="description">
+                  Vision-language-action models for visuomotor tasks with multimodal
+                  alignment and behavior cloning.<br />
+                  <a href="projects/grasp.html" class="read-more">Read more &rarr;</a>
+                </p>
+              </div>
+            </div>
+
+            <!-- NeuroSpike -->
+            <div class="featured-project-card project-hover">
+              <div
+                class="featured-image"
+                style='background-image: url("assets/projects/neurospike.jpg");'
+              ></div>
+              <div class="featured-info">
+                <h3>Project NeuroSpike</h3>
+                <p class="tech-stack">Python, Brian2, SNNs, Predictive Coding</p>
+                <p class="description">
+                  Biologically-inspired neural networks with SNNs and STDP learning.<br />
+                  <a href="projects/neurospike.html" class="read-more">Read more &rarr;</a>
+                </p>
+              </div>
             </div>
           </div>
-          <!-- Neurospike -->
-          <div class="project-card project-hover">
-            <div class="project-image" style='background-image: url("assets/projects/neurospike.jpg");'></div>
-            <div>
-              <p class="project-title">Neurospike</p>
-              <p class="project-tech">Python, Brian2, Verilog, FPGA</p>
-              <p class="project-desc">Brain-inspired SNNs and neuromorphic hardware.</p>
-              <a href="neurospike.html" class="read-more">Read more &rarr;</a>
+        </section>
+
+        <section class="all-projects">
+          <h2>All Projects</h2>
+          <div class="projects-grid">
+            <!-- Inter IIT Pathway PS -->
+            <div class="project-card project-hover">
+              <div
+                class="project-image"
+                style='background-image: url("assets/projects/pathway.jpg");'
+              ></div>
+              <div>
+                <p class="project-title">Inter IIT Pathway PS</p>
+                <p class="project-tech">
+                  Python, Pathway, LLMs, Multi-Agent Systems
+                </p>
+                <p class="project-desc">
+                  Real-time agentic generative systems for quantitative finance.
+                </p>
+                <a href="projects/pathway.html" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <!-- GRASP -->
+            <div class="project-card project-hover">
+              <div
+                class="project-image"
+                style='background-image: url("assets/projects/grasp.jpg");'
+              ></div>
+              <div>
+                <p class="project-title">Project GRASP</p>
+                <p class="project-tech">Python, PyTorch, VLA, Transformers</p>
+                <p class="project-desc">
+                  Foundation models for robotic control with vision-language-action.
+                </p>
+                <a href="projects/grasp.html" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <!-- NeuroSpike -->
+            <div class="project-card project-hover">
+              <div
+                class="project-image"
+                style='background-image: url("assets/projects/neurospike.jpg");'
+              ></div>
+              <div>
+                <p class="project-title">Project NeuroSpike</p>
+                <p class="project-tech">Python, Brian2, SNNs, Predictive Coding</p>
+                <p class="project-desc">
+                  Biologically-inspired neural networks with SNNs and STDP learning.
+                </p>
+                <a href="projects/neurospike.html" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <!-- AxiomML -->
+            <div class="project-card project-hover">
+              <div
+                class="project-image"
+                style='background-image: url("assets/projects/axiomml.jpg");'
+              ></div>
+              <div>
+                <p class="project-title">AxiomML</p>
+                <p class="project-tech">Python, NumPy, Machine Learning</p>
+                <p class="project-desc">
+                  Educational ML framework from scratch with 99.9% accuracy parity.
+                  Used by 50+ students.
+                </p>
+                <a href="projects/axiomml.html" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Pokémon Tactical Strike -->
+            <div class="project-card project-hover">
+              <div
+                class="project-image"
+                style='background-image: url("assets/projects/pokemon.jpg");'
+              ></div>
+              <div>
+                <p class="project-title">Pokémon Tactical Strike</p>
+                <p class="project-tech">
+                  Python, PyTorch, RL, Vision Transformers
+                </p>
+                <p class="project-desc">
+                  Multimodal RL system with hierarchical learning. 85% win rate vs
+                  baselines.
+                </p>
+                <a href="projects/pokemon.html" class="read-more">Read more &rarr;</a>
+              </div>
+            </div>
+
+            <!-- Assassin's Creed -->
+            <div class="project-card project-hover">
+              <div
+                class="project-image"
+                style='background-image: url("assets/projects/assassinscreed.jpg");'
+              ></div>
+              <div>
+                <p class="project-title">
+                  Assassin's Creed: Arunodaya Protocol
+                  <span class="project-meta">(Unofficial Concept)</span>
+                </p>
+                <p class="project-tech">Unity, C#, Game AI</p>
+                <p class="project-desc">
+                  Stealth game with AI guards and creative level design.
+                </p>
+                <a href="projects/assassinscreed.html" class="read-more">Read more &rarr;</a>
+              </div>
             </div>
           </div>
-          <!-- Assassin's Creed: Arunodaya Protocol -->
-          <div class="project-card project-hover">
-            <div class="project-image" style='background-image: url("assets/projects/assassinscreed.jpg");'></div>
-            <div>
-              <p class="project-title">Assassin’s Creed: Arunodaya Protocol <span class="project-meta">(Unofficial Concept Game)</span></p>
-              <p class="project-tech">Unity, C#, Game AI</p>
-              <p class="project-desc">Stealth game inspired by Assassin’s Creed, featuring AI guards and creative level design.</p>
-              <a href="assassinscreed.html" class="read-more">Read more &rarr;</a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-</body>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>

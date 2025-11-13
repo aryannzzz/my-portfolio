@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project NeuroSpike | Aryan's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      margin-bottom: 24px;
+    }
+    .header-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .project-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #1a202c;
+      margin-bottom: 12px;
+    }
+    .status-badge {
+      display: inline-block;
+      background: #06b6d4;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .timeline {
+      color: #6b7280;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .tech-tag {
+      background: #cffafe;
+      color: #0e7490;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 16px;
+      border-bottom: 3px solid #00f2fe;
+      padding-bottom: 8px;
+    }
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #374151;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    p, li {
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li:before {
+      content: "⚡";
+      display: inline-block;
+      width: 1.5em;
+      margin-left: -1.5em;
+    }
+    .highlight-box {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .back-button {
+      display: inline-block;
+      background: #00f2fe;
+      color: #0c4a6e;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+    .back-button:hover {
+      background: #4facfe;
+    }
+    .availability-note {
+      background: #dbeafe;
+      border-left: 4px solid #3b82f6;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-weight: 500;
+      color: #1e40af;
+    }
+    .lab-badge {
+      background: #dcfce7;
+      color: #166534;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 8px;
+    }
+    .presentation-box {
+      background: #f0fdf4;
+      border: 2px solid #22c55e;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header-section">
+        <h1 class="project-title">Project NeuroSpike</h1>
+        <div class="status-badge">Biologically-Inspired Neural Networks</div>
+        <p class="timeline">May 2025 – Present</p>
+        <span class="lab-badge">SenAI Lab, IIT Madras</span>
+        <div class="tech-stack">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Brian2</span>
+          <span class="tech-tag">Pygame</span>
+          <span class="tech-tag">Neuromorphic Computing</span>
+        </div>
+      </div>
+
+      <div class="availability-note">
+        📦 <strong>Code Availability:</strong> Detailed codebase will be publicly available by end of April 2025 after research tenure completion.
+      </div>
+
+      <h2>Overview</h2>
+      <p>
+        Investigating spiking neural networks (SNNs) and neuromorphic computing paradigms that bridge neuroscience and AI for energy-efficient, biologically-plausible learning systems. This research explores how biological principles can inspire next-generation AI architectures.
+      </p>
+
+      <h2>Research Areas</h2>
+
+      <h3>1. Spiking Neural Networks (SNNs)</h3>
+      <ul>
+        <li>Event-driven neural computation mimicking biological neurons</li>
+        <li>STDP (Spike-Timing-Dependent Plasticity) learning rules</li>
+        <li>Temporal dynamics of neural networks</li>
+        <li>Neuromorphic hardware considerations for edge deployment</li>
+      </ul>
+
+      <h3>2. Predictive Coding</h3>
+      <ul>
+        <li>Hierarchical predictive models inspired by cortical processing</li>
+        <li>Error minimization through prediction mechanisms</li>
+        <li>Bridging predictive coding with modern deep learning</li>
+        <li>Applications to continual and few-shot learning</li>
+      </ul>
+
+      <h3>3. Hybrid Architectures</h3>
+      <ul>
+        <li>Combining continuous and event-driven dynamics</li>
+        <li>Integrating traditional ANNs with SNNs</li>
+        <li>Adaptive, biologically-plausible learning rules</li>
+        <li>Low-power computation paradigms for sustainable AI</li>
+      </ul>
+
+      <h2>Technical Implementation</h2>
+
+      <h3>Brian2 Simulations</h3>
+      <ul>
+        <li>Implementing diverse neuron models (LIF, AdEx, Izhikevich)</li>
+        <li>Complex network dynamics and connectivity patterns</li>
+        <li>Synaptic plasticity rules (STDP, homeostasis)</li>
+        <li>Population-level behaviors and emergent dynamics</li>
+      </ul>
+
+      <h3>Differential Equation Solvers</h3>
+      <ul>
+        <li>Custom numerical methods for neural dynamics</li>
+        <li>Efficient simulation of large-scale networks</li>
+        <li>Analysis of stability and convergence properties</li>
+        <li>Parameter optimization and sensitivity analysis</li>
+      </ul>
+
+      <h3>Pygame Demonstrations</h3>
+      <ul>
+        <li>Visual representations of neural dynamics</li>
+        <li>Interactive demonstrations of learning processes</li>
+        <li>Real-time visualization of spiking activity</li>
+        <li>Educational tools for understanding SNN behavior</li>
+      </ul>
+
+      <h2>Key Concepts Explored</h2>
+
+      <h3>Temporal Attention Mechanisms</h3>
+      <ul>
+        <li>Time-aware processing in neural networks</li>
+        <li>Bridging neuroscience insights with AI architectures</li>
+        <li>Energy-efficient attention for sequential data</li>
+      </ul>
+
+      <h3>Continual Learning</h3>
+      <ul>
+        <li>Avoiding catastrophic forgetting in neural networks</li>
+        <li>Biological inspiration for lifelong learning systems</li>
+        <li>Few-shot adaptation mechanisms</li>
+        <li>Memory consolidation strategies inspired by sleep</li>
+      </ul>
+
+      <h2>Research Contributions</h2>
+      <div class="highlight-box">
+        <ul>
+          <li>Studied predictive coding frameworks and their neural implementations</li>
+          <li>Implemented Brian2 algorithms for large-scale neural simulations</li>
+          <li>Developed educational demonstrations for SNN understanding</li>
+          <li>Explored hybrid SNN-ANN architectures for practical applications</li>
+        </ul>
+      </div>
+
+      <h2>Future Directions</h2>
+      <ul>
+        <li>FPGA implementation of SNNs for real-time processing</li>
+        <li>Neuromorphic hardware deployment (Intel Loihi, IBM TrueNorth)</li>
+        <li>Scaling SNNs to practical applications (vision, speech)</li>
+        <li>Integration with robotic systems for embodied learning</li>
+      </ul>
+
+      <div class="presentation-box">
+        <h3>🎤 Research Conclave (November 2025)</h3>
+        <p><strong>Presentation Highlights:</strong></p>
+        <ul>
+          <li>Pitched predictive coding + SNN hybrid architectures</li>
+          <li>Discussed temporal dynamics and adaptive learning</li>
+          <li>Showcased vision for neuromorphic AI systems</li>
+          <li>Demonstrated biologically-plausible continual learning</li>
+        </ul>
+      </div>
+
+      <h2>Impact</h2>
+      <ul>
+        <li>Bridging neuroscience and AI research communities</li>
+        <li>Exploring energy-efficient computing paradigms (1000x less power)</li>
+        <li>Contributing to biologically-inspired machine learning</li>
+        <li>Building foundation for next-generation AI systems</li>
+      </ul>
+
+      <h2>Lab Information</h2>
+      <p><strong>SenAI Lab, IIT Madras</strong></p>
+      <p><strong>Focus:</strong> Continual and few-shot adaptation through biologically-plausible mechanisms</p>
+      <p>
+        Working on fundamental research at the intersection of neuroscience and artificial intelligence, with applications to sustainable, adaptive AI systems.
+      </p>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="../projects.html" class="back-button">← Back to Projects</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
