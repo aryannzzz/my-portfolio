@@ -60,9 +60,38 @@
         <button class="slider-tab" id="tab-blogs" onclick="showSection('blogs')">Blogs</button>
         <button class="slider-tab" id="tab-videos" onclick="showSection('videos')">Videos</button>
       </div>
-      
+
        <!-- Insights Section -->
       <section id="insights-section" class="slider-section">
+        <!-- Neurospike: Bio-Plausible SNNs -->
+        <div class="blog-card mb-4">
+          <div class="blog-content">
+            <h3 class="blog-title font-semibold">Teaching Silicon to Think Like Biology: Neurospike's Bio-Plausible SNNs</h3>
+            <p class="blog-desc">How do you build neural networks that learn like brains using spikes, local updates, and continuous adaptation? Exploring Spiking Neural Networks with bio-inspired learning rules like STDP and predictive coding, implementing them on FPGA hardware for real-time, energy-efficient computation. From digital LIF neurons to self-learning networks that never catastrophically forget.</p>
+            <a href="blogs/blog_neurospike_bioplausible_snns.html" class="read-more text-blue-600">Read more →</a>
+          </div>
+          <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/blogs/neuromorphic.jpg");'></div>
+        </div>
+        
+        <!-- New Article: In-Context Learning for Robotics -->
+        <div class="blog-card mb-4">
+          <div class="blog-content">
+            <h3 class="blog-title font-semibold">In-Context Learning for Robotics: Exploring RoboPrompt</h3>
+            <p class="blog-desc">Can we teach robots new skills like we prompt language models? I explore RoboPrompt's approach to prompt-based robotic learning and reveal through systematic experiments why open-loop control fails, even a 1-2cm object displacement causes catastrophic failure.</p>
+            <a href="blogs/roboprompt_summary.html" class="read-more text-blue-600">Read more →</a>
+          </div>
+          <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/blogs/roboprompt.jpg");'></div>
+        </div>
+
+        <div class="blog-card mb-4">
+          <div class="blog-content">
+            <h3 class="blog-title font-semibold">Grad-CAM Demystified: Visualizing Deep Learning Decisions</h3>
+            <p class="blog-desc">A deep dive into Grad-CAM — how it helps us understand what parts of an image influence a neural network's decisions, and why that matters for trust, debugging, and interpretability.</p>
+            <a href="blogs/gradCAM(summary).html" class="read-more text-blue-600">Read more →</a>
+          </div>
+          <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/blogs/gradCAM.jpg");'></div>
+        </div>
+
         <!-- Inter IIT: Catastrophic Forgetting -->
         <div class="blog-card mb-4">
           <div class="blog-content">
@@ -124,26 +153,17 @@
                style='background-image: url("assets/blogs/financial-agents.jpg");'>
           </div>
         </div>
-
-
-        <!-- New Article: In-Context Learning for Robotics -->
+        
+        <!-- Viridigen: Green Hydrogen from Algae -->
         <div class="blog-card mb-4">
           <div class="blog-content">
-            <h3 class="blog-title font-semibold">In-Context Learning for Robotics: Exploring RoboPrompt</h3>
-            <p class="blog-desc">Can we teach robots new skills like we prompt language models? I explore RoboPrompt's approach to prompt-based robotic learning and reveal through systematic experiments why open-loop control fails, even a 1-2cm object displacement causes catastrophic failure.</p>
-            <a href="blogs/roboprompt_summary.html" class="read-more text-blue-600">Read more →</a>
+            <h3 class="blog-title font-semibold">Hacking Photosynthesis: How Microalgae Can Power the Hydrogen Economy</h3>
+            <p class="blog-desc">95% of hydrogen today comes from fossil fuels. What if we could hijack algal photosynthesis to generate clean hydrogen instead? Exploring the Viridigen approach: using benzoquinones to intercept electrons from the photosynthetic electron transport chain, producing hydroquinones that store energy as "green hydrogen (Q)", a carbon-negative, scalable alternative to conventional H₂ production.</p>
+            <a href="blogs/blog_viridigen_algae_hydrogen.html" class="read-more text-blue-600">Read more →</a>
           </div>
-          <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/blogs/roboprompt.jpg");'></div>
+          <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/blogs/green-hydrogen.jpg");'></div>
         </div>
 
-        <div class="blog-card mb-4">
-          <div class="blog-content">
-            <h3 class="blog-title font-semibold">Grad-CAM Demystified: Visualizing Deep Learning Decisions</h3>
-            <p class="blog-desc">A deep dive into Grad-CAM — how it helps us understand what parts of an image influence a neural network's decisions, and why that matters for trust, debugging, and interpretability.</p>
-            <a href="blogs/gradCAM(summary).html" class="read-more text-blue-600">Read more →</a>
-          </div>
-          <div class="blog-image w-full h-48 bg-cover bg-center" style='background-image: url("assets/blogs/gradCAM.jpg");'></div>
-        </div>
         <div class="blog-card">
           <div class="blog-content">
             <h3 class="blog-title font-semibold">Action Chunking Transformers: Smarter Long-Horizon Robot Control</h3>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teaching Silicon to Think Like Biology: Neurospike's Bio-Plausible SNNs | Blogs & Insights</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="../css/blogs/gradCAM(summary).css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="layout-container flex flex-col min-h-screen bg-white">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <a href="../index.html" class="logo-link" aria-label="Home">
+          <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_6_319)">
+              <path
+                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                fill="currentColor"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
+            </defs>
+          </svg>
+          <span class="site-title">Portfolio</span>
+        </a>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="../projects.html">Projects</a>
+        <a href="../resume.html">Resume/About Me</a>
+        <a href="../achievements.html">Achievements</a>
+        <a href="../blogs.html" class="active">Blogs/Insights</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="mode-toggle" aria-label="Toggle light/dark mode">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+          </svg>
+        </button>
+        <div class="profile-pic" style='background-image: url("../assets/profile.jpg");' aria-label="Profile picture"></div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <nav class="breadcrumb">
+        <a href="../blogs.html">Insights</a>
+        <span>/</span>
+        <span class="current">Teaching Silicon to Think Like Biology</span>
+      </nav>
+      <article class="blog-article">
+        <h1 class="blog-title">Teaching Silicon to Think Like Biology: Neurospike's Bio-Plausible SNNs</h1>
+        <p class="blog-date">Published on May 29, 2025</p>
+
+        <section class="blog-section">
+          <h2>The Problem With Traditional Deep Learning</h2>
+          <p>
+            Modern neural networks are incredible at pattern recognition, but they have a dirty secret: they don't actually learn like brains do. Standard ANNs rely on backpropagation, a mathematically elegant but biologically impossible algorithm that requires sending error signals backward through layers, accessing global loss information that real neurons simply don't have access to.
+          </p>
+          <p>
+            Real neurons fire spikes. They update their connections based on local activity. They work asynchronously, without a global clock. And they continuously adapt without catastrophically forgetting everything they learned before. How do we bridge this gap between silicon and biology?
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Enter Spiking Neural Networks</h2>
+          <p>
+            Spiking Neural Networks (SNNs) represent a fundamentally different approach to computation. Instead of continuous activation values, neurons communicate through discrete spikes, binary events that happen at specific moments in time. This isn't just a cosmetic change; it transforms how information is encoded, processed, and learned.
+          </p>
+          <ul>
+            <li><strong>Temporal coding:</strong> Information lives not just in whether a neuron fires, but when it fires</li>
+            <li><strong>Event-driven computation:</strong> Neurons only consume power when they actually spike, leading to massive energy efficiency</li>
+            <li><strong>Asynchronous processing:</strong> No global clock means truly parallel, distributed computation</li>
+            <li><strong>Bio-plausibility:</strong> Learning rules based on local activity patterns, not global error signals</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>The Neurospike Vision</h2>
+          <p>
+            Neurospike takes SNNs from simulation to silicon. The project aims to build self-learning SNN frameworks that can be deployed on FPGA hardware, creating systems that learn continuously, adapt in real-time, and operate with brain-like efficiency.
+          </p>
+          <p>
+            The core innovation lies in combining several bio-inspired learning mechanisms:
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Learning Without Backpropagation: Three Bio-Inspired Approaches</h2>
+          
+          <h3>1. Spike-Timing Dependent Plasticity (STDP)</h3>
+          <p>
+            <strong>Spike-Timing Dependent Plasticity (STDP)</strong> is nature's answer to the credit assignment problem. If a pre-synaptic neuron fires just before a post-synaptic neuron, their connection strengthens. Fire in the wrong order? The connection weakens. It's Hebbian learning ("neurons that fire together, wire together") with a stopwatch attached.
+          </p>
+          <p>
+            STDP is completely local. A synapse only needs to know about the timing of spikes on either side of it, nothing about global error signals or distant layers. This makes it perfectly suited for hardware implementation and biologically realistic learning.
+          </p>
+
+          <h3>2. Predictive Coding</h3>
+          <p>
+            <strong>Predictive Coding</strong> adds another layer of sophistication. Each layer in the network tries to predict the activity of the layer below it. The prediction errors, the differences between what was expected and what actually happened, drive learning. Crucially, this happens locally, without needing to backpropagate errors through the entire network.
+          </p>
+          <p>
+            The brain is fundamentally a prediction machine. Sensory information flows upward while predictions flow downward. When predictions match reality, all is well. When they don't, the mismatch (prediction error) triggers learning. This framework explains everything from perception to motor control to higher cognition.
+          </p>
+
+          <h3>3. The Marriage: Predictive Coding + SNNs via Free Energy Principle</h3>
+          <p>
+            Here's where it gets really interesting. Recent work has shown how to combine predictive coding with spiking neural networks under a unified framework called the <strong>Free Energy Principle</strong>. This isn't just stacking two techniques together, it's a fundamental reconceptualization of how neural networks can learn.
+          </p>
+          <p>
+            The Free Energy Principle, developed by neuroscientist Karl Friston, proposes that brains minimize "free energy," a quantity that roughly corresponds to prediction error. In this framework:
+          </p>
+          <ul>
+            <li><strong>Neurons encode predictions:</strong> Each spiking neuron's activity represents a prediction about its inputs</li>
+            <li><strong>Spikes signal errors:</strong> When predictions fail, neurons fire to communicate the surprise</li>
+            <li><strong>Learning minimizes surprise:</strong> Synaptic weights update to reduce future prediction errors</li>
+            <li><strong>Everything is local:</strong> No global loss function, no backpropagation, just local error minimization</li>
+          </ul>
+          <p>
+            In practice, this means building SNNs where each layer has two populations of neurons: <strong>prediction neurons</strong> that guess what's coming from below, and <strong>error neurons</strong> that encode the difference between prediction and reality. The error neurons drive learning through STDP-like rules, but guided by predictive coding principles.
+          </p>
+          <p>
+            This combination gives you the best of both worlds. From SNNs: energy efficiency, temporal dynamics, and hardware compatibility. From predictive coding: structured learning signals, faster convergence, and better generalization. From free energy: a principled framework that's actually biologically plausible.
+          </p>
+          <p>
+            The implications are profound. These networks can learn continuously from streaming data, adapt to new patterns without forgetting old ones, and do it all with minimal computational overhead. They can handle uncertainty naturally, something standard neural networks struggle with. And they can be implemented on neuromorphic hardware, where the energy savings over traditional deep learning are measured in orders of magnitude.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>From Simulation to Silicon: FPGA Implementation</h2>
+          <p>
+            Implementing SNNs in hardware is where theory meets reality. The Neurospike project targets FPGAs, reconfigurable chips that can be programmed to implement custom digital circuits. This allows for:
+          </p>
+          <ul>
+            <li><strong>Massive parallelism:</strong> Thousands of neurons operating simultaneously</li>
+            <li><strong>Event-driven efficiency:</strong> Hardware that only activates when spikes occur</li>
+            <li><strong>Real-time processing:</strong> No simulation overhead, just direct computation</li>
+            <li><strong>Flexible experimentation:</strong> Reconfigure the network architecture on the fly</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>The LIF Neuron: Biology Meets Digital Logic</h2>
+          <p>
+            At the heart of the hardware implementation sits the Leaky Integrate-and-Fire (LIF) neuron, a simplified but surprisingly effective model of biological neurons. Here's how it works in digital form:
+          </p>
+          <ul>
+            <li>A membrane potential register (V) accumulates incoming current</li>
+            <li>V "leaks" over time through exponential decay (implemented as a bit-shift for hardware efficiency)</li>
+            <li>When V crosses a threshold, the neuron fires a spike and enters a refractory period</li>
+            <li>During the refractory period, the neuron ignores inputs, just like biological neurons need recovery time</li>
+          </ul>
+          <p>
+            What makes this elegant is how naturally it maps to digital hardware: no floating-point operations, just integer arithmetic and simple comparisons. A network of interconnected LIF neurons, with weights connecting their outputs to others' inputs, creates a system capable of rich, dynamic behavior.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Continuous Learning: The Holy Grail</h2>
+          <p>
+            One of the most exciting aspects of bio-plausible SNNs is their potential for continuous learning. Traditional neural networks suffer from catastrophic forgetting, train them on new data, and they erase what they learned before. Brains don't work this way, and neither do properly designed SNNs.
+          </p>
+          <p>
+            The combination of STDP and predictive coding creates networks that can integrate new information incrementally. As new patterns arrive, weights adjust locally based on prediction errors. Old knowledge isn't overwritten, it's consolidated into the distributed weight structure, allowing the network to retain past learning while adapting to new situations.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Real-World Applications</h2>
+          <p>
+            Where do brain-inspired, hardware-efficient SNNs shine?
+          </p>
+          <ul>
+            <li><strong>Event-based vision:</strong> Neuromorphic cameras produce streams of spikes when pixels change. SNNs process these naturally, enabling ultra-low-latency vision for robotics.</li>
+            <li><strong>Real-time audio processing:</strong> Spike-based sound detection for always-on listening devices, using orders of magnitude less power than traditional DSPs.</li>
+            <li><strong>Adaptive robotic control:</strong> Robots that learn from experience, continuously refining their motor policies without retraining from scratch.</li>
+            <li><strong>Edge AI:</strong> Intelligent devices that learn and adapt locally, without cloud connectivity or massive power budgets.</li>
+          </ul>
+        </section>
+
+        <section class="blog-section">
+          <h2>The Road Ahead</h2>
+          <p>
+            Neurospike represents more than just a technical project, it's part of a broader movement toward neuromorphic computing. As we push against the limits of traditional von Neumann architectures and Moore's Law, bio-inspired approaches offer a fundamentally different path forward.
+          </p>
+          <p>
+            The challenges are real: training SNNs to match the accuracy of deep learning, scaling to larger networks, developing better hardware platforms. But the potential payoffs, systems that learn like brains, operate with biological efficiency, and adapt continuously to changing environments, make this one of the most exciting frontiers in AI and hardware design.
+          </p>
+          <p>
+            We're not trying to replicate the brain. We're learning its principles and applying them to silicon, creating hybrid systems that combine the best of biological inspiration with the precision and scalability of digital hardware. That's the Neurospike vision: teaching silicon to think a little more like biology, one spike at a time.
+          </p>
+        </section>
+
+        <section class="blog-section">
+          <h2>Key Takeaways</h2>
+          <ul>
+            <li>SNNs use discrete spikes for communication, enabling event-driven, power-efficient computation</li>
+            <li>Bio-plausible learning rules like STDP and predictive coding replace backpropagation with local, incremental updates</li>
+            <li>FPGA implementation bridges simulation and real-world deployment, enabling massive parallelism</li>
+            <li>Continuous learning capabilities address catastrophic forgetting, a major limitation of traditional ANNs</li>
+            <li>Applications span neuromorphic vision, audio processing, robotics, and ultra-low-power edge AI</li>
+          </ul>
+        </section>
+
+        <div class="back-link">
+          <a href="../blogs.html">&larr; Back to Insights</a>
+        </div>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
