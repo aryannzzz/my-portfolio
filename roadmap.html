@@ -264,4 +264,162 @@
     </main>
   </div>
 </body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const timeline = document.querySelector('.timeline');
+    
+    // Staggered fade-in animation
+    timelineItems.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateX(-30px)';
+      
+      setTimeout(() => {
+        item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        item.style.opacity = '1';
+        item.style.transform = 'translateX(0)';
+      }, index * 100);
+    });
+
+    // Create segment lines between each pair of items
+    if (timeline) {
+      timelineItems.forEach((item, index) => {
+        if (index < timelineItems.length - 1) {
+          const segmentLine = document.createElement('div');
+          segmentLine.className = 'timeline-segment';
+          segmentLine.dataset.index = index;
+          
+          // Get color from current item
+          const color = item.dataset.color || '#2563eb';
+          segmentLine.dataset.color = color;
+          
+          timeline.appendChild(segmentLine);
+        }
+      });
+      
+      // Animate segment lines on scroll
+      const animateSegments = () => {
+        const segments = document.querySelectorAll('.timeline-segment');
+        const windowHeight = window.innerHeight;
+        
+        segments.forEach((segment, index) => {
+          const currentItem = timelineItems[index];
+          const nextItem = timelineItems[index + 1];
+          
+          if (currentItem && nextItem) {
+            const currentRect = currentItem.getBoundingClientRect();
+            const nextRect = nextItem.getBoundingClientRect();
+            
+            // Position the segment between the two icons
+            const currentIconBottom = currentRect.top + 56; // icon position + icon height
+            const nextIconTop = nextRect.top + 28; // next icon position
+            
+            const segmentHeight = nextIconTop - currentIconBottom;
+            const segmentTop = currentIconBottom;
+            
+            segment.style.top = `${segmentTop - timeline.getBoundingClientRect().top}px`;
+            segment.style.height = `${segmentHeight}px`;
+            
+            // Calculate visibility based on scroll
+            const viewportMid = windowHeight / 2;
+            if (currentRect.top < viewportMid) {
+              const scrollProgress = Math.min(
+                Math.max((viewportMid - currentRect.top) / (nextRect.top - currentRect.top), 0),
+                1
+              );
+              
+              segment.style.transform = `scaleY(${scrollProgress})`;
+              segment.style.opacity = scrollProgress > 0.1 ? '1' : '0';
+            } else {
+              segment.style.transform = 'scaleY(0)';
+              segment.style.opacity = '0';
+            }
+          }
+        });
+      };
+      
+      window.addEventListener('scroll', animateSegments);
+      window.addEventListener('resize', animateSegments);
+      setTimeout(animateSegments, 500); // Initial call after fade-in
+    }
+  });
+</script>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .timeline {
+    position: relative;
+  }
+
+  /* Static background dots
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 35px;
+    top: 30px;
+    bottom: 30px;
+    width: 3px;
+    background: repeating-linear-gradient(
+      to bottom,
+      #e0f2fe 0px,
+      #e0f2fe 4px,
+      transparent 4px,
+      transparent 12px
+    );
+    z-index: 1;
+  } */
+
+  /* Animated segment lines */
+  .timeline-segment {
+    position: absolute;
+    left: 34px;
+    width: 5px;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+    opacity: 0;
+    z-index: 2;
+    border-radius: 3px;
+  }
+
+  .timeline-segment::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      var(--segment-color, #2563eb) 0%,
+      color-mix(in srgb, var(--segment-color, #2563eb) 80%, black) 100%
+    );
+    border-radius: 3px;
+    box-shadow: 0 0 15px var(--segment-color, rgba(37, 99, 235, 0.6));
+  }
+
+  /* Set segment colors dynamically */
+  .timeline-segment[data-color="#2563eb"]::before { --segment-color: #2563eb; }
+  .timeline-segment[data-color="#10b981"]::before { --segment-color: #10b981; }
+  .timeline-segment[data-color="#f59e42"]::before { --segment-color: #f59e42; }
+  .timeline-segment[data-color="#a3a3a3"]::before { --segment-color: #a3a3a3; }
+  .timeline-segment[data-color="#f43f5e"]::before { --segment-color: #f43f5e; }
+  .timeline-segment[data-color="#6366f1"]::before { --segment-color: #6366f1; }
+  .timeline-segment[data-color="#14b8a6"]::before { --segment-color: #14b8a6; }
+  .timeline-segment[data-color="#fbbf24"]::before { --segment-color: #fbbf24; }
+  .timeline-segment[data-color="#8b5cf6"]::before { --segment-color: #8b5cf6; }
+  .timeline-segment[data-color="#ec4899"]::before { --segment-color: #ec4899; }
+  .timeline-segment[data-color="#3b82f6"]::before { --segment-color: #3b82f6; }
+  .timeline-segment[data-color="#f59e0b"]::before { --segment-color: #f59e0b; }
+
+  /* Ensure icons are above segments */
+  .timeline-icon {
+    position: relative;
+    z-index: 100;
+  }
+</style>
 </html>
