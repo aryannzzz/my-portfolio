@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>When AI Forgets: Solving Catastrophic Forgetting in Financial Systems | Aryan's Portfolio</title>
+  <title>When AI Forgets: Solving Catastrophic Forgetting in Financial Systems | Blogs & Insights</title>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
   <link rel="stylesheet" href="../css/blogs/gradCAM(summary).css" />
@@ -33,7 +33,7 @@
       <nav class="header-nav" aria-label="Main navigation">
         <a href="../projects.html">Projects</a>
         <a href="../resume.html">Resume/About Me</a>
-        <a href="../roadmap.html">Roadmap</a>
+        <a href="../achievements.html">Achievements</a>
         <a href="../blogs.html" class="active">Blogs/Insights</a>
         <a href="../contact.html">Contact</a>
       </nav>
@@ -90,11 +90,11 @@
             I designed a hybrid architecture called AMCN (Adaptive Memory Consolidation Network) that combines multiple strategies to prevent forgetting while enabling continuous learning.
           </p>
           
-          <p><strong>1. Dynamic Memory Buffer with Importance Weighting</strong></p>
+          <h3>1. Dynamic Memory Buffer with Importance Weighting</h3>
           <p>
             Not all past experiences are equally valuable. Some examples are critical to remember (like fraud cases), while others are redundant. The memory buffer uses gradient-based importance scoring to decide what to keep.
           </p>
-          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">class DynamicMemoryBuffer:
+          <pre><code>class DynamicMemoryBuffer:
     def update(self, new_batch, model):
         # Compute how important this example is
         importance = self.compute_gradient_importance(new_batch, model)
@@ -107,26 +107,26 @@
             min_idx = np.argmin(self.importance_scores)
             if importance > self.importance_scores[min_idx]:
                 self.buffer[min_idx] = new_batch
-                self.importance_scores[min_idx] = importance</pre>
+                self.importance_scores[min_idx] = importance</code></pre>
           
           <p>
             This is inspired by how human memory works. We remember significant events vividly while forgetting mundane details.
           </p>
 
-          <p><strong>2. Elastic Weight Consolidation for Streaming Data</strong></p>
+          <h3>2. Elastic Weight Consolidation for Streaming Data</h3>
           <p>
             Some model weights are more important than others for past knowledge. EWC (Elastic Weight Consolidation) identifies these critical weights and makes them harder to change during updates.
           </p>
           <p>
             The key insight: weights that had large gradients on past tasks are probably important for those tasks. We add a penalty term that discourages changing these weights:
           </p>
-          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">Loss_total = Loss_current + λ * Σ F_i * (θ_i - θ*_i)²
+          <pre><code>Loss_total = Loss_current + λ * Σ F_i * (θ_i - θ*_i)²
 
 Where:
 - F_i is the Fisher Information (importance of weight i)
 - θ_i is current weight
 - θ*_i is the weight from previous task
-- λ controls the rigidity</pre>
+- λ controls the rigidity</code></pre>
         </section>
 
         <section class="blog-section">
@@ -135,7 +135,7 @@ Where:
             Not every new pattern deserves to be learned. Market noise, temporary anomalies, and data quality issues should be filtered out. The system needs to distinguish between genuine concept drift and statistical noise.
           </p>
           
-          <p><strong>Two-Stage Drift Detection</strong></p>
+          <h3>Two-Stage Drift Detection</h3>
           <p>
             I implemented a dual detection system:
           </p>
@@ -147,7 +147,7 @@ Where:
             Together, these tests identify when the market regime has actually changed versus when we're just seeing random variation.
           </p>
 
-          <p><strong>Noise vs. Concept Classification</strong></p>
+          <h3>Noise vs. Concept Classification</h3>
           <p>
             Once drift is detected, a classification framework decides whether to learn from the new data:
           </p>
@@ -156,7 +156,7 @@ Where:
             <li><strong>New Concept:</strong> Novel but informative (learn this and expand model capacity)</li>
             <li><strong>Noise:</strong> Low information gain, high variance (filter out, don't learn)</li>
           </ul>
-          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">def classify_data_batch(batch, historical_patterns):
+          <pre><code>def classify_data_batch(batch, historical_patterns):
     # Compare to known patterns
     similarity_scores = compute_similarity(batch, historical_patterns)
     
@@ -168,7 +168,7 @@ Where:
     elif info_gain > threshold and batch_size > min_samples:
         return "NEW_CONCEPT"  # Learn this new pattern
     else:
-        return "NOISE"  # Ignore this batch</pre>
+        return "NOISE"  # Ignore this batch</code></pre>
         </section>
 
         <section class="blog-section">
@@ -177,23 +177,23 @@ Where:
             Traditional ML metrics don't capture catastrophic forgetting. You need specialized metrics:
           </p>
           
-          <p><strong>Backward Transfer (BWT)</strong></p>
+          <h3>Backward Transfer (BWT)</h3>
           <p>
             Measures how much performance degrades on old tasks after learning new ones. Negative BWT means the model forgot.
           </p>
-          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">BWT = (1/T) * Σ(R_T,i - R_i,i)
+          <pre><code>BWT = (1/T) * Σ(R_T,i - R_i,i)
 
 Where:
 - T is total number of tasks
 - R_i,j is accuracy on task i after training on task j
-- Negative BWT = forgetting occurred</pre>
+- Negative BWT = forgetting occurred</code></pre>
 
-          <p><strong>Forward Transfer (FWT)</strong></p>
+          <h3>Forward Transfer (FWT)</h3>
           <p>
             Measures whether learning new tasks actually helps with future tasks. Positive FWT means the model is generalizing knowledge.
           </p>
 
-          <p><strong>Memory Efficiency</strong></p>
+          <h3>Memory Efficiency</h3>
           <p>
             The ratio of memory buffer size to total data seen. Lower is better, showing the system is selective about what to remember.
           </p>
@@ -227,14 +227,14 @@ Where:
             For the ESG system, I identified coordinated disinformation campaigns as the primary failure mode. Bot networks could flood social media with false ESG narratives, poisoning the model's training data.
           </p>
           
-          <p><strong>Defense Strategy</strong></p>
+          <h3>Defense Strategy</h3>
           <ul>
             <li><strong>Source Verification:</strong> Weight verified accounts 70% more than unverified</li>
             <li><strong>Behavioral Profiling:</strong> Detect bot-like posting patterns (high frequency, new accounts, low follower ratios)</li>
             <li><strong>Content Clustering:</strong> Identify coordinated campaigns through near-duplicate detection</li>
             <li><strong>Robust Aggregation:</strong> Use trimmed means instead of regular averages to reduce outlier impact</li>
           </ul>
-          <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 15px 0; overflow-x: auto;">def robust_sentiment_analysis(social_stream):
+          <pre><code>def robust_sentiment_analysis(social_stream):
     # Detect coordinated bot campaigns
     similarity_cluster = detect_coordinated_content(
         social_stream.text,
@@ -252,33 +252,33 @@ Where:
     sentiments = collect_sentiments(social_stream)
     robust_sentiment = trimmed_mean(sentiments, trim_percent=0.2)
     
-    return robust_sentiment * weight</pre>
+    return robust_sentiment * weight</code></pre>
         </section>
 
         <section class="blog-section">
           <h2>Key Lessons from Building Continual Learning Systems</h2>
           
-          <p><strong>1. Not All Forgetting Is Bad</strong></p>
+          <h3>1. Not All Forgetting Is Bad</h3>
           <p>
             Sometimes you want to forget. Outdated patterns, temporary anomalies, or noise should be discarded. The art is in selective forgetting.
           </p>
           
-          <p><strong>2. Memory Is Expensive, Selectivity Is Essential</strong></p>
+          <h3>2. Memory Is Expensive, Selectivity Is Essential</h3>
           <p>
             You can't store everything. Importance-based sampling is crucial for scaling to production.
           </p>
           
-          <p><strong>3. Detect Drift, Don't React Blindly</strong></p>
+          <h3>3. Detect Drift, Don't React Blindly</h3>
           <p>
             Every data shift doesn't warrant retraining. Statistical tests prevent overreaction to noise.
           </p>
           
-          <p><strong>4. Adversarial Robustness Can't Be an Afterthought</strong></p>
+          <h3>4. Adversarial Robustness Can't Be an Afterthought</h3>
           <p>
             In financial systems, adversaries actively try to manipulate your models. Defense mechanisms must be built in from day one.
           </p>
           
-          <p><strong>5. The Future Isn't RAG, It's True Continual Learning</strong></p>
+          <h3>5. The Future Isn't RAG, It's True Continual Learning</h3>
           <p>
             Current RAG systems fake learning by retrieving context. The next generation (like Dragon Hatchling) will actually update weights continuously while avoiding catastrophic forgetting.
           </p>
@@ -314,13 +314,13 @@ Where:
             <li>Adversarial robustness mechanisms</li>
           </ul>
           <p>
-            Check out my <a href="https://github.com/aryannzzz" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">GitHub</a> for the full codebase, including benchmarks and ablation studies.
+            Check out my <a href="https://github.com/aryannzzz" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline;">GitHub</a> for the full codebase, including benchmarks and ablation studies.
           </p>
         </section>
 
-        <section class="blog-section" style="background: #f5f5f5; padding: 20px; border-left: 4px solid #3b82f6; margin: 30px 0;">
-          <p><strong>Bottom Line:</strong> Catastrophic forgetting isn't just a theoretical problem. It's a production nightmare that can cost millions if your financial models forget critical patterns. The solution requires sophisticated memory management, drift detection, selective learning, and adversarial robustness. This Inter IIT project demonstrates that continual learning in high-stakes financial systems is not only possible but practically implementable with the right architecture.</p>
-        </section>
+        <div class="info-box">
+          <strong>Bottom Line:</strong> Catastrophic forgetting isn't just a theoretical problem. It's a production nightmare that can cost millions if your financial models forget critical patterns. The solution requires sophisticated memory management, drift detection, selective learning, and adversarial robustness. This Inter IIT project demonstrates that continual learning in high-stakes financial systems is not only possible but practically implementable with the right architecture.
+        </div>
 
         <div class="back-link">
           <a href="../blogs.html">&larr; Back to Insights</a>

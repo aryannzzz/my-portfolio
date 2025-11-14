@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>In-Context Learning for Robotics: RoboPrompt | Blogs & Insights | Aryan's Portfolio</title>
+  <title>In-Context Learning for Robotics: RoboPrompt | Blogs & Insights</title>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
   <link rel="stylesheet" href="../css/blogs/gradCAM(summary).css" />
@@ -33,7 +33,7 @@
       <nav class="header-nav" aria-label="Main navigation">
         <a href="../projects.html">Projects</a>
         <a href="../resume.html">Resume/About Me</a>
-        <a href="../roadmap.html">Roadmap</a>
+        <a href="../achievements.html">Achievements</a>
         <a href="../blogs.html" class="active">Blogs/Insights</a>
         <a href="../contact.html">Contact</a>
       </nav>
@@ -64,7 +64,7 @@
             One of the most remarkable capabilities of modern large language models is their ability to perform <strong>in-context learning</strong>, which means adapting to new tasks using just a few examples provided in the prompt, without updating model parameters. This stands in stark contrast to traditional machine learning, where models require extensive training data and gradient updates to learn new behaviors.
           </p>
           
-          <p><strong>The Power of Prompts as Programs</strong></p>
+          <h3>The Power of Prompts as Programs</h3>
           <p>
             Consider how GPT-4 can translate between languages, solve math problems, or write code in different styles, all from a few demonstration examples in the conversation. The model isn't being retrained; instead, it's using patterns from its pre-training to recognize the task structure and generalize from the provided examples.
           </p>
@@ -77,7 +77,7 @@
             <li><strong>Generalization:</strong> It applies the learned pattern to new, unseen inputs</li>
           </ul>
           
-          <p><strong>From Language to Action: The Robotics Challenge</strong></p>
+          <h3>From Language to Action: The Robotics Challenge</h3>
           <p>
             While in-context learning has revolutionized how we interact with language models, extending this paradigm to robotics presents unique challenges. Unlike text, where outputs are discrete tokens, robotic control requires continuous, high-dimensional actions that must be precisely coordinated in space and time.
           </p>
@@ -92,13 +92,13 @@
             RoboPrompt is a framework that brings the in-context learning paradigm to robotic manipulation. Instead of retraining policies for each new task, it enables robots to learn from demonstrations in a prompt-like fashion. The robot observes a few examples, then executes the task.
           </p>
           
-          <p><strong>Core Concept</strong></p>
+          <h3>Core Concept</h3>
           <p>
             The key insight is treating robot demonstrations similarly to how language models treat few-shot examples. Given visual observations and action trajectories from successful task executions, the system learns to reproduce those behaviors on new instances of the same task.
           </p>
           
           <p>
-            <strong>Repository:</strong> <a href="https://github.com/davidyyd/roboprompt/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">RoboPrompt on GitHub</a>
+            <strong>Repository:</strong> <a href="https://github.com/davidyyd/roboprompt/" target="_blank" rel="noopener noreferrer" style="color: #2563eb; text-decoration: underline;">RoboPrompt on GitHub</a>
           </p>
         </section>
 
@@ -108,7 +108,7 @@
             During September 2025, I conducted extensive experiments with RoboPrompt to understand its capabilities and limitations. My goal was to go beyond surface-level evaluation and expose the fundamental trade-offs in prompt-based robotic learning.
           </p>
           
-          <p><strong>Experimental Setup</strong></p>
+          <h3>Experimental Setup</h3>
           <p>
             I selected two standard manipulation tasks from the RoboPrompt benchmark:
           </p>
@@ -127,36 +127,36 @@
             Both tasks achieved <strong>perfect 100 scores</strong> in baseline evaluation runs. The robot could flawlessly reproduce demonstrated behaviors when the environment matched training conditions. This confirmed that high-quality demonstrations are sufficient for near-deterministic performance. The in-context learning paradigm works beautifully when nothing changes.
           </p>
           
-          <p><strong>Quantitative Metrics Analysis</strong></p>
-          <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+          <h3>Quantitative Metrics Analysis</h3>
+          <table>
             <thead>
-              <tr style="background: #f5f5f5;">
-                <th style="padding: 10px; border: 1px solid #ddd;">Task</th>
-                <th style="padding: 10px; border: 1px solid #ddd;">Avg Final Distance</th>
-                <th style="padding: 10px; border: 1px solid #ddd;">Smoothness</th>
-                <th style="padding: 10px; border: 1px solid #ddd;">Efficiency</th>
-                <th style="padding: 10px; border: 1px solid #ddd;">Consistency</th>
+              <tr>
+                <th>Task</th>
+                <th>Avg Final Distance</th>
+                <th>Smoothness</th>
+                <th>Efficiency</th>
+                <th>Consistency</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Push Button</strong></td>
-                <td style="padding: 10px; border: 1px solid #ddd;">0.238</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">0.9996</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">0.921</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">0.848</td>
+                <td><strong>Push Button</strong></td>
+                <td>0.238</td>
+                <td>0.9996</td>
+                <td>0.921</td>
+                <td>0.848</td>
               </tr>
               <tr>
-                <td style="padding: 10px; border: 1px solid #ddd;"><strong>Pick Up Cup</strong></td>
-                <td style="padding: 10px; border: 1px solid #ddd;">0.190</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">0.9997</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">0.388</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">0.840</td>
+                <td><strong>Pick Up Cup</strong></td>
+                <td>0.190</td>
+                <td>0.9997</td>
+                <td>0.388</td>
+                <td>0.840</td>
               </tr>
             </tbody>
           </table>
           
-          <p><strong>Key Observations:</strong></p>
+          <h3>Key Observations</h3>
           <ul>
             <li>Smoothness values near 1.0 indicate highly stable motion generation</li>
             <li>Push button task is significantly more energy-efficient (0.921 vs 0.388)</li>
@@ -170,7 +170,7 @@
             The perfect baseline results masked a fundamental limitation. RoboPrompt, like most imitation learning systems, operates in <strong>open-loop mode</strong>. It perceives the environment once at the start, plans a trajectory, then executes without further feedback. This means if anything in the environment changes after perception, the robot cannot adapt.
           </p>
           
-          <p><strong>Noise Robustness Test</strong></p>
+          <h3>Noise Robustness Test</h3>
           <p>
             Working with my colleague Daksh, we first tested sensitivity to perception noise by injecting artificial camera noise into demonstration data. Heavy noise sharply degraded performance. The robot frequently failed to initiate correct motions, highlighting reliance on clean visual input.
           </p>
@@ -182,52 +182,52 @@
             To quantify open-loop fragility, I designed a systematic experiment.
           </p>
           
-          <p><strong>Hypothesis</strong></p>
+          <h3>Hypothesis</h3>
           <p>
             RoboPrompt will fail if the target object is moved slightly <strong>after</strong> perception but <strong>before</strong> execution begins.
           </p>
           
-          <p><strong>Method</strong></p>
+          <h3>Method</h3>
           <ul>
             <li>Movement offsets applied: 0 cm (baseline), 1 cm, 2 cm, 3 cm</li>
             <li>Three evaluation episodes per condition</li>
             <li>Execution time: approximately 100 seconds per run</li>
           </ul>
           
-          <p><strong>Results</strong></p>
-          <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+          <h3>Results</h3>
+          <table>
             <thead>
-              <tr style="background: #f5f5f5;">
-                <th style="padding: 10px; border: 1px solid #ddd;">Offset</th>
-                <th style="padding: 10px; border: 1px solid #ddd;">Success Rate</th>
-                <th style="padding: 10px; border: 1px solid #ddd;">Observation</th>
+              <tr>
+                <th>Offset</th>
+                <th>Success Rate</th>
+                <th>Observation</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style="padding: 10px; border: 1px solid #ddd;"><strong>0 cm</strong></td>
-                <td style="padding: 10px; border: 1px solid #ddd;">100%</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">Perfect baseline performance</td>
+                <td><strong>0 cm</strong></td>
+                <td>100%</td>
+                <td>Perfect baseline performance</td>
               </tr>
               <tr>
-                <td style="padding: 10px; border: 1px solid #ddd;"><strong>1 cm</strong></td>
-                <td style="padding: 10px; border: 1px solid #ddd;">80-90%</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">Minor degradation, some misses</td>
+                <td><strong>1 cm</strong></td>
+                <td>80-90%</td>
+                <td>Minor degradation, some misses</td>
               </tr>
               <tr>
-                <td style="padding: 10px; border: 1px solid #ddd;"><strong>2 cm</strong></td>
-                <td style="padding: 10px; border: 1px solid #ddd;">30-50%</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">Significant performance drop</td>
+                <td><strong>2 cm</strong></td>
+                <td>30-50%</td>
+                <td>Significant performance drop</td>
               </tr>
               <tr>
-                <td style="padding: 10px; border: 1px solid #ddd;"><strong>3 cm</strong></td>
-                <td style="padding: 10px; border: 1px solid #ddd;">0-10%</td>
-                <td style="padding: 10px; border: 1px solid #ddd;">Near-complete failure</td>
+                <td><strong>3 cm</strong></td>
+                <td>0-10%</td>
+                <td>Near-complete failure</td>
               </tr>
             </tbody>
           </table>
           
-          <p><strong>Key Insight</strong></p>
+          <h3>Key Insight</h3>
           <p>
             Even 1-2 cm of displacement causes <strong>catastrophic degradation</strong>, which is textbook evidence of open-loop fragility. The robot completes its planned motions but misses targets because it cannot re-perceive the object mid-execution. This is the fundamental limitation of treating demonstrations as static "prompts" without feedback.
           </p>
@@ -236,7 +236,7 @@
         <section class="blog-section">
           <h2>Follow-Up Experiments: Exploring Solutions</h2>
           
-          <p><strong>Experiment 4: Naive Closed-Loop Control (In Progress)</strong></p>
+          <h3>Experiment 4: Naive Closed-Loop Control (In Progress)</h3>
           <p>
             <strong>Hypothesis:</strong> Re-running perception between keyframes will dramatically improve robustness.
           </p>
@@ -247,7 +247,7 @@
             <strong>Status:</strong> Work is paused due to implementation challenges, but this remains the most promising direction. Early analysis suggests even basic closed-loop feedback could recover most of the lost performance from object displacement.
           </p>
           
-          <p><strong>Experiment 5: Skill Composition (In Progress)</strong></p>
+          <h3>Experiment 5: Skill Composition (In Progress)</h3>
           <p>
             <strong>Hypothesis:</strong> RoboPrompt can chain learned skills to perform sequential tasks, creating a "skill dictionary."
           </p>
@@ -262,21 +262,21 @@
         <section class="blog-section">
           <h2>Lessons from In-Context Learning in Robotics</h2>
           
-          <p><strong>What Works</strong></p>
+          <h3>What Works</h3>
           <ul>
             <li><strong>Memorization and Reproduction:</strong> RoboPrompt excels at reproducing demonstrated behaviors in static environments</li>
             <li><strong>High-Quality Demonstrations:</strong> With good training data, performance is near-perfect under matching conditions</li>
             <li><strong>Smooth Execution:</strong> Generated trajectories are stable and consistent</li>
           </ul>
           
-          <p><strong>What Doesn't Work</strong></p>
+          <h3>What Doesn't Work</h3>
           <ul>
             <li><strong>Open-Loop Brittleness:</strong> Any environment change breaks the system</li>
             <li><strong>No Adaptation:</strong> The system cannot adjust mid-execution</li>
             <li><strong>Static "Prompts":</strong> Unlike language models that process dynamic context, robot demonstrations become rigid templates</li>
           </ul>
           
-          <p><strong>The Fundamental Difference</strong></p>
+          <h3>The Fundamental Difference</h3>
           <p>
             In-context learning works brilliantly for language because:
           </p>
@@ -308,14 +308,14 @@
         <section class="blog-section">
           <h2>Future Directions</h2>
           
-          <p><strong>Immediate Next Steps</strong></p>
+          <h3>Immediate Next Steps</h3>
           <ul>
             <li>Complete the closed-loop prototype and re-run displacement tests</li>
             <li>Quantify robustness gains from perception feedback</li>
             <li>Refine skill composition pipeline for multi-task sequences</li>
           </ul>
           
-          <p><strong>Long-Term Vision</strong></p>
+          <h3>Long-Term Vision</h3>
           <ul>
             <li><strong>Adaptive Prompting:</strong> Dynamic demonstration selection based on current state</li>
             <li><strong>Hierarchical Planning:</strong> High-level task decomposition with low-level closed-loop control</li>
@@ -347,10 +347,10 @@
         </section>
 
         <section class="blog-section">
-          <h2>Quick Takeaway</h2>
-          <p style="background: #f5f5f5; padding: 15px; border-left: 4px solid #3b82f6; margin: 20px 0;">
+          <h2>Key Takeaway</h2>
+          <div class="info-box">
             <strong>RoboPrompt can memorize and reproduce demonstrations flawlessly, but only when the world stays perfectly still. Even a few centimeters of movement exposes the need for feedback-driven, closed-loop control to achieve real-world reliability.</strong>
-          </p>
+          </div>
         </section>
 
         <div class="back-link">
