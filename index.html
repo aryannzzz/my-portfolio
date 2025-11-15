@@ -620,16 +620,21 @@
     }
 
     body.dark-mode .work-image {
-      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
       border-bottom: 1px solid #475569;
+      filter: brightness(0.85) contrast(1.05);
+    }
+
+    body.dark-mode .work-card:hover .work-image {
+      filter: brightness(0.95) contrast(1.1);
     }
 
     body.dark-mode .work-image::before {
-      background: linear-gradient(135deg, rgba(96, 165, 250, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%);
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.2) 0%, rgba(59, 130, 246, 0.15) 100%);
+      opacity: 0.6;
     }
 
     body.dark-mode .work-card:hover .work-image::before {
-      opacity: 1;
+      opacity: 0.8;
     }
 
     /* Responsive Design */
@@ -771,7 +776,7 @@
           and autonomous systems.
         </p>
 
-        <!-- <div class="hero-stats">
+        <div class="hero-stats">
           <div class="stat-item">
             <div class="stat-number">15+</div>
             <div class="stat-label">Projects</div>
@@ -784,7 +789,7 @@
             <div class="stat-number">5+</div>
             <div class="stat-label">Awards</div>
           </div>
-        </div> -->
+        </div>
 
         <div class="hero-cta">
           <a href="projects.html" class="cta-button cta-primary">
