@@ -3,15 +3,720 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aryan's Portfolio</title>
+  <title>Aryan Jain | AI/ML & Robotics Portfolio</title>
   <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/darkmode.css" />
   <link rel="stylesheet" href="css/main.css" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    /* Enhanced Homepage Styles */
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+      margin: 0;
+      padding: 0;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Subtle grid background pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .layout-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 40px 60px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+      border-radius: 24px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #2563eb;
+      width: fit-content;
+      border: 1px solid #93c5fd;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .hero-badge::before {
+      content: '👋';
+      font-size: 1.1rem;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1.1;
+      color: #101419;
+      margin: 0;
+      animation: fadeInUp 0.6s ease-out 0.1s backwards;
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: #475569;
+      margin: 0;
+      animation: fadeInUp 0.6s ease-out 0.2s backwards;
+    }
+
+    .hero-description {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #64748b;
+      margin: 0;
+      animation: fadeInUp 0.6s ease-out 0.3s backwards;
+    }
+
+    /* Quick Stats */
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 8px;
+      animation: fadeInUp 0.6s ease-out 0.4s backwards;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #2563eb;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* CTA Buttons */
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+      animation: fadeInUp 0.6s ease-out 0.5s backwards;
+    }
+
+    .cta-button {
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .cta-primary {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: white;
+      border: none;
+    }
+
+    .cta-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+    }
+
+    .cta-secondary {
+      background: white;
+      color: #2563eb;
+      border: 2px solid #2563eb;
+    }
+
+    .cta-secondary:hover {
+      background: #f0f9ff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+    }
+
+    /* Hero Image */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeInRight 0.8s ease-out 0.3s backwards;
+    }
+
+    .profile-image-wrapper {
+      position: relative;
+      width: 400px;
+      height: 400px;
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: 0 20px 60px rgba(37, 99, 235, 0.2);
+      position: relative;
+      z-index: 2;
+      border: 4px solid white;
+    }
+
+    .profile-image::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      border-radius: 24px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .profile-image:hover::before {
+      opacity: 1;
+    }
+
+    /* Floating decorations */
+    .float-decoration {
+      position: absolute;
+      border-radius: 16px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .decoration-1 {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+      top: -20px;
+      right: -20px;
+      opacity: 0.15;
+      animation-delay: 0s;
+    }
+
+    .decoration-2 {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+      bottom: -10px;
+      left: -10px;
+      opacity: 0.15;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    /* Expertise Section */
+    .expertise-section {
+      max-width: 1200px;
+      margin: 40px auto 60px;
+      padding: 0 40px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #101419;
+      margin: 0 0 12px 0;
+    }
+
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: #64748b;
+      margin: 0;
+    }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .expertise-card {
+      background: white;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid #e2e8f0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .expertise-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, #2563eb, #1d4ed8);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .expertise-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.03), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .expertise-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(37, 99, 235, 0.2);
+      border-color: #93c5fd;
+    }
+
+    .expertise-card:hover::before,
+    .expertise-card:hover::after {
+      opacity: 1;
+    }
+
+    .expertise-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .expertise-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #101419;
+      margin: 0 0 12px 0;
+    }
+
+    .expertise-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #64748b;
+      margin: 0 0 16px 0;
+    }
+
+    .expertise-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 4px 12px;
+      background: #f1f5f9;
+      color: #475569;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Featured Work */
+    .featured-work-section {
+      max-width: 1200px;
+      margin: 40px auto 80px;
+      padding: 0 40px;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 28px;
+    }
+
+    .work-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid #e2e8f0;
+      text-decoration: none;
+      display: block;
+      position: relative;
+    }
+
+    .work-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.03), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .work-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 48px rgba(37, 99, 235, 0.2);
+      border-color: #93c5fd;
+    }
+
+    .work-card:hover::before {
+      opacity: 1;
+    }
+
+    .work-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .work-card:hover .work-image::before {
+      opacity: 1;
+    }
+
+    .work-card:hover .work-image {
+      transform: scale(1.05);
+    }
+
+    .work-content {
+      padding: 24px;
+    }
+
+    .work-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #101419;
+      margin: 0 0 8px 0;
+    }
+
+    .work-description {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #64748b;
+      margin: 0 0 16px 0;
+    }
+
+    .work-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tech-tag {
+      padding: 3px 10px;
+      background: #eff6ff;
+      color: #2563eb;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Dark Mode Overrides */
+    body.dark-mode {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    body.dark-mode::before {
+      background-image: 
+        linear-gradient(rgba(96, 165, 250, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96, 165, 250, 0.03) 1px, transparent 1px);
+    }
+
+    body.dark-mode .hero-badge {
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      color: #60a5fa;
+      border-color: #475569;
+    }
+
+    body.dark-mode .hero-title {
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .hero-title .gradient-text {
+      background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    body.dark-mode .hero-subtitle,
+    body.dark-mode .hero-description {
+      color: #cbd5e1;
+    }
+
+    body.dark-mode .stat-number {
+      color: #60a5fa;
+    }
+
+    body.dark-mode .stat-label {
+      color: #94a3b8;
+    }
+
+    body.dark-mode .cta-primary {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    }
+
+    body.dark-mode .cta-secondary {
+      background: #1e293b;
+      color: #60a5fa;
+      border-color: #60a5fa;
+    }
+
+    body.dark-mode .cta-secondary:hover {
+      background: #334155;
+    }
+
+    body.dark-mode .profile-image {
+      border-color: #334155;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    body.dark-mode .section-title {
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .section-subtitle {
+      color: #94a3b8;
+    }
+
+    body.dark-mode .expertise-card,
+    body.dark-mode .work-card {
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      border-color: #475569;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode .expertise-card::after,
+    body.dark-mode .work-card::before {
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.05), transparent);
+    }
+
+    body.dark-mode .expertise-card:hover,
+    body.dark-mode .work-card:hover {
+      box-shadow: 0 16px 40px rgba(96, 165, 250, 0.25);
+      border-color: #60a5fa;
+    }
+
+    body.dark-mode .expertise-title,
+    body.dark-mode .work-title {
+      color: #f1f5f9;
+    }
+
+    body.dark-mode .expertise-description,
+    body.dark-mode .work-description {
+      color: #94a3b8;
+    }
+
+    body.dark-mode .tag {
+      background: #334155;
+      color: #cbd5e1;
+    }
+
+    body.dark-mode .tech-tag {
+      background: #1e3a5f;
+      color: #60a5fa;
+    }
+
+    body.dark-mode .work-image {
+      background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+      border-bottom: 1px solid #475569;
+    }
+
+    body.dark-mode .work-image::before {
+      background: linear-gradient(135deg, rgba(96, 165, 250, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%);
+    }
+
+    body.dark-mode .work-card:hover .work-image::before {
+      opacity: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        padding: 60px 24px 40px;
+        gap: 40px;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .profile-image-wrapper {
+        width: 300px;
+        height: 300px;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .expertise-section,
+      .featured-work-section {
+        padding: 0 24px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-section {
+        padding: 40px 16px 32px;
+      }
+
+      .profile-image-wrapper {
+        width: 250px;
+        height: 250px;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.125rem;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .stat-number {
+        font-size: 1.5rem;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+      }
+
+      .cta-button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .expertise-section,
+      .featured-work-section {
+        padding: 0 16px;
+        margin: 32px auto 48px;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+      }
+
+      .expertise-grid,
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="layout-container flex flex-col min-h-screen bg-gray-50">
+  <div class="layout-container">
     <!-- Header -->
     <header class="header">
       <div class="header-left">
@@ -47,23 +752,223 @@
       </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <section class="intro-section">
-        <div class="intro-pic" style='background-image: url("assets/profile.jpg");' aria-label="Profile picture"></div>
-        <div class="intro-text">
-          <p class="intro-title">Hi, I'm Aryan Jain</p>
-          <p class="intro-desc">
-            I'm a AI/ML and Robotics enthusiast with a passion for building innovative solutions. I love exploring new technologies and applying them to real-world problems. My journey in tech has been driven by curiosity and a desire to make an impact.
-          </p>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-badge">Available for Opportunities</div>
+        
+        <h1 class="hero-title">
+          Hi, I'm <span class="gradient-text">Aryan Jain</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          AI/ML Researcher & Robotics Engineer
+        </p>
+        
+        <p class="hero-description">
+          Building intelligent systems at the intersection of artificial intelligence and robotics. 
+          Passionate about pushing the boundaries of what's possible with deep learning, computer vision, 
+          and autonomous systems.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Publications</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Awards</div>
+          </div>
         </div>
-      </section>
-      <div class="intro-buttons">
-        <a href="projects.html" class="main-btn primary-btn">View Projects</a>
-        <a href="resume.html" class="main-btn">Learn More About Me</a>
+
+        <div class="hero-cta">
+          <a href="projects.html" class="cta-button cta-primary">
+            View My Work
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+            </svg>
+          </a>
+          <a href="resume.html" class="cta-button cta-secondary">
+            Learn More
+          </a>
+        </div>
       </div>
-    </main>
+
+      <div class="hero-visual">
+        <div class="profile-image-wrapper">
+          <div class="profile-image" style='background-image: url("assets/profile.jpg");'></div>
+          <div class="float-decoration decoration-1"></div>
+          <div class="float-decoration decoration-2"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="expertise-section">
+      <div class="section-header">
+        <h2 class="section-title">Areas of Expertise</h2>
+        <p class="section-subtitle">Specialized knowledge in cutting-edge AI and robotics technologies</p>
+      </div>
+
+      <div class="expertise-grid">
+        <div class="expertise-card">
+          <span class="expertise-icon">🤖</span>
+          <h3 class="expertise-title">Machine Learning</h3>
+          <p class="expertise-description">
+            Deep expertise in neural networks, reinforcement learning, and developing scalable ML systems for real-world applications.
+          </p>
+          <div class="expertise-tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">Transformers</span>
+          </div>
+        </div>
+
+        <div class="expertise-card">
+          <span class="expertise-icon">🦾</span>
+          <h3 class="expertise-title">Robotics & Control</h3>
+          <p class="expertise-description">
+            Building autonomous systems with advanced control algorithms, sensor fusion, and motion planning capabilities.
+          </p>
+          <div class="expertise-tags">
+            <span class="tag">ROS2</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">SLAM</span>
+          </div>
+        </div>
+
+        <div class="expertise-card">
+          <span class="expertise-icon">🧠</span>
+          <h3 class="expertise-title">Deep Learning</h3>
+          <p class="expertise-description">
+            Specialized in CNNs, vision transformers, and cutting-edge architectures for image and video understanding.
+          </p>
+          <div class="expertise-tags">
+            <span class="tag">Vision Models</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">SNNs</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Work -->
+    <section class="featured-work-section">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Showcasing impactful research and development work</p>
+      </div>
+
+      <div class="work-grid">
+        <a href="projects/pathway.html" class="work-card">
+          <div class="work-image" style='background-image: url("assets/projects/pathway.jpg");'></div>
+          <div class="work-content">
+            <h3 class="work-title">Real-Time Agentic Systems</h3>
+            <p class="work-description">
+              Production-grade streaming GenAI pipeline with sub-second latency for quantitative finance applications.
+            </p>
+            <div class="work-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">LLMs</span>
+              <span class="tech-tag">Multi-Agent</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="projects/grasp.html" class="work-card">
+          <div class="work-image" style='background-image: url("assets/projects/grasp.jpg");'></div>
+          <div class="work-content">
+            <h3 class="work-title">Foundation Models for Robotics</h3>
+            <p class="work-description">
+              Vision-language-action models for robotic control with multimodal alignment and behavior cloning.
+            </p>
+            <div class="work-tech">
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">VLA</span>
+              <span class="tech-tag">Transformers</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="projects/neurospike.html" class="work-card">
+          <div class="work-image" style='background-image: url("assets/projects/neurospike.jpg");'></div>
+          <div class="work-content">
+            <h3 class="work-title">Biologically-Inspired Neural Networks</h3>
+            <p class="work-description">
+              Spiking neural networks with STDP learning and predictive coding for neuromorphic computing.
+            </p>
+            <div class="work-tech">
+              <span class="tech-tag">Brian2</span>
+              <span class="tech-tag">SNNs</span>
+              <span class="tech-tag">Neuroscience</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
   </div>
+
+  <script src="js/darkmode.js"></script>
   
+  <script>
+    // Add scroll reveal animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe cards
+    document.querySelectorAll('.expertise-card, .work-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+
+    // Counter animation for stats
+    function animateCounter(element, target) {
+      let current = 0;
+      const increment = target / 50;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.textContent = target + '+';
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(current) + '+';
+        }
+      }, 30);
+    }
+
+    // Trigger counter animation on scroll
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.animated) {
+          entry.target.dataset.animated = 'true';
+          const number = parseInt(entry.target.textContent);
+          entry.target.textContent = '0+';
+          animateCounter(entry.target, number);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-number').forEach(stat => {
+      statsObserver.observe(stat);
+    });
+  </script>
 </body>
 </html>

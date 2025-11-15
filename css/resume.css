@@ -6,103 +6,7 @@ body {
   color: #101419;
 }
 
-/* Header styles */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #e9edf1;
-  padding: 18px 40px;
-  background: #fff;
-  position: relative;
-  z-index: 10;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-}
-
-.logo-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  color: #2563eb;
-}
-
-.site-title {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #101419;
-  margin-left: 8px;
-  letter-spacing: -0.015em;
-}
-
-.header-nav {
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-}
-
-.header-nav a {
-  color: #101419;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: color 0.2s, background 0.2s;
-}
-
-.header-nav a:hover,
-.header-nav a:focus {
-  color: #2563eb;
-  background: #e0e7ef;
-  outline: none;
-}
-
-.header-nav a.active {
-  color: #2563eb;
-  border-bottom: 2px solid #2563eb;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.mode-toggle {
-  background: #e9edf1;
-  border: none;
-  border-radius: 12px;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.mode-toggle:hover {
-  background: #d2e2f3;
-}
-
-.profile-pic {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 2px solid #e9edf1;
-}
+/* Header styles are now in header.css */
 
 /* Main content layout */
 .main-content {
@@ -252,4 +156,72 @@ body {
 .resume-bullets li {
   margin-bottom: 4px;
   list-style: disc;
+}
+
+/* ===================================
+   DARK MODE STYLES FOR RESUME
+   =================================== */
+
+body.dark-mode .resume-header h1 {
+  color: #f1f5f9;
+  text-shadow: 0 2px 8px rgba(96, 165, 250, 0.2);
+}
+
+body.dark-mode .resume-section h2,
+body.dark-mode .about-section h2 {
+  color: #f1f5f9;
+}
+
+body.dark-mode .resume-grid {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid #475569;
+}
+
+body.dark-mode .resume-label {
+  color: #60a5fa;
+}
+
+body.dark-mode .resume-content {
+  color: #cbd5e1;
+}
+
+body.dark-mode .resume-content strong {
+  color: #f1f5f9;
+}
+
+body.dark-mode .skills-title {
+  color: #94a3b8;
+}
+
+body.dark-mode .download-btn {
+  background: linear-gradient(135deg, #334155 0%, #475569 100%);
+  color: #60a5fa;
+  border: 1px solid #475569;
+}
+
+body.dark-mode .download-btn:hover,
+body.dark-mode .download-btn:focus {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(96, 165, 250, 0.3);
+}
+
+body.dark-mode .about-section p {
+  color: #cbd5e1;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid #475569;
+}
+
+body.dark-mode .resume-bullets {
+  color: #94a3b8;
+}
+
+body.dark-mode .resume-bullets li {
+  color: #cbd5e1;
+}
+
+body.dark-mode .resume-bullets strong {
+  color: #f1f5f9;
 }

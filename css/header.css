@@ -1,0 +1,406 @@
+/* ===================================
+   HEADER STYLES - Centralized & Enhanced
+   =================================== */
+
+/* Header container */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e9edf1;
+  padding: 18px 40px;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 50%, #2563eb 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.header:hover::before {
+  opacity: 1;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+}
+
+/* Logo section */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 10px;
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  color: #2563eb;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 2px 4px rgba(37, 99, 235, 0.2));
+}
+
+.logo-link:hover .logo-icon {
+  color: #1d4ed8;
+  transform: rotate(5deg);
+  filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.4));
+}
+
+.site-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #101419;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #101419 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: all 0.3s ease;
+}
+
+.logo-link:hover .site-title {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Navigation */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-nav a {
+  color: #101419;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.header-nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.header-nav a:hover::before {
+  left: 100%;
+}
+
+.header-nav a:hover,
+.header-nav a:focus {
+  color: #2563eb;
+  background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%);
+  outline: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.header-nav a.active {
+  color: #fff;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  font-weight: 600;
+}
+
+.header-nav a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* Header actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* Dark mode toggle */
+.mode-toggle {
+  background: linear-gradient(135deg, #e9edf1 0%, #f3f4f6 100%);
+  border: none;
+  border-radius: 14px;
+  height: 44px;
+  width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.mode-toggle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.3), transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.mode-toggle:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.mode-toggle:hover {
+  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.2);
+}
+
+.mode-toggle:active {
+  transform: scale(0.95);
+}
+
+.mode-toggle svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.mode-toggle:hover svg {
+  transform: rotate(20deg);
+}
+
+/* Profile picture */
+.profile-pic {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 3px solid #e0e7ff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+  cursor: pointer;
+  position: relative;
+}
+
+.profile-pic::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8, #2563eb);
+  background-size: 200% 200%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: gradientRotate 3s ease infinite;
+}
+
+@keyframes gradientRotate {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.profile-pic:hover::before {
+  opacity: 1;
+}
+
+.profile-pic:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+}
+
+/* ===================================
+   DARK MODE STYLES
+   =================================== */
+
+body.dark-mode {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+body.dark-mode .header {
+  background: #1e293b;
+  border-bottom-color: #334155;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .site-title {
+  background: linear-gradient(135deg, #e2e8f0 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode .logo-link:hover .site-title {
+  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode .logo-icon {
+  color: #60a5fa;
+  filter: drop-shadow(0 2px 4px rgba(96, 165, 250, 0.3));
+}
+
+body.dark-mode .logo-link:hover .logo-icon {
+  color: #3b82f6;
+  filter: drop-shadow(0 4px 8px rgba(96, 165, 250, 0.5));
+}
+
+body.dark-mode .header-nav a {
+  color: #cbd5e1;
+}
+
+body.dark-mode .header-nav a:hover,
+body.dark-mode .header-nav a:focus {
+  color: #60a5fa;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+}
+
+body.dark-mode .header-nav a.active {
+  color: #fff;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+body.dark-mode .mode-toggle {
+  background: linear-gradient(135deg, #334155 0%, #475569 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .mode-toggle:hover {
+  background: linear-gradient(135deg, #475569 0%, #64748b 100%);
+  box-shadow: 0 4px 16px rgba(96, 165, 250, 0.3);
+}
+
+body.dark-mode .profile-pic {
+  border-color: #334155;
+  box-shadow: 0 2px 8px rgba(96, 165, 250, 0.2);
+}
+
+body.dark-mode .profile-pic::before {
+  background: linear-gradient(135deg, #3b82f6, #2563eb, #3b82f6);
+}
+
+body.dark-mode .profile-pic:hover {
+  box-shadow: 0 4px 16px rgba(96, 165, 250, 0.4);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 900px) {
+  .header {
+    padding: 16px 24px;
+  }
+  
+  .header-nav {
+    gap: 1.2rem;
+  }
+  
+  .header-nav a {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 12px 16px;
+  }
+  
+  .header-nav {
+    gap: 0.5rem;
+  }
+  
+  .header-nav a {
+    padding: 6px 8px;
+    font-size: 0.85rem;
+  }
+  
+  .site-title {
+    font-size: 1.1rem;
+  }
+  
+  .logo-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .mode-toggle,
+  .profile-pic {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .mode-toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-title {
+    display: none;
+  }
+  
+  .header-nav a {
+    font-size: 0.75rem;
+    padding: 4px 6px;
+  }
+}
