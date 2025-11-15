@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Me | Aryan Jain</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/darkmode.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="layout-container flex flex-col min-h-screen bg-white">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <a href="index.html" class="logo-link" aria-label="Home">
+          <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_6_319)">
+              <path
+                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
+                fill="currentColor"
+              ></path>
+            </g>
+            <defs>
+              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
+            </defs>
+          </svg>
+          <span class="site-title">Portfolio</span>
+        </a>
+      </div>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a href="projects.html">Projects</a>
+        <a href="resume.html">Resume/About Me</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="blogs.html">Blogs/Insights</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="mode-toggle" aria-label="Toggle light/dark mode">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+          </svg>
+        </button>
+        <div class="profile-pic" style='background-image: url("assets/profile.jpg");' aria-label="Profile picture"></div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="contact-hero">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          Available for Opportunities
+        </div>
+        <h1 class="contact-title">Let's Build Something <span class="gradient-text">Amazing Together</span></h1>
+        <p class="contact-subtitle">
+          I'm always excited to discuss new projects, research collaborations, or just chat about AI, robotics, and technology. 
+          Feel free to reach out!
+        </p>
+      </section>
+
+      <!-- Available For Section -->
+      <section class="available-section">
+        <h2 class="section-title">I'm Available For</h2>
+        <div class="availability-grid">
+          <div class="availability-card">
+            <div class="availability-icon">🔬</div>
+            <h3>Research Collaborations</h3>
+            <p>Interested in working on cutting-edge AI/ML and robotics research projects</p>
+          </div>
+          <div class="availability-card">
+            <div class="availability-icon">💼</div>
+            <h3>Internship Opportunities</h3>
+            <p>Seeking challenging internships in AI, ML, robotics, and related fields</p>
+          </div>
+          <div class="availability-card">
+            <div class="availability-icon">🤝</div>
+            <h3>Project Collaborations</h3>
+            <p>Open to collaborative projects involving LLMs, computer vision, or autonomous systems</p>
+          </div>
+          <div class="availability-card">
+            <div class="availability-icon">💡</div>
+            <h3>Technical Discussions</h3>
+            <p>Always happy to discuss ideas, share knowledge, or get feedback on projects</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Methods -->
+      <section class="contact-methods">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-grid">
+          <!-- Email Card -->
+          <a href="mailto:ch24b040@smail.iitm.ac.in" class="contact-card email-card">
+            <div class="contact-icon">
+              <svg width="32" height="32" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.19V181.81Z"></path>
+              </svg>
+            </div>
+            <div class="contact-info">
+              <h3>Email</h3>
+              <p>ch24b040@smail.iitm.ac.in</p>
+              <span class="contact-badge">Preferred</span>
+            </div>
+            <div class="contact-arrow">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+              </svg>
+            </div>
+          </a>
+
+          <!-- Phone Card -->
+          <a href="tel:+916283054775" class="contact-card phone-card">
+            <div class="contact-icon">
+              <svg width="32" height="32" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path>
+              </svg>
+            </div>
+            <div class="contact-info">
+              <h3>Phone</h3>
+              <p>+91 6283054775</p>
+              <span class="contact-badge">WhatsApp Available</span>
+            </div>
+            <div class="contact-arrow">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
+              </svg>
+            </div>
+          </a>
+
+          <!-- Location Card -->
+          <div class="contact-card location-card">
+            <div class="contact-icon">
+              <svg width="32" height="32" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"></path>
+              </svg>
+            </div>
+            <div class="contact-info">
+              <h3>Location</h3>
+              <p>IIT Madras, Chennai 600036</p>
+              <span class="contact-badge">Hometown: Chandigarh</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Social Links -->
+      <section class="social-section">
+        <h2 class="section-title">Connect With Me</h2>
+        <div class="social-grid">
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/aryan-jain-iitm/" target="_blank" rel="noopener noreferrer" class="social-card linkedin-card">
+            <div class="social-icon">
+              <svg width="32" height="32" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path>
+              </svg>
+            </div>
+            <div class="social-info">
+              <h3>LinkedIn</h3>
+              <p>Connect professionally</p>
+            </div>
+            <div class="social-arrow">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path>
+              </svg>
+            </div>
+          </a>
+
+          <!-- GitHub -->
+          <a href="https://github.com/aryannzzz" target="_blank" rel="noopener noreferrer" class="social-card github-card">
+            <div class="social-icon">
+              <svg width="32" height="32" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"></path>
+              </svg>
+            </div>
+            <div class="social-info">
+              <h3>GitHub</h3>
+              <p>Check out my code</p>
+            </div>
+            <div class="social-arrow">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path>
+              </svg>
+            </div>
+          </a>
+
+          <!-- Twitter/X (Commented out for now - uncomment when ready) -->
+          <!-- 
+          <a href="YOUR_TWITTER_URL" target="_blank" rel="noopener noreferrer" class="social-card twitter-card">
+            <div class="social-icon">
+              <svg width="32" height="32" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M214.75,211.71l-62.6-98.38,61.77-67.95a8,8,0,0,0-11.84-10.76L143.24,99.34,102.75,35.71A8,8,0,0,0,96,32H48a8,8,0,0,0-6.75,12.3l62.6,98.37-61.77,68a8,8,0,1,0,11.84,10.76l58.84-64.72,40.49,63.63A8,8,0,0,0,160,224h48a8,8,0,0,0,6.75-12.29ZM164.39,208,62.57,48h29L193.43,208Z"></path>
+              </svg>
+            </div>
+            <div class="social-info">
+              <h3>Twitter / X</h3>
+              <p>Follow for updates</p>
+            </div>
+            <div class="social-arrow">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+                <path d="M224.49,136.49l-72,72a12,12,0,0,1-17-17L187,140H40a12,12,0,0,1,0-24H187L135.51,64.48a12,12,0,0,1,17-17l72,72A12,12,0,0,1,224.49,136.49Z"></path>
+              </svg>
+            </div>
+          </a>
+          -->
+        </div>
+      </section>
+
+      <!-- Quick Actions -->
+      <section class="quick-actions">
+        <div class="action-card">
+          <h3>Download My Resume</h3>
+          <p>Get a comprehensive overview of my experience, skills, and projects</p>
+          <a href="assets/resume.pdf" download class="action-button">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M224,152v56a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V152a8,8,0,0,1,16,0v56H208V152a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,132.69V40a8,8,0,0,0-16,0v92.69L93.66,106.34a8,8,0,0,0-11.32,11.32Z"></path>
+            </svg>
+            Download Resume
+          </a>
+        </div>
+
+        <div class="action-card">
+          <h3>View My Work</h3>
+          <p>Explore my projects, research, and contributions to AI/ML and robotics</p>
+          <a href="projects.html" class="action-button secondary">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path>
+            </svg>
+            Browse Projects
+          </a>
+        </div>
+      </section>
+
+      <!-- Footer Note -->
+      <section class="footer-note">
+        <p>
+          💡 <strong>Pro tip:</strong> Email is the best way to reach me for serious inquiries. 
+          I usually respond within 24-48 hours!
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/darkmode.js"></script>
+  
+  <script>
+    // Add animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.availability-card, .contact-card, .social-card, .action-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+
+    // Copy email on click
+    document.querySelector('.email-card').addEventListener('click', (e) => {
+      if (e.target.closest('a')) return; // Don't interfere with link click
+      
+      const email = 'ch24b040@smail.iitm.ac.in';
+      navigator.clipboard.writeText(email).then(() => {
+        const badge = document.querySelector('.email-card .contact-badge');
+        const originalText = badge.textContent;
+        badge.textContent = 'Copied!';
+        badge.style.background = '#10b981';
+        
+        setTimeout(() => {
+          badge.textContent = originalText;
+          badge.style.background = '';
+        }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>
