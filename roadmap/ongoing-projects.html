@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ongoing Projects | Current Work</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/darkmode.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #1e293b;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateX(-4px);
+    }
+    
+    .hero-card {
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    
+    .page-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .header-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+    }
+    
+    .header-icon svg {
+      width: 40px;
+      height: 40px;
+      color: white;
+    }
+    
+    .header-content h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #1e293b;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+    
+    .header-content p {
+      font-size: 1.1rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+    
+    .stats-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 24px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 16px;
+    }
+    
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-right: 24px;
+      border-right: 2px solid #e2e8f0;
+    }
+    
+    .stat-item:last-child { border-right: none; }
+    
+    .stat-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #6366f1;
+    }
+    
+    .stat-label {
+      font-size: 0.875rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 20px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .project-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 2px solid transparent;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, #6366f1 0%, #8b5cf6 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateX(8px);
+      border-color: rgba(99, 102, 241, 0.2);
+      box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15);
+    }
+    
+    .project-card:hover::before {
+      opacity: 1;
+    }
+    
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    
+    .project-status {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .status-active {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      color: #059669;
+    }
+    
+    .status-research {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      color: #2563eb;
+    }
+    
+    .project-desc {
+      font-size: 0.95rem;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .meta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #f1f5f9;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: #475569;
+    }
+    
+    .progress-section { margin-top: 16px; }
+    
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    
+    .progress-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #64748b;
+    }
+    
+    .progress-value {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #6366f1;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+      border-radius: 4px;
+    }
+    
+    .tasks-section {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+    }
+    
+    .tasks-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 12px;
+    }
+    
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #475569;
+    }
+    
+    .task-checkbox {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .task-done {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      color: #059669;
+    }
+    
+    .task-pending {
+      background: #f1f5f9;
+      border: 2px solid #e2e8f0;
+    }
+    
+    .task-done + span {
+      text-decoration: line-through;
+      color: #94a3b8;
+    }
+    
+    /* Dark Mode */
+    body.dark-mode {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+      color: #e2e8f0;
+    }
+    
+    body.dark-mode .hero-card,
+    body.dark-mode .project-card {
+      background: #1e1b4b;
+      border-color: rgba(99, 102, 241, 0.2);
+    }
+    
+    body.dark-mode .header-content h1,
+    body.dark-mode .section-title,
+    body.dark-mode .project-title,
+    body.dark-mode .tasks-title {
+      color: #e2e8f0;
+    }
+    
+    body.dark-mode .header-content p,
+    body.dark-mode .project-desc,
+    body.dark-mode .task-item {
+      color: #94a3b8;
+    }
+    
+    body.dark-mode .stats-row {
+      background: linear-gradient(135deg, #312e81 0%, #3730a3 100%);
+    }
+    
+    body.dark-mode .stat-item { border-color: #4f46e5; }
+    body.dark-mode .meta-tag { background: #312e81; color: #a5b4fc; }
+    body.dark-mode .progress-bar { background: #312e81; }
+    body.dark-mode .task-pending { background: #312e81; border-color: #4f46e5; }
+    
+    @media (max-width: 768px) {
+      .hero-card { padding: 32px 24px; }
+      .page-header { flex-direction: column; text-align: center; }
+      .header-content h1 { font-size: 2rem; }
+      .stats-row { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid #e2e8f0; padding: 12px 0; }
+      .stat-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav-bar">
+      <a href="current-work.html" class="back-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Back to Dashboard</span>
+      </a>
+    </nav>
+
+    <div class="hero-card">
+      <div class="page-header">
+        <div class="header-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="header-content">
+          <h1>Ongoing Projects</h1>
+          <p>Track my active research & development work, from robotics to AI systems. Each project represents a significant learning journey.</p>
+        </div>
+      </div>
+      
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-value">2</span>
+          <span class="stat-label">Active Projects</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">2</span>
+          <span class="stat-label">Research-based</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">68%</span>
+          <span class="stat-label">Avg. Progress</span>
+        </div>
+      </div>
+    </div>
+
+    <section>
+      <h2 class="section-title">🚀 Active Projects</h2>
+      
+      <div class="projects-list">
+        <!-- Project 1: GRASP -->
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">🤖 Project GRASP</h3>
+            <span class="project-status status-active">Active</span>
+          </div>
+          <p class="project-desc">Robotics perception & AI research focusing on object-centric representations, GradCAM integration with RL, and in-context learning for robotic manipulation. Building foundation models for visuomotor control.</p>
+          <div class="project-meta">
+            <span class="meta-tag">🔬 Robotics</span>
+            <span class="meta-tag">🧠 RL</span>
+            <span class="meta-tag">👁️ Computer Vision</span>
+            <span class="meta-tag">🤖 VLA Models</span>
+            <span class="meta-tag">📅 Started: May 2025</span>
+          </div>
+          <div class="progress-section">
+            <div class="progress-header">
+              <span class="progress-label">Overall Progress</span>
+              <span class="progress-value">75%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 75%;"></div>
+            </div>
+          </div>
+          <div class="tasks-section">
+            <h4 class="tasks-title">Current Tasks</h4>
+            <div class="task-list">
+              <div class="task-item">
+                <div class="task-checkbox task-done">✓</div>
+                <span>GradCAM integration research</span>
+              </div>
+              <div class="task-item">
+                <div class="task-checkbox task-done">✓</div>
+                <span>MoleVLA & SmolVLA architecture study</span>
+              </div>
+              <div class="task-item">
+                <div class="task-checkbox task-pending"></div>
+                <span>Object-centric RL implementation</span>
+              </div>
+              <div class="task-item">
+                <div class="task-checkbox task-pending"></div>
+                <span>ATK (Action Tokenization Kernel) development</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: NeuroSpike -->
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">🧠 Project NeuroSpike</h3>
+            <span class="project-status status-research">Research</span>
+          </div>
+          <p class="project-desc">Neuroscience-inspired robotics & AI algorithms focusing on predictive coding, spiking neural networks, and Brian2 simulations for neural dynamics. Exploring biologically-plausible learning rules like STDP.</p>
+          <div class="project-meta">
+            <span class="meta-tag">🧬 Neuroscience</span>
+            <span class="meta-tag">⚡ SNNs</span>
+            <span class="meta-tag">🎮 Brian2</span>
+            <span class="meta-tag">📐 Predictive Coding</span>
+            <span class="meta-tag">📅 Started: May 2025</span>
+          </div>
+          <div class="progress-section">
+            <div class="progress-header">
+              <span class="progress-label">Overall Progress</span>
+              <span class="progress-value">60%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 60%;"></div>
+            </div>
+          </div>
+          <div class="tasks-section">
+            <h4 class="tasks-title">Current Tasks</h4>
+            <div class="task-list">
+              <div class="task-item">
+                <div class="task-checkbox task-done">✓</div>
+                <span>Predictive coding algorithm study</span>
+              </div>
+              <div class="task-item">
+                <div class="task-checkbox task-done">✓</div>
+                <span>Brian2 simulations implementation</span>
+              </div>
+              <div class="task-item">
+                <div class="task-checkbox task-pending"></div>
+                <span>STDP learning rule implementation</span>
+              </div>
+              <div class="task-item">
+                <div class="task-checkbox task-pending"></div>
+                <span>Differential equation solvers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="../js/darkmode.js"></script>
+</body>
+</html>

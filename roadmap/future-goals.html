@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Future Goals | Current Work</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/darkmode.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #c084fc 100%);
+      min-height: 100vh;
+      color: #1e293b;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateX(-4px);
+    }
+    
+    .hero-card {
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    
+    .page-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .header-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.3);
+    }
+    
+    .header-icon svg {
+      width: 40px;
+      height: 40px;
+      color: white;
+    }
+    
+    .header-content h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+    
+    .header-content p {
+      font-size: 1.1rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+    
+    .vision-quote {
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+      border-left: 4px solid #a855f7;
+      padding: 24px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      color: #6b21a8;
+      font-style: italic;
+      line-height: 1.6;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 20px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .timeline-section {
+      position: relative;
+    }
+    
+    .timeline-line {
+      position: absolute;
+      left: 30px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, #a855f7 0%, #c084fc 50%, #e9d5ff 100%);
+      border-radius: 2px;
+    }
+    
+    .goal-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px 32px 28px 80px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .goal-card:hover {
+      transform: translateX(8px);
+      box-shadow: 0 12px 40px rgba(168, 85, 247, 0.2);
+    }
+    
+    .goal-marker {
+      position: absolute;
+      left: 16px;
+      top: 28px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: white;
+      z-index: 2;
+    }
+    
+    .marker-short { background: linear-gradient(135deg, #22c55e, #16a34a); }
+    .marker-mid { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+    .marker-long { background: linear-gradient(135deg, #a855f7, #9333ea); }
+    
+    .goal-timeframe {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    
+    .timeframe-short { color: #16a34a; }
+    .timeframe-mid { color: #2563eb; }
+    .timeframe-long { color: #9333ea; }
+    
+    .goal-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+    
+    .goal-desc {
+      font-size: 0.95rem;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    
+    .goal-milestones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .milestone-tag {
+      padding: 6px 12px;
+      background: #f8fafc;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: #475569;
+      font-weight: 500;
+      border: 1px solid #e2e8f0;
+      transition: all 0.3s ease;
+    }
+    
+    .milestone-tag:hover {
+      background: #a855f7;
+      color: white;
+      border-color: #a855f7;
+    }
+    
+    .dream-section {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
+      border-radius: 24px;
+      padding: 40px;
+      margin-top: 32px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .dream-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .dream-section::after {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -50px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(192, 132, 252, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .dream-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .dream-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .dream-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      opacity: 0.95;
+      margin-bottom: 24px;
+    }
+    
+    .dream-pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    
+    .pillar-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .pillar-card:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-4px);
+    }
+    
+    .pillar-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    
+    .pillar-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .pillar-desc {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+    
+    /* Motivational Card */
+    .motivation-card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      margin-top: 32px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    
+    .motivation-emoji {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+    
+    .motivation-text {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+    
+    .motivation-sub {
+      font-size: 0.95rem;
+      color: #64748b;
+    }
+    
+    /* Dark Mode */
+    body.dark-mode {
+      background: linear-gradient(135deg, #4c1d95 0%, #6b21a8 50%, #7c3aed 100%);
+    }
+    
+    body.dark-mode .hero-card,
+    body.dark-mode .goal-card,
+    body.dark-mode .motivation-card {
+      background: #1e1b4b;
+    }
+    
+    body.dark-mode .header-content h1,
+    body.dark-mode .goal-title,
+    body.dark-mode .motivation-text {
+      color: #e2e8f0;
+    }
+    
+    body.dark-mode .vision-quote {
+      background: linear-gradient(135deg, #312e81 0%, #3730a3 100%);
+      border-color: #a855f7;
+      color: #e9d5ff;
+    }
+    
+    body.dark-mode .milestone-tag {
+      background: #312e81;
+      color: #e9d5ff;
+      border-color: #4f46e5;
+    }
+    
+    body.dark-mode .timeline-line {
+      background: linear-gradient(180deg, #7c3aed 0%, #9333ea 50%, #c084fc 100%);
+    }
+    
+    @media (max-width: 768px) {
+      .hero-card { padding: 32px 24px; }
+      .page-header { flex-direction: column; text-align: center; }
+      .header-content h1 { font-size: 2rem; }
+      .goal-card { padding: 24px 24px 24px 70px; }
+      .timeline-line { left: 24px; }
+      .goal-marker { left: 10px; }
+      .dream-pillars { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav-bar">
+      <a href="current-work.html" class="back-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Back to Dashboard</span>
+      </a>
+    </nav>
+
+    <div class="hero-card">
+      <div class="page-header">
+        <div class="header-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="12" cy="12" r="6"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        </div>
+        <div class="header-content">
+          <h1>Future Goals</h1>
+          <p>My short-term and long-term aspirations, milestones to achieve, and the vision that drives me forward.</p>
+        </div>
+      </div>
+      
+      <div class="vision-quote">
+        "I want to build AI systems that can understand the world like humans do — learning continuously, adapting intelligently, and pushing the boundaries of what machines can achieve."
+      </div>
+    </div>
+
+    <!-- Short-term Goals -->
+    <h2 class="section-title">🎯 Goals Timeline</h2>
+    
+    <div class="timeline-section">
+      <div class="timeline-line"></div>
+      
+      <!-- Short-term -->
+      <div class="goal-card">
+        <div class="goal-marker marker-short">Q1</div>
+        <span class="goal-timeframe timeframe-short">Q1 2026 (Jan-Mar)</span>
+        <h3 class="goal-title">Excel at Inter IIT Tech Meet</h3>
+        <p class="goal-desc">Complete the Pathway project with production-ready ML agents. Aim for a top 3 position at Inter IIT and gain recognition for our multi-agent orchestration system.</p>
+        <div class="goal-milestones">
+          <span class="milestone-tag">Complete RAG Pipeline</span>
+          <span class="milestone-tag">Deploy Agents</span>
+          <span class="milestone-tag">Win Competition</span>
+        </div>
+      </div>
+
+      <div class="goal-card">
+        <div class="goal-marker marker-short">Q1</div>
+        <span class="goal-timeframe timeframe-short">Q1 2026 (Jan-Mar)</span>
+        <h3 class="goal-title">Publish First Research Paper</h3>
+        <p class="goal-desc">Complete and submit research work on either NeuroSpike (bio-inspired SNNs) or GRASP (object-centric RL) to a peer-reviewed conference or workshop.</p>
+        <div class="goal-milestones">
+          <span class="milestone-tag">Complete Experiments</span>
+          <span class="milestone-tag">Write Paper</span>
+          <span class="milestone-tag">Submit to ArXiv/Conference</span>
+        </div>
+      </div>
+
+      <!-- Mid-term -->
+      <div class="goal-card">
+        <div class="goal-marker marker-mid">Q2</div>
+        <span class="goal-timeframe timeframe-mid">Q2-Q3 2026 (Apr-Sep)</span>
+        <h3 class="goal-title">Secure Research Internship</h3>
+        <p class="goal-desc">Land a summer research internship at a top AI research lab (FAIR, DeepMind, OpenAI, or top university labs) to work on cutting-edge robotics or RL problems.</p>
+        <div class="goal-milestones">
+          <span class="milestone-tag">Strong SOP</span>
+          <span class="milestone-tag">Research Portfolio</span>
+          <span class="milestone-tag">Secure Position</span>
+        </div>
+      </div>
+
+      <div class="goal-card">
+        <div class="goal-marker marker-mid">Q4</div>
+        <span class="goal-timeframe timeframe-mid">Q4 2026 (Oct-Dec)</span>
+        <h3 class="goal-title">Master Advanced Deep Learning</h3>
+        <p class="goal-desc">Complete Deep Learning Specialization, understand Transformers architecture deeply, and implement attention mechanisms from scratch.</p>
+        <div class="goal-milestones">
+          <span class="milestone-tag">Complete DL Spec</span>
+          <span class="milestone-tag">Transformer Paper</span>
+          <span class="milestone-tag">Build GPT Clone</span>
+        </div>
+      </div>
+
+      <!-- Long-term -->
+      <div class="goal-card">
+        <div class="goal-marker marker-long">2Y</div>
+        <span class="goal-timeframe timeframe-long">2027-2028</span>
+        <h3 class="goal-title">Become a Research Leader</h3>
+        <p class="goal-desc">Establish myself as a thought leader in neuroscience-inspired AI, publish multiple papers, and potentially start a research group or lab initiative at IITM.</p>
+        <div class="goal-milestones">
+          <span class="milestone-tag">3+ Publications</span>
+          <span class="milestone-tag">Research Group</span>
+          <span class="milestone-tag">Conference Talks</span>
+        </div>
+      </div>
+
+      <div class="goal-card">
+        <div class="goal-marker marker-long">5Y</div>
+        <span class="goal-timeframe timeframe-long">5-Year Vision</span>
+        <h3 class="goal-title">Pursue PhD at Top AI Lab</h3>
+        <p class="goal-desc">Get into a top PhD program (Stanford, MIT, CMU, Berkeley) focusing on embodied AI, neuroscience-inspired machine learning, or continual learning systems.</p>
+        <div class="goal-milestones">
+          <span class="milestone-tag">Top GRE Scores</span>
+          <span class="milestone-tag">Strong Research</span>
+          <span class="milestone-tag">Great LoRs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dream Section -->
+    <div class="dream-section">
+      <div class="dream-content">
+        <h2 class="dream-title">✨ The Ultimate Dream</h2>
+        <p class="dream-text">
+          To build AI systems that can learn like humans — continuously adapting to new information without forgetting, 
+          understanding the world through embodied interaction, and helping solve humanity's greatest challenges through 
+          intelligent automation and augmented human capability.
+        </p>
+        <div class="dream-pillars">
+          <div class="pillar-card">
+            <div class="pillar-icon">🧠</div>
+            <h4 class="pillar-title">Neuroscience-Inspired AI</h4>
+            <p class="pillar-desc">Bridge the gap between biological and artificial intelligence</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon">🤖</div>
+            <h4 class="pillar-title">Embodied Intelligence</h4>
+            <p class="pillar-desc">Build robots that truly understand and interact with the physical world</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon">🔄</div>
+            <h4 class="pillar-title">Continual Learning</h4>
+            <p class="pillar-desc">Create AI that learns forever without catastrophic forgetting</p>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon">🌍</div>
+            <h4 class="pillar-title">Positive Impact</h4>
+            <p class="pillar-desc">Use AI to solve real-world problems that matter</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Motivation Card -->
+    <div class="motivation-card">
+      <div class="motivation-emoji">🚀</div>
+      <p class="motivation-text">"The only way to do great work is to love what you do."</p>
+      <p class="motivation-sub">— Steve Jobs</p>
+    </div>
+  </div>
+  <script src="../js/darkmode.js"></script>
+</body>
+</html>

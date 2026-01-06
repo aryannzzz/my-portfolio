@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academics | Current Work</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/darkmode.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%);
+      min-height: 100vh;
+      color: #1e293b;
+    }
+    
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateX(-4px);
+    }
+    
+    .hero-card {
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    
+    .page-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .header-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+    }
+    
+    .header-icon svg {
+      width: 40px;
+      height: 40px;
+      color: white;
+    }
+    
+    .header-content h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+    
+    .header-content p {
+      font-size: 1.1rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+    
+    .stats-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 24px;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border-radius: 16px;
+    }
+    
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-right: 24px;
+      border-right: 2px solid #93c5fd;
+    }
+    
+    .stat-item:last-child { border-right: none; }
+    
+    .stat-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #2563eb;
+    }
+    
+    .stat-label {
+      font-size: 0.875rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 20px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    /* CGPA Cards */
+    .cgpa-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .cgpa-card {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3b82f6 100%);
+      border-radius: 20px;
+      padding: 32px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cgpa-card.expected {
+      background: linear-gradient(135deg, #065f46 0%, #047857 50%, #10b981 100%);
+    }
+    
+    .cgpa-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .cgpa-label {
+      font-size: 1rem;
+      font-weight: 600;
+      opacity: 0.9;
+      margin-bottom: 8px;
+    }
+    
+    .cgpa-value {
+      font-size: 3.5rem;
+      font-weight: 900;
+      line-height: 1;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .cgpa-subtext {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 12px;
+    }
+    
+    /* Semester Cards */
+    .semester-section {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    
+    .semester-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    
+    .semester-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #1e293b;
+    }
+    
+    .semester-gpa {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    .gpa-label {
+      font-size: 0.8rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+    
+    .gpa-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #2563eb;
+    }
+    
+    .courses-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .courses-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #1e40af;
+      border-radius: 8px;
+    }
+    
+    .courses-table th:first-child { border-radius: 8px 0 0 8px; }
+    .courses-table th:last-child { border-radius: 0 8px 8px 0; }
+    
+    .courses-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 0.9rem;
+      color: #475569;
+    }
+    
+    .courses-table tr:last-child td { border-bottom: none; }
+    
+    .courses-table tr:hover td {
+      background: #f8fafc;
+    }
+    
+    .course-code {
+      font-weight: 700;
+      color: #2563eb;
+    }
+    
+    .grade-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+    
+    .grade-S { background: linear-gradient(135deg, #d1fae5, #a7f3d0); color: #059669; }
+    .grade-A { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #2563eb; }
+    .grade-B { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #d97706; }
+    .grade-P { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); color: #4f46e5; }
+    
+    .credits-badge {
+      background: #f1f5f9;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+    
+    /* Current Semester Special */
+    .current-semester {
+      border: 3px solid #3b82f6;
+      position: relative;
+    }
+    
+    .current-badge {
+      position: absolute;
+      top: -12px;
+      right: 24px;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    
+    .progress-note {
+      margin-top: 16px;
+      padding: 16px;
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border-radius: 12px;
+      font-size: 0.9rem;
+      color: #92400e;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    /* Dark Mode */
+    body.dark-mode {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+    }
+    
+    body.dark-mode .hero-card,
+    body.dark-mode .semester-section {
+      background: #1e3a8a;
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+    
+    body.dark-mode .header-content h1,
+    body.dark-mode .semester-title {
+      color: #e2e8f0;
+    }
+    
+    body.dark-mode .stats-row {
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+    }
+    
+    body.dark-mode .stat-item { border-color: #3b82f6; }
+    
+    body.dark-mode .courses-table th {
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+      color: #93c5fd;
+    }
+    
+    body.dark-mode .courses-table td {
+      color: #cbd5e1;
+      border-color: #1d4ed8;
+    }
+    
+    body.dark-mode .courses-table tr:hover td {
+      background: #1d4ed8;
+    }
+    
+    body.dark-mode .semester-header {
+      border-color: #3b82f6;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-card { padding: 32px 24px; }
+      .page-header { flex-direction: column; text-align: center; }
+      .header-content h1 { font-size: 2rem; }
+      .stats-row { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid #93c5fd; padding: 12px 0; }
+      .cgpa-grid { grid-template-columns: 1fr; }
+      .courses-table { font-size: 0.8rem; }
+      .courses-table th, .courses-table td { padding: 10px 8px; }
+      .semester-header { flex-direction: column; gap: 12px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav-bar">
+      <a href="current-work.html" class="back-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Back to Dashboard</span>
+      </a>
+    </nav>
+
+    <div class="hero-card">
+      <div class="page-header">
+        <div class="header-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="header-content">
+          <h1>Academics</h1>
+          <p>Track my academic journey at IIT Madras - courses, grades, and CGPA progression across all semesters.</p>
+        </div>
+      </div>
+      
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-value">Sem 4</span>
+          <span class="stat-label">Current</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">22</span>
+          <span class="stat-label">Courses Done</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">131</span>
+          <span class="stat-label">Total Credits</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">8.98</span>
+          <span class="stat-label">Current CGPA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CGPA Tracking Cards -->
+    <div class="cgpa-grid">
+      <div class="cgpa-card">
+        <span class="cgpa-label">📊 Current CGPA</span>
+        <div class="cgpa-value" id="currentCGPA">9.00</div>
+        <p class="cgpa-subtext">Based on Sem 1, 2 & 3 grades</p>
+      </div>
+      <div class="cgpa-card expected">
+        <span class="cgpa-label">🎯 Expected CGPA</span>
+        <div class="cgpa-value" id="expectedCGPA">9.00</div>
+        <p class="cgpa-subtext">Including Sem 4 estimates</p>
+      </div>
+    </div>
+
+    <!-- Semester 1 & 2 -->
+    <h2 class="section-title">📚 First Year (Sem 1 & 2)</h2>
+    
+    <div class="semester-section">
+      <div class="semester-header">
+        <h3 class="semester-title">Semester 1 — 2024</h3>
+        <div class="semester-gpa">
+          <span class="gpa-label">SGPA</span>
+          <span class="gpa-value" id="sem1GPA">9.26</span>
+        </div>
+      </div>
+      <table class="courses-table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Course Title</th>
+            <th>Credits</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody id="sem1Courses">
+          <tr>
+            <td class="course-code">AM1100</td>
+            <td>Engineering Mechanics</td>
+            <td><span class="credits-badge" data-credits="10">10</span></td>
+            <td><span class="grade-badge grade-S" data-grade="S">S</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">MA1101</td>
+            <td>Functions of Several Variables</td>
+            <td><span class="credits-badge" data-credits="10">10</span></td>
+            <td><span class="grade-badge grade-S" data-grade="S">S</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">CH1100</td>
+            <td>Fundamentals of Thermodynamics</td>
+            <td><span class="credits-badge" data-credits="10">10</span></td>
+            <td><span class="grade-badge grade-A" data-grade="A">A</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">BT1010</td>
+            <td>Life Sciences</td>
+            <td><span class="credits-badge" data-credits="9">9</span></td>
+            <td><span class="grade-badge grade-B" data-grade="B">B</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">GN1101</td>
+            <td>Life Skills 1</td>
+            <td><span class="credits-badge" data-credits="0">0</span></td>
+            <td><span class="grade-badge grade-P" data-grade="P">P</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">PH1030</td>
+            <td>Physics Laboratory I</td>
+            <td><span class="credits-badge" data-credits="4">4</span></td>
+            <td><span class="grade-badge grade-A" data-grade="A">A</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="semester-section">
+      <div class="semester-header">
+        <h3 class="semester-title">Semester 2 — 2025</h3>
+        <div class="semester-gpa">
+          <span class="gpa-label">SGPA</span>
+          <span class="gpa-value" id="sem2GPA">8.86</span>
+        </div>
+      </div>
+      <table class="courses-table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Course Title</th>
+            <th>Credits</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody id="sem2Courses">
+          <tr>
+            <td class="course-code">CY1001</td>
+            <td>Chemistry I: Structure, Bonding & Reactivity</td>
+            <td><span class="credits-badge" data-credits="10">10</span></td>
+            <td><span class="grade-badge grade-S" data-grade="S">S</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">CY1002F</td>
+            <td>Chemistry Lab I</td>
+            <td><span class="credits-badge" data-credits="3">3</span></td>
+            <td><span class="grade-badge grade-S" data-grade="S">S</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">GN1102</td>
+            <td>Life Skills 2</td>
+            <td><span class="credits-badge" data-credits="2">2</span></td>
+            <td><span class="grade-badge grade-P" data-grade="P">P</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">PH1010</td>
+            <td>Physics I</td>
+            <td><span class="credits-badge" data-credits="10">10</span></td>
+            <td><span class="grade-badge grade-A" data-grade="A">A</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">CH1020</td>
+            <td>Principles & Calculations in Chemical</td>
+            <td><span class="credits-badge" data-credits="10">10</span></td>
+            <td><span class="grade-badge grade-B" data-grade="B">B</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">MA2103</td>
+            <td>Probability, Stochastic Processes & Statistics</td>
+            <td><span class="credits-badge" data-credits="9">9</span></td>
+            <td><span class="grade-badge grade-B" data-grade="B">B</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">ID1300M</td>
+            <td>Recreation Course - Web and Mobile App Development</td>
+            <td><span class="credits-badge" data-credits="2">2</span></td>
+            <td><span class="grade-badge grade-P" data-grade="P">P</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Semester 3 & 4 -->
+    <h2 class="section-title">📚 Second Year (Sem 3 & 4)</h2>
+    
+    <div class="semester-section">
+      <div class="semester-header">
+        <h3 class="semester-title">Semester 3 — 2025</h3>
+        <div class="semester-gpa">
+          <span class="gpa-label">SGPA</span>
+          <span class="gpa-value" id="sem3GPA">8.88</span>
+        </div>
+      </div>
+      <table class="courses-table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Course Title</th>
+            <th>Credits</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody id="sem3Courses">
+          <tr>
+            <td class="course-code">EE1100</td>
+            <td>Basic Electrical Engineering</td>
+            <td><span class="credits-badge" data-credits="10">10</span></td>
+            <td><span class="grade-badge grade-A" data-grade="A">A</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">CH2010</td>
+            <td>Chemical Engineering Thermodynamics</td>
+            <td><span class="credits-badge" data-credits="10">10</span></td>
+            <td><span class="grade-badge grade-B" data-grade="B">B</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">CH2013</td>
+            <td>Computational Programming & Process Simulation Lab</td>
+            <td><span class="credits-badge" data-credits="5">5</span></td>
+            <td><span class="grade-badge grade-A" data-grade="A">A</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">CH2061</td>
+            <td>Computational Techniques</td>
+            <td><span class="credits-badge" data-credits="10">10</span></td>
+            <td><span class="grade-badge grade-B" data-grade="B">B</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">CH2012</td>
+            <td>Continuum Mechanics & Transport Phenomena</td>
+            <td><span class="credits-badge" data-credits="10">10</span></td>
+            <td><span class="grade-badge grade-A" data-grade="A">A</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">ID4031</td>
+            <td>Innovation and Entrepreneurship - A Multidisciplinary Approach</td>
+            <td><span class="credits-badge" data-credits="9">9</span></td>
+            <td><span class="grade-badge grade-A" data-grade="A">A</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">OB2208</td>
+            <td>Complete Machine Learning</td>
+            <td><span class="credits-badge" data-credits="12">12</span></td>
+            <td><span class="grade-badge grade-S" data-grade="S">S</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="semester-section current-semester">
+      <span class="current-badge">📍 Current</span>
+      <div class="semester-header">
+        <h3 class="semester-title">Semester 4 — 2026 (Ongoing)</h3>
+        <div class="semester-gpa">
+          <span class="gpa-label">Progress</span>
+          <span class="gpa-value">0%</span>
+        </div>
+      </div>
+      <table class="courses-table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Course Title</th>
+            <th>Credits</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody id="sem4Courses">
+          <tr>
+            <td class="course-code">CH2014</td>
+            <td>Fundamentals of Heat and Mass Transfer</td>
+            <td><span class="credits-badge" data-credits="0">TBD</span></td>
+            <td><span class="grade-badge" style="background: #f1f5f9; color: #64748b;">—</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">CH2015</td>
+            <td>Fluids and Particle Mechanics</td>
+            <td><span class="credits-badge" data-credits="0">TBD</span></td>
+            <td><span class="grade-badge" style="background: #f1f5f9; color: #64748b;">—</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">CH2016</td>
+            <td>Thermodynamics Lab</td>
+            <td><span class="credits-badge" data-credits="0">TBD</span></td>
+            <td><span class="grade-badge" style="background: #f1f5f9; color: #64748b;">—</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">CY2010</td>
+            <td>Kinetics and Catalysis</td>
+            <td><span class="credits-badge" data-credits="0">TBD</span></td>
+            <td><span class="grade-badge" style="background: #f1f5f9; color: #64748b;">—</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">BT3041</td>
+            <td>Analysis and Interpretation of Biological Data</td>
+            <td><span class="credits-badge" data-credits="0">TBD</span></td>
+            <td><span class="grade-badge" style="background: #f1f5f9; color: #64748b;">—</span></td>
+          </tr>
+          <tr>
+            <td class="course-code">CH5440</td>
+            <td>Multivariate Data Analysis</td>
+            <td><span class="credits-badge" data-credits="0">TBD</span></td>
+            <td><span class="grade-badge" style="background: #f1f5f9; color: #64748b;">—</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="progress-note">
+        ⏳ Semester just started - grades and credits will be updated as the semester progresses.
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Grade point mapping
+    const gradePoints = {
+      'S': 10,
+      'A': 9,
+      'B': 8,
+      'C': 7,
+      'D': 6,
+      'E': 5,
+      'P': 0, // Pass - doesn't count in GPA
+      'F': 0,
+      'U': 0
+    };
+
+    // Calculate GPA for a semester
+    function calculateSemesterGPA(tableId) {
+      const rows = document.querySelectorAll(`#${tableId} tr`);
+      let totalPoints = 0;
+      let totalCredits = 0;
+
+      rows.forEach(row => {
+        const creditsEl = row.querySelector('.credits-badge');
+        const gradeEl = row.querySelector('.grade-badge');
+        
+        if (creditsEl && gradeEl) {
+          const credits = parseInt(creditsEl.dataset.credits) || 0;
+          const grade = gradeEl.dataset.grade;
+          
+          // Only count if it has credits and is not P grade
+          if (credits > 0 && grade !== 'P') {
+            totalPoints += credits * (gradePoints[grade] || 0);
+            totalCredits += credits;
+          }
+        }
+      });
+
+      return totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : 0;
+    }
+
+    // Calculate CGPA across all semesters
+    function calculateCGPA() {
+      const semesters = ['sem1Courses', 'sem2Courses', 'sem3Courses'];
+      let totalPoints = 0;
+      let totalCredits = 0;
+
+      semesters.forEach(semId => {
+        const rows = document.querySelectorAll(`#${semId} tr`);
+        
+        rows.forEach(row => {
+          const creditsEl = row.querySelector('.credits-badge');
+          const gradeEl = row.querySelector('.grade-badge');
+          
+          if (creditsEl && gradeEl) {
+            const credits = parseInt(creditsEl.dataset.credits) || 0;
+            const grade = gradeEl.dataset.grade;
+            
+            if (credits > 0 && grade !== 'P') {
+              totalPoints += credits * (gradePoints[grade] || 0);
+              totalCredits += credits;
+            }
+          }
+        });
+      });
+
+      return totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : 0;
+    }
+
+    // Update displays
+    function updateGPADisplays() {
+      // Update semester GPAs
+      document.getElementById('sem1GPA').textContent = calculateSemesterGPA('sem1Courses');
+      document.getElementById('sem2GPA').textContent = calculateSemesterGPA('sem2Courses');
+      document.getElementById('sem3GPA').textContent = calculateSemesterGPA('sem3Courses');
+      
+      // Update CGPA
+      const cgpa = calculateCGPA();
+      document.getElementById('currentCGPA').textContent = cgpa;
+      document.getElementById('expectedCGPA').textContent = cgpa; // Same for now until sem4 grades
+    }
+
+    // Run on page load
+    document.addEventListener('DOMContentLoaded', updateGPADisplays);
+  </script>
+  
+  <script src="../js/darkmode.js"></script>
+</body>
+</html>

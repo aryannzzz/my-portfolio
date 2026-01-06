@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Current Work Dashboard | Aryan's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/darkmode.css" />
+  <link rel="stylesheet" href="current-work.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</head>
+<body>
+  <div class="layout-container">
+    <!-- Back Navigation -->
+    <nav class="breadcrumb-nav">
+      <a href="../roadmap.html" class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Back to Roadmap</span>
+      </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="dashboard-hero">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span>Live Progress</span>
+        </div>
+        <h1 class="hero-title">Current Work <span class="gradient-text">Dashboard</span></h1>
+        <p class="hero-subtitle">Track my ongoing projects, learning journey, and future aspirations — all in one place.</p>
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-number">2</span>
+            <span class="stat-label">Active Projects</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">1</span>
+            <span class="stat-label">Courses</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">0%</span>
+            <span class="stat-label">Semester Progress</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-decoration">
+        <div class="floating-circle c1"></div>
+        <div class="floating-circle c2"></div>
+        <div class="floating-circle c3"></div>
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="dashboard-main">
+      <section class="templates-grid">
+        
+        <!-- Ongoing Projects Card -->
+        <a href="ongoing-projects.html" class="template-card projects-card">
+          <div class="card-glow"></div>
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3>Ongoing Projects</h3>
+            <p>Active research & development work including GRASP, NeuroSpike, and more</p>
+            <div class="card-meta">
+              <span class="meta-badge">6 Active</span>
+              <span class="meta-badge highlight">2 New</span>
+            </div>
+          </div>
+          <div class="card-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Online Courses Card -->
+        <a href="online-courses.html" class="template-card courses-card">
+          <div class="card-glow"></div>
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              <line x1="12" y1="6" x2="16" y2="6"/>
+              <line x1="12" y1="10" x2="16" y2="10"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3>Online Courses</h3>
+            <p>Current learning paths, progress tracking, and scheduled learning</p>
+            <div class="card-meta">
+              <span class="meta-badge">3 In Progress</span>
+              <span class="meta-badge">65% Complete</span>
+            </div>
+          </div>
+          <div class="card-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Academics Card -->
+        <a href="academics.html" class="template-card academics-card">
+          <div class="card-glow"></div>
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3>Academics</h3>
+            <p>Current semester courses, assignments, exams, and academic goals</p>
+            <div class="card-meta">
+              <span class="meta-badge">Semester 4</span>
+              <span class="meta-badge">CGPA: 8.98</span>
+            </div>
+          </div>
+          <div class="card-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Research & Exploration Card -->
+        <a href="research-exploration.html" class="template-card research-card">
+          <div class="card-glow"></div>
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+              <path d="M11 8v6M8 11h6"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3>Research & Exploration</h3>
+            <p>Papers I'm reading, topics I'm exploring, and research interests</p>
+            <div class="card-meta">
+              <span class="meta-badge">12 Papers</span>
+              <span class="meta-badge">4 Topics</span>
+            </div>
+          </div>
+          <div class="card-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Skills Development Card -->
+        <a href="skills-development.html" class="template-card skills-card">
+          <div class="card-glow"></div>
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3>Skills Development</h3>
+            <p>Technologies I'm learning, skill progression, and practice logs</p>
+            <div class="card-meta">
+              <span class="meta-badge">8 Skills</span>
+              <span class="meta-badge highlight">ROS2, CUDA</span>
+            </div>
+          </div>
+          <div class="card-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Future Goals Card -->
+        <a href="future-goals.html" class="template-card goals-card">
+          <div class="card-glow"></div>
+          <div class="card-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2"/>
+            </svg>
+          </div>
+          <div class="card-content">
+            <h3>Future Goals</h3>
+            <p>Short-term and long-term aspirations, milestones, and vision</p>
+            <div class="card-meta">
+              <span class="meta-badge">Q1 2026</span>
+              <span class="meta-badge">5 Goals</span>
+            </div>
+          </div>
+          <div class="card-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+      </section>
+
+      <!-- Quick Stats Section -->
+      <section class="quick-overview">
+        <h2 class="section-title">
+          <span class="title-icon">📊</span>
+          Quick Overview
+        </h2>
+        <div class="overview-grid">
+          <div class="overview-card">
+            <div class="overview-header">
+              <span class="overview-icon">🔬</span>
+              <span class="overview-title">This Week's Focus</span>
+            </div>
+            <ul class="overview-list">
+              <!-- <li>GRASP: Object-centric RL implementation</li>
+              <li>NeuroSpike: Predictive coding simulations</li>
+              <li>Pathway: Multi-agent coordination</li> -->
+            </ul>
+          </div>
+          <div class="overview-card">
+            <div class="overview-header">
+              <span class="overview-icon">📅</span>
+              <span class="overview-title">Upcoming Deadlines</span>
+            </div>
+            <ul class="overview-list deadline">
+              <!-- <li><span class="deadline-date">Jan 15</span> Inter IIT Tech Meet</li>
+              <li><span class="deadline-date">Jan 20</span> DL Course Assignment</li>
+              <li><span class="deadline-date">Feb 1</span> Project Milestone</li> -->
+            </ul>
+          </div>
+          <div class="overview-card">
+            <div class="overview-header">
+              <span class="overview-icon">🏆</span>
+              <span class="overview-title">Recent Achievements</span>
+            </div>
+            <ul class="overview-list achievement">
+              <!-- <li>Selected for Inter IIT (Top 15)</li>
+              <li>AxiomML reached 50+ users</li>
+              <li>Research Conclave presentation</li> -->
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+      <p>Last updated: January 2026 • <a href="../roadmap.html">View Full Roadmap</a></p>
+    </footer>
+  </div>
+  <script src="../js/darkmode.js"></script>
+</body>
+</html>

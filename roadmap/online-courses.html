@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Courses | Current Work</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/darkmode.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+      min-height: 100vh;
+      color: #1e293b;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateX(-4px);
+    }
+    
+    .hero-card {
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    
+    .page-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .header-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
+    }
+    
+    .header-icon svg {
+      width: 40px;
+      height: 40px;
+      color: white;
+    }
+    
+    .header-content h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+    
+    .header-content p {
+      font-size: 1.1rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+    
+    .stats-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 24px;
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border-radius: 16px;
+    }
+    
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-right: 24px;
+      border-right: 2px solid #bbf7d0;
+    }
+    
+    .stat-item:last-child { border-right: none; }
+    
+    .stat-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #16a34a;
+    }
+    
+    .stat-label {
+      font-size: 0.875rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 20px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+      margin-top: -12px;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    
+    /* Specialization Card */
+    .specialization-card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .specialization-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+    }
+    
+    .specialization-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    
+    .specialization-info h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+    
+    .specialization-info .provider {
+      font-size: 0.95rem;
+      color: #16a34a;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .specialization-status {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    
+    .status-completed {
+      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+      color: #059669;
+    }
+    
+    .status-in-progress {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      color: #d97706;
+    }
+    
+    .specialization-desc {
+      font-size: 0.95rem;
+      color: #64748b;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .credential-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .credential-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+    
+    .credential-details {
+      flex: 1;
+    }
+    
+    .credential-details .label {
+      font-size: 0.8rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+    
+    .credential-details .value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #16a34a;
+    }
+    
+    .credential-date {
+      text-align: right;
+    }
+    
+    .credential-date .label {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+    
+    .credential-date .value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    
+    /* Course List within Specialization */
+    .courses-breakdown {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+    }
+    
+    .courses-breakdown-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .course-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #f8fafc;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .course-item:hover {
+      background: #f1f5f9;
+      transform: translateX(4px);
+    }
+    
+    .course-item .course-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #475569;
+    }
+    
+    .course-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+    
+    .check-done {
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+    }
+    
+    .check-current {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      color: white;
+      animation: pulse 2s infinite;
+    }
+    
+    .check-pending {
+      background: #e2e8f0;
+      border: 2px dashed #94a3b8;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(251, 191, 36, 0); }
+    }
+    
+    .course-status-badge {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+    
+    /* Single Course Card */
+    .course-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: all 0.3s ease;
+    }
+    
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(34, 197, 94, 0.2);
+    }
+    
+    .course-card .provider-logo {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.5rem;
+    }
+    
+    .course-card .course-details {
+      flex: 1;
+    }
+    
+    .course-card .course-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+    
+    .course-card .course-provider {
+      font-size: 0.9rem;
+      color: #16a34a;
+      font-weight: 600;
+    }
+    
+    .course-card .course-credential {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+    
+    .course-card .course-date {
+      text-align: right;
+    }
+    
+    .course-card .course-date .month {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    
+    .course-card .course-date .year {
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+    
+    /* Dark Mode */
+    body.dark-mode {
+      background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #059669 100%);
+    }
+    
+    body.dark-mode .hero-card,
+    body.dark-mode .specialization-card,
+    body.dark-mode .course-card {
+      background: #064e3b;
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+    
+    body.dark-mode .header-content h1,
+    body.dark-mode .specialization-info h3,
+    body.dark-mode .courses-breakdown-title,
+    body.dark-mode .course-card .course-title {
+      color: #e2e8f0;
+    }
+    
+    body.dark-mode .stats-row,
+    body.dark-mode .credential-info {
+      background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+    }
+    
+    body.dark-mode .stat-item { border-color: #10b981; }
+    
+    body.dark-mode .course-item {
+      background: #047857;
+    }
+    
+    body.dark-mode .course-item .course-name {
+      color: #d1fae5;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-card { padding: 32px 24px; }
+      .page-header { flex-direction: column; text-align: center; }
+      .header-content h1 { font-size: 2rem; }
+      .stats-row { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid #bbf7d0; padding: 12px 0; }
+      .specialization-header { flex-direction: column; gap: 12px; }
+      .credential-info { flex-direction: column; text-align: center; }
+      .credential-date { text-align: center; }
+      .course-card { flex-direction: column; text-align: center; }
+      .course-card .course-date { text-align: center; margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav-bar">
+      <a href="current-work.html" class="back-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Back to Dashboard</span>
+      </a>
+    </nav>
+
+    <div class="hero-card">
+      <div class="page-header">
+        <div class="header-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <div class="header-content">
+          <h1>Online Courses</h1>
+          <p>My learning journey through structured online courses and certifications from top universities and tech companies.</p>
+        </div>
+      </div>
+      
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-value">9</span>
+          <span class="stat-label">Certificates</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">2</span>
+          <span class="stat-label">Specializations</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">4</span>
+          <span class="stat-label">In Progress</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">200+</span>
+          <span class="stat-label">Hours Spent</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Machine Learning Specialization -->
+    <h2 class="section-title">🧠 Machine Learning</h2>
+    <p class="section-subtitle">Stanford University • 3 Course Specialization</p>
+    
+    <div class="specialization-card">
+      <div class="specialization-header">
+        <div class="specialization-info">
+          <h3>Machine Learning Specialization</h3>
+          <span class="provider">
+            <span>🎓</span>
+            Stanford University • Coursera
+          </span>
+        </div>
+        <span class="specialization-status status-completed">✓ Completed</span>
+      </div>
+      
+      <p class="specialization-desc">Comprehensive 3-course specialization by Andrew Ng covering supervised learning, unsupervised learning, recommender systems, and reinforcement learning fundamentals.</p>
+      
+      <div class="credential-info">
+        <div class="credential-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 15l-2 5l9-11h-6l2-5l-9 11h6z"/>
+          </svg>
+        </div>
+        <div class="credential-details">
+          <span class="label">Credential ID</span>
+          <span class="value">15KND8JL65ZY</span>
+        </div>
+        <div class="credential-date">
+          <span class="label">Issued</span>
+          <span class="value">March 2025</span>
+        </div>
+      </div>
+      
+      <div class="courses-breakdown">
+        <h4 class="courses-breakdown-title">📚 Courses in Specialization</h4>
+        <div class="course-item">
+          <span class="course-name">
+            <span class="course-check check-done">✓</span>
+            Supervised Machine Learning: Regression and Classification
+          </span>
+          <span class="course-status-badge" style="background: #dcfce7; color: #16a34a;">Completed • Jan 2025</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">
+            <span class="course-check check-done">✓</span>
+            Advanced Learning Algorithms
+          </span>
+          <span class="course-status-badge" style="background: #dcfce7; color: #16a34a;">Completed • Feb 2025</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">
+            <span class="course-check check-done">✓</span>
+            Unsupervised Learning, Recommenders, Reinforcement Learning
+          </span>
+          <span class="course-status-badge" style="background: #dcfce7; color: #16a34a;">Completed • Mar 2025</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep Learning Specialization -->
+    <h2 class="section-title">🤖 Deep Learning</h2>
+    <p class="section-subtitle">DeepLearning.AI • 5 Course Specialization</p>
+    
+    <div class="specialization-card">
+      <div class="specialization-header">
+        <div class="specialization-info">
+          <h3>Deep Learning Specialization</h3>
+          <span class="provider">
+            <span>🎓</span>
+            DeepLearning.AI • Coursera
+          </span>
+        </div>
+        <span class="specialization-status status-in-progress">In Progress</span>
+      </div>
+      
+      <p class="specialization-desc">Comprehensive 5-course specialization covering neural networks, hyperparameter tuning, structuring ML projects, CNNs, and sequence models. Taught by Andrew Ng.</p>
+      
+      <div class="credential-info">
+        <div class="credential-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <div class="credential-details">
+          <span class="label">Status</span>
+          <span class="value">1 of 5 Courses Completed</span>
+        </div>
+        <div class="credential-date">
+          <span class="label">Progress</span>
+          <span class="value">20%</span>
+        </div>
+      </div>
+      
+      <div class="courses-breakdown">
+        <h4 class="courses-breakdown-title">📚 Courses in Specialization</h4>
+        <div class="course-item">
+          <span class="course-name">
+            <span class="course-check check-done">✓</span>
+            Neural Networks and Deep Learning
+          </span>
+          <span class="course-status-badge" style="background: #dcfce7; color: #16a34a;">Completed • Mar 2025</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">
+            <span class="course-check check-current">→</span>
+            Improving Deep Neural Networks
+          </span>
+          <span class="course-status-badge" style="background: #fef3c7; color: #d97706;">In Progress</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">
+            <span class="course-check check-pending"></span>
+            Structuring Machine Learning Projects
+          </span>
+          <span class="course-status-badge" style="background: #e2e8f0; color: #64748b;">Upcoming</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">
+            <span class="course-check check-pending"></span>
+            Convolutional Neural Networks
+          </span>
+          <span class="course-status-badge" style="background: #e2e8f0; color: #64748b;">Upcoming</span>
+        </div>
+        <div class="course-item">
+          <span class="course-name">
+            <span class="course-check check-pending"></span>
+            Sequence Models
+          </span>
+          <span class="course-status-badge" style="background: #e2e8f0; color: #64748b;">Upcoming</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Other Certifications -->
+    <h2 class="section-title">📜 Other Certifications</h2>
+    <p class="section-subtitle">Individual courses from various providers</p>
+    
+    <div class="course-card">
+      <div class="provider-logo">🏛️</div>
+      <div class="course-details">
+        <h4 class="course-title">Financial Markets</h4>
+        <span class="course-provider">Yale University</span>
+        <span class="course-credential">Credential ID: DRB273ZAHLEV</span>
+      </div>
+      <div class="course-date">
+        <span class="month">Sep</span>
+        <span class="year">2025</span>
+      </div>
+    </div>
+    
+    <div class="course-card">
+      <div class="provider-logo">☁️</div>
+      <div class="course-details">
+        <h4 class="course-title">Generative AI with Large Language Models</h4>
+        <span class="course-provider">Amazon Web Services (AWS)</span>
+        <span class="course-credential">Credential ID: F8NKJRTR7IYW</span>
+      </div>
+      <div class="course-date">
+        <span class="month">Apr</span>
+        <span class="year">2025</span>
+      </div>
+    </div>
+    
+    <div class="course-card">
+      <div class="provider-logo">🐍</div>
+      <div class="course-details">
+        <h4 class="course-title">Python for Data Science, AI & Development</h4>
+        <span class="course-provider">IBM</span>
+        <span class="course-credential">Credential ID: ZLW01NQ8JQJV</span>
+      </div>
+      <div class="course-date">
+        <span class="month">Jan</span>
+        <span class="year">2025</span>
+      </div>
+    </div>
+
+  </div>
+  <script src="../js/darkmode.js"></script>
+</body>
+</html>

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skills Development | Current Work</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/darkmode.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #fbbf24 100%);
+      min-height: 100vh;
+      color: #1e293b;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+    
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateX(-4px);
+    }
+    
+    .hero-card {
+      background: white;
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    
+    .page-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .header-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+    }
+    
+    .header-icon svg {
+      width: 40px;
+      height: 40px;
+      color: white;
+    }
+    
+    .header-content h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+    
+    .header-content p {
+      font-size: 1.1rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+    
+    .stats-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 24px;
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      border-radius: 16px;
+    }
+    
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-right: 24px;
+      border-right: 2px solid #fcd34d;
+    }
+    
+    .stat-item:last-child { border-right: none; }
+    
+    .stat-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #d97706;
+    }
+    
+    .stat-label {
+      font-size: 0.875rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 20px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    /* Skills Categories */
+    .skills-section {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+    }
+    
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    
+    .category-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    
+    .category-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    
+    .skill-card {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    
+    .skill-card:hover {
+      background: #fffbeb;
+      border-color: #fcd34d;
+      transform: translateY(-2px);
+    }
+    
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    
+    .skill-name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    
+    .skill-level {
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    
+    .level-beginner {
+      background: #dcfce7;
+      color: #16a34a;
+    }
+    
+    .level-intermediate {
+      background: #fef3c7;
+      color: #d97706;
+    }
+    
+    .level-advanced {
+      background: #dbeafe;
+      color: #2563eb;
+    }
+    
+    .level-expert {
+      background: #ede9fe;
+      color: #7c3aed;
+    }
+    
+    .skill-progress {
+      margin-bottom: 12px;
+    }
+    
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    
+    .progress-label {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+    
+    .progress-value {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #d97706;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+    
+    .fill-python { background: linear-gradient(90deg, #3776ab, #306998); }
+    .fill-cpp { background: linear-gradient(90deg, #00599c, #004482); }
+    .fill-pytorch { background: linear-gradient(90deg, #ee4c2c, #d54424); }
+    .fill-ros { background: linear-gradient(90deg, #22314e, #0a7dbd); }
+    .fill-git { background: linear-gradient(90deg, #f05032, #de4c36); }
+    .fill-docker { background: linear-gradient(90deg, #2496ed, #1d8cd3); }
+    .fill-cuda { background: linear-gradient(90deg, #76b900, #5a9000); }
+    .fill-default { background: linear-gradient(90deg, #f59e0b, #d97706); }
+    
+    .skill-details {
+      font-size: 0.85rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+    
+    .skill-tag {
+      padding: 4px 10px;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+    
+    /* Learning Log */
+    .log-section {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    
+    .log-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+    
+    .log-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    
+    .log-week {
+      font-size: 0.9rem;
+      color: #d97706;
+      font-weight: 600;
+    }
+    
+    .log-entries {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .log-entry {
+      display: flex;
+      gap: 16px;
+      padding: 16px 20px;
+      background: #f8fafc;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    
+    .log-entry:hover {
+      background: #fffbeb;
+      transform: translateX(4px);
+    }
+    
+    .log-date {
+      flex-shrink: 0;
+      width: 60px;
+      text-align: center;
+    }
+    
+    .log-day {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #d97706;
+      line-height: 1;
+    }
+    
+    .log-month {
+      font-size: 0.7rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    
+    .log-content {
+      flex: 1;
+    }
+    
+    .log-skill {
+      font-size: 0.85rem;
+      color: #d97706;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .log-activity {
+      font-size: 0.95rem;
+      color: #1e293b;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .log-desc {
+      font-size: 0.85rem;
+      color: #64748b;
+      line-height: 1.5;
+    }
+    
+    .log-duration {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 12px;
+      background: #fef3c7;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #92400e;
+      flex-shrink: 0;
+      height: fit-content;
+    }
+    
+    /* Next Goals Card */
+    .goals-card {
+      background: linear-gradient(135deg, #78350f 0%, #92400e 50%, #b45309 100%);
+      border-radius: 20px;
+      padding: 32px;
+      color: white;
+      margin-top: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .goals-card::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .goals-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .goals-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .goals-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    
+    .goal-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .goal-item:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateX(4px);
+    }
+    
+    .goal-check {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .goal-text {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    /* Dark Mode */
+    body.dark-mode {
+      background: linear-gradient(135deg, #78350f 0%, #92400e 50%, #b45309 100%);
+    }
+    
+    body.dark-mode .hero-card,
+    body.dark-mode .skills-section,
+    body.dark-mode .log-section {
+      background: #78350f;
+    }
+    
+    body.dark-mode .header-content h1,
+    body.dark-mode .category-title,
+    body.dark-mode .skill-name,
+    body.dark-mode .log-title,
+    body.dark-mode .log-activity {
+      color: #fef3c7;
+    }
+    
+    body.dark-mode .stats-row {
+      background: linear-gradient(135deg, #92400e 0%, #b45309 100%);
+    }
+    
+    body.dark-mode .stat-item { border-color: #fbbf24; }
+    
+    body.dark-mode .skill-card {
+      background: #92400e;
+    }
+    
+    body.dark-mode .skill-card:hover {
+      background: #b45309;
+      border-color: #fbbf24;
+    }
+    
+    body.dark-mode .log-entry {
+      background: #92400e;
+    }
+    
+    body.dark-mode .log-entry:hover {
+      background: #b45309;
+    }
+    
+    body.dark-mode .skill-tag {
+      background: #78350f;
+      border-color: #fbbf24;
+      color: #fef3c7;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-card { padding: 32px 24px; }
+      .page-header { flex-direction: column; text-align: center; }
+      .header-content h1 { font-size: 2rem; }
+      .stats-row { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid #fcd34d; padding: 12px 0; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .log-entry { flex-direction: column; }
+      .log-date { width: 100%; text-align: left; display: flex; align-items: baseline; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav-bar">
+      <a href="current-work.html" class="back-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Back to Dashboard</span>
+      </a>
+    </nav>
+
+    <div class="hero-card">
+      <div class="page-header">
+        <div class="header-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <div class="header-content">
+          <h1>Skills Development</h1>
+          <p>Track my technical skill progression, practice logs, and continuous learning journey.</p>
+        </div>
+      </div>
+      
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-value">8</span>
+          <span class="stat-label">Active Skills</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">200+</span>
+          <span class="stat-label">Hours Practiced</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">3</span>
+          <span class="stat-label">New This Month</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">15</span>
+          <span class="stat-label">Projects Built</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Programming Languages -->
+    <div class="skills-section">
+      <div class="category-header">
+        <div class="category-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">💻</div>
+        <h3 class="category-title">Programming Languages</h3>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name">Python</span>
+            <span class="skill-level level-advanced">Advanced</span>
+          </div>
+          <div class="skill-progress">
+            <div class="progress-header">
+              <span class="progress-label">Proficiency</span>
+              <span class="progress-value">85%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill fill-python" style="width: 85%;"></div>
+            </div>
+          </div>
+          <p class="skill-details">Primary language for ML/AI development. Strong in NumPy, PyTorch, and data processing.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">FastAPI</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name">C++</span>
+            <span class="skill-level level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-progress">
+            <div class="progress-header">
+              <span class="progress-label">Proficiency</span>
+              <span class="progress-value">60%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill fill-cpp" style="width: 60%;"></div>
+            </div>
+          </div>
+          <p class="skill-details">Used for competitive programming and ROS2 development. Growing in STL and modern C++.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">STL</span>
+            <span class="skill-tag">OOP</span>
+            <span class="skill-tag">ROS2</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name">JavaScript</span>
+            <span class="skill-level level-beginner">Beginner</span>
+          </div>
+          <div class="skill-progress">
+            <div class="progress-header">
+              <span class="progress-label">Proficiency</span>
+              <span class="progress-value">35%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill fill-default" style="width: 35%;"></div>
+            </div>
+          </div>
+          <p class="skill-details">Basic web development for portfolio and interactive demos. Learning React basics.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">DOM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ML/AI Frameworks -->
+    <div class="skills-section">
+      <div class="category-header">
+        <div class="category-icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">🧠</div>
+        <h3 class="category-title">ML/AI Frameworks</h3>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name">PyTorch</span>
+            <span class="skill-level level-advanced">Advanced</span>
+          </div>
+          <div class="skill-progress">
+            <div class="progress-header">
+              <span class="progress-label">Proficiency</span>
+              <span class="progress-value">80%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill fill-pytorch" style="width: 80%;"></div>
+            </div>
+          </div>
+          <p class="skill-details">Primary framework for deep learning. Built AxiomML, trained RL agents, implemented CNNs.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Neural Networks</span>
+            <span class="skill-tag">RL</span>
+            <span class="skill-tag">Custom Layers</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name">LangChain</span>
+            <span class="skill-level level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-progress">
+            <div class="progress-header">
+              <span class="progress-label">Proficiency</span>
+              <span class="progress-value">55%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill fill-default" style="width: 55%;"></div>
+            </div>
+          </div>
+          <p class="skill-details">Building RAG pipelines and multi-agent systems for Inter IIT Pathway project.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">RAG</span>
+            <span class="skill-tag">Agents</span>
+            <span class="skill-tag">Chains</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools & Technologies -->
+    <div class="skills-section">
+      <div class="category-header">
+        <div class="category-icon" style="background: linear-gradient(135deg, #10b981, #059669);">🛠️</div>
+        <h3 class="category-title">Tools & Technologies</h3>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name">ROS2</span>
+            <span class="skill-level level-intermediate">Intermediate</span>
+          </div>
+          <div class="skill-progress">
+            <div class="progress-header">
+              <span class="progress-label">Proficiency</span>
+              <span class="progress-value">55%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill fill-ros" style="width: 55%;"></div>
+            </div>
+          </div>
+          <p class="skill-details">Robotics middleware for GRASP project. Working on nodes, services, actions.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Nodes</span>
+            <span class="skill-tag">Topics</span>
+            <span class="skill-tag">TF2</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name">Git/GitHub</span>
+            <span class="skill-level level-advanced">Advanced</span>
+          </div>
+          <div class="skill-progress">
+            <div class="progress-header">
+              <span class="progress-label">Proficiency</span>
+              <span class="progress-value">75%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill fill-git" style="width: 75%;"></div>
+            </div>
+          </div>
+          <p class="skill-details">Version control for all projects. Comfortable with branching, PRs, and collaboration.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Branching</span>
+            <span class="skill-tag">PRs</span>
+            <span class="skill-tag">Actions</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-header">
+            <span class="skill-name">CUDA</span>
+            <span class="skill-level level-beginner">Learning</span>
+          </div>
+          <div class="skill-progress">
+            <div class="progress-header">
+              <span class="progress-label">Proficiency</span>
+              <span class="progress-value">20%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill fill-cuda" style="width: 20%;"></div>
+            </div>
+          </div>
+          <p class="skill-details">GPU programming for deep learning acceleration. Starting course in Feb 2026.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">GPU</span>
+            <span class="skill-tag">Kernels</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Learning Log -->
+    <div class="log-section">
+      <div class="log-header">
+        <h3 class="log-title">📅 Recent Practice Log</h3>
+        <span class="log-week">Week of Jan 6, 2026</span>
+      </div>
+      <div class="log-entries">
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-day">06</span>
+            <span class="log-month">Jan</span>
+          </div>
+          <div class="log-content">
+            <span class="log-skill">ROS2</span>
+            <p class="log-activity">Services & Actions Deep Dive</p>
+            <p class="log-desc">Implemented custom service and action servers for robot arm control simulation</p>
+          </div>
+          <span class="log-duration">⏱️ 3h</span>
+        </div>
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-day">05</span>
+            <span class="log-month">Jan</span>
+          </div>
+          <div class="log-content">
+            <span class="log-skill">PyTorch</span>
+            <p class="log-activity">Custom Loss Functions</p>
+            <p class="log-desc">Implemented contrastive loss for object-centric representations in GRASP</p>
+          </div>
+          <span class="log-duration">⏱️ 4h</span>
+        </div>
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-day">04</span>
+            <span class="log-month">Jan</span>
+          </div>
+          <div class="log-content">
+            <span class="log-skill">LangChain</span>
+            <p class="log-activity">Multi-Agent Coordination</p>
+            <p class="log-desc">Built agent orchestration for Pathway project's financial analysis system</p>
+          </div>
+          <span class="log-duration">⏱️ 5h</span>
+        </div>
+        <div class="log-entry">
+          <div class="log-date">
+            <span class="log-day">03</span>
+            <span class="log-month">Jan</span>
+          </div>
+          <div class="log-content">
+            <span class="log-skill">Python</span>
+            <p class="log-activity">Brian2 Neural Simulations</p>
+            <p class="log-desc">Implemented predictive coding network using spiking neuron models</p>
+          </div>
+          <span class="log-duration">⏱️ 3h</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Next Learning Goals -->
+    <div class="goals-card">
+      <div class="goals-content">
+        <h3 class="goals-title">🎯 Next Learning Goals</h3>
+        <div class="goals-list">
+          <div class="goal-item">
+            <div class="goal-check">○</div>
+            <span class="goal-text">Complete ROS2 TF2 & URDF</span>
+          </div>
+          <div class="goal-item">
+            <div class="goal-check">○</div>
+            <span class="goal-text">Start CUDA programming</span>
+          </div>
+          <div class="goal-item">
+            <div class="goal-check">○</div>
+            <span class="goal-text">Master Transformer architecture</span>
+          </div>
+          <div class="goal-item">
+            <div class="goal-check">○</div>
+            <span class="goal-text">Learn Docker for deployment</span>
+          </div>
+          <div class="goal-item">
+            <div class="goal-check">○</div>
+            <span class="goal-text">Implement PPO from scratch</span>
+          </div>
+          <div class="goal-item">
+            <div class="goal-check">○</div>
+            <span class="goal-text">Build end-to-end ML pipeline</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../js/darkmode.js"></script>
+</body>
+</html>

@@ -1,0 +1,1268 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage[most]{tcolorbox}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\setlength{\headheight}{13.59999pt}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{CS224N NLP Study Schedule}
+\lhead{\leftmark}
+\cfoot{\thepage}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{blue!70!black}}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{blue!50!black}}
+  {\thesubsection}{1em}{}
+
+\newtcolorbox{weekbox}[1]{
+  colback=blue!5!white,
+  colframe=blue!75!black,
+  fonttitle=\bfseries,
+  title=#1
+}
+
+\newtcolorbox{assignmentbox}{
+  colback=red!5!white,
+  colframe=red!75!black,
+  fonttitle=\bfseries,
+  title=Assignment Due
+}
+
+\newtcolorbox{projectbox}{
+  colback=green!5!white,
+  colframe=green!75!black,
+  fonttitle=\bfseries,
+  title=Practice Project
+}
+
+\title{\textbf{CS224N: Natural Language Processing with Deep Learning}\\
+\Large Complete Study Schedule}
+\author{Based on Stanford CS224N Winter 2021/2023 by Aryan Jain for his own use}
+\date{12-Week Intensive Learning Plan}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{abstract}
+This comprehensive study plan covers Stanford's CS224N course on Natural Language Processing with Deep Learning. The schedule includes all lecture videos, official assignments, reading materials, and additional practice projects to achieve fluency in NLP. Total estimated time: 12 weeks of dedicated study (15-20 hours/week).
+\end{abstract}
+
+\vspace{1em}
+\noindent\textbf{Course Website:} \url{https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1214/}
+
+\noindent\textbf{Video Playlist:} Stanford CS224N YouTube (Winter 2021 \& 2023 lectures)
+
+\tableofcontents
+\newpage
+
+\section{Prerequisites \& Setup (Week 0 - Optional)}
+
+\subsection{Required Knowledge}
+Before starting, ensure you have:
+\begin{itemize}
+    \item Proficiency in Python (NumPy basics)
+    \item Linear Algebra and Calculus fundamentals
+    \item Basic Probability and Statistics
+    \item Machine Learning basics (optional but helpful)
+\end{itemize}
+
+\subsection{Environment Setup}
+\begin{enumerate}
+    \item Install Python 3.8+ with Anaconda/Miniconda
+    \item Set up PyTorch: \url{https://pytorch.org/}
+    \item Install required libraries: \texttt{numpy, matplotlib, jupyter}
+    \item Create GitHub repository for your assignments
+    \item Watch: \textbf{Python Tutorial (Video 19)} - 47:14
+    \item Watch: \textbf{PyTorch Tutorial (Video 20)} - 47:01
+    \item Watch: \textbf{Hugging Face Tutorial (Video 21)} - 47:57
+\end{enumerate}
+
+\subsection{Reference Textbooks}
+\begin{itemize}
+    \item Jurafsky \& Martin: \textit{Speech and Language Processing} (free online)
+    \item Goodfellow et al.: \textit{Deep Learning} (free online)
+    \item Goldberg: \textit{A Primer on Neural Network Models for NLP}
+\end{itemize}
+
+\newpage
+
+\section{Week 1: Word Vectors \& Foundations}
+
+\begin{weekbox}{Week 1 Goals}
+Understand word embeddings, word2vec, and foundational concepts in representing language numerically.
+\end{weekbox}
+
+\subsection{Day 1-2: Introduction \& Word Vectors}
+\textbf{Video:} Lecture 1 - Intro \& Word Vectors (1:24:27)
+\begin{itemize}
+    \item Topics: Motivation, word meaning, word2vec, skip-gram model
+    \item Slides: \url{https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1214/} (Jan 12)
+    \item Lecture Notes available on course website
+\end{itemize}
+
+\textbf{Readings:}
+\begin{itemize}
+    \item Efficient Estimation of Word Representations in Vector Space (word2vec paper)
+    \item Distributed Representations of Words and Phrases (negative sampling)
+\end{itemize}
+
+\textbf{Practice:}
+\begin{itemize}
+    \item Download Gensim word vectors example code
+    \item Experiment with pre-trained word embeddings
+    \item Visualize word similarities using t-SNE
+\end{itemize}
+
+\subsection{Day 3-4: Word Vectors 2 \& Word Window Classification}
+\textbf{Video:} Lecture 2 - Neural Classifiers (1:15:18)
+\begin{itemize}
+    \item Topics: GloVe, evaluation methods, word window classification
+    \item Slides available (Jan 14)
+\end{itemize}
+
+\textbf{Readings:}
+\begin{itemize}
+    \item GloVe: Global Vectors for Word Representation
+    \item Improving Distributional Similarity with Lessons Learned from Word Embeddings
+\end{itemize}
+
+\subsection{Day 5-7: Assignment Work}
+\begin{assignmentbox}
+\textbf{Assignment 1: Introduction to Word Vectors (6\%)}\\
+Download from course website, complete all written and coding sections.\\
+Expected time: 8-12 hours
+\end{assignmentbox}
+
+\begin{projectbox}
+\textbf{Mini-Project 1: Word Analogy Explorer}
+\begin{itemize}
+    \item Build tool to explore word analogies (e.g., king - man + woman = queen)
+    \item Test on multiple pre-trained embeddings (Word2Vec, GloVe, FastText)
+    \item Visualize embedding spaces for different domains
+    \item \textbf{Time: 4-6 hours}
+\end{itemize}
+\end{projectbox}
+
+\newpage
+
+\section{Week 2: Neural Networks \& Backpropagation}
+
+\begin{weekbox}{Week 2 Goals}
+Master backpropagation, neural network foundations, and implement word2vec from scratch.
+\end{weekbox}
+
+\subsection{Day 1-2: Backprop \& Neural Networks}
+\textbf{Video:} Lecture 3 - Backprop and Neural Networks (1:22:29)
+\begin{itemize}
+    \item Topics: Neural networks, matrix calculus, backpropagation algorithm
+    \item Review CS231n notes on backprop
+\end{itemize}
+
+\textbf{Readings:}
+\begin{itemize}
+    \item Matrix calculus notes (course materials)
+    \item CS231n notes on network architectures
+    \item Learning Representations by Backpropagating Errors (Rumelhart et al.)
+    \item "Yes you should understand backprop" (blog post)
+\end{itemize}
+
+\textbf{Practice:}
+\begin{itemize}
+    \item Derive gradients for simple neural networks manually
+    \item Implement backprop from scratch (no PyTorch autodiff)
+    \item Verify gradients using numerical gradient checking
+\end{itemize}
+
+\subsection{Day 3-7: Assignment Work}
+\begin{assignmentbox}
+\textbf{Assignment 2: word2vec Implementation (12\%)}\\
+Implement word2vec algorithm with derivatives and training loop.\\
+Expected time: 15-20 hours
+\end{assignmentbox}
+
+\textbf{Key Tasks:}
+\begin{itemize}
+    \item Derive gradients for skip-gram model
+    \item Implement negative sampling
+    \item Train on small corpus and evaluate
+    \item Analyze learned embeddings
+\end{itemize}
+
+\newpage
+
+\section{Week 3: Dependency Parsing \& RNN Foundations}
+
+\begin{weekbox}{Week 3 Goals}
+Understand syntactic structure, dependency parsing, and begin sequence modeling with RNNs.
+\end{weekbox}
+
+\subsection{Day 1-2: Dependency Parsing}
+\textbf{Video:} Lecture 4 - Syntactic Structure \& Dependency Parsing (1:21:22)
+\begin{itemize}
+    \item Topics: Constituency vs. dependency, transition-based parsing, neural parsers
+    \item Study annotated slides for detailed explanations
+\end{itemize}
+
+\textbf{Readings:}
+\begin{itemize}
+    \item Incrementality in Deterministic Dependency Parsing
+    \item A Fast and Accurate Dependency Parser using Neural Networks
+    \item Universal Dependencies website
+\end{itemize}
+
+\subsection{Day 3-4: Recurrent Neural Networks Introduction}
+\textbf{Video:} Lecture 5 - Recurrent Neural Networks (1:19:18)
+\begin{itemize}
+    \item Topics: Language modeling, RNN architecture, backpropagation through time
+    \item Understand why RNNs are needed for sequences
+\end{itemize}
+
+\textbf{Readings:}
+\begin{itemize}
+    \item N-gram Language Models (Jurafsky \& Martin chapter)
+    \item The Unreasonable Effectiveness of RNNs (Karpathy blog)
+    \item Sequence Modeling chapters from Deep Learning book (10.1, 10.2)
+\end{itemize}
+
+\subsection{Day 5-7: Assignment Work}
+\begin{assignmentbox}
+\textbf{Assignment 3: Dependency Parsing \& Neural Networks (12\%)}\\
+Build neural dependency parser using PyTorch.\\
+Expected time: 15-20 hours
+\end{assignmentbox}
+
+\begin{projectbox}
+\textbf{Mini-Project 2: Character-Level Language Model}
+\begin{itemize}
+    \item Implement character-level RNN for text generation
+    \item Train on Shakespeare or other literary corpus
+    \item Generate text samples at different temperatures
+    \item Compare vanilla RNN vs. LSTM performance
+    \item \textbf{Time: 6-8 hours}
+\end{itemize}
+\end{projectbox}
+
+\newpage
+
+\section{Week 4: Advanced RNNs \& Sequence-to-Sequence}
+
+\begin{weekbox}{Week 4 Goals}
+Master LSTM/GRU architectures, understand vanishing gradients, and learn seq2seq models.
+\end{weekbox}
+
+\subsection{Day 1-2: LSTMs \& Vanishing Gradients}
+\textbf{Video:} Lecture 6 - Simple and LSTM RNNs (1:21:38)
+\begin{itemize}
+    \item Topics: Vanishing/exploding gradients, LSTM, GRU, bidirectional RNNs
+    \item Study LSTM cell diagram carefully
+\end{itemize}
+
+\textbf{Readings:}
+\begin{itemize}
+    \item Understanding LSTM Networks (colah's blog - essential!)
+    \item Learning long-term dependencies is difficult (original vanishing gradient paper)
+    \item On the difficulty of training RNNs (proof of vanishing gradient)
+    \item Vanishing Gradients Jupyter Notebook
+\end{itemize}
+
+\subsection{Day 3-4: Machine Translation \& Seq2Seq}
+\textbf{Video:} Lecture 7 - Translation, Seq2Seq, Attention (1:18:55)
+\begin{itemize}
+    \item Topics: Machine translation, encoder-decoder, attention mechanism
+    \item Understand bottleneck problem in vanilla seq2seq
+\end{itemize}
+
+\textbf{Readings:}
+\begin{itemize}
+    \item Sequence to Sequence Learning with Neural Networks (original paper)
+    \item Neural Machine Translation by Jointly Learning to Align and Translate (attention)
+    \item Attention and Augmented RNNs (Distill blog post)
+    \item BLEU metric paper
+\end{itemize}
+
+\subsection{Day 5-7: Deep Dive}
+\textbf{Practice:}
+\begin{itemize}
+    \item Implement attention mechanism from scratch
+    \item Visualize attention weights for translation examples
+    \item Compare different attention mechanisms (additive vs. multiplicative)
+\end{itemize}
+
+\textbf{Additional Reading:}
+\begin{itemize}
+    \item Statistical Machine Translation (Koehn book chapters)
+    \item Massive Exploration of NMT Architectures (practical advice)
+\end{itemize}
+
+\newpage
+
+\section{Week 5: Neural Machine Translation Assignment}
+
+\begin{weekbox}{Week 5 Goals}
+Build complete neural machine translation system with attention and subword modeling.
+\end{weekbox}
+
+\subsection{Full Week: Assignment 4}
+\begin{assignmentbox}
+\textbf{Assignment 4: Neural Machine Translation (12\%)}\\
+Implement seq2seq with attention for translation task.\\
+Expected time: 20-25 hours (most intensive assignment)
+\end{assignmentbox}
+
+\textbf{Components:}
+\begin{enumerate}
+    \item Encoder-decoder architecture
+    \item Attention mechanism implementation
+    \item Subword modeling (BPE or WordPiece)
+    \item Training on translation dataset
+    \item Evaluation using BLEU score
+    \item Analysis of attention visualizations
+\end{enumerate}
+
+\textbf{Additional Readings:}
+\begin{itemize}
+    \item Achieving Open Vocabulary NMT with Hybrid Word-Character Models
+    \item Revisiting Character-Based NMT
+    \item Azure GPU setup guide (if needed for training)
+\end{itemize}
+
+\textbf{Tips:}
+\begin{itemize}
+    \item Start early - this is the longest assignment
+    \item Use GPU for training (Google Colab or Azure)
+    \item Debug with small dataset first
+    \item Monitor training curves closely
+\end{itemize}
+
+\newpage
+
+\section{Week 6: Transformers Revolution}
+
+\begin{weekbox}{Week 6 Goals}
+Understand transformer architecture, self-attention mechanism, and why transformers replaced RNNs.
+\end{weekbox}
+
+\subsection{Day 1-3: Transformer Architecture}
+\textbf{Video:} Lecture 8 - Self-Attention and Transformers (1:17:04)
+\begin{itemize}
+    \item Topics: Self-attention, multi-head attention, positional encoding, transformer blocks
+    \item Guest lecture by John Hewitt
+    \item This is one of the most important lectures!
+\end{itemize}
+
+\textbf{Readings (Critical):}
+\begin{itemize}
+    \item \textbf{Attention Is All You Need} (original transformer paper - read carefully!)
+    \item The Illustrated Transformer (Jay Alammar blog - highly visual)
+    \item Transformer (Google AI blog post)
+    \item Layer Normalization paper
+\end{itemize}
+
+\textbf{Practice:}
+\begin{itemize}
+    \item Implement scaled dot-product attention from scratch
+    \item Implement multi-head attention
+    \item Understand positional encoding mathematics
+    \item Compare transformer complexity with RNN
+\end{itemize}
+
+\subsection{Day 4-5: Transformers in Practice}
+\textbf{Video:} Lecture 9 - Pretraining (1:18:46) [2023 version]
+\begin{itemize}
+    \item Topics: Pretraining objectives, BERT, GPT, transfer learning
+    \item Guest lecture by John Hewitt
+\end{itemize}
+
+\textbf{Readings:}
+\begin{itemize}
+    \item BERT: Pre-training of Deep Bidirectional Transformers
+    \item The Illustrated BERT, ELMo, and co. (Jay Alammar)
+    \item Contextual Word Representations: A Contextual Introduction
+\end{itemize}
+
+\subsection{Day 6-7: Extended Applications}
+\textbf{Optional Deep Dives:}
+\begin{itemize}
+    \item Image Transformer paper
+    \item Music Transformer paper
+    \item Apply transformers beyond NLP
+\end{itemize}
+
+\begin{projectbox}
+\textbf{Mini-Project 3: Mini-Transformer from Scratch}
+\begin{itemize}
+    \item Implement simplified transformer for sentiment analysis
+    \item No libraries - build attention, FFN, layer norm manually
+    \item Train on IMDB or similar dataset
+    \item Compare with LSTM baseline
+    \item \textbf{Time: 10-12 hours}
+\end{itemize}
+\end{projectbox}
+
+\newpage
+
+\section{Week 7: Pretraining \& Fine-tuning}
+
+\begin{weekbox}{Week 7 Goals}
+Master transfer learning with transformers, understand BERT/GPT paradigms, and implement fine-tuning.
+\end{weekbox}
+
+\subsection{Day 1-2: Deep Dive on Pretraining}
+Review Lecture 9 if needed, focus on:
+\begin{itemize}
+    \item Masked Language Modeling (MLM)
+    \item Next Sentence Prediction (NSP)
+    \item Causal Language Modeling (CLM)
+    \item Understanding pretraining vs. fine-tuning
+\end{itemize}
+
+\subsection{Day 3-7: Assignment Work}
+\begin{assignmentbox}
+\textbf{Assignment 5: Self-Supervised Learning \& Fine-tuning (12\%)}\\
+Fine-tune BERT for downstream NLP tasks.\\
+Expected time: 15-20 hours
+\end{assignmentbox}
+
+\textbf{Tasks:}
+\begin{enumerate}
+    \item Load pretrained BERT model
+    \item Fine-tune for text classification
+    \item Fine-tune for named entity recognition
+    \item Analyze learned representations
+    \item Compare different pretrained models
+\end{enumerate}
+
+\textbf{Hugging Face Tutorial:}
+\begin{itemize}
+    \item Re-watch Video 21 - Hugging Face Tutorial (47:57)
+    \item Practice with \texttt{transformers} library
+    \item Explore model hub and datasets
+\end{itemize}
+
+\begin{projectbox}
+\textbf{Mini-Project 4: Multi-Task Fine-tuning}
+\begin{itemize}
+    \item Fine-tune single model for multiple tasks
+    \item Tasks: sentiment, NER, question classification
+    \item Compare multi-task vs. single-task performance
+    \item Implement task-specific heads
+    \item \textbf{Time: 8-10 hours}
+\end{itemize}
+\end{projectbox}
+
+\newpage
+
+\section{Week 8: Question Answering \& Advanced Topics}
+
+\begin{weekbox}{Week 8 Goals}
+Understand QA systems, explore advanced architectures, and begin final project planning.
+\end{weekbox}
+
+\subsection{Day 1-2: Question Answering}
+\textbf{Video:} Lecture 12 - Question Answering (1:51:53)
+\begin{itemize}
+    \item Topics: SQuAD dataset, extractive QA, BiDAF, BERT for QA
+    \item Guest lecture by Danqi Chen
+    \item Longest lecture - take notes carefully
+\end{itemize}
+
+\textbf{Readings:}
+\begin{itemize}
+    \item SQuAD: 100,000+ Questions for Machine Comprehension of Text
+    \item Bidirectional Attention Flow for Machine Comprehension
+    \item Reading Wikipedia to Answer Open-Domain Questions
+    \item Dense Passage Retrieval for Open-Domain Question Answering
+\end{itemize}
+
+\subsection{Day 3-4: Prompting \& RLHF}
+\textbf{Video:} Lecture 10 - Prompting, RLHF (1:16:15) [2023 version]
+\begin{itemize}
+    \item Topics: In-context learning, few-shot prompting, RLHF, instruction tuning
+    \item Modern LLM techniques
+\end{itemize}
+
+\textbf{Practice:}
+\begin{itemize}
+    \item Experiment with GPT-3/4 API for few-shot learning
+    \item Design effective prompts for various tasks
+    \item Compare zero-shot vs. few-shot performance
+\end{itemize}
+
+\subsection{Day 5-7: Final Project Preparation}
+\textbf{Video:} Lecture (Practical Tips) - Project Planning
+\begin{itemize}
+    \item Review project guidelines
+    \item Choose between Default (SQuAD) or Custom project
+    \item Form team if desired (1-3 people)
+\end{itemize}
+
+\textbf{Default Project Options:}
+\begin{enumerate}
+    \item IID SQuAD track - standard QA
+    \item Robust QA track - out-of-distribution challenges
+\end{enumerate}
+
+\textbf{Custom Project Ideas:}
+\begin{itemize}
+    \item Multilingual NLP
+    \item Low-resource language processing
+    \item Multimodal learning (text + images)
+    \item Specific domain applications (medical, legal, financial)
+    \item Code generation or program synthesis
+\end{itemize}
+
+\newpage
+
+\section{Week 9: Natural Language Generation \& Coreference}
+
+\begin{weekbox}{Week 9 Goals}
+Master text generation techniques, understand coreference resolution, and start final project.
+\end{weekbox}
+
+\subsection{Day 1-2: Natural Language Generation}
+\textbf{Video:} Lecture 11 - Natural Language Generation (1:18:25) [2023 version]
+\begin{itemize}
+    \item Topics: Decoding strategies, beam search, nucleus sampling, evaluation metrics
+    \item Guest lecture by Antoine Bosselut
+\end{itemize}
+
+\textbf{Readings:}
+\begin{itemize}
+    \item The Curious Case of Neural Text Degeneration
+    \item Get To The Point: Summarization with Pointer-Generator Networks
+    \item Hierarchical Neural Story Generation
+    \item How NOT To Evaluate Your Dialogue System
+\end{itemize}
+
+\textbf{Practice:}
+\begin{itemize}
+    \item Implement different decoding strategies
+    \item Compare greedy, beam search, top-k, nucleus sampling
+    \item Generate text with different temperatures
+    \item Evaluate generation quality (BLEU, ROUGE, perplexity)
+\end{itemize}
+
+\subsection{Day 3-4: Coreference Resolution}
+\textbf{Video:} Lecture 13 - Coreference Resolution (1:21:46)
+\begin{itemize}
+    \item Topics: Mention detection, coreference models, neural approaches
+    \item Important for understanding document-level NLP
+\end{itemize}
+
+\textbf{Readings:}
+\begin{itemize}
+    \item Coreference Resolution chapter (Jurafsky \& Martin)
+    \item End-to-end Neural Coreference Resolution
+\end{itemize}
+
+\subsection{Day 5-7: Project Proposal}
+\begin{assignmentbox}
+\textbf{Project Proposal Due (5\%)}\\
+Submit 1-2 page proposal outlining your project.
+\end{assignmentbox}
+
+\textbf{Proposal Contents:}
+\begin{enumerate}
+    \item Problem statement and motivation
+    \item Related work (3-5 papers)
+    \item Proposed approach
+    \item Datasets and evaluation metrics
+    \item Timeline and milestones
+    \item Team member responsibilities
+\end{enumerate}
+
+\newpage
+
+\section{Week 10: Specialized Topics \& Project Work}
+
+\begin{weekbox}{Week 10 Goals}
+Explore cutting-edge topics, work on project implementation, and deepen practical skills.
+\end{weekbox}
+
+\subsection{Day 1: Large Language Models}
+\textbf{Video:} Lecture - T5 and Large Language Models (guest lecture by Colin Raffel)
+\begin{itemize}
+    \item Topics: T5 architecture, scaling laws, emergent abilities
+    \item The good, the bad, and the ugly of LLMs
+\end{itemize}
+
+\textbf{Reading:}
+\begin{itemize}
+    \item Exploring the Limits of Transfer Learning with T5
+\end{itemize}
+
+\subsection{Day 2: Knowledge in Language Models}
+\textbf{Video:} Lecture 15 - Add Knowledge to Language Models (1:17:25)
+\begin{itemize}
+    \item Topics: Knowledge graphs, entity linking, knowledge-enhanced LMs
+    \item Guest lecture by Megan Leszczynski
+\end{itemize}
+
+\textbf{Readings:}
+\begin{itemize}
+    \item ERNIE: Enhanced Language Representation with Informative Entities
+    \item Language Models as Knowledge Bases?
+    \item Pretrained Encyclopedia
+\end{itemize}
+
+\subsection{Day 3: Multimodal Deep Learning}
+\textbf{Video:} Lecture 16 - Multimodal Deep Learning (1:18:23) [2023]
+\begin{itemize}
+    \item Topics: Vision + language, CLIP, image captioning, VQA
+    \item Guest lecture by Douwe Kiela
+\end{itemize}
+
+\subsection{Day 4: Code Generation}
+\textbf{Video:} Lecture - Code Generation (1:17:57) [2023]
+\begin{itemize}
+    \item Topics: Program synthesis, Codex, code understanding
+    \item Modern applications of NLP to programming
+\end{itemize}
+
+\subsection{Day 5-7: Project Implementation}
+\textbf{Focus on:}
+\begin{itemize}
+    \item Data collection and preprocessing
+    \item Baseline model implementation
+    \item Initial experiments and debugging
+    \item Setting up evaluation pipeline
+\end{itemize}
+
+\newpage
+
+\section{Week 11: Ethics, Analysis \& Project Milestone}
+
+\begin{weekbox}{Week 11 Goals}
+Understand ethical considerations, model interpretability, and complete project milestone.
+\end{weekbox}
+
+\subsection{Day 1: Social \& Ethical Considerations}
+\textbf{Video:} Lecture - Social \& Ethical Considerations (guest lecture by Yulia Tsvetkov)
+\begin{itemize}
+    \item Topics: Bias in NLP, fairness, privacy, dual use
+    \item Critical lecture for responsible AI
+\end{itemize}
+
+\textbf{Discussion Topics:}
+\begin{itemize}
+    \item Bias in word embeddings
+    \item Toxicity in language models
+    \item Privacy concerns with large corpora
+    \item Environmental impact of training
+\end{itemize}
+
+\subsection{Day 2: NLP \& Linguistics}
+\textbf{Video:} Lecture 14 - Insights between NLP and Linguistics (1:19:32) [2023]
+\begin{itemize}
+    \item Topics: Linguistic structure in neural models, probing tasks
+    \item Bridge between linguistics and deep learning
+\end{itemize}
+
+\subsection{Day 3: Model Analysis \& Explanation}
+\textbf{Video:} Lecture 17 - Model Analysis and Explanation (1:17:11)
+\begin{itemize}
+    \item Topics: Interpretability, attention analysis, probing classifiers
+    \item Guest lecture by John Hewitt
+\end{itemize}
+
+\textbf{Video:} Lecture - Model Interpretability \& Editing (1:11:42) [2023]
+\begin{itemize}
+    \item Guest lecture by Been Kim
+    \item Modern interpretability methods
+\end{itemize}
+
+\subsection{Day 4-7: Project Milestone}
+\begin{assignmentbox}
+\textbf{Project Milestone Due (5\%)}\\
+Submit progress report with preliminary results.
+\end{assignmentbox}
+
+\textbf{Milestone Contents:}
+\begin{enumerate}
+    \item Summary of work completed
+    \item Preliminary results and analysis
+    \item Challenges encountered
+    \item Updated timeline for remaining work
+    \item Example outputs or visualizations
+\end{enumerate}
+
+\begin{projectbox}
+\textbf{Mini-Project 5: Model Interpretability Study}
+\begin{itemize}
+    \item Take your fine-tuned model from Assignment 5
+    \item Implement attention visualization
+    \item Create probing classifiers for linguistic features
+    \item Analyze what the model learned
+    \item \textbf{Time: 6-8 hours}
+\end{itemize}
+\end{projectbox}
+
+\newpage
+
+\section{Week 12: Future of NLP \& Final Project}
+
+\begin{weekbox}{Week 12 Goals}
+Complete final project, prepare comprehensive report, and look toward future of NLP.
+\end{weekbox}
+
+\subsection{Day 1: Future of NLP}
+\textbf{Video:} Lecture 18 - Future of NLP + Deep Learning (1:20:06)
+\begin{itemize}
+    \item Topics: Open problems, research directions, career paths
+    \item Guest lecture by Shikhar Murty
+    \item Inspirational conclusion to the course
+\end{itemize}
+
+\textbf{Reflect on:}
+\begin{itemize}
+    \item What you've learned
+    \item Remaining gaps in knowledge
+    \item Areas of interest for deeper study
+    \item Potential research or project ideas
+\end{itemize}
+
+\subsection{Day 2-5: Final Project Sprint}
+\textbf{Focus Areas:}
+\begin{enumerate}
+    \item Complete all experiments
+    \item Run ablation studies
+    \item Finalize evaluation metrics
+    \item Create visualizations and tables
+    \item Compare with baselines and related work
+\end{enumerate}
+
+\subsection{Day 6-7: Project Report Writing}
+\begin{assignmentbox}
+\textbf{Final Project Report Due (30\%)}\\
+8-10 page report in NeurIPS format.
+\end{assignmentbox}
+
+\textbf{Report Structure:}
+\begin{enumerate}
+    \item \textbf{Abstract} (150-200 words)
+    \item \textbf{Introduction} (1 page)
+    \begin{itemize}
+        \item Problem motivation
+        \item Research questions
+        \item Contributions
+    \end{itemize}
+    \item \textbf{Related Work} (1-1.5 pages)
+    \begin{itemize}
+        \item Survey of relevant papers
+        \item Position your work
+    \end{itemize}
+    \item \textbf{Approach} (2-3 pages)
+    \begin{itemize}
+        \item Model architecture
+        \item Training procedure
+        \item Hyperparameters
+    \end{itemize}
+    \item \textbf{Experiments} (2-3 pages)
+    \begin{itemize}
+        \item Dataset description
+        \item Evaluation metrics
+        \item Baselines
+        \item Results tables and figures
+    \end{itemize}
+    \item \textbf{Analysis} (1 page)
+    \begin{itemize}
+        \item Error analysis
+        \item Ablation studies
+        \item Case studies
+    \end{itemize}
+    \item \textbf{Conclusion} (0.5 pages)
+    \begin{itemize}
+        \item Summary
+        \item Limitations
+        \item Future work
+    \end{itemize}
+    \item \textbf{References}
+\end{enumerate}
+
+\textbf{Also Submit:}
+\begin{itemize}
+    \item Project summary image and paragraph (3\%)
+    \item Source code (GitHub repository)
+    \item Trained models (if applicable)
+\end{itemize}
+
+\newpage
+
+\section{Additional Practice Projects \& Extensions}
+
+\subsection{Advanced Practice Projects}
+
+\subsubsection{Project A: Build Your Own Tokenizer}
+\begin{itemize}
+    \item Implement BPE (Byte Pair Encoding) from scratch
+    \item Implement WordPiece tokenization
+    \item Compare with SentencePiece
+    \item Analyze vocabulary size vs. performance tradeoffs
+    \item \textbf{Time: 8-10 hours}
+\end{itemize}
+
+\subsubsection{Project B: Sentiment Analysis Pipeline}
+\begin{itemize}
+    \item Build end-to-end pipeline: data collection → training → deployment
+    \item Scrape Twitter/Reddit data
+    \item Train multiple models (LSTM, BERT, RoBERTa)
+    \item Create REST API for inference
+    \item Build simple web interface
+    \item \textbf{Time: 15-20 hours}
+\end{itemize}
+
+\subsubsection{Project C: Neural Machine Translation System}
+\begin{itemize}
+    \item Extend Assignment 4 to full production system
+    \item Implement beam search decoding
+    \item Add ensemble methods
+    \item Create translation API
+    \item Compare transformer vs. RNN+attention
+    \item \textbf{Time: 20-25 hours}
+\end{itemize}
+
+\subsubsection{Project D: Document Summarization}
+\begin{itemize}
+    \item Implement extractive summarization (TextRank)
+    \item Implement abstractive summarization (T5/BART)
+    \item Train on CNN/DailyMail dataset
+    \item Evaluate with ROUGE scores
+    \item Build demo application
+    \item \textbf{Time: 15-18 hours}
+\end{itemize}
+
+\subsubsection{Project E: Named Entity Recognition}
+\begin{itemize}
+    \item Implement CRF-based NER
+    \item Fine-tune BERT for NER
+    \item Train on CoNLL-2003 dataset
+    \item Create custom entity types
+    \item Build annotation tool
+    \item \textbf{Time: 12-15 hours}
+\end{itemize}
+
+\subsubsection{Project F: Conversational Chatbot}
+\begin{itemize}
+    \item Build retrieval-based chatbot
+    \item Implement generative chatbot with GPT
+    \item Create dialogue management system
+    \item Add context tracking
+    \item Deploy on Telegram/Discord
+    \item \textbf{Time: 20-25 hours}
+\end{itemize}
+
+\newpage
+
+\section{Weekly Time Commitment \& Study Tips}
+
+\subsection{Expected Time Investment}
+\begin{table}[h]
+\centering
+\begin{tabular}{lc}
+\toprule
+\textbf{Activity} & \textbf{Hours/Week} \\
+\midrule
+Lecture videos (2-3 per week) & 3-5 hours \\
+Reading papers and notes & 4-6 hours \\
+Official assignments (when assigned) & 10-20 hours \\
+Practice projects & 4-8 hours \\
+Review and experimentation & 2-4 hours \\
+\midrule
+\textbf{Total} & \textbf{15-25 hours} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Study Strategies}
+
+\subsubsection{Active Learning}
+\begin{enumerate}
+    \item \textbf{Don't just watch} - implement concepts as you learn
+    \item \textbf{Derive equations} - work through math by hand
+    \item \textbf{Debug thoroughly} - understand why code works
+    \item \textbf{Experiment freely} - try variations on assignments
+\end{enumerate}
+
+\subsubsection{Paper Reading}
+\begin{enumerate}
+    \item \textbf{First pass}: Read abstract, intro, conclusion (15 min)
+    \item \textbf{Second pass}: Study figures, skim methodology (30 min)
+    \item \textbf{Third pass}: Deep read, take notes, implement (2-3 hours)
+    \item Keep a reading journal with summaries
+\end{enumerate}
+
+\subsubsection{Coding Best Practices}
+\begin{enumerate}
+    \item Write modular, reusable code
+    \item Document your implementations
+    \item Use version control (Git)
+    \item Create unit tests for components
+    \item Profile code to find bottlenecks
+\end{enumerate}
+
+\subsubsection{Debugging Deep Learning}
+\begin{enumerate}
+    \item Start with small data (overfit single batch)
+    \item Verify data pipeline carefully
+    \item Check gradient flow (no NaN, reasonable magnitudes)
+    \item Monitor training curves
+    \item Use visualization tools (TensorBoard)
+\end{enumerate}
+
+\newpage
+
+\section{Resources \& Community}
+
+\subsection{Online Resources}
+
+\subsubsection{Essential Blogs}
+\begin{itemize}
+    \item Jay Alammar's blog: \url{https://jalammar.github.io/}
+    \item The Gradient: \url{https://thegradient.pub/}
+    \item Sebastian Ruder's blog: \url{https://ruder.io/}
+    \item Lil'Log (Lilian Weng): \url{https://lilianweng.github.io/}
+    \item Distill.pub: \url{https://distill.pub/}
+\end{itemize}
+
+\subsubsection{Code Repositories}
+\begin{itemize}
+    \item Hugging Face Transformers: \url{https://github.com/huggingface/transformers}
+    \item AllenNLP: \url{https://allennlp.org/}
+    \item fairseq (Facebook): \url{https://github.com/pytorch/fairseq}
+    \item spaCy: \url{https://spacy.io/}
+\end{itemize}
+
+\subsubsection{Datasets}
+\begin{itemize}
+    \item Papers with Code Datasets: \url{https://paperswithcode.com/datasets}
+    \item Hugging Face Datasets: \url{https://huggingface.co/datasets}
+    \item Common Crawl: \url{https://commoncrawl.org/}
+    \item The Pile: \url{https://pile.eleuther.ai/}
+\end{itemize}
+
+\subsection{Community \& Learning}
+
+\subsubsection{Forums \& Discussion}
+\begin{itemize}
+    \item r/MachineLearning (Reddit)
+    \item r/LanguageTechnology (Reddit)
+    \item Hugging Face Forums
+    \item PyTorch Forums
+    \item Twitter NLP community (\#NLProc)
+\end{itemize}
+
+\subsubsection{Conferences to Follow}
+\begin{itemize}
+    \item ACL (Association for Computational Linguistics)
+    \item EMNLP (Empirical Methods in NLP)
+    \item NAACL (North American Chapter of ACL)
+    \item NeurIPS, ICML, ICLR (ML conferences with NLP)
+\end{itemize}
+
+\subsubsection{Keeping Up with Research}
+\begin{enumerate}
+    \item Subscribe to arXiv daily digests (cs.CL, cs.LG)
+    \item Follow key researchers on Twitter
+    \item Read Papers with Code trending
+    \item Watch conference talks on YouTube
+    \item Join reading groups (virtual or local)
+\end{enumerate}
+
+\newpage
+
+\section{Assessment \& Grading Breakdown}
+
+\subsection{Official Course Grading}
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Component} & \textbf{Percentage} & \textbf{Notes} \\
+\midrule
+Assignment 1 & 6\% & Word vectors \\
+Assignment 2 & 12\% & word2vec implementation \\
+Assignment 3 & 12\% & Dependency parsing \\
+Assignment 4 & 12\% & Neural MT \\
+Assignment 5 & 12\% & Transformers \& fine-tuning \\
+\midrule
+\textbf{Assignments Total} & \textbf{54\%} & \\
+\midrule
+Project Proposal & 5\% & 1-2 pages \\
+Project Milestone & 5\% & Progress report \\
+Project Summary & 3\% & Image + paragraph \\
+Project Report & 30\% & 8-10 pages \\
+\midrule
+\textbf{Final Project Total} & \textbf{43\%} & \\
+\midrule
+Participation & 3\% & Surveys, Ed, guest lectures \\
+\midrule
+\textbf{Grand Total} & \textbf{100\%} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Self-Study Milestones}
+
+Since you're self-studying, create your own assessment criteria:
+
+\subsubsection{Technical Proficiency}
+\begin{itemize}
+    \item[$\square$] Implement attention mechanism from scratch
+    \item[$\square$] Train transformer model successfully
+    \item[$\square$] Fine-tune BERT for downstream task
+    \item[$\square$] Build end-to-end NLP application
+    \item[$\square$] Debug training issues effectively
+\end{itemize}
+
+\subsubsection{Theoretical Understanding}
+\begin{itemize}
+    \item[$\square$] Derive backpropagation for RNN
+    \item[$\square$] Explain attention mechanism intuitively
+    \item[$\square$] Understand transformer complexity analysis
+    \item[$\square$] Compare different pretraining objectives
+    \item[$\square$] Critique NLP research papers
+\end{itemize}
+
+\subsubsection{Practical Skills}
+\begin{itemize}
+    \item[$\square$] Use Hugging Face ecosystem fluently
+    \item[$\square$] Design effective prompts for LLMs
+    \item[$\square$] Evaluate models with appropriate metrics
+    \item[$\square$] Optimize hyperparameters systematically
+    \item[$\square$] Deploy model as API/web service
+\end{itemize}
+
+\newpage
+
+\section{Beyond the Course: Next Steps}
+
+\subsection{Recommended Follow-up Courses}
+
+\subsubsection{Stanford Courses}
+\begin{itemize}
+    \item \textbf{CS224U}: Natural Language Understanding
+    \item \textbf{CS224S}: Spoken Language Processing
+    \item \textbf{CS229}: Machine Learning
+    \item \textbf{CS231n}: Convolutional Neural Networks for Visual Recognition
+    \item \textbf{CS330}: Deep Multi-Task and Meta Learning
+\end{itemize}
+
+\subsubsection{Other Online Courses}
+\begin{itemize}
+    \item \textbf{fast.ai}: Practical Deep Learning for Coders
+    \item \textbf{DeepLearning.AI}: NLP Specialization
+    \item \textbf{Hugging Face}: NLP Course
+    \item \textbf{MIT 6.S191}: Introduction to Deep Learning
+\end{itemize}
+
+\subsection{Specialization Paths}
+
+\subsubsection{Path 1: Research in NLP}
+\begin{enumerate}
+    \item Read 50-100 key papers in your area
+    \item Replicate important results
+    \item Identify open problems
+    \item Propose novel solutions
+    \item Submit to conferences (ACL, EMNLP, etc.)
+\end{enumerate}
+
+\subsubsection{Path 2: Applied NLP Engineering}
+\begin{enumerate}
+    \item Build portfolio of NLP projects
+    \item Contribute to open-source (Hugging Face, spaCy)
+    \item Learn MLOps (Docker, Kubernetes, CI/CD)
+    \item Study production systems design
+    \item Practice with real-world datasets
+\end{enumerate}
+
+\subsubsection{Path 3: Specific Domain Expertise}
+\begin{itemize}
+    \item \textbf{Medical NLP}: Clinical notes, drug discovery
+    \item \textbf{Legal NLP}: Contract analysis, case law
+    \item \textbf{Financial NLP}: Sentiment analysis, earnings calls
+    \item \textbf{Social Media NLP}: Hate speech, misinformation
+    \item \textbf{Multilingual NLP}: Low-resource languages
+\end{itemize}
+
+\subsection{Staying Current}
+
+\textbf{Weekly Routine:}
+\begin{itemize}
+    \item Browse arXiv (2-3 hours)
+    \item Read 1-2 papers deeply
+    \item Implement interesting ideas
+    \item Discuss with peers/online
+\end{itemize}
+
+\textbf{Monthly Goals:}
+\begin{itemize}
+    \item Complete 1 mini-project
+    \item Write blog post about learning
+    \item Contribute to open-source
+    \item Attend virtual meetup
+\end{itemize}
+
+\newpage
+
+\section{Conclusion \& Final Tips}
+
+\subsection{Keys to Success}
+
+\begin{tcolorbox}[colback=yellow!10!white, colframe=yellow!75!black, title=Golden Rules]
+\begin{enumerate}
+    \item \textbf{Consistency over intensity}: Regular daily study beats cramming
+    \item \textbf{Implementation is key}: Don't just watch - code everything
+    \item \textbf{Understand don't memorize}: Derive equations, explain to others
+    \item \textbf{Debug systematically}: Most learning happens debugging
+    \item \textbf{Build real projects}: Apply knowledge to problems you care about
+    \item \textbf{Join the community}: Learn with others, share your work
+    \item \textbf{Stay curious}: Follow your interests beyond the curriculum
+    \item \textbf{Be patient}: Deep learning takes time to master
+\end{enumerate}
+\end{tcolorbox}
+
+\subsection{Common Pitfalls to Avoid}
+
+\begin{itemize}
+    \item \textbf{Passive watching}: Pausing videos to implement is crucial
+    \item \textbf{Tutorial hell}: Balance learning with original projects
+    \item \textbf{Perfectionism}: Done is better than perfect
+    \item \textbf{Isolation}: Engage with community for motivation
+    \item \textbf{Skipping fundamentals}: Math and theory matter
+    \item \textbf{GPU obsession}: Start with small models on CPU
+    \item \textbf{Hype chasing}: Focus on foundations before latest trends
+\end{itemize}
+
+\subsection{Motivation}
+
+Deep learning for NLP is transforming how we interact with technology. By completing this course, you'll be equipped to:
+
+\begin{itemize}
+    \item Understand how ChatGPT and similar systems work
+    \item Build your own NLP applications
+    \item Contribute to cutting-edge research
+    \item Join a thriving community of practitioners
+    \item Shape the future of human-AI interaction
+\end{itemize}
+
+The journey is challenging but immensely rewarding. Stay persistent, stay curious, and most importantly - enjoy the process of learning!
+
+\vspace{2em}
+
+\begin{center}
+\large\textbf{Good luck with your NLP journey!}
+
+\vspace{1em}
+
+Questions? Check course website: \\
+\url{https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1214/}
+\end{center}
+
+\newpage
+
+\appendix
+
+\section{Quick Reference: Key Equations}
+
+\subsection{Word2Vec Skip-gram Objective}
+\[
+J(\theta) = -\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \leq j \leq m, j \neq 0} \log P(w_{t+j} | w_t)
+\]
+
+\subsection{Softmax}
+\[
+P(w_o | w_c) = \frac{\exp(u_o^T v_c)}{\sum_{w=1}^{V} \exp(u_w^T v_c)}
+\]
+
+\subsection{Negative Sampling}
+\[
+\log \sigma(u_o^T v_c) + \sum_{k=1}^{K} \mathbb{E}_{w_k \sim P_n(w)} [\log \sigma(-u_k^T v_c)]
+\]
+
+\subsection{Attention Mechanism}
+\[
+\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) V
+\]
+
+\subsection{Multi-Head Attention}
+\[
+\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h) W^O
+\]
+where $\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$
+
+\subsection{Transformer Feed-Forward}
+\[
+\text{FFN}(x) = \max(0, xW_1 + b_1)W_2 + b_2
+\]
+
+\subsection{Cross-Entropy Loss}
+\[
+L = -\sum_{i=1}^{C} y_i \log(\hat{y}_i)
+\]
+
+\subsection{BLEU Score}
+\[
+\text{BLEU} = BP \cdot \exp\left(\sum_{n=1}^{N} w_n \log p_n\right)
+\]
+
+\section{Useful Commands \& Code Snippets}
+
+\subsection{PyTorch Setup}
+\begin{verbatim}
+# Install PyTorch
+pip install torch torchvision torchaudio
+
+# Install Transformers
+pip install transformers datasets
+
+# Install utilities
+pip install numpy pandas matplotlib seaborn tqdm
+\end{verbatim}
+
+\subsection{Loading Pretrained Models}
+\begin{verbatim}
+from transformers import AutoModel, AutoTokenizer
+
+model = AutoModel.from_pretrained("bert-base-uncased")
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+\end{verbatim}
+
+\subsection{Training Loop Template}
+\begin{verbatim}
+for epoch in range(num_epochs):
+    model.train()
+    for batch in train_loader:
+        optimizer.zero_grad()
+        outputs = model(batch)
+        loss = criterion(outputs, targets)
+        loss.backward()
+        optimizer.step()
+        
+    model.eval()
+    with torch.no_grad():
+        val_loss = evaluate(model, val_loader)
+\end{verbatim}
+
+\end{document}

@@ -8,6 +8,142 @@ body {
 
 /* Header styles are now in header.css */
 
+/* Current Work Banner */
+.current-work-banner {
+  position: relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 32px 40px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.current-work-banner:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+}
+
+.current-work-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.current-work-glow {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: translateY(-50%) scale(1); }
+  50% { opacity: 0.8; transform: translateY(-50%) scale(1.1); }
+}
+
+.current-work-content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.current-work-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.current-work-icon span {
+  font-size: 2rem;
+}
+
+.current-work-text {
+  flex: 1;
+}
+
+.current-work-text h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.02em;
+}
+
+.current-work-text p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.current-work-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: white;
+  color: #667eea;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+
+.current-work-btn:hover {
+  transform: translateX(4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  background: #f8fafc;
+}
+
+.current-work-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.current-work-btn:hover svg {
+  transform: translateX(4px);
+}
+
+/* Dark mode for current work banner */
+body.dark-mode .current-work-banner {
+  background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 100%);
+  box-shadow: 0 10px 40px rgba(124, 58, 237, 0.3);
+}
+
+body.dark-mode .current-work-banner:hover {
+  box-shadow: 0 20px 60px rgba(124, 58, 237, 0.4);
+}
+
+body.dark-mode .current-work-btn {
+  background: #1e1b4b;
+  color: #a78bfa;
+}
+
+body.dark-mode .current-work-btn:hover {
+  background: #312e81;
+}
+
 /* Main content */
 .main-content {
   max-width: 900px;
@@ -182,6 +318,17 @@ body {
   .roadmap-timeline {
     padding: 0 0 24px 0;
   }
+  .current-work-banner {
+    padding: 24px 28px;
+  }
+  .current-work-content {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .current-work-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 600px) {
@@ -196,6 +343,31 @@ body {
   }
   .site-title {
     font-size: 1rem;
+  }
+  .current-work-banner {
+    padding: 20px;
+    border-radius: 16px;
+  }
+  .current-work-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .current-work-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+  }
+  .current-work-icon span {
+    font-size: 1.5rem;
+  }
+  .current-work-text h2 {
+    font-size: 1.25rem;
+  }
+  .current-work-text p {
+    font-size: 0.9rem;
+  }
+  .current-work-glow {
+    display: none;
   }
 }
 

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CamBrain | Aryan's Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/darkmode.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      margin-bottom: 24px;
+    }
+    .header-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .project-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #1a202c;
+      margin-bottom: 12px;
+    }
+    .project-subtitle {
+      font-size: 1.25rem;
+      color: #64748b;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .status-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .test-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+    .timeline {
+      color: #6b7280;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .tech-tag {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      color: #0369a1;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: 1px solid #bae6fd;
+    }
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 16px;
+      border-bottom: 3px solid #0f172a;
+      padding-bottom: 8px;
+    }
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #374151;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    p, li {
+      color: #4b5563;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      padding-left: 1.5em;
+      position: relative;
+    }
+    ul li:before {
+      content: "→";
+      color: #0f172a;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border-left: 4px solid #22c55e;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .architecture-box {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 2px solid #e2e8f0;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      white-space: pre;
+      color: #475569;
+    }
+    .week-card {
+      background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+      border-left: 4px solid #0f172a;
+    }
+    .week-title {
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .feature-card {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+      border-color: #0f172a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .feature-icon {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+    .feature-title {
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+    .feature-desc {
+      font-size: 0.9rem;
+      color: #64748b;
+    }
+    .back-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin-top: 20px;
+    }
+    .back-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.3);
+    }
+    .github-link {
+      display: inline-block;
+      background: #24292e;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-left: 12px;
+      transition: all 0.3s;
+    }
+    .github-link:hover {
+      background: #1b1f23;
+      transform: translateY(-2px);
+    }
+    .safety-box {
+      background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+      border-left: 4px solid #ef4444;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .safety-box h4 {
+      color: #dc2626;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header-section">
+        <h1 class="project-title">🧠 CamBrain</h1>
+        <p class="project-subtitle">AI-Powered Desktop Automation Agent</p>
+        <div class="status-badge">Complete • Production Ready</div>
+        <span class="test-badge">162 Tests Passed ✓</span>
+        <p class="timeline">6-Week Development Sprint • 2025</p>
+        <div class="tech-stack">
+          <span class="tech-tag">Python 3.10+</span>
+          <span class="tech-tag">Computer Vision</span>
+          <span class="tech-tag">LLMs</span>
+          <span class="tech-tag">PaddleOCR</span>
+          <span class="tech-tag">SigLIP/CLIP</span>
+          <span class="tech-tag">FastAPI</span>
+          <span class="tech-tag">LiteLLM</span>
+          <span class="tech-tag">ChromaDB</span>
+        </div>
+      </div>
+
+      <h2>Overview</h2>
+      <p>
+        CamBrain is a sophisticated vision-language desktop agent that <strong>sees your screen, understands UI elements, plans multi-step tasks, and executes them autonomously</strong>. Built using the ReAct reasoning pattern with reflexion-based self-correction, it represents cutting-edge work in AI-powered automation.
+      </p>
+
+      <div class="highlight-box">
+        <strong>🎯 Key Capabilities:</strong>
+        <ul style="margin-top: 8px; margin-bottom: 0;">
+          <li><strong>See</strong> your screen through real-time capture and OCR</li>
+          <li><strong>Understand</strong> UI elements using vision encoders (SigLIP/CLIP)</li>
+          <li><strong>Plan</strong> multi-step tasks using LLM reasoning (ReAct pattern)</li>
+          <li><strong>Execute</strong> actions like clicking, typing, and scrolling</li>
+          <li><strong>Learn</strong> from successes and failures through reflexion</li>
+          <li><strong>Stay safe</strong> with built-in guardrails and rate limiting</li>
+        </ul>
+      </div>
+
+      <h2>Architecture</h2>
+      <div class="architecture-box">┌─────────────────────────────────────────────────────────────────┐
+│                         CamBrain Agent                          │
+├─────────────────────────────────────────────────────────────────┤
+│  ┌──────────────┐    ┌──────────────┐    ┌──────────────┐      │
+│  │   Vision     │    │     LLM      │    │   Actions    │      │
+│  │  Pipeline    │───▶│   Reasoning  │───▶│  Execution   │      │
+│  └──────────────┘    └──────────────┘    └──────────────┘      │
+│                             │                                   │
+│                    ┌────────▼────────┐                         │
+│                    │     Memory      │                         │
+│                    │ Reflexion Loop  │                         │
+│                    │ Vector Memory   │                         │
+│                    └─────────────────┘                         │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │              Safety Layer & API Interface                │  │
+│  └──────────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘</div>
+
+      <h2>Development Timeline</h2>
+      
+      <div class="week-card">
+        <div class="week-title">Week 1: Vision Pipeline</div>
+        <ul>
+          <li>Screen Capture — Real-time capture at configurable FPS</li>
+          <li>OCR Extraction — PaddleOCR with bounding boxes</li>
+          <li>Vision Encoding — SigLIP/CLIP embeddings for scene understanding</li>
+          <li>Screen Parsing — Structured JSON representation of UI elements</li>
+        </ul>
+      </div>
+
+      <div class="week-card">
+        <div class="week-title">Week 2: LLM Integration</div>
+        <ul>
+          <li>Multi-Provider Support — Gemini, OpenAI, Ollama via LiteLLM</li>
+          <li>ReAct Agent — Thought → Action → Observation reasoning loop</li>
+          <li>Task Planning — Complex tasks decomposed into atomic actions</li>
+          <li>Prompt Templates — Extensible prompt engineering system</li>
+        </ul>
+      </div>
+
+      <div class="week-card">
+        <div class="week-title">Week 3: Action Execution</div>
+        <ul>
+          <li>Action Mapping — Natural language → screen coordinates</li>
+          <li>Action Verification — Before/after comparison for success check</li>
+          <li>Fuzzy Matching — Find UI elements even with typos</li>
+          <li>Retry Logic — Automatic retry on failure</li>
+        </ul>
+      </div>
+
+      <div class="week-card">
+        <div class="week-title">Week 4: Memory & Learning</div>
+        <ul>
+          <li>Reflexion Loop — Self-correcting agent with failure analysis</li>
+          <li>Memory Buffer — Short-term context (last N screen states)</li>
+          <li>Vector Memory — Long-term storage with ChromaDB</li>
+          <li>Preference Tracking — Learn user patterns over time</li>
+        </ul>
+      </div>
+
+      <div class="week-card">
+        <div class="week-title">Week 5: API & UI</div>
+        <ul>
+          <li>FastAPI Server — REST API for agent control</li>
+          <li>WebSocket Streaming — Real-time updates and logs</li>
+          <li>CLI Interface — Command-line access to all features</li>
+          <li>YAML Configuration — Flexible settings management</li>
+        </ul>
+      </div>
+
+      <div class="week-card">
+        <div class="week-title">Week 6: Safety & Polish</div>
+        <ul>
+          <li>Safety Guardrails — Block dangerous actions (rm -rf, format, etc.)</li>
+          <li>Rate Limiting — Prevent runaway automation</li>
+          <li>Rollback — Undo capabilities for reversible actions</li>
+          <li>Input Sanitization — Clean and validate action inputs</li>
+        </ul>
+      </div>
+
+      <h2>Key Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🖥️</div>
+          <div class="feature-title">Screen Understanding</div>
+          <div class="feature-desc">Real-time OCR and vision encoding for complete screen awareness</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <div class="feature-title">ReAct Reasoning</div>
+          <div class="feature-desc">Advanced thought-action-observation loops for complex tasks</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <div class="feature-title">Self-Correction</div>
+          <div class="feature-desc">Reflexion-based learning from failures</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-title">Safety First</div>
+          <div class="feature-desc">Built-in guardrails, rate limiting, and rollback</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔌</div>
+          <div class="feature-title">Multi-Provider LLM</div>
+          <div class="feature-desc">Support for Gemini, OpenAI, Ollama, and more</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📡</div>
+          <div class="feature-title">REST API</div>
+          <div class="feature-desc">FastAPI server with WebSocket streaming</div>
+        </div>
+      </div>
+
+      <h2>Safety Features</h2>
+      <div class="safety-box">
+        <h4>🛡️ Built-in Protection</h4>
+        <ul>
+          <li><strong>Blocked Actions:</strong> rm -rf, format, shutdown, registry editing</li>
+          <li><strong>High-Risk Confirmation:</strong> File deletion, email, financial transactions</li>
+          <li><strong>Rate Limiting:</strong> Max 60 actions/min, 5 actions/sec</li>
+          <li><strong>Supervised Mode:</strong> Requires human confirmation for actions</li>
+        </ul>
+      </div>
+
+      <h2>Testing & Quality</h2>
+      <div class="highlight-box">
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 8px;"><strong>Week 1: Vision Pipeline</strong></td>
+            <td style="padding: 8px; text-align: right; color: #16a34a;">18 tests ✓</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;"><strong>Week 2: LLM Integration</strong></td>
+            <td style="padding: 8px; text-align: right; color: #16a34a;">15 tests ✓</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;"><strong>Week 3: Action Execution</strong></td>
+            <td style="padding: 8px; text-align: right; color: #16a34a;">19 tests ✓</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;"><strong>Week 4: Memory</strong></td>
+            <td style="padding: 8px; text-align: right; color: #16a34a;">25 tests ✓</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;"><strong>Week 5-6: API & Safety</strong></td>
+            <td style="padding: 8px; text-align: right; color: #16a34a;">63 tests ✓</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px;"><strong>Integration</strong></td>
+            <td style="padding: 8px; text-align: right; color: #16a34a;">22 tests ✓</td>
+          </tr>
+          <tr style="border-top: 2px solid #22c55e;">
+            <td style="padding: 8px;"><strong>Total</strong></td>
+            <td style="padding: 8px; text-align: right; color: #16a34a; font-weight: 700;">162 tests ✓</td>
+          </tr>
+        </table>
+      </div>
+
+      <h2>Usage Examples</h2>
+      <h3>Python API</h3>
+      <div class="architecture-box" style="font-size: 0.8rem;">from cambrain.agent import create_agent
+
+# Create agent in supervised mode
+agent = create_agent(mode="supervised")
+
+# Analyze current screen
+analysis = agent.capture_and_analyze()
+print(f"Found {len(analysis.elements)} UI elements")
+
+# Run a task
+result = agent.run_task("Open Chrome and search for Python tutorials")
+print(f"Task {'succeeded' if result.success else 'failed'}")</div>
+
+      <h3>CLI Interface</h3>
+      <div class="architecture-box" style="font-size: 0.8rem;"># Analyze current screen
+python main.py agent analyze
+
+# Run a task
+python main.py agent run "open calculator and compute 15 * 23"
+
+# Start API server
+python main.py agent server --port 8000
+
+# Interactive mode
+python main.py agent interactive</div>
+
+      <h2>Research Inspiration</h2>
+      <ul>
+        <li><strong>ReAct Paper</strong> — Reasoning and acting pattern for LLM agents</li>
+        <li><strong>Reflexion Paper</strong> — Self-correction through failure analysis</li>
+        <li><strong>OpenCLIP</strong> — Vision encoding for scene understanding</li>
+        <li><strong>PaddleOCR</strong> — Text extraction from screen captures</li>
+      </ul>
+
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="../projects.html" class="back-button">← Back to Projects</a>
+        <a href="https://github.com/aryannzzz/CamBrain" class="github-link" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+  </div>
+  <script src="../js/darkmode.js"></script>
+</body>
+</html>
