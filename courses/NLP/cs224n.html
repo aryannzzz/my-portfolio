@@ -1,0 +1,2267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS224N: NLP with Deep Learning | Course Dashboard</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" />
+  <link rel="stylesheet" href="../../css/header.css" />
+  <link rel="stylesheet" href="../../css/darkmode.css" />
+  <style>
+    :root {
+      --violet-400: #a78bfa;
+      --violet-500: #8b5cf6;
+      --violet-600: #7c3aed;
+      --violet-700: #6d28d9;
+      
+      --amber-300: #fcd34d;
+      --amber-400: #fbbf24;
+      --amber-500: #f59e0b;
+      
+      --emerald-400: #34d399;
+      --emerald-500: #10b981;
+      --emerald-600: #059669;
+      
+      --rose-400: #fb7185;
+      --rose-500: #f43f5e;
+      
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-400: #94a3b8;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-800: #1e293b;
+      --slate-900: #0f172a;
+      --slate-950: #020617;
+      
+      --bg-dark: #0a0f1a;
+      --bg-card: rgba(30, 41, 59, 0.8);
+      --bg-card-solid: #1e293b;
+      --bg-card-hover: #334155;
+      --border: rgba(148, 163, 184, 0.1);
+      --border-light: rgba(148, 163, 184, 0.15);
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      min-height: 100vh;
+      color: var(--slate-100);
+      overflow-x: hidden;
+    }
+    
+    /* Animated Background */
+    .bg-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 100% 100%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 30% at 0% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+        var(--bg-dark);
+    }
+    
+    .bg-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    /* Floating orbs */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.3;
+      animation: float 25s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    .orb-1 {
+      width: 500px;
+      height: 500px;
+      background: var(--violet-600);
+      top: -200px;
+      right: -100px;
+      animation-delay: 0s;
+    }
+    
+    .orb-2 {
+      width: 400px;
+      height: 400px;
+      background: var(--amber-500);
+      bottom: -150px;
+      left: -100px;
+      animation-delay: -8s;
+    }
+    
+    .orb-3 {
+      width: 300px;
+      height: 300px;
+      background: var(--emerald-500);
+      top: 50%;
+      left: 30%;
+      animation-delay: -15s;
+      opacity: 0.15;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(40px, -40px) scale(1.1); }
+      50% { transform: translate(-30px, 30px) scale(0.9); }
+      75% { transform: translate(30px, 20px) scale(1.05); }
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Navigation */
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--slate-300);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 14px 24px;
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .back-btn:hover {
+      background: var(--bg-card-hover);
+      color: white;
+      transform: translateX(-6px);
+      border-color: var(--violet-500);
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+    }
+    
+    .back-btn svg {
+      transition: transform 0.3s ease;
+    }
+    
+    .back-btn:hover svg {
+      transform: translateX(-4px);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: var(--bg-card);
+      backdrop-filter: blur(40px);
+      border-radius: 28px;
+      padding: 48px;
+      margin-bottom: 40px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--violet-500), var(--amber-400), var(--emerald-400));
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--violet-400);
+      padding: 8px 18px;
+      border-radius: 24px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      letter-spacing: 0.5px;
+    }
+    
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--violet-400);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, var(--violet-400) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--slate-400);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+    }
+    
+    .hero-stat {
+      text-align: center;
+    }
+    
+    .hero-stat .value {
+      font-size: 2.25rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--amber-400), #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+    
+    .hero-stat .label {
+      font-size: 0.75rem;
+      color: var(--slate-500);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    
+    /* Progress Ring */
+    .progress-ring-container {
+      position: relative;
+      width: 180px;
+      height: 180px;
+    }
+    
+    .progress-ring {
+      transform: rotate(-90deg);
+      filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.3));
+    }
+    
+    .progress-ring-bg {
+      fill: none;
+      stroke: var(--slate-700);
+      stroke-width: 14;
+    }
+    
+    .progress-ring-fill {
+      fill: none;
+      stroke: url(#progressGradient);
+      stroke-width: 14;
+      stroke-linecap: round;
+      stroke-dasharray: 502;
+      stroke-dashoffset: 502;
+      transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .progress-ring-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    
+    .progress-ring-text .percent {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: white;
+      line-height: 1;
+    }
+    
+    .progress-ring-text .label {
+      font-size: 0.75rem;
+      color: var(--slate-500);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Tab Navigation */
+    .tab-nav {
+      display: flex;
+      gap: 8px;
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      padding: 10px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    
+    .tab-nav::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      border: none;
+      background: transparent;
+      color: var(--slate-400);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      white-space: nowrap;
+      position: relative;
+    }
+    
+    .tab-btn:hover {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--slate-200);
+    }
+    
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--violet-500) 0%, var(--violet-600) 100%);
+      color: white;
+      box-shadow: 
+        0 4px 20px rgba(139, 92, 246, 0.4),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    
+    .tab-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .tab-btn .badge {
+      background: rgba(255,255,255,0.2);
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    
+    .tab-btn.active .badge {
+      background: rgba(255,255,255,0.25);
+    }
+    
+    /* Tab Content */
+    .tab-content {
+      display: none;
+      animation: fadeSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    @keyframes fadeSlideIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+    
+    /* Section Headers */
+    .section-header {
+      margin-bottom: 28px;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    
+    .section-desc {
+      color: var(--slate-400);
+      font-size: 0.95rem;
+    }
+    
+    /* Week Cards */
+    .weeks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+    
+    .week-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .week-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--slate-600), var(--slate-700));
+      transition: all 0.3s ease;
+    }
+    
+    .week-card:hover {
+      border-color: var(--violet-500);
+      transform: translateY(-6px);
+      box-shadow: 
+        0 20px 50px rgba(0,0,0,0.3),
+        0 0 40px rgba(139, 92, 246, 0.15);
+    }
+    
+    .week-card:hover::before {
+      background: linear-gradient(90deg, var(--violet-500), var(--violet-400));
+    }
+    
+    .week-card.completed::before {
+      background: linear-gradient(90deg, var(--emerald-500), var(--emerald-400));
+    }
+    
+    .week-card.in-progress::before {
+      background: linear-gradient(90deg, var(--amber-500), var(--amber-400));
+    }
+    
+    .week-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    
+    .week-number {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--violet-400);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .week-number .icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(139, 92, 246, 0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    
+    .week-status {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .week-status.completed {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--emerald-400);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    
+    .week-status.in-progress {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--amber-400);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+    
+    .week-status.upcoming {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--slate-400);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    
+    .week-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    
+    .week-topics {
+      font-size: 0.9rem;
+      color: var(--slate-400);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .week-meta {
+      display: flex;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    
+    .week-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--slate-500);
+      font-weight: 500;
+    }
+    
+    .week-meta-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--slate-500);
+    }
+    
+    /* Notes Section */
+    .notes-container {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+      height: calc(100vh - 400px);
+      min-height: 500px;
+    }
+    
+    .notes-sidebar {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .notes-sidebar-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .new-note-btn {
+      width: 100%;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, var(--violet-500), var(--violet-600));
+      color: white;
+      border: none;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 
+        0 4px 15px rgba(139, 92, 246, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    
+    .new-note-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 
+        0 8px 25px rgba(139, 92, 246, 0.4),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    
+    .notes-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px;
+    }
+    
+    .note-item {
+      padding: 16px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 8px;
+      border: 1px solid transparent;
+    }
+    
+    .note-item:hover {
+      background: rgba(139, 92, 246, 0.1);
+    }
+    
+    .note-item.active {
+      background: rgba(139, 92, 246, 0.15);
+      border-color: var(--violet-500);
+    }
+    
+    .note-item-title {
+      font-weight: 700;
+      color: white;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .note-item-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--slate-500);
+    }
+    
+    .notes-editor {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .notes-editor-header {
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .notes-editor-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
+    }
+    
+    .notes-editor-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .editor-action-btn {
+      padding: 10px 18px;
+      background: var(--bg-card-hover);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--slate-300);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .editor-action-btn:hover {
+      background: var(--slate-700);
+      color: white;
+    }
+    
+    .editor-action-btn.delete:hover {
+      background: rgba(244, 63, 94, 0.2);
+      border-color: var(--rose-500);
+      color: var(--rose-400);
+    }
+    
+    .notes-textarea {
+      flex: 1;
+      width: 100%;
+      padding: 28px;
+      background: transparent;
+      border: none;
+      color: var(--slate-200);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      resize: none;
+      outline: none;
+    }
+    
+    .notes-textarea::placeholder {
+      color: var(--slate-600);
+    }
+    
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 24px;
+    }
+    
+    .project-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--slate-600), var(--slate-700));
+    }
+    
+    .project-card:hover {
+      border-color: var(--violet-500);
+      transform: translateY(-4px);
+      box-shadow: 
+        0 16px 40px rgba(0,0,0,0.3),
+        0 0 30px rgba(139, 92, 246, 0.1);
+    }
+    
+    .project-card.featured {
+      border-color: rgba(251, 191, 36, 0.3);
+      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(251, 191, 36, 0.05) 100%);
+    }
+    
+    .project-card.featured::before {
+      background: linear-gradient(90deg, var(--amber-400), var(--amber-500));
+    }
+    
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    
+    .project-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(139, 92, 246, 0.15);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    
+    .project-card.featured .project-icon {
+      background: rgba(251, 191, 36, 0.15);
+    }
+    
+    .project-status {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .project-status.not-started {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--slate-400);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    
+    .project-status.in-progress {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--amber-400);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+    
+    .project-status.completed {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--emerald-400);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    
+    .project-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+    
+    .project-meta {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .project-meta span {
+      font-size: 0.8rem;
+      color: var(--slate-500);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--slate-400);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .project-tasks {
+      background: rgba(0,0,0,0.2);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    
+    .project-tasks-header {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--slate-400);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .task-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .task-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    
+    .task-item:first-of-type {
+      padding-top: 0;
+    }
+    
+    .task-checkbox {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: 2px solid var(--slate-600);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+    
+    .task-checkbox:hover {
+      border-color: var(--violet-500);
+    }
+    
+    .task-checkbox.checked {
+      background: linear-gradient(135deg, var(--emerald-500), var(--emerald-600));
+      border-color: var(--emerald-500);
+    }
+    
+    .task-checkbox.checked::after {
+      content: '✓';
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    
+    .task-label {
+      font-size: 0.85rem;
+      color: var(--slate-300);
+      transition: all 0.3s ease;
+    }
+    
+    .task-item.completed .task-label {
+      color: var(--slate-500);
+      text-decoration: line-through;
+    }
+    
+    /* Assignments Section */
+    .assignments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+    }
+    
+    .assignment-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .assignment-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--slate-600), var(--slate-700));
+    }
+    
+    .assignment-card:hover {
+      border-color: var(--violet-500);
+      transform: translateY(-4px);
+      box-shadow: 
+        0 16px 40px rgba(0,0,0,0.3),
+        0 0 30px rgba(139, 92, 246, 0.1);
+    }
+    
+    .assignment-card.featured {
+      border-color: rgba(251, 191, 36, 0.3);
+      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(251, 191, 36, 0.05) 100%);
+    }
+    
+    .assignment-card.featured::before {
+      background: linear-gradient(90deg, var(--amber-400), var(--amber-500));
+    }
+    
+    .assignment-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: rgba(139, 92, 246, 0.15);
+      border-radius: 14px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--violet-400);
+      margin-bottom: 18px;
+    }
+    
+    .assignment-card.featured .assignment-number {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--amber-400);
+    }
+    
+    .assignment-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    
+    .assignment-desc {
+      font-size: 0.9rem;
+      color: var(--slate-400);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    .assignment-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    
+    .assignment-weight {
+      background: rgba(139, 92, 246, 0.15);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--violet-400);
+    }
+    
+    .assignment-card.featured .assignment-weight {
+      background: rgba(251, 191, 36, 0.15);
+      color: var(--amber-400);
+    }
+    
+    .assignment-status-select {
+      padding: 10px 16px;
+      background: var(--bg-card-hover);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--slate-200);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    
+    .assignment-status-select:hover {
+      border-color: var(--violet-500);
+    }
+    
+    .assignment-status-select:focus {
+      border-color: var(--violet-500);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+    }
+    
+    /* Resources Section */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    
+    .resource-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      border-radius: 18px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    
+    .resource-card:hover {
+      border-color: var(--violet-500);
+      transform: translateY(-4px) translateX(4px);
+      box-shadow: 
+        0 16px 40px rgba(0,0,0,0.3),
+        0 0 30px rgba(139, 92, 246, 0.1);
+    }
+    
+    .resource-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(139, 92, 246, 0.15);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    
+    .resource-info {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .resource-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 4px;
+    }
+    
+    .resource-desc {
+      font-size: 0.85rem;
+      color: var(--slate-500);
+    }
+    
+    .resource-arrow {
+      color: var(--slate-500);
+      transition: all 0.3s ease;
+    }
+    
+    .resource-card:hover .resource-arrow {
+      color: var(--violet-400);
+      transform: translateX(4px);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .hero-stats {
+        justify-content: center;
+      }
+      
+      .progress-ring-container {
+        margin: 0 auto;
+      }
+      
+      .notes-container {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      
+      .notes-sidebar {
+        max-height: 300px;
+      }
+      
+      .notes-editor {
+        min-height: 400px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px 16px;
+      }
+      
+      .hero {
+        padding: 32px 24px;
+      }
+      
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+      
+      .hero-stats {
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+      
+      .tab-btn {
+        padding: 12px 16px;
+      }
+      
+      .tab-btn span:not(.badge) {
+        display: none;
+      }
+      
+      .weeks-grid,
+      .projects-grid,
+      .assignments-grid,
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-wrapper">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="container">
+    <nav class="nav-bar">
+      <a href="../../roadmap/online-courses.html" class="back-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Back to Courses</span>
+      </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-info">
+          <div class="hero-badge">
+            <div class="dot"></div>
+            <span>STANFORD CS224N • SELF-PACED</span>
+          </div>
+          <h1>Natural Language Processing with Deep Learning</h1>
+          <p class="hero-subtitle">Master the fundamentals and cutting-edge techniques in NLP including word vectors, neural networks, attention mechanisms, transformers, BERT, GPT, and more.</p>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="value">12</div>
+              <div class="label">Weeks</div>
+            </div>
+            <div class="hero-stat">
+              <div class="value">5</div>
+              <div class="label">Assignments</div>
+            </div>
+            <div class="hero-stat">
+              <div class="value">180+</div>
+              <div class="label">Hours</div>
+            </div>
+            <div class="hero-stat">
+              <div class="value">1</div>
+              <div class="label">Project</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="progress-ring-container">
+          <svg class="progress-ring" width="180" height="180">
+            <defs>
+              <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color: #8b5cf6" />
+                <stop offset="50%" style="stop-color: #fbbf24" />
+                <stop offset="100%" style="stop-color: #10b981" />
+              </linearGradient>
+            </defs>
+            <circle class="progress-ring-bg" cx="90" cy="90" r="80" />
+            <circle class="progress-ring-fill" cx="90" cy="90" r="80" />
+          </svg>
+          <div class="progress-ring-text">
+            <div class="percent">0%</div>
+            <div class="label">Complete</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="progress">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <span>Progress</span>
+        <span class="badge">13</span>
+      </button>
+      <button class="tab-btn" data-tab="notes">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10 9 9 9 8 9"/>
+        </svg>
+        <span>Notes</span>
+      </button>
+      <button class="tab-btn" data-tab="projects">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+          <polyline points="2 17 12 22 22 17"/>
+          <polyline points="2 12 12 17 22 12"/>
+        </svg>
+        <span>Projects</span>
+        <span class="badge">6</span>
+      </button>
+      <button class="tab-btn" data-tab="assignments">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+          <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+          <path d="M9 14l2 2 4-4"/>
+        </svg>
+        <span>Assignments</span>
+        <span class="badge">6</span>
+      </button>
+      <button class="tab-btn" data-tab="resources">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        <span>Resources</span>
+        <span class="badge">9</span>
+      </button>
+    </div>
+
+    <!-- Progress Tab -->
+    <div class="tab-content active" id="progress">
+      <div class="section-header">
+        <h2 class="section-title">Weekly Progress</h2>
+        <p class="section-desc">Track your journey through the 12-week curriculum</p>
+      </div>
+      
+      <div class="weeks-grid">
+        <!-- Week 0 -->
+        <div class="week-card" data-week="0">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">🎯</span>
+              Week 0
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">Prerequisites & Setup</h3>
+          <p class="week-topics">Linear algebra review, probability basics, Python & PyTorch environment setup</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              8-10 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Optional
+            </span>
+          </div>
+        </div>
+
+        <!-- Week 1 -->
+        <div class="week-card" data-week="1">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">📝</span>
+              Week 1
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">Word Vectors & Foundations</h3>
+          <p class="week-topics">Introduction to NLP, word2vec, GloVe embeddings, word similarity</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              15-18 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+              Assignment 1
+            </span>
+          </div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="week-card" data-week="2">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">🧠</span>
+              Week 2
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">Neural Networks & Backprop</h3>
+          <p class="week-topics">Neural network fundamentals, backpropagation, word2vec implementation</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              18-22 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+              Assignment 2
+            </span>
+          </div>
+        </div>
+
+        <!-- Week 3 -->
+        <div class="week-card" data-week="3">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">🌳</span>
+              Week 3
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">Dependency Parsing & RNNs</h3>
+          <p class="week-topics">Dependency parsing, language models, recurrent neural networks intro</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              18-22 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+              Assignment 3
+            </span>
+          </div>
+        </div>
+
+        <!-- Week 4 -->
+        <div class="week-card" data-week="4">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">🔄</span>
+              Week 4
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">Advanced RNNs & Seq2Seq</h3>
+          <p class="week-topics">LSTMs, GRUs, vanishing gradients, sequence-to-sequence models</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              15-18 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              Videos Only
+            </span>
+          </div>
+        </div>
+
+        <!-- Week 5 -->
+        <div class="week-card" data-week="5">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">🌍</span>
+              Week 5
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">Neural Machine Translation</h3>
+          <p class="week-topics">Attention mechanisms, NMT systems, BLEU score evaluation</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              20-25 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+              Assignment 4
+            </span>
+          </div>
+        </div>
+
+        <!-- Week 6 -->
+        <div class="week-card" data-week="6">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">⚡</span>
+              Week 6
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">Transformers Revolution</h3>
+          <p class="week-topics">Self-attention, multi-head attention, positional encoding, Transformer architecture</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              18-22 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              Mini Project
+            </span>
+          </div>
+        </div>
+
+        <!-- Week 7 -->
+        <div class="week-card" data-week="7">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">🚀</span>
+              Week 7
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">Pretraining & Fine-tuning</h3>
+          <p class="week-topics">BERT, GPT, transfer learning, contextual embeddings</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              20-25 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+              Assignment 5
+            </span>
+          </div>
+        </div>
+
+        <!-- Week 8 -->
+        <div class="week-card" data-week="8">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">❓</span>
+              Week 8
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">Question Answering</h3>
+          <p class="week-topics">Reading comprehension, SQuAD, span prediction, knowledge bases</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              15-18 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Project Planning
+            </span>
+          </div>
+        </div>
+
+        <!-- Week 9 -->
+        <div class="week-card" data-week="9">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">✍️</span>
+              Week 9
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">NLG & Coreference</h3>
+          <p class="week-topics">Natural language generation, coreference resolution, summarization</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              15-18 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Proposal Due
+            </span>
+          </div>
+        </div>
+
+        <!-- Week 10 -->
+        <div class="week-card" data-week="10">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">🔬</span>
+              Week 10
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">Specialized Topics</h3>
+          <p class="week-topics">Constituency parsing, information extraction, knowledge graphs</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              15-18 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/></svg>
+              Project Work
+            </span>
+          </div>
+        </div>
+
+        <!-- Week 11 -->
+        <div class="week-card" data-week="11">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">⚖️</span>
+              Week 11
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">Ethics & Analysis</h3>
+          <p class="week-topics">Bias in NLP, model interpretability, fairness considerations</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              12-15 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Milestone
+            </span>
+          </div>
+        </div>
+
+        <!-- Week 12 -->
+        <div class="week-card" data-week="12">
+          <div class="week-header">
+            <span class="week-number">
+              <span class="icon">🎓</span>
+              Week 12
+            </span>
+            <span class="week-status upcoming">Not Started</span>
+          </div>
+          <h3 class="week-title">Future of NLP & Final Project</h3>
+          <p class="week-topics">Emerging trends, large language models, project presentations</p>
+          <div class="week-meta">
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              20-25 hrs
+            </span>
+            <span class="week-meta-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Final Report
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes Tab -->
+    <div class="tab-content" id="notes">
+      <div class="section-header">
+        <h2 class="section-title">Course Notes</h2>
+        <p class="section-desc">Your personal notes and insights from the course</p>
+      </div>
+      
+      <div class="notes-container">
+        <div class="notes-sidebar">
+          <div class="notes-sidebar-header">
+            <button class="new-note-btn" onclick="createNewNote()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+              New Note
+            </button>
+          </div>
+          <div class="notes-list" id="notesList"></div>
+        </div>
+        
+        <div class="notes-editor">
+          <div class="notes-editor-header">
+            <span class="notes-editor-title" id="editorTitle">Select or create a note</span>
+            <div class="notes-editor-actions">
+              <button class="editor-action-btn delete" onclick="deleteCurrentNote()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"/>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+                Delete
+              </button>
+            </div>
+          </div>
+          <textarea class="notes-textarea" id="noteContent" placeholder="Start writing your notes here...
+
+• Use markdown formatting
+• Press Cmd/Ctrl + S to save
+• Notes auto-save as you type"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects Tab -->
+    <div class="tab-content" id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Practice Projects</h2>
+        <p class="section-desc">Hands-on projects to solidify your understanding</p>
+      </div>
+      
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card" data-project="1">
+          <div class="project-header">
+            <div class="project-icon">🔤</div>
+            <span class="project-status not-started">Not Started</span>
+          </div>
+          <h3 class="project-title">Word Analogy Explorer</h3>
+          <div class="project-meta">
+            <span>📅 Week 1</span>
+            <span>⏱️ 4-6 hours</span>
+          </div>
+          <p class="project-desc">Build an interactive tool to explore word embeddings and solve analogy tasks using pre-trained vectors.</p>
+          <div class="project-tasks">
+            <div class="project-tasks-header">Tasks</div>
+            <div class="task-item" data-task="1-1">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Load GloVe/word2vec embeddings</span>
+            </div>
+            <div class="task-item" data-task="1-2">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Implement analogy solver</span>
+            </div>
+            <div class="task-item" data-task="1-3">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Create t-SNE visualization</span>
+            </div>
+            <div class="task-item" data-task="1-4">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Build interactive UI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card" data-project="2">
+          <div class="project-header">
+            <div class="project-icon">📜</div>
+            <span class="project-status not-started">Not Started</span>
+          </div>
+          <h3 class="project-title">Character-Level Language Model</h3>
+          <div class="project-meta">
+            <span>📅 Week 3</span>
+            <span>⏱️ 6-8 hours</span>
+          </div>
+          <p class="project-desc">Implement a character-level RNN/LSTM to generate Shakespeare-style text.</p>
+          <div class="project-tasks">
+            <div class="project-tasks-header">Tasks</div>
+            <div class="task-item" data-task="2-1">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Build vanilla RNN cell</span>
+            </div>
+            <div class="task-item" data-task="2-2">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Implement LSTM cells</span>
+            </div>
+            <div class="task-item" data-task="2-3">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Train on Shakespeare corpus</span>
+            </div>
+            <div class="task-item" data-task="2-4">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Experiment with sampling strategies</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card" data-project="3">
+          <div class="project-header">
+            <div class="project-icon">⚡</div>
+            <span class="project-status not-started">Not Started</span>
+          </div>
+          <h3 class="project-title">Mini-Transformer from Scratch</h3>
+          <div class="project-meta">
+            <span>📅 Week 6</span>
+            <span>⏱️ 8-12 hours</span>
+          </div>
+          <p class="project-desc">Build a small transformer model from scratch to understand the architecture deeply.</p>
+          <div class="project-tasks">
+            <div class="project-tasks-header">Tasks</div>
+            <div class="task-item" data-task="3-1">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Implement self-attention</span>
+            </div>
+            <div class="task-item" data-task="3-2">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Build multi-head attention</span>
+            </div>
+            <div class="task-item" data-task="3-3">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Add positional encoding</span>
+            </div>
+            <div class="task-item" data-task="3-4">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Complete encoder-decoder</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card" data-project="4">
+          <div class="project-header">
+            <div class="project-icon">🎯</div>
+            <span class="project-status not-started">Not Started</span>
+          </div>
+          <h3 class="project-title">Multi-Task Fine-tuning</h3>
+          <div class="project-meta">
+            <span>📅 Week 7</span>
+            <span>⏱️ 10-15 hours</span>
+          </div>
+          <p class="project-desc">Fine-tune BERT on multiple NLP tasks simultaneously and analyze transfer learning.</p>
+          <div class="project-tasks">
+            <div class="project-tasks-header">Tasks</div>
+            <div class="task-item" data-task="4-1">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Load pre-trained BERT</span>
+            </div>
+            <div class="task-item" data-task="4-2">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Prepare multiple datasets</span>
+            </div>
+            <div class="task-item" data-task="4-3">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Implement multi-task heads</span>
+            </div>
+            <div class="task-item" data-task="4-4">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Analyze transfer effects</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card" data-project="5">
+          <div class="project-header">
+            <div class="project-icon">🔍</div>
+            <span class="project-status not-started">Not Started</span>
+          </div>
+          <h3 class="project-title">Model Interpretability Study</h3>
+          <div class="project-meta">
+            <span>📅 Week 9</span>
+            <span>⏱️ 6-8 hours</span>
+          </div>
+          <p class="project-desc">Analyze attention patterns and create interpretability visualizations for transformers.</p>
+          <div class="project-tasks">
+            <div class="project-tasks-header">Tasks</div>
+            <div class="task-item" data-task="5-1">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Extract attention weights</span>
+            </div>
+            <div class="task-item" data-task="5-2">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Visualize attention patterns</span>
+            </div>
+            <div class="task-item" data-task="5-3">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Probe different layers</span>
+            </div>
+            <div class="task-item" data-task="5-4">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Document findings</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Final Project -->
+        <div class="project-card featured" data-project="final">
+          <div class="project-header">
+            <div class="project-icon">🏆</div>
+            <span class="project-status not-started">Not Started</span>
+          </div>
+          <h3 class="project-title">Final Course Project</h3>
+          <div class="project-meta">
+            <span>📅 Weeks 8-12</span>
+            <span>⏱️ 30+ hours</span>
+          </div>
+          <p class="project-desc">Design and implement an original NLP research project showcasing your learning.</p>
+          <div class="project-tasks">
+            <div class="project-tasks-header">Milestones</div>
+            <div class="task-item" data-task="f-1">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Write project proposal</span>
+            </div>
+            <div class="task-item" data-task="f-2">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Complete literature review</span>
+            </div>
+            <div class="task-item" data-task="f-3">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Implement core system</span>
+            </div>
+            <div class="task-item" data-task="f-4">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Submit milestone report</span>
+            </div>
+            <div class="task-item" data-task="f-5">
+              <div class="task-checkbox" onclick="toggleTask(this)"></div>
+              <span class="task-label">Write final report</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assignments Tab -->
+    <div class="tab-content" id="assignments">
+      <div class="section-header">
+        <h2 class="section-title">Course Assignments</h2>
+        <p class="section-desc">Official assignments from the CS224N curriculum</p>
+      </div>
+      
+      <div class="assignments-grid">
+        <!-- Assignment 1 -->
+        <div class="assignment-card">
+          <div class="assignment-number">1</div>
+          <h3 class="assignment-title">Introduction to Word Vectors</h3>
+          <p class="assignment-desc">Explore word vectors through count-based methods and understand the mathematical foundations of word embeddings.</p>
+          <div class="assignment-footer">
+            <span class="assignment-weight">6% Weight</span>
+            <select class="assignment-status-select" data-assignment="1">
+              <option value="not-started">Not Started</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Assignment 2 -->
+        <div class="assignment-card">
+          <div class="assignment-number">2</div>
+          <h3 class="assignment-title">word2vec Implementation</h3>
+          <p class="assignment-desc">Implement word2vec from scratch using NumPy, including skip-gram model and negative sampling.</p>
+          <div class="assignment-footer">
+            <span class="assignment-weight">12% Weight</span>
+            <select class="assignment-status-select" data-assignment="2">
+              <option value="not-started">Not Started</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Assignment 3 -->
+        <div class="assignment-card">
+          <div class="assignment-number">3</div>
+          <h3 class="assignment-title">Dependency Parsing</h3>
+          <p class="assignment-desc">Build a neural dependency parser using PyTorch with transition-based parsing algorithms.</p>
+          <div class="assignment-footer">
+            <span class="assignment-weight">12% Weight</span>
+            <select class="assignment-status-select" data-assignment="3">
+              <option value="not-started">Not Started</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Assignment 4 -->
+        <div class="assignment-card">
+          <div class="assignment-number">4</div>
+          <h3 class="assignment-title">Neural Machine Translation</h3>
+          <p class="assignment-desc">Implement a sequence-to-sequence model with attention for English-to-Spanish translation.</p>
+          <div class="assignment-footer">
+            <span class="assignment-weight">12% Weight</span>
+            <select class="assignment-status-select" data-assignment="4">
+              <option value="not-started">Not Started</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Assignment 5 -->
+        <div class="assignment-card">
+          <div class="assignment-number">5</div>
+          <h3 class="assignment-title">Self-Supervised Learning & Fine-tuning</h3>
+          <p class="assignment-desc">Work with pre-trained transformers, implement fine-tuning strategies for downstream tasks.</p>
+          <div class="assignment-footer">
+            <span class="assignment-weight">12% Weight</span>
+            <select class="assignment-status-select" data-assignment="5">
+              <option value="not-started">Not Started</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Final Project -->
+        <div class="assignment-card featured">
+          <div class="assignment-number">🎓</div>
+          <h3 class="assignment-title">Final Project Report</h3>
+          <p class="assignment-desc">Complete research project demonstrating mastery of NLP concepts, including paper-style writeup.</p>
+          <div class="assignment-footer">
+            <span class="assignment-weight">30% Weight</span>
+            <select class="assignment-status-select" data-assignment="final">
+              <option value="not-started">Not Started</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resources Tab -->
+    <div class="tab-content" id="resources">
+      <div class="section-header">
+        <h2 class="section-title">Learning Resources</h2>
+        <p class="section-desc">Curated resources to supplement your learning</p>
+      </div>
+      
+      <div class="resources-grid">
+        <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOSH4v6133s9LFPRHjEmbmJ" target="_blank" class="resource-card">
+          <div class="resource-icon">🎬</div>
+          <div class="resource-info">
+            <h4 class="resource-title">Course Videos</h4>
+            <p class="resource-desc">Official CS224N lecture recordings</p>
+          </div>
+          <svg class="resource-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a href="https://web.stanford.edu/class/cs224n/" target="_blank" class="resource-card">
+          <div class="resource-icon">🌐</div>
+          <div class="resource-info">
+            <h4 class="resource-title">Course Website</h4>
+            <p class="resource-desc">Stanford CS224N official page</p>
+          </div>
+          <svg class="resource-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a href="https://web.stanford.edu/~jurafsky/slp3/" target="_blank" class="resource-card">
+          <div class="resource-icon">📚</div>
+          <div class="resource-info">
+            <h4 class="resource-title">Speech & Language Processing</h4>
+            <p class="resource-desc">Jurafsky & Martin textbook</p>
+          </div>
+          <svg class="resource-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a href="https://www.deeplearningbook.org/" target="_blank" class="resource-card">
+          <div class="resource-icon">🧠</div>
+          <div class="resource-info">
+            <h4 class="resource-title">Deep Learning Book</h4>
+            <p class="resource-desc">Goodfellow, Bengio & Courville</p>
+          </div>
+          <svg class="resource-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a href="https://jalammar.github.io/" target="_blank" class="resource-card">
+          <div class="resource-icon">✨</div>
+          <div class="resource-info">
+            <h4 class="resource-title">Jay Alammar's Blog</h4>
+            <p class="resource-desc">Visual explanations of transformers</p>
+          </div>
+          <svg class="resource-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a href="https://distill.pub/" target="_blank" class="resource-card">
+          <div class="resource-icon">🔬</div>
+          <div class="resource-info">
+            <h4 class="resource-title">Distill.pub</h4>
+            <p class="resource-desc">Interactive ML research articles</p>
+          </div>
+          <svg class="resource-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a href="https://huggingface.co/" target="_blank" class="resource-card">
+          <div class="resource-icon">🤗</div>
+          <div class="resource-info">
+            <h4 class="resource-title">Hugging Face</h4>
+            <p class="resource-desc">Models, datasets & transformers library</p>
+          </div>
+          <svg class="resource-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a href="https://pytorch.org/tutorials/" target="_blank" class="resource-card">
+          <div class="resource-icon">🔥</div>
+          <div class="resource-info">
+            <h4 class="resource-title">PyTorch Tutorials</h4>
+            <p class="resource-desc">Official PyTorch documentation</p>
+          </div>
+          <svg class="resource-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a href="https://lilianweng.github.io/" target="_blank" class="resource-card">
+          <div class="resource-icon">📝</div>
+          <div class="resource-info">
+            <h4 class="resource-title">Lilian Weng's Blog</h4>
+            <p class="resource-desc">In-depth ML/NLP tutorials</p>
+          </div>
+          <svg class="resource-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Tab Navigation
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        
+        btn.classList.add('active');
+        document.getElementById(tab).classList.add('active');
+      });
+    });
+    
+    // Notes System
+    let notes = JSON.parse(localStorage.getItem('cs224n_notes') || '[]');
+    let currentNoteId = null;
+    
+    function renderNotes() {
+      const notesList = document.getElementById('notesList');
+      notesList.innerHTML = notes.map(note => `
+        <div class="note-item ${note.id === currentNoteId ? 'active' : ''}" onclick="selectNote('${note.id}')">
+          <div class="note-item-title">${note.title || 'Untitled'}</div>
+          <div class="note-item-meta">
+            <span>Week ${note.week || '-'}</span>
+            <span>${formatDate(note.updated)}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    function formatDate(timestamp) {
+      if (!timestamp) return '';
+      const date = new Date(timestamp);
+      const now = new Date();
+      const diff = now - date;
+      
+      if (diff < 60000) return 'Just now';
+      if (diff < 3600000) return `${Math.floor(diff/60000)}m ago`;
+      if (diff < 86400000) return `${Math.floor(diff/3600000)}h ago`;
+      return date.toLocaleDateString();
+    }
+    
+    function createNewNote() {
+      const note = {
+        id: Date.now().toString(),
+        title: 'New Note',
+        content: '',
+        week: '',
+        created: Date.now(),
+        updated: Date.now()
+      };
+      notes.unshift(note);
+      saveNotes();
+      selectNote(note.id);
+    }
+    
+    function selectNote(id) {
+      currentNoteId = id;
+      const note = notes.find(n => n.id === id);
+      if (note) {
+        document.getElementById('noteContent').value = note.content;
+        document.getElementById('editorTitle').textContent = note.title || 'Untitled';
+      }
+      renderNotes();
+    }
+    
+    function deleteCurrentNote() {
+      if (!currentNoteId) return;
+      if (!confirm('Delete this note?')) return;
+      
+      notes = notes.filter(n => n.id !== currentNoteId);
+      saveNotes();
+      currentNoteId = notes.length > 0 ? notes[0].id : null;
+      if (currentNoteId) {
+        selectNote(currentNoteId);
+      } else {
+        document.getElementById('noteContent').value = '';
+        document.getElementById('editorTitle').textContent = 'Select or create a note';
+      }
+      renderNotes();
+    }
+    
+    function saveNotes() {
+      localStorage.setItem('cs224n_notes', JSON.stringify(notes));
+    }
+    
+    // Auto-save notes
+    document.getElementById('noteContent').addEventListener('input', (e) => {
+      if (!currentNoteId) return;
+      const note = notes.find(n => n.id === currentNoteId);
+      if (note) {
+        note.content = e.target.value;
+        note.title = e.target.value.split('\n')[0].slice(0, 50) || 'Untitled';
+        note.updated = Date.now();
+        document.getElementById('editorTitle').textContent = note.title;
+        saveNotes();
+        renderNotes();
+      }
+    });
+    
+    // Initialize notes
+    if (notes.length === 0) {
+      createNewNote();
+      const note = notes[0];
+      note.title = 'Getting Started';
+      note.content = `# Getting Started with CS224N
+
+Welcome to your CS224N course dashboard! Here you can:
+
+- Track your weekly progress
+- Take and organize notes
+- Complete practice projects
+- Monitor assignment status
+- Access curated resources
+
+Good luck on your NLP journey! 🚀`;
+      saveNotes();
+      selectNote(note.id);
+    } else {
+      selectNote(notes[0].id);
+    }
+    renderNotes();
+    
+    // Task Toggle
+    function toggleTask(checkbox) {
+      const taskItem = checkbox.closest('.task-item');
+      const taskId = taskItem.dataset.task;
+      const isChecked = checkbox.classList.toggle('checked');
+      taskItem.classList.toggle('completed', isChecked);
+      localStorage.setItem(`cs224n_task_${taskId}`, isChecked);
+      updateProjectStatus(taskItem.closest('.project-card'));
+    }
+    
+    function updateProjectStatus(card) {
+      const tasks = card.querySelectorAll('.task-checkbox');
+      const completed = card.querySelectorAll('.task-checkbox.checked').length;
+      const total = tasks.length;
+      const statusEl = card.querySelector('.project-status');
+      
+      if (completed === 0) {
+        statusEl.textContent = 'Not Started';
+        statusEl.className = 'project-status not-started';
+      } else if (completed === total) {
+        statusEl.textContent = 'Completed';
+        statusEl.className = 'project-status completed';
+      } else {
+        statusEl.textContent = 'In Progress';
+        statusEl.className = 'project-status in-progress';
+      }
+    }
+    
+    // Load saved tasks
+    document.querySelectorAll('.task-item').forEach(item => {
+      const taskId = item.dataset.task;
+      const isChecked = localStorage.getItem(`cs224n_task_${taskId}`) === 'true';
+      if (isChecked) {
+        item.querySelector('.task-checkbox').classList.add('checked');
+        item.classList.add('completed');
+      }
+    });
+    
+    document.querySelectorAll('.project-card').forEach(updateProjectStatus);
+    
+    // Assignment Status
+    document.querySelectorAll('.assignment-status-select').forEach(select => {
+      const assignment = select.dataset.assignment;
+      const saved = localStorage.getItem(`cs224n_assignment_${assignment}`);
+      if (saved) select.value = saved;
+      
+      select.addEventListener('change', (e) => {
+        localStorage.setItem(`cs224n_assignment_${assignment}`, e.target.value);
+      });
+    });
+    
+    // Progress Animation
+    setTimeout(() => {
+      const progressRing = document.querySelector('.progress-ring-fill');
+      const progress = 0; // Calculate based on completed weeks
+      const circumference = 502;
+      const offset = circumference - (progress / 100) * circumference;
+      progressRing.style.strokeDashoffset = offset;
+    }, 500);
+  </script>
+  <script src="../../js/darkmode.js"></script>
+</body>
+</html>
