@@ -184,6 +184,20 @@
       font-weight: 800;
       letter-spacing: 0.5px;
     }
+
+    /* DSA Course Card - Special Styling */
+    .current-course-card.dsa-card {
+      border: 2px solid rgba(0, 245, 212, 0.3);
+    }
+    
+    .current-course-card.dsa-card::before {
+      background: linear-gradient(90deg, #00f5d4 0%, #00ff88 50%, #9b5de5 100%);
+    }
+    
+    .current-course-card.dsa-card::after {
+      content: '⚡ DSA MASTERY';
+      background: linear-gradient(135deg, #00f5d4 0%, #00ff88 100%);
+    }
     
     .current-course-header {
       display: flex;
@@ -203,6 +217,11 @@
       font-size: 2rem;
       box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
     }
+
+    .current-course-icon.dsa-icon {
+      background: linear-gradient(135deg, #00f5d4 0%, #00ff88 100%);
+      box-shadow: 0 8px 24px rgba(0, 245, 212, 0.4);
+    }
     
     .current-course-info h3 {
       font-size: 1.5rem;
@@ -218,6 +237,10 @@
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+
+    .current-course-info .provider.cyan {
+      color: #00f5d4;
     }
     
     .current-course-info .description {
@@ -245,60 +268,60 @@
     .current-stat .value {
       font-size: 1.5rem;
       font-weight: 800;
-      color: #fbbf24;
+      color: white;
     }
     
     .current-stat .label {
       font-size: 0.75rem;
       color: #94a3b8;
-      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
     
     .progress-section {
-      background: rgba(255,255,255,0.05);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     
     .progress-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
-    }
-    
-    .progress-header span {
+      margin-bottom: 10px;
       color: #94a3b8;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.9rem;
     }
     
     .progress-header .percent {
       color: #fbbf24;
-      font-weight: 800;
+      font-weight: 700;
+    }
+
+    .progress-header .percent.cyan {
+      color: #00f5d4;
     }
     
     .progress-bar {
-      height: 8px;
+      height: 10px;
       background: rgba(255,255,255,0.1);
-      border-radius: 4px;
+      border-radius: 10px;
       overflow: hidden;
     }
     
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
-      border-radius: 4px;
-      transition: width 0.5s ease;
+      background: linear-gradient(90deg, #fbbf24, #f59e0b);
+      border-radius: 10px;
+      transition: width 0.6s ease;
+    }
+
+    .progress-fill.cyan {
+      background: linear-gradient(90deg, #00f5d4, #00ff88);
     }
     
     .view-course-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
       color: #1e293b;
       padding: 14px 28px;
@@ -313,62 +336,59 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(251, 191, 36, 0.4);
     }
+
+    .view-course-btn.cyan {
+      background: linear-gradient(135deg, #00f5d4 0%, #00ff88 100%);
+      box-shadow: 0 4px 16px rgba(0, 245, 212, 0.3);
+    }
+
+    .view-course-btn.cyan:hover {
+      box-shadow: 0 8px 24px rgba(0, 245, 212, 0.4);
+    }
     
     /* Specialization Card */
     .specialization-card {
       background: white;
       border-radius: 20px;
-      padding: 32px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      margin-bottom: 24px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .specialization-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+      padding: 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
     }
     
     .specialization-header {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
     
     .specialization-info h3 {
       font-size: 1.35rem;
-      font-weight: 700;
+      font-weight: 800;
       color: #1e293b;
       margin-bottom: 4px;
     }
     
     .specialization-info .provider {
-      font-size: 0.95rem;
-      color: #16a34a;
-      font-weight: 600;
+      font-size: 0.9rem;
+      color: #64748b;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     
     .specialization-status {
-      padding: 6px 14px;
+      padding: 8px 16px;
       border-radius: 20px;
       font-size: 0.8rem;
       font-weight: 700;
-      text-transform: uppercase;
     }
     
     .status-completed {
-      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-      color: #059669;
+      background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+      color: #16a34a;
     }
     
     .status-in-progress {
@@ -377,8 +397,8 @@
     }
     
     .specialization-desc {
-      font-size: 0.95rem;
       color: #64748b;
+      font-size: 0.95rem;
       line-height: 1.6;
       margin-bottom: 20px;
     }
@@ -387,96 +407,80 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      padding: 16px;
-      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
       border-radius: 12px;
       margin-bottom: 20px;
+      flex-wrap: wrap;
     }
     
     .credential-icon {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
     }
     
-    .credential-details {
-      flex: 1;
-    }
-    
-    .credential-details .label {
-      font-size: 0.8rem;
-      color: #64748b;
-      font-weight: 600;
-    }
-    
-    .credential-details .value {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #16a34a;
-    }
-    
-    .credential-date {
-      text-align: right;
-    }
-    
+    .credential-details .label,
     .credential-date .label {
-      font-size: 0.8rem;
-      color: #64748b;
-      font-weight: 600;
+      font-size: 0.75rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
     
+    .credential-details .value,
     .credential-date .value {
       font-size: 0.95rem;
       font-weight: 700;
-      color: #16a34a;
+      color: #1e293b;
     }
     
     .courses-breakdown {
-      border-top: 1px solid #e2e8f0;
+      border-top: 2px solid #f1f5f9;
       padding-top: 20px;
     }
     
     .courses-breakdown-title {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 700;
-      color: #1e293b;
+      color: #64748b;
       margin-bottom: 16px;
     }
     
     .course-item {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 12px 16px;
+      justify-content: space-between;
+      padding: 14px 16px;
       background: #f8fafc;
       border-radius: 10px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     
-    .course-item:last-child { margin-bottom: 0; }
-    
-    .course-item .course-name {
+    .course-name {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.9rem;
       font-weight: 600;
-      color: #334155;
+      color: #1e293b;
+      font-size: 0.95rem;
     }
     
-    .course-item .course-check {
+    .course-check {
       width: 22px;
       height: 22px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
     }
     
@@ -485,50 +489,45 @@
       color: white;
     }
     
-    .check-current {
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-      color: white;
-    }
-    
     .check-pending {
       background: #e2e8f0;
-      color: #94a3b8;
+      border: 2px dashed #94a3b8;
     }
     
     .course-status-badge {
-      padding: 4px 12px;
+      padding: 6px 12px;
       border-radius: 20px;
       font-size: 0.75rem;
-      font-weight: 700;
+      font-weight: 600;
     }
     
-    /* Course Card */
+    /* Simple Course Card */
     .course-card {
-      background: white;
-      border-radius: 16px;
-      padding: 24px;
       display: flex;
       align-items: center;
       gap: 20px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
       margin-bottom: 16px;
       transition: all 0.3s ease;
     }
     
     .course-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
     }
     
     .provider-logo {
       width: 56px;
       height: 56px;
-      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
       border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       flex-shrink: 0;
     }
     
@@ -536,124 +535,111 @@
       flex: 1;
     }
     
-    .course-details .course-title {
+    .course-title {
       font-size: 1.1rem;
       font-weight: 700;
       color: #1e293b;
       margin-bottom: 4px;
     }
     
-    .course-details .course-provider {
-      font-size: 0.85rem;
-      color: #16a34a;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 4px;
+    .course-provider {
+      font-size: 0.9rem;
+      color: #64748b;
     }
     
-    .course-details .course-credential {
+    .course-credential {
+      display: block;
       font-size: 0.8rem;
       color: #94a3b8;
-      font-family: monospace;
+      margin-top: 4px;
     }
     
     .course-date {
-      text-align: right;
-      flex-shrink: 0;
+      text-align: center;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border-radius: 12px;
     }
     
     .course-date .month {
       display: block;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #1e293b;
+      font-size: 0.8rem;
+      color: #16a34a;
+      font-weight: 600;
     }
     
     .course-date .year {
       display: block;
-      font-size: 0.8rem;
-      color: #64748b;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #16a34a;
     }
     
-    /* Dark Mode */
-    body.dark-mode {
-      background: linear-gradient(135deg, #064e3b 0%, #047857 50%, #059669 100%);
-    }
-    
-    body.dark-mode .hero-card {
-      background: #1e293b;
-    }
-    
-    body.dark-mode .header-content h1 { color: #f1f5f9; }
-    body.dark-mode .header-content p { color: #94a3b8; }
-    
-    body.dark-mode .stats-row {
-      background: linear-gradient(135deg, #065f46 0%, #047857 100%);
-    }
-    
-    body.dark-mode .stat-value { color: #34d399; }
-    body.dark-mode .stat-label { color: #a7f3d0; }
-    body.dark-mode .stat-item { border-color: #10b981; }
-    
-    body.dark-mode .specialization-card {
-      background: #1e293b;
-    }
-    
-    body.dark-mode .specialization-info h3 { color: #f1f5f9; }
-    body.dark-mode .specialization-desc { color: #94a3b8; }
-    
-    body.dark-mode .credential-info {
-      background: linear-gradient(135deg, #065f46 0%, #047857 100%);
-    }
-    
-    body.dark-mode .credential-details .label,
-    body.dark-mode .credential-date .label { color: #a7f3d0; }
-    
-    body.dark-mode .credential-details .value,
-    body.dark-mode .credential-date .value { color: #34d399; }
-    
-    body.dark-mode .course-item {
-      background: #047857;
-    }
-    
-    body.dark-mode .course-item .course-name {
-      color: #d1fae5;
-    }
-    
-    body.dark-mode .courses-breakdown { border-color: #334155; }
-    body.dark-mode .courses-breakdown-title { color: #f1f5f9; }
-    
-    body.dark-mode .course-card {
-      background: #1e293b;
-    }
-    
-    body.dark-mode .course-details .course-title { color: #f1f5f9; }
-    body.dark-mode .course-details .course-provider { color: #34d399; }
-    body.dark-mode .course-date .month { color: #f1f5f9; }
-    
-    body.dark-mode .provider-logo {
-      background: linear-gradient(135deg, #065f46 0%, #047857 100%);
-    }
-    
+    /* Responsive */
     @media (max-width: 768px) {
-      .hero-card { padding: 32px 24px; }
-      .page-header { flex-direction: column; text-align: center; }
-      .header-content h1 { font-size: 2rem; }
-      .stats-row { flex-direction: column; }
-      .stat-item { border-right: none; border-bottom: 1px solid #bbf7d0; padding: 12px 0; }
-      .specialization-header { flex-direction: column; gap: 12px; }
-      .credential-info { flex-direction: column; text-align: center; }
-      .credential-date { text-align: center; }
-      .course-card { flex-direction: column; text-align: center; }
-      .course-card .course-date { text-align: center; margin-top: 12px; }
-      .current-course-stats { grid-template-columns: repeat(2, 1fr); }
-      .current-course-card::after { position: relative; top: 0; right: 0; display: block; text-align: center; margin-bottom: 16px; }
-      .current-course-header { flex-direction: column; align-items: center; text-align: center; }
+      .hero-card {
+        padding: 32px 24px;
+      }
+      
+      .page-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .header-content h1 {
+        font-size: 2rem;
+      }
+      
+      .stats-row {
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .stat-item {
+        padding-right: 0;
+        border-right: none;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #bbf7d0;
+      }
+      
+      .stat-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      
+      .current-course-card::after {
+        position: relative;
+        display: block;
+        top: 0;
+        right: 0;
+        width: fit-content;
+        margin-bottom: 16px;
+      }
+      
+      .current-course-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .current-course-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .course-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .specialization-header {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- Navigation -->
     <nav class="nav-bar">
       <a href="current-work.html" class="back-btn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -663,32 +649,34 @@
       </a>
     </nav>
 
+    <!-- Hero Section -->
     <div class="hero-card">
       <div class="page-header">
         <div class="header-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            <line x1="12" y1="6" x2="16" y2="6"/>
+            <line x1="12" y1="10" x2="16" y2="10"/>
           </svg>
         </div>
         <div class="header-content">
           <h1>Online Courses</h1>
-          <p>My learning journey through structured online courses and certifications from top universities and tech companies.</p>
+          <p>Tracking my self-paced learning journey through MOOCs, certifications, and specialized courses. Building expertise in ML, AI, and software engineering.</p>
         </div>
       </div>
-      
       <div class="stats-row">
         <div class="stat-item">
-          <span class="stat-value">9</span>
-          <span class="stat-label">Certificates</span>
+          <span class="stat-value">4</span>
+          <span class="stat-label">Active Courses</span>
         </div>
         <div class="stat-item">
-          <span class="stat-value">2</span>
+          <span class="stat-value">8</span>
+          <span class="stat-label">Certifications</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">3</span>
           <span class="stat-label">Specializations</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-value">1</span>
-          <span class="stat-label">Currently Active</span>
         </div>
         <div class="stat-item">
           <span class="stat-value">200+</span>
@@ -700,6 +688,57 @@
     <!-- ==================== CURRENT COURSES ==================== -->
     <h2 class="section-title">🔥 Currently Learning</h2>
     <p class="section-subtitle">Active courses I'm working through right now</p>
+
+    <!-- DSA Course - Striver's A2Z -->
+    <div class="current-course-card dsa-card">
+      <div class="current-course-header">
+        <div class="current-course-icon dsa-icon">⚡</div>
+        <div class="current-course-info">
+          <h3>Striver's A2Z DSA Course/Sheet</h3>
+          <span class="provider cyan">
+            <span>🎯</span>
+            TakeUForward • Self-Paced
+          </span>
+          <p class="description">Complete Data Structures & Algorithms course covering 450+ problems from basics to advanced. Master arrays, trees, graphs, DP, and all essential patterns for coding interviews.</p>
+        </div>
+      </div>
+      
+      <div class="current-course-stats">
+        <div class="current-stat">
+          <span class="value">16</span>
+          <span class="label">Topics</span>
+        </div>
+        <div class="current-stat">
+          <span class="value">450+</span>
+          <span class="label">Problems</span>
+        </div>
+        <div class="current-stat">
+          <span class="value">300+</span>
+          <span class="label">Hours Est.</span>
+        </div>
+        <div class="current-stat">
+          <span class="value">∞</span>
+          <span class="label">Interview Ready</span>
+        </div>
+      </div>
+      
+      <div class="progress-section">
+        <div class="progress-header">
+          <span>Starting Fresh - All Topics Ahead</span>
+          <span class="percent cyan">0% Complete</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill cyan" style="width: 0%"></div>
+        </div>
+      </div>
+      
+      <a href="../courses/DSA/dsa-tracker.html" class="view-course-btn cyan">
+        <span>Open DSA Tracker</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
 
     <!-- CS224N NLP Course -->
     <div class="current-course-card">

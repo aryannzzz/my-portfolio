@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Mastery Tracker | Striver's A2Z Sheet</title>
+  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="../../css/header.css" />
+  <link rel="stylesheet" href="../../css/darkmode.css" />
+  <style>
+    :root {
+      --bg-void: #05070a;
+      --bg-deep: #0a0e14;
+      --bg-surface: #111620;
+      --bg-card: #161d2a;
+      --bg-elevated: #1c2535;
+      
+      --neon-cyan: #00f5d4;
+      --neon-pink: #ff006e;
+      --neon-yellow: #fee440;
+      --neon-purple: #9b5de5;
+      --neon-orange: #ff8c00;
+      --neon-green: #00ff88;
+      
+      --text-primary: #f0f4f8;
+      --text-secondary: #8892a4;
+      --text-muted: #4a5568;
+      
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-glow: rgba(0, 245, 212, 0.3);
+      
+      --glass: rgba(22, 29, 42, 0.85);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-void);
+      min-height: 100vh;
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    /* ===== AMBIENT BACKGROUND ===== */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .ambient-bg::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: 
+        conic-gradient(from 0deg at 50% 50%, 
+          transparent 0deg,
+          rgba(0, 245, 212, 0.03) 60deg,
+          transparent 120deg,
+          rgba(255, 0, 110, 0.03) 180deg,
+          transparent 240deg,
+          rgba(155, 93, 229, 0.03) 300deg,
+          transparent 360deg
+        );
+      animation: ambientRotate 60s linear infinite;
+    }
+
+    @keyframes ambientRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 212, 0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 50% at 50% 50%, black 0%, transparent 100%);
+    }
+
+    .floating-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+      animation: orbFloat 20s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      width: 400px;
+      height: 400px;
+      background: var(--neon-cyan);
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 350px;
+      height: 350px;
+      background: var(--neon-pink);
+      bottom: 20%;
+      right: 5%;
+      animation-delay: -7s;
+    }
+
+    .orb-3 {
+      width: 300px;
+      height: 300px;
+      background: var(--neon-purple);
+      top: 60%;
+      left: 40%;
+      animation-delay: -14s;
+      opacity: 0.25;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 30px) scale(0.95); }
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 24px;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .back-btn:hover {
+      background: var(--bg-elevated);
+      color: var(--neon-cyan);
+      border-color: var(--border-glow);
+      transform: translateX(-6px);
+      box-shadow: 0 0 30px rgba(0, 245, 212, 0.15);
+    }
+
+    .quick-stats {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .quick-stat {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      border-radius: 10px;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+    }
+
+    .quick-stat .icon {
+      font-size: 1.1rem;
+    }
+
+    .quick-stat .value {
+      font-weight: 700;
+      font-family: 'Space Mono', monospace;
+      color: var(--neon-cyan);
+    }
+
+    .quick-stat .label {
+      color: var(--text-muted);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      position: relative;
+      background: var(--glass);
+      backdrop-filter: blur(40px);
+      border-radius: 28px;
+      padding: 48px;
+      margin-bottom: 48px;
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, 
+        var(--neon-cyan) 0%, 
+        var(--neon-purple) 50%, 
+        var(--neon-pink) 100%
+      );
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 245, 212, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 245, 212, 0.1);
+      color: var(--neon-cyan);
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      border: 1px solid rgba(0, 245, 212, 0.2);
+    }
+
+    .hero-badge .pulse {
+      width: 8px;
+      height: 8px;
+      background: var(--neon-cyan);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+      box-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 550px;
+      margin-bottom: 32px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+
+    .hero-link:hover {
+      background: rgba(0, 245, 212, 0.1);
+      color: var(--neon-cyan);
+      border-color: rgba(0, 245, 212, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .hero-link svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Progress Ring */
+    .hero-progress {
+      position: relative;
+      z-index: 2;
+    }
+
+    .progress-ring-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    .progress-ring {
+      transform: rotate(-90deg);
+      width: 200px;
+      height: 200px;
+    }
+
+    .progress-ring-bg {
+      fill: none;
+      stroke: var(--bg-elevated);
+      stroke-width: 12;
+    }
+
+    .progress-ring-fill {
+      fill: none;
+      stroke: url(#progressGradient);
+      stroke-width: 12;
+      stroke-linecap: round;
+      stroke-dasharray: 502;
+      stroke-dashoffset: 502;
+      transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .progress-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .progress-percentage {
+      font-family: 'Space Mono', monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--neon-cyan);
+      line-height: 1;
+      text-shadow: 0 0 30px rgba(0, 245, 212, 0.4);
+    }
+
+    .progress-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ===== TABS NAVIGATION ===== */
+    .tabs-container {
+      margin-bottom: 40px;
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      padding: 6px;
+      background: var(--bg-card);
+      border-radius: 16px;
+      width: fit-content;
+      margin-bottom: 32px;
+    }
+
+    .tab-btn {
+      padding: 14px 28px;
+      background: transparent;
+      border: none;
+      border-radius: 12px;
+      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .tab-btn.active {
+      background: var(--bg-elevated);
+      color: var(--neon-cyan);
+      box-shadow: 0 0 20px rgba(0, 245, 212, 0.1);
+    }
+
+    .tab-btn .emoji {
+      font-size: 1.1rem;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== DSA TOPICS GRID ===== */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title .icon {
+      font-size: 1.5rem;
+    }
+
+    .filter-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-chip {
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-chip:hover, .filter-chip.active {
+      background: rgba(0, 245, 212, 0.1);
+      color: var(--neon-cyan);
+      border-color: rgba(0, 245, 212, 0.3);
+    }
+
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    .topic-card {
+      position: relative;
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .topic-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--topic-color, var(--neon-cyan));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .topic-card:hover::before {
+      opacity: 1;
+    }
+
+    .topic-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .topic-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      background: var(--topic-bg, rgba(0, 245, 212, 0.1));
+    }
+
+    .topic-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .topic-status.not-started {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+    }
+
+    .topic-status.in-progress {
+      background: rgba(254, 228, 64, 0.1);
+      color: var(--neon-yellow);
+    }
+
+    .topic-status.completed {
+      background: rgba(0, 255, 136, 0.1);
+      color: var(--neon-green);
+    }
+
+    .topic-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .topic-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .topic-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .topic-meta-item .count {
+      font-family: 'Space Mono', monospace;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .topic-progress {
+      margin-bottom: 16px;
+    }
+
+    .topic-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .topic-progress-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .topic-progress-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--topic-color, var(--neon-cyan));
+    }
+
+    .topic-progress-bar {
+      height: 6px;
+      background: var(--bg-elevated);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .topic-progress-fill {
+      height: 100%;
+      background: var(--topic-color, var(--neon-cyan));
+      border-radius: 10px;
+      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 20px var(--topic-color, var(--neon-cyan));
+    }
+
+    .topic-subtopics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .subtopic-tag {
+      padding: 6px 12px;
+      background: var(--bg-elevated);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      transition: all 0.3s ease;
+    }
+
+    .subtopic-tag:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-secondary);
+    }
+
+    .subtopic-tag.done {
+      background: rgba(0, 255, 136, 0.1);
+      color: var(--neon-green);
+    }
+
+    /* Topic Color Variants */
+    .topic-card[data-topic="arrays"] { --topic-color: #00f5d4; --topic-bg: rgba(0, 245, 212, 0.1); }
+    .topic-card[data-topic="binary-search"] { --topic-color: #ff006e; --topic-bg: rgba(255, 0, 110, 0.1); }
+    .topic-card[data-topic="strings"] { --topic-color: #9b5de5; --topic-bg: rgba(155, 93, 229, 0.1); }
+    .topic-card[data-topic="linked-list"] { --topic-color: #fee440; --topic-bg: rgba(254, 228, 64, 0.1); }
+    .topic-card[data-topic="recursion"] { --topic-color: #00bbf9; --topic-bg: rgba(0, 187, 249, 0.1); }
+    .topic-card[data-topic="sorting"] { --topic-color: #00ff88; --topic-bg: rgba(0, 255, 136, 0.1); }
+    .topic-card[data-topic="stacks-queues"] { --topic-color: #f15bb5; --topic-bg: rgba(241, 91, 181, 0.1); }
+    .topic-card[data-topic="trees"] { --topic-color: #ff8c00; --topic-bg: rgba(255, 140, 0, 0.1); }
+    .topic-card[data-topic="graphs"] { --topic-color: #4cc9f0; --topic-bg: rgba(76, 201, 240, 0.1); }
+    .topic-card[data-topic="dp"] { --topic-color: #7209b7; --topic-bg: rgba(114, 9, 183, 0.1); }
+    .topic-card[data-topic="greedy"] { --topic-color: #3a86ff; --topic-bg: rgba(58, 134, 255, 0.1); }
+    .topic-card[data-topic="bit-manipulation"] { --topic-color: #fb5607; --topic-bg: rgba(251, 86, 7, 0.1); }
+    .topic-card[data-topic="heap"] { --topic-color: #8338ec; --topic-bg: rgba(131, 56, 236, 0.1); }
+    .topic-card[data-topic="sliding-window"] { --topic-color: #06d6a0; --topic-bg: rgba(6, 214, 160, 0.1); }
+    .topic-card[data-topic="two-pointers"] { --topic-color: #ef476f; --topic-bg: rgba(239, 71, 111, 0.1); }
+    .topic-card[data-topic="trie"] { --topic-color: #118ab2; --topic-bg: rgba(17, 138, 178, 0.1); }
+
+    /* ===== LEETCODE TRACKER ===== */
+    .leetcode-section {
+      background: var(--bg-card);
+      border-radius: 24px;
+      padding: 32px;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 40px;
+    }
+
+    .leetcode-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .leetcode-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .leetcode-logo {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, #ffa116, #ff8c00);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 8px 24px rgba(255, 161, 22, 0.25);
+    }
+
+    .leetcode-title h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .leetcode-title p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .leetcode-stats {
+      display: flex;
+      gap: 24px;
+    }
+
+    .lc-stat {
+      text-align: center;
+      padding: 16px 24px;
+      background: var(--bg-elevated);
+      border-radius: 16px;
+      min-width: 100px;
+    }
+
+    .lc-stat .value {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .lc-stat .label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .lc-stat.easy .value { color: #00b8a9; }
+    .lc-stat.medium .value { color: #ffa116; }
+    .lc-stat.hard .value { color: #ff375f; }
+
+    .leetcode-placeholder {
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--bg-elevated);
+      border-radius: 16px;
+      border: 2px dashed var(--border-subtle);
+    }
+
+    .leetcode-placeholder .icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+
+    .leetcode-placeholder h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+    }
+
+    .leetcode-placeholder p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ===== TOPIC DETAIL MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 7, 10, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      border-radius: 28px;
+      width: 100%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-card);
+      padding: 28px 32px;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 10;
+    }
+
+    .modal-header h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .modal-close {
+      width: 44px;
+      height: 44px;
+      background: var(--bg-elevated);
+      border: none;
+      border-radius: 12px;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 0, 110, 0.1);
+      color: var(--neon-pink);
+    }
+
+    .modal-body {
+      padding: 32px;
+    }
+
+    .problem-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .problem-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--bg-elevated);
+      border-radius: 14px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .problem-item:hover {
+      border-color: var(--border-subtle);
+      transform: translateX(4px);
+    }
+
+    .problem-checkbox {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      border: 2px solid var(--text-muted);
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .problem-checkbox.checked {
+      background: var(--neon-green);
+      border-color: var(--neon-green);
+    }
+
+    .problem-checkbox.checked::after {
+      content: '✓';
+      color: var(--bg-void);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .problem-info {
+      flex: 1;
+    }
+
+    .problem-name {
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .problem-item.completed .problem-name {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    .problem-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .problem-tag {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--bg-card);
+      color: var(--text-muted);
+    }
+
+    .problem-difficulty {
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .problem-difficulty.easy {
+      background: rgba(0, 184, 169, 0.1);
+      color: #00b8a9;
+    }
+
+    .problem-difficulty.medium {
+      background: rgba(255, 161, 22, 0.1);
+      color: #ffa116;
+    }
+
+    .problem-difficulty.hard {
+      background: rgba(255, 55, 95, 0.1);
+      color: #ff375f;
+    }
+
+    /* ===== RESOURCES SECTION ===== */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .resource-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background: var(--bg-card);
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 245, 212, 0.3);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .resource-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--bg-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .resource-info h4 {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .resource-info p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: var(--neon-cyan);
+      text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer a:hover {
+      opacity: 0.8;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-progress {
+        display: flex;
+        justify-content: center;
+      }
+
+      .hero-links {
+        justify-content: center;
+      }
+
+      .leetcode-stats {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .tabs-nav {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px 16px;
+      }
+
+      .hero {
+        padding: 32px 24px;
+      }
+
+      .topics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-stats {
+        display: none;
+      }
+
+      .tab-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+
+      .topic-card {
+        padding: 20px;
+      }
+
+      .leetcode-section {
+        padding: 24px;
+      }
+
+      .lc-stat {
+        padding: 12px 16px;
+        min-width: 80px;
+      }
+
+      .lc-stat .value {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-bg">
+    <div class="grid-overlay"></div>
+    <div class="floating-orb orb-1"></div>
+    <div class="floating-orb orb-2"></div>
+    <div class="floating-orb orb-3"></div>
+  </div>
+
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="nav-header">
+      <a href="../online-courses.html" class="back-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Back to Courses</span>
+      </a>
+      <div class="quick-stats">
+        <div class="quick-stat">
+          <span class="icon">🔥</span>
+          <span class="value" id="streakCount">0</span>
+          <span class="label">day streak</span>
+        </div>
+        <div class="quick-stat">
+          <span class="icon">✅</span>
+          <span class="value" id="completedCount">0</span>
+          <span class="label">completed</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="hero-layout">
+        <div class="hero-text">
+          <div class="hero-badge">
+            <span class="pulse"></span>
+            <span>Active Learning</span>
+          </div>
+          <h1>DSA <span class="highlight">Mastery</span></h1>
+          <p class="hero-subtitle">
+            Complete Data Structures & Algorithms tracker following Striver's A2Z DSA Sheet. 
+            Master patterns, solve problems, and track your journey to becoming interview-ready.
+          </p>
+          <div class="hero-links">
+            <a href="https://www.youtube.com/playlist?list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz" target="_blank" class="hero-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              <span>YouTube Playlist</span>
+            </a>
+            <a href="https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2" target="_blank" class="hero-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+              <span>TakeUForward Sheet</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-progress">
+          <div class="progress-ring-container">
+            <svg class="progress-ring" viewBox="0 0 180 180">
+              <defs>
+                <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color: #00f5d4"/>
+                  <stop offset="50%" style="stop-color: #00ff88"/>
+                  <stop offset="100%" style="stop-color: #00f5d4"/>
+                </linearGradient>
+              </defs>
+              <circle class="progress-ring-bg" cx="90" cy="90" r="80"/>
+              <circle class="progress-ring-fill" cx="90" cy="90" r="80"/>
+            </svg>
+            <div class="progress-center">
+              <div class="progress-percentage" id="totalProgress">0%</div>
+              <div class="progress-label">Overall Progress</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs-container">
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="topics">
+          <span class="emoji">📚</span>
+          <span>DSA Topics</span>
+        </button>
+        <button class="tab-btn" data-tab="leetcode">
+          <span class="emoji">💻</span>
+          <span>LeetCode Tracker</span>
+        </button>
+        <button class="tab-btn" data-tab="resources">
+          <span class="emoji">🔗</span>
+          <span>Resources</span>
+        </button>
+      </div>
+
+      <!-- Topics Tab -->
+      <div class="tab-content active" id="topics">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="icon">🎯</span>
+            <span>Master All Topics</span>
+          </h2>
+          <div class="filter-chips">
+            <span class="filter-chip active" data-filter="all">All</span>
+            <span class="filter-chip" data-filter="not-started">Not Started</span>
+            <span class="filter-chip" data-filter="in-progress">In Progress</span>
+            <span class="filter-chip" data-filter="completed">Completed</span>
+          </div>
+        </div>
+
+        <div class="topics-grid">
+          <!-- Arrays Topic -->
+          <div class="topic-card" data-topic="arrays" onclick="openTopicModal('arrays')">
+            <div class="topic-header">
+              <div class="topic-icon">📊</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Arrays</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">36</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Easy</span>
+              <span class="subtopic-tag">Medium</span>
+              <span class="subtopic-tag">Hard</span>
+              <span class="subtopic-tag">Logic Building</span>
+            </div>
+          </div>
+
+          <!-- Binary Search Topic -->
+          <div class="topic-card" data-topic="binary-search" onclick="openTopicModal('binary-search')">
+            <div class="topic-header">
+              <div class="topic-icon">🔍</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Binary Search</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">32</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">1D Arrays</span>
+              <span class="subtopic-tag">2D Arrays</span>
+              <span class="subtopic-tag">Search Space</span>
+            </div>
+          </div>
+
+          <!-- Strings Topic -->
+          <div class="topic-card" data-topic="strings" onclick="openTopicModal('strings')">
+            <div class="topic-header">
+              <div class="topic-icon">📝</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Strings</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">15</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Basic</span>
+              <span class="subtopic-tag">Medium</span>
+            </div>
+          </div>
+
+          <!-- Linked List Topic -->
+          <div class="topic-card" data-topic="linked-list" onclick="openTopicModal('linked-list')">
+            <div class="topic-header">
+              <div class="topic-icon">🔗</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Linked List</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">31</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Singly LL</span>
+              <span class="subtopic-tag">Doubly LL</span>
+              <span class="subtopic-tag">Medium</span>
+              <span class="subtopic-tag">Hard</span>
+            </div>
+          </div>
+
+          <!-- Recursion Topic -->
+          <div class="topic-card" data-topic="recursion" onclick="openTopicModal('recursion')">
+            <div class="topic-header">
+              <div class="topic-icon">🔄</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Recursion & Backtracking</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">28</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Get Strong</span>
+              <span class="subtopic-tag">Subsequences</span>
+              <span class="subtopic-tag">Hard</span>
+            </div>
+          </div>
+
+          <!-- Sorting Topic -->
+          <div class="topic-card" data-topic="sorting" onclick="openTopicModal('sorting')">
+            <div class="topic-header">
+              <div class="topic-icon">📈</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Sorting Algorithms</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">7</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Selection</span>
+              <span class="subtopic-tag">Bubble</span>
+              <span class="subtopic-tag">Merge</span>
+              <span class="subtopic-tag">Quick</span>
+            </div>
+          </div>
+
+          <!-- Stack & Queues Topic -->
+          <div class="topic-card" data-topic="stacks-queues" onclick="openTopicModal('stacks-queues')">
+            <div class="topic-header">
+              <div class="topic-icon">📚</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Stacks & Queues</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">30</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Learning</span>
+              <span class="subtopic-tag">Prefix/Infix</span>
+              <span class="subtopic-tag">Monotonic</span>
+              <span class="subtopic-tag">Implementation</span>
+            </div>
+          </div>
+
+          <!-- Trees Topic -->
+          <div class="topic-card" data-topic="trees" onclick="openTopicModal('trees')">
+            <div class="topic-header">
+              <div class="topic-icon">🌳</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Binary Trees</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">45</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Traversals</span>
+              <span class="subtopic-tag">Medium</span>
+              <span class="subtopic-tag">Hard</span>
+              <span class="subtopic-tag">BST</span>
+            </div>
+          </div>
+
+          <!-- Graphs Topic -->
+          <div class="topic-card" data-topic="graphs" onclick="openTopicModal('graphs')">
+            <div class="topic-header">
+              <div class="topic-icon">🕸️</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Graphs</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">54</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">BFS/DFS</span>
+              <span class="subtopic-tag">Topo Sort</span>
+              <span class="subtopic-tag">Shortest Path</span>
+              <span class="subtopic-tag">MST</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Programming Topic -->
+          <div class="topic-card" data-topic="dp" onclick="openTopicModal('dp')">
+            <div class="topic-header">
+              <div class="topic-icon">🧩</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Dynamic Programming</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">56</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">1D DP</span>
+              <span class="subtopic-tag">2D DP</span>
+              <span class="subtopic-tag">Strings</span>
+              <span class="subtopic-tag">LIS</span>
+              <span class="subtopic-tag">Partition</span>
+            </div>
+          </div>
+
+          <!-- Greedy Topic -->
+          <div class="topic-card" data-topic="greedy" onclick="openTopicModal('greedy')">
+            <div class="topic-header">
+              <div class="topic-icon">🎯</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Greedy Algorithms</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">16</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Easy</span>
+              <span class="subtopic-tag">Medium</span>
+              <span class="subtopic-tag">Hard</span>
+            </div>
+          </div>
+
+          <!-- Bit Manipulation Topic -->
+          <div class="topic-card" data-topic="bit-manipulation" onclick="openTopicModal('bit-manipulation')">
+            <div class="topic-header">
+              <div class="topic-icon">⚡</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Bit Manipulation</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">18</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Learn</span>
+              <span class="subtopic-tag">Interview</span>
+              <span class="subtopic-tag">Advanced</span>
+            </div>
+          </div>
+
+          <!-- Heap / Priority Queue Topic -->
+          <div class="topic-card" data-topic="heap" onclick="openTopicModal('heap')">
+            <div class="topic-header">
+              <div class="topic-icon">🏔️</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Heap / Priority Queue</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">17</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Learning</span>
+              <span class="subtopic-tag">Medium</span>
+              <span class="subtopic-tag">Hard</span>
+            </div>
+          </div>
+
+          <!-- Sliding Window Topic -->
+          <div class="topic-card" data-topic="sliding-window" onclick="openTopicModal('sliding-window')">
+            <div class="topic-header">
+              <div class="topic-icon">🪟</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Sliding Window</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">12</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Medium</span>
+              <span class="subtopic-tag">Hard</span>
+            </div>
+          </div>
+
+          <!-- Two Pointers Topic -->
+          <div class="topic-card" data-topic="two-pointers" onclick="openTopicModal('two-pointers')">
+            <div class="topic-header">
+              <div class="topic-icon">↔️</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Two Pointers</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">8</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Medium</span>
+            </div>
+          </div>
+
+          <!-- Trie Topic -->
+          <div class="topic-card" data-topic="trie" onclick="openTopicModal('trie')">
+            <div class="topic-header">
+              <div class="topic-icon">🌲</div>
+              <span class="topic-status not-started">Not Started</span>
+            </div>
+            <h3 class="topic-title">Trie</h3>
+            <div class="topic-meta">
+              <span class="topic-meta-item">
+                <span class="count">7</span> problems
+              </span>
+              <span class="topic-meta-item">
+                <span class="count">0</span> solved
+              </span>
+            </div>
+            <div class="topic-progress">
+              <div class="topic-progress-header">
+                <span class="topic-progress-label">Progress</span>
+                <span class="topic-progress-value">0%</span>
+              </div>
+              <div class="topic-progress-bar">
+                <div class="topic-progress-fill" style="width: 0%"></div>
+              </div>
+            </div>
+            <div class="topic-subtopics">
+              <span class="subtopic-tag">Theory</span>
+              <span class="subtopic-tag">Problems</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LeetCode Tab -->
+      <div class="tab-content" id="leetcode">
+        <div class="leetcode-section">
+          <div class="leetcode-header">
+            <div class="leetcode-title">
+              <div class="leetcode-logo">⚡</div>
+              <div>
+                <h3>LeetCode Problems</h3>
+                <p>Track your problem-solving progress</p>
+              </div>
+            </div>
+            <div class="leetcode-stats">
+              <div class="lc-stat easy">
+                <div class="value">--</div>
+                <div class="label">Easy</div>
+              </div>
+              <div class="lc-stat medium">
+                <div class="value">--</div>
+                <div class="label">Medium</div>
+              </div>
+              <div class="lc-stat hard">
+                <div class="value">--</div>
+                <div class="label">Hard</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="leetcode-placeholder">
+            <div class="icon">📝</div>
+            <h4>Coming Soon</h4>
+            <p>Your LeetCode problems tracker will appear here. Stay tuned for updates!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources Tab -->
+      <div class="tab-content" id="resources">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="icon">📚</span>
+            <span>Curated Resources</span>
+          </h2>
+        </div>
+
+        <div class="resources-grid">
+          <a href="https://www.youtube.com/playlist?list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz" target="_blank" class="resource-card">
+            <div class="resource-icon">🎬</div>
+            <div class="resource-info">
+              <h4>Striver's A2Z Playlist</h4>
+              <p>Complete video series on YouTube</p>
+            </div>
+          </a>
+
+          <a href="https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2" target="_blank" class="resource-card">
+            <div class="resource-icon">📋</div>
+            <div class="resource-info">
+              <h4>TakeUForward Sheet</h4>
+              <p>Official problem tracking sheet</p>
+            </div>
+          </a>
+
+          <a href="https://leetcode.com/" target="_blank" class="resource-card">
+            <div class="resource-icon">⚡</div>
+            <div class="resource-info">
+              <h4>LeetCode</h4>
+              <p>Practice problems & contests</p>
+            </div>
+          </a>
+
+          <a href="https://codeforces.com/" target="_blank" class="resource-card">
+            <div class="resource-icon">🏆</div>
+            <div class="resource-info">
+              <h4>Codeforces</h4>
+              <p>Competitive programming</p>
+            </div>
+          </a>
+
+          <a href="https://www.geeksforgeeks.org/" target="_blank" class="resource-card">
+            <div class="resource-icon">📗</div>
+            <div class="resource-info">
+              <h4>GeeksforGeeks</h4>
+              <p>DSA tutorials & practice</p>
+            </div>
+          </a>
+
+          <a href="https://visualgo.net/" target="_blank" class="resource-card">
+            <div class="resource-icon">👁️</div>
+            <div class="resource-info">
+              <h4>VisuAlgo</h4>
+              <p>Algorithm visualizations</p>
+            </div>
+          </a>
+
+          <a href="https://cp-algorithms.com/" target="_blank" class="resource-card">
+            <div class="resource-icon">📖</div>
+            <div class="resource-info">
+              <h4>CP Algorithms</h4>
+              <p>Algorithm encyclopedia</p>
+            </div>
+          </a>
+
+          <a href="https://neetcode.io/" target="_blank" class="resource-card">
+            <div class="resource-icon">🎯</div>
+            <div class="resource-info">
+              <h4>NeetCode</h4>
+              <p>Curated problem roadmap</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Last updated: January 2026 • <a href="../online-courses.html">Back to Courses</a></p>
+    </footer>
+  </div>
+
+  <!-- Topic Detail Modal -->
+  <div class="modal-overlay" id="topicModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">
+          <span class="icon">📊</span>
+          <span>Arrays</span>
+        </h2>
+        <button class="modal-close" onclick="closeModal()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="problem-list" id="problemList">
+          <!-- Problems will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== DATA STRUCTURE =====
+    const dsaTopics = {
+      'arrays': {
+        icon: '📊',
+        title: 'Arrays',
+        problems: [
+          { name: 'Largest Element in Array', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Second Largest Element', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Check if Array is Sorted', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Remove Duplicates from Sorted Array', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Left Rotate Array by One', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Left Rotate Array by K Places', difficulty: 'medium', tags: ['basic'] },
+          { name: 'Move Zeros to End', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Linear Search', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Union of Two Sorted Arrays', difficulty: 'medium', tags: ['basic'] },
+          { name: 'Intersection of Two Sorted Arrays', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Find Missing Number', difficulty: 'easy', tags: ['logic'] },
+          { name: 'Maximum Consecutive Ones', difficulty: 'easy', tags: ['logic'] },
+          { name: 'Find Number Appearing Once', difficulty: 'easy', tags: ['logic'] },
+          { name: 'Longest Subarray with Sum K (Positives)', difficulty: 'medium', tags: ['logic'] },
+          { name: 'Longest Subarray with Sum K (Pos+Neg)', difficulty: 'medium', tags: ['logic'] },
+          { name: 'Two Sum', difficulty: 'easy', tags: ['logic'] },
+          { name: 'Sort 0s, 1s, 2s', difficulty: 'medium', tags: ['logic'] },
+          { name: 'Majority Element (n/2)', difficulty: 'medium', tags: ['logic'] },
+          { name: 'Maximum Subarray Sum (Kadane\'s)', difficulty: 'medium', tags: ['logic'] },
+          { name: 'Stock Buy and Sell', difficulty: 'easy', tags: ['logic'] },
+          { name: 'Rearrange Elements by Sign', difficulty: 'medium', tags: ['logic'] },
+          { name: 'Next Permutation', difficulty: 'medium', tags: ['logic'] },
+          { name: 'Leaders in Array', difficulty: 'easy', tags: ['logic'] },
+          { name: 'Longest Consecutive Sequence', difficulty: 'medium', tags: ['logic'] },
+          { name: 'Set Matrix Zeros', difficulty: 'medium', tags: ['logic'] },
+          { name: 'Rotate Matrix by 90 Degrees', difficulty: 'medium', tags: ['logic'] },
+          { name: 'Spiral Matrix', difficulty: 'medium', tags: ['logic'] },
+          { name: 'Count Subarrays with Sum K', difficulty: 'medium', tags: ['logic'] },
+          { name: 'Pascal\'s Triangle', difficulty: 'easy', tags: ['hard'] },
+          { name: 'Majority Element (n/3)', difficulty: 'medium', tags: ['hard'] },
+          { name: '3 Sum', difficulty: 'medium', tags: ['hard'] },
+          { name: '4 Sum', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Merge Overlapping Intervals', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Merge Sorted Arrays without Extra Space', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Find Missing and Repeating Number', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Count Inversions', difficulty: 'hard', tags: ['hard'] }
+        ]
+      },
+      'binary-search': {
+        icon: '🔍',
+        title: 'Binary Search',
+        problems: [
+          { name: 'Binary Search Implementation', difficulty: 'easy', tags: ['1D'] },
+          { name: 'Lower Bound', difficulty: 'easy', tags: ['1D'] },
+          { name: 'Upper Bound', difficulty: 'easy', tags: ['1D'] },
+          { name: 'Search Insert Position', difficulty: 'easy', tags: ['1D'] },
+          { name: 'Floor/Ceil in Sorted Array', difficulty: 'easy', tags: ['1D'] },
+          { name: 'First and Last Occurrence', difficulty: 'medium', tags: ['1D'] },
+          { name: 'Count Occurrences', difficulty: 'easy', tags: ['1D'] },
+          { name: 'Search in Rotated Sorted Array', difficulty: 'medium', tags: ['1D'] },
+          { name: 'Search in Rotated Sorted Array II', difficulty: 'medium', tags: ['1D'] },
+          { name: 'Find Minimum in Rotated Sorted Array', difficulty: 'medium', tags: ['1D'] },
+          { name: 'Find Rotation Count', difficulty: 'easy', tags: ['1D'] },
+          { name: 'Single Element in Sorted Array', difficulty: 'medium', tags: ['1D'] },
+          { name: 'Peak Element', difficulty: 'medium', tags: ['1D'] },
+          { name: 'Square Root of Number', difficulty: 'easy', tags: ['answers'] },
+          { name: 'Nth Root of Number', difficulty: 'medium', tags: ['answers'] },
+          { name: 'Koko Eating Bananas', difficulty: 'medium', tags: ['answers'] },
+          { name: 'Minimum Days to Make M Bouquets', difficulty: 'medium', tags: ['answers'] },
+          { name: 'Find Smallest Divisor', difficulty: 'medium', tags: ['answers'] },
+          { name: 'Capacity to Ship Packages', difficulty: 'medium', tags: ['answers'] },
+          { name: 'Kth Missing Positive Number', difficulty: 'easy', tags: ['answers'] },
+          { name: 'Aggressive Cows', difficulty: 'hard', tags: ['answers'] },
+          { name: 'Book Allocation Problem', difficulty: 'hard', tags: ['answers'] },
+          { name: 'Split Array Largest Sum', difficulty: 'hard', tags: ['answers'] },
+          { name: 'Painter\'s Partition', difficulty: 'hard', tags: ['answers'] },
+          { name: 'Minimize Max Distance to Gas Station', difficulty: 'hard', tags: ['answers'] },
+          { name: 'Median of Two Sorted Arrays', difficulty: 'hard', tags: ['answers'] },
+          { name: 'Kth Element of Two Sorted Arrays', difficulty: 'hard', tags: ['answers'] },
+          { name: 'Row with Maximum 1s', difficulty: 'easy', tags: ['2D'] },
+          { name: 'Search in 2D Matrix', difficulty: 'medium', tags: ['2D'] },
+          { name: 'Search in 2D Matrix II', difficulty: 'medium', tags: ['2D'] },
+          { name: 'Find Peak Element in 2D', difficulty: 'hard', tags: ['2D'] },
+          { name: 'Median in Row-wise Sorted Matrix', difficulty: 'hard', tags: ['2D'] }
+        ]
+      },
+      'strings': {
+        icon: '📝',
+        title: 'Strings',
+        problems: [
+          { name: 'Remove Outermost Parentheses', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Reverse Words in a String', difficulty: 'medium', tags: ['basic'] },
+          { name: 'Largest Odd Number in String', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Longest Common Prefix', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Isomorphic Strings', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Rotate String', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Check if Two Strings are Anagrams', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Sort Characters by Frequency', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Maximum Nesting Depth of Parentheses', difficulty: 'easy', tags: ['medium'] },
+          { name: 'Roman to Integer', difficulty: 'easy', tags: ['medium'] },
+          { name: 'Integer to Roman', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Implement Atoi', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Count and Say', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Longest Palindromic Substring', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Sum of Beauty of All Substrings', difficulty: 'medium', tags: ['medium'] }
+        ]
+      },
+      'linked-list': {
+        icon: '🔗',
+        title: 'Linked List',
+        problems: [
+          { name: 'Introduction to Linked List', difficulty: 'easy', tags: ['singly'] },
+          { name: 'Insert at Head', difficulty: 'easy', tags: ['singly'] },
+          { name: 'Insert at Tail', difficulty: 'easy', tags: ['singly'] },
+          { name: 'Delete at Head', difficulty: 'easy', tags: ['singly'] },
+          { name: 'Delete at Tail', difficulty: 'easy', tags: ['singly'] },
+          { name: 'Doubly Linked List Intro', difficulty: 'easy', tags: ['doubly'] },
+          { name: 'Insert in DLL', difficulty: 'easy', tags: ['doubly'] },
+          { name: 'Delete in DLL', difficulty: 'easy', tags: ['doubly'] },
+          { name: 'Reverse a DLL', difficulty: 'easy', tags: ['doubly'] },
+          { name: 'Middle of Linked List', difficulty: 'easy', tags: ['medium'] },
+          { name: 'Reverse a Linked List', difficulty: 'easy', tags: ['medium'] },
+          { name: 'Detect Cycle in LL', difficulty: 'easy', tags: ['medium'] },
+          { name: 'Find Starting Point of Cycle', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Length of Cycle', difficulty: 'easy', tags: ['medium'] },
+          { name: 'Check if LL is Palindrome', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Odd Even Linked List', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Remove Nth Node from End', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Delete Middle Node', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Sort Linked List', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Sort LL of 0s, 1s, 2s', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Intersection of Two LL', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Add 1 to LL Number', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Add Two Numbers in LL', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Delete All Occurrences of Key in DLL', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Find Pairs with Sum in DLL', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Remove Duplicates from Sorted DLL', difficulty: 'easy', tags: ['hard'] },
+          { name: 'Reverse LL in Groups of K', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Rotate a Linked List', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Flatten a Linked List', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Clone LL with Random Pointer', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Merge K Sorted Lists', difficulty: 'hard', tags: ['hard'] }
+        ]
+      },
+      'recursion': {
+        icon: '🔄',
+        title: 'Recursion & Backtracking',
+        problems: [
+          { name: 'Print 1 to N using Recursion', difficulty: 'easy', tags: ['strong'] },
+          { name: 'Print Name N Times', difficulty: 'easy', tags: ['strong'] },
+          { name: 'Sum of N Numbers', difficulty: 'easy', tags: ['strong'] },
+          { name: 'Factorial of N', difficulty: 'easy', tags: ['strong'] },
+          { name: 'Reverse an Array', difficulty: 'easy', tags: ['strong'] },
+          { name: 'Check Palindrome String', difficulty: 'easy', tags: ['strong'] },
+          { name: 'Fibonacci Number', difficulty: 'easy', tags: ['strong'] },
+          { name: 'Print All Subsequences', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Count Subsequences with Sum K', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Check if Subsequence Sum Exists', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Combination Sum I', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Combination Sum II', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Subset Sum I', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Subset Sum II', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Print All Permutations', difficulty: 'medium', tags: ['hard'] },
+          { name: 'N Queens', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Sudoku Solver', difficulty: 'hard', tags: ['hard'] },
+          { name: 'M Coloring Problem', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Rat in a Maze', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Word Break', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Palindrome Partitioning', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Expression Add Operators', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Letter Combinations of Phone Number', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Generate All Binary Strings', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Generate Parentheses', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Power Set', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Subsets with Duplicates', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Word Search', difficulty: 'medium', tags: ['hard'] }
+        ]
+      },
+      'sorting': {
+        icon: '📈',
+        title: 'Sorting Algorithms',
+        problems: [
+          { name: 'Selection Sort', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Bubble Sort', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Insertion Sort', difficulty: 'easy', tags: ['basic'] },
+          { name: 'Merge Sort', difficulty: 'medium', tags: ['advanced'] },
+          { name: 'Quick Sort', difficulty: 'medium', tags: ['advanced'] },
+          { name: 'Recursive Bubble Sort', difficulty: 'easy', tags: ['recursive'] },
+          { name: 'Recursive Insertion Sort', difficulty: 'easy', tags: ['recursive'] }
+        ]
+      },
+      'stacks-queues': {
+        icon: '📚',
+        title: 'Stacks & Queues',
+        problems: [
+          { name: 'Stack Implementation using Arrays', difficulty: 'easy', tags: ['learn'] },
+          { name: 'Queue Implementation using Arrays', difficulty: 'easy', tags: ['learn'] },
+          { name: 'Stack using Linked List', difficulty: 'easy', tags: ['learn'] },
+          { name: 'Queue using Linked List', difficulty: 'easy', tags: ['learn'] },
+          { name: 'Stack using Queue', difficulty: 'medium', tags: ['learn'] },
+          { name: 'Queue using Stack', difficulty: 'medium', tags: ['learn'] },
+          { name: 'Valid Parentheses', difficulty: 'easy', tags: ['learn'] },
+          { name: 'Min Stack', difficulty: 'medium', tags: ['learn'] },
+          { name: 'Infix to Postfix', difficulty: 'medium', tags: ['conversion'] },
+          { name: 'Infix to Prefix', difficulty: 'medium', tags: ['conversion'] },
+          { name: 'Postfix to Infix', difficulty: 'medium', tags: ['conversion'] },
+          { name: 'Prefix to Infix', difficulty: 'medium', tags: ['conversion'] },
+          { name: 'Postfix to Prefix', difficulty: 'medium', tags: ['conversion'] },
+          { name: 'Prefix to Postfix', difficulty: 'medium', tags: ['conversion'] },
+          { name: 'Next Greater Element', difficulty: 'medium', tags: ['monotonic'] },
+          { name: 'Next Greater Element II', difficulty: 'medium', tags: ['monotonic'] },
+          { name: 'Next Smaller Element', difficulty: 'medium', tags: ['monotonic'] },
+          { name: 'Previous Greater Element', difficulty: 'medium', tags: ['monotonic'] },
+          { name: 'Previous Smaller Element', difficulty: 'medium', tags: ['monotonic'] },
+          { name: 'Number of NGEs to Right', difficulty: 'medium', tags: ['monotonic'] },
+          { name: 'Trapping Rainwater', difficulty: 'hard', tags: ['monotonic'] },
+          { name: 'Sum of Subarray Minimums', difficulty: 'medium', tags: ['monotonic'] },
+          { name: 'Stock Span Problem', difficulty: 'medium', tags: ['monotonic'] },
+          { name: 'Asteroid Collision', difficulty: 'medium', tags: ['monotonic'] },
+          { name: 'Sum of Subarray Ranges', difficulty: 'medium', tags: ['monotonic'] },
+          { name: 'Remove K Digits', difficulty: 'medium', tags: ['monotonic'] },
+          { name: 'Largest Rectangle in Histogram', difficulty: 'hard', tags: ['monotonic'] },
+          { name: 'Maximal Rectangle', difficulty: 'hard', tags: ['monotonic'] },
+          { name: 'Sliding Window Maximum', difficulty: 'hard', tags: ['impl'] },
+          { name: 'LRU Cache', difficulty: 'hard', tags: ['impl'] }
+        ]
+      },
+      'trees': {
+        icon: '🌳',
+        title: 'Binary Trees',
+        problems: [
+          { name: 'Introduction to Trees', difficulty: 'easy', tags: ['traversals'] },
+          { name: 'Binary Tree Representation', difficulty: 'easy', tags: ['traversals'] },
+          { name: 'Preorder Traversal', difficulty: 'easy', tags: ['traversals'] },
+          { name: 'Inorder Traversal', difficulty: 'easy', tags: ['traversals'] },
+          { name: 'Postorder Traversal', difficulty: 'easy', tags: ['traversals'] },
+          { name: 'Level Order Traversal', difficulty: 'medium', tags: ['traversals'] },
+          { name: 'Iterative Preorder', difficulty: 'medium', tags: ['traversals'] },
+          { name: 'Iterative Inorder', difficulty: 'medium', tags: ['traversals'] },
+          { name: 'Iterative Postorder', difficulty: 'hard', tags: ['traversals'] },
+          { name: 'All Traversals in One', difficulty: 'hard', tags: ['traversals'] },
+          { name: 'Height of Binary Tree', difficulty: 'easy', tags: ['medium'] },
+          { name: 'Check for Balanced BT', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Diameter of BT', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Maximum Path Sum', difficulty: 'hard', tags: ['medium'] },
+          { name: 'Check if Trees are Identical', difficulty: 'easy', tags: ['medium'] },
+          { name: 'Zigzag Traversal', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Boundary Traversal', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Vertical Order Traversal', difficulty: 'hard', tags: ['medium'] },
+          { name: 'Top View of BT', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Bottom View of BT', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Right/Left View of BT', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Symmetric Tree', difficulty: 'easy', tags: ['medium'] },
+          { name: 'Root to Node Path', difficulty: 'medium', tags: ['hard'] },
+          { name: 'LCA in Binary Tree', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Maximum Width of BT', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Children Sum Property', difficulty: 'medium', tags: ['hard'] },
+          { name: 'All Nodes Distance K', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Minimum Time to Burn Tree', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Count Total Nodes in Complete BT', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Construct BT from Preorder & Inorder', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Construct BT from Postorder & Inorder', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Serialize and Deserialize BT', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Morris Preorder Traversal', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Morris Inorder Traversal', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Flatten BT to Linked List', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Search in BST', difficulty: 'easy', tags: ['BST'] },
+          { name: 'Ceil in BST', difficulty: 'medium', tags: ['BST'] },
+          { name: 'Floor in BST', difficulty: 'medium', tags: ['BST'] },
+          { name: 'Insert in BST', difficulty: 'medium', tags: ['BST'] },
+          { name: 'Delete Node in BST', difficulty: 'medium', tags: ['BST'] },
+          { name: 'Kth Smallest in BST', difficulty: 'medium', tags: ['BST'] },
+          { name: 'Kth Largest in BST', difficulty: 'medium', tags: ['BST'] },
+          { name: 'Validate BST', difficulty: 'medium', tags: ['BST'] },
+          { name: 'LCA in BST', difficulty: 'medium', tags: ['BST'] },
+          { name: 'Construct BST from Preorder', difficulty: 'medium', tags: ['BST'] }
+        ]
+      },
+      'graphs': {
+        icon: '🕸️',
+        title: 'Graphs',
+        problems: [
+          { name: 'Graph Representation', difficulty: 'easy', tags: ['learning'] },
+          { name: 'BFS Traversal', difficulty: 'medium', tags: ['learning'] },
+          { name: 'DFS Traversal', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Number of Provinces', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Number of Islands', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Flood Fill', difficulty: 'easy', tags: ['learning'] },
+          { name: 'Rotten Oranges', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Detect Cycle in Undirected Graph', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Detect Cycle in Directed Graph', difficulty: 'medium', tags: ['learning'] },
+          { name: '01 Matrix', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Surrounded Regions', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Number of Enclaves', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Word Ladder I', difficulty: 'hard', tags: ['learning'] },
+          { name: 'Word Ladder II', difficulty: 'hard', tags: ['learning'] },
+          { name: 'Number of Distinct Islands', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Bipartite Graph', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Topological Sort (DFS)', difficulty: 'medium', tags: ['topo'] },
+          { name: 'Topological Sort (BFS/Kahn)', difficulty: 'medium', tags: ['topo'] },
+          { name: 'Course Schedule I', difficulty: 'medium', tags: ['topo'] },
+          { name: 'Course Schedule II', difficulty: 'medium', tags: ['topo'] },
+          { name: 'Find Eventual Safe States', difficulty: 'medium', tags: ['topo'] },
+          { name: 'Alien Dictionary', difficulty: 'hard', tags: ['topo'] },
+          { name: 'Shortest Path in Undirected Graph', difficulty: 'medium', tags: ['shortest'] },
+          { name: 'Shortest Path in DAG', difficulty: 'medium', tags: ['shortest'] },
+          { name: 'Dijkstra\'s Algorithm', difficulty: 'medium', tags: ['shortest'] },
+          { name: 'Shortest Path in Binary Maze', difficulty: 'medium', tags: ['shortest'] },
+          { name: 'Path with Minimum Effort', difficulty: 'medium', tags: ['shortest'] },
+          { name: 'Cheapest Flights Within K Stops', difficulty: 'medium', tags: ['shortest'] },
+          { name: 'Network Delay Time', difficulty: 'medium', tags: ['shortest'] },
+          { name: 'Number of Ways to Reach Destination', difficulty: 'medium', tags: ['shortest'] },
+          { name: 'Minimum Multiplications to Reach End', difficulty: 'medium', tags: ['shortest'] },
+          { name: 'Bellman-Ford Algorithm', difficulty: 'medium', tags: ['shortest'] },
+          { name: 'Floyd-Warshall Algorithm', difficulty: 'medium', tags: ['shortest'] },
+          { name: 'City With Smallest Neighbors', difficulty: 'medium', tags: ['shortest'] },
+          { name: 'Prim\'s Algorithm', difficulty: 'medium', tags: ['MST'] },
+          { name: 'Kruskal\'s Algorithm', difficulty: 'medium', tags: ['MST'] },
+          { name: 'Disjoint Set Union', difficulty: 'medium', tags: ['MST'] },
+          { name: 'Number of Operations to Make Network Connected', difficulty: 'medium', tags: ['MST'] },
+          { name: 'Most Stones Removed', difficulty: 'medium', tags: ['MST'] },
+          { name: 'Accounts Merge', difficulty: 'medium', tags: ['MST'] },
+          { name: 'Number of Islands II', difficulty: 'hard', tags: ['MST'] },
+          { name: 'Making a Large Island', difficulty: 'hard', tags: ['MST'] },
+          { name: 'Swim in Rising Water', difficulty: 'hard', tags: ['MST'] },
+          { name: 'Bridges in Graph', difficulty: 'hard', tags: ['other'] },
+          { name: 'Articulation Points', difficulty: 'hard', tags: ['other'] },
+          { name: 'Kosaraju\'s Algorithm (SCC)', difficulty: 'hard', tags: ['other'] },
+          { name: 'Tarjan\'s Algorithm', difficulty: 'hard', tags: ['other'] }
+        ]
+      },
+      'dp': {
+        icon: '🧩',
+        title: 'Dynamic Programming',
+        problems: [
+          { name: 'Climbing Stairs', difficulty: 'easy', tags: ['1D'] },
+          { name: 'Frog Jump', difficulty: 'medium', tags: ['1D'] },
+          { name: 'Frog Jump with K Distances', difficulty: 'medium', tags: ['1D'] },
+          { name: 'Maximum Sum of Non-Adjacent Elements', difficulty: 'medium', tags: ['1D'] },
+          { name: 'House Robber', difficulty: 'medium', tags: ['1D'] },
+          { name: 'House Robber II', difficulty: 'medium', tags: ['1D'] },
+          { name: 'Ninja\'s Training', difficulty: 'medium', tags: ['2D'] },
+          { name: 'Grid Unique Paths', difficulty: 'medium', tags: ['2D'] },
+          { name: 'Grid Unique Paths II', difficulty: 'medium', tags: ['2D'] },
+          { name: 'Minimum Path Sum', difficulty: 'medium', tags: ['2D'] },
+          { name: 'Triangle', difficulty: 'medium', tags: ['2D'] },
+          { name: 'Minimum Falling Path Sum', difficulty: 'medium', tags: ['2D'] },
+          { name: 'Cherry Pickup II', difficulty: 'hard', tags: ['2D'] },
+          { name: 'Subset Sum Equal to K', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Partition Equal Subset Sum', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Partition with Minimum Difference', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Count Subsets with Sum K', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Count Partitions with Given Difference', difficulty: 'medium', tags: ['subsequences'] },
+          { name: '0/1 Knapsack', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Minimum Coins', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Target Sum', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Coin Change II', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Unbounded Knapsack', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Rod Cutting', difficulty: 'medium', tags: ['subsequences'] },
+          { name: 'Longest Common Subsequence', difficulty: 'medium', tags: ['strings'] },
+          { name: 'Print LCS', difficulty: 'medium', tags: ['strings'] },
+          { name: 'Longest Common Substring', difficulty: 'medium', tags: ['strings'] },
+          { name: 'Longest Palindromic Subsequence', difficulty: 'medium', tags: ['strings'] },
+          { name: 'Minimum Insertions to Make Palindrome', difficulty: 'medium', tags: ['strings'] },
+          { name: 'Minimum Insertions/Deletions to Convert String', difficulty: 'medium', tags: ['strings'] },
+          { name: 'Shortest Common Supersequence', difficulty: 'hard', tags: ['strings'] },
+          { name: 'Distinct Subsequences', difficulty: 'hard', tags: ['strings'] },
+          { name: 'Edit Distance', difficulty: 'hard', tags: ['strings'] },
+          { name: 'Wildcard Matching', difficulty: 'hard', tags: ['strings'] },
+          { name: 'Best Time to Buy and Sell Stock', difficulty: 'easy', tags: ['stocks'] },
+          { name: 'Buy and Sell Stock II', difficulty: 'medium', tags: ['stocks'] },
+          { name: 'Buy and Sell Stock III', difficulty: 'hard', tags: ['stocks'] },
+          { name: 'Buy and Sell Stock IV', difficulty: 'hard', tags: ['stocks'] },
+          { name: 'Buy and Sell Stock with Cooldown', difficulty: 'medium', tags: ['stocks'] },
+          { name: 'Buy and Sell Stock with Transaction Fee', difficulty: 'medium', tags: ['stocks'] },
+          { name: 'Longest Increasing Subsequence', difficulty: 'medium', tags: ['LIS'] },
+          { name: 'Print LIS', difficulty: 'medium', tags: ['LIS'] },
+          { name: 'LIS using Binary Search', difficulty: 'medium', tags: ['LIS'] },
+          { name: 'Largest Divisible Subset', difficulty: 'medium', tags: ['LIS'] },
+          { name: 'Longest String Chain', difficulty: 'medium', tags: ['LIS'] },
+          { name: 'Longest Bitonic Subsequence', difficulty: 'medium', tags: ['LIS'] },
+          { name: 'Number of LIS', difficulty: 'medium', tags: ['LIS'] },
+          { name: 'Matrix Chain Multiplication', difficulty: 'hard', tags: ['partition'] },
+          { name: 'Minimum Cost to Cut Stick', difficulty: 'hard', tags: ['partition'] },
+          { name: 'Burst Balloons', difficulty: 'hard', tags: ['partition'] },
+          { name: 'Evaluate Boolean Expression to True', difficulty: 'hard', tags: ['partition'] },
+          { name: 'Palindrome Partitioning II', difficulty: 'hard', tags: ['partition'] },
+          { name: 'Partition Array for Maximum Sum', difficulty: 'medium', tags: ['partition'] },
+          { name: 'Maximum Rectangle Area with 1s', difficulty: 'hard', tags: ['squares'] },
+          { name: 'Count Square Submatrices', difficulty: 'medium', tags: ['squares'] }
+        ]
+      },
+      'greedy': {
+        icon: '🎯',
+        title: 'Greedy Algorithms',
+        problems: [
+          { name: 'Assign Cookies', difficulty: 'easy', tags: ['easy'] },
+          { name: 'Fractional Knapsack', difficulty: 'medium', tags: ['easy'] },
+          { name: 'Minimum Coins for Change', difficulty: 'medium', tags: ['easy'] },
+          { name: 'Lemonade Change', difficulty: 'easy', tags: ['easy'] },
+          { name: 'Valid Parenthesis Checker', difficulty: 'medium', tags: ['easy'] },
+          { name: 'N Meetings in One Room', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Jump Game', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Jump Game II', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Minimum Platforms', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Job Sequencing Problem', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Candy', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Shortest Job First', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Insert Interval', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Merge Intervals', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Non-Overlapping Intervals', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Gas Station', difficulty: 'medium', tags: ['hard'] }
+        ]
+      },
+      'bit-manipulation': {
+        icon: '⚡',
+        title: 'Bit Manipulation',
+        problems: [
+          { name: 'Introduction to Bit Manipulation', difficulty: 'easy', tags: ['learn'] },
+          { name: 'Check if ith Bit is Set', difficulty: 'easy', tags: ['learn'] },
+          { name: 'Set/Clear/Toggle ith Bit', difficulty: 'easy', tags: ['learn'] },
+          { name: 'Remove Last Set Bit', difficulty: 'easy', tags: ['learn'] },
+          { name: 'Check if Power of 2', difficulty: 'easy', tags: ['learn'] },
+          { name: 'Count Number of Set Bits', difficulty: 'easy', tags: ['learn'] },
+          { name: 'Minimum Bits to Convert A to B', difficulty: 'easy', tags: ['interview'] },
+          { name: 'Single Number I', difficulty: 'easy', tags: ['interview'] },
+          { name: 'Single Number II', difficulty: 'medium', tags: ['interview'] },
+          { name: 'Single Number III', difficulty: 'medium', tags: ['interview'] },
+          { name: 'XOR of Numbers in Range', difficulty: 'medium', tags: ['interview'] },
+          { name: 'Divide Two Integers', difficulty: 'medium', tags: ['advanced'] },
+          { name: 'Power Set using Bits', difficulty: 'medium', tags: ['advanced'] },
+          { name: 'Find XOR of Numbers in Range L to R', difficulty: 'medium', tags: ['advanced'] },
+          { name: 'Two Numbers with Odd Occurrences', difficulty: 'medium', tags: ['advanced'] },
+          { name: 'XOR Queries of Subarray', difficulty: 'medium', tags: ['advanced'] },
+          { name: 'Prime Factorization', difficulty: 'medium', tags: ['advanced'] },
+          { name: 'Sieve of Eratosthenes', difficulty: 'medium', tags: ['advanced'] }
+        ]
+      },
+      'heap': {
+        icon: '🏔️',
+        title: 'Heap / Priority Queue',
+        problems: [
+          { name: 'Introduction to Priority Queue', difficulty: 'easy', tags: ['learning'] },
+          { name: 'Implement Min Heap', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Implement Max Heap', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Check if Array is Min Heap', difficulty: 'easy', tags: ['learning'] },
+          { name: 'Convert Min Heap to Max Heap', difficulty: 'medium', tags: ['learning'] },
+          { name: 'Kth Largest Element', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Kth Smallest Element', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Sort K Sorted Array', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Merge M Sorted Lists', difficulty: 'hard', tags: ['medium'] },
+          { name: 'Replace Each Element with its Rank', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Task Scheduler', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Hands of Straights', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Design Twitter', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Connect N Ropes with Minimum Cost', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Kth Largest Element in Stream', difficulty: 'easy', tags: ['hard'] },
+          { name: 'Maximum Sum Combinations', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Find Median from Data Stream', difficulty: 'hard', tags: ['hard'] }
+        ]
+      },
+      'sliding-window': {
+        icon: '🪟',
+        title: 'Sliding Window',
+        problems: [
+          { name: 'Maximum Points from Cards', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Longest Substring Without Repeating Characters', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Max Consecutive Ones III', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Fruit Into Baskets', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Longest Repeating Character Replacement', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Binary Subarray with Sum', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Count Nice Subarrays', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Number of Substrings Containing All Three Characters', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Maximum Points from Cards', difficulty: 'medium', tags: ['hard'] },
+          { name: 'Subarrays with K Different Integers', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Minimum Window Substring', difficulty: 'hard', tags: ['hard'] },
+          { name: 'Minimum Window Subsequence', difficulty: 'hard', tags: ['hard'] }
+        ]
+      },
+      'two-pointers': {
+        icon: '↔️',
+        title: 'Two Pointers',
+        problems: [
+          { name: 'Two Sum II - Input Array Is Sorted', difficulty: 'easy', tags: ['medium'] },
+          { name: '3Sum', difficulty: 'medium', tags: ['medium'] },
+          { name: '4Sum', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Remove Duplicates from Sorted Array', difficulty: 'easy', tags: ['medium'] },
+          { name: 'Container With Most Water', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Trapping Rain Water', difficulty: 'hard', tags: ['medium'] },
+          { name: 'Boats to Save People', difficulty: 'medium', tags: ['medium'] },
+          { name: 'Merge Sorted Array', difficulty: 'easy', tags: ['medium'] }
+        ]
+      },
+      'trie': {
+        icon: '🌲',
+        title: 'Trie',
+        problems: [
+          { name: 'Implement Trie', difficulty: 'medium', tags: ['theory'] },
+          { name: 'Implement Trie II', difficulty: 'medium', tags: ['theory'] },
+          { name: 'Longest Word with All Prefixes', difficulty: 'medium', tags: ['problems'] },
+          { name: 'Number of Distinct Substrings', difficulty: 'hard', tags: ['problems'] },
+          { name: 'Maximum XOR of Two Numbers', difficulty: 'medium', tags: ['problems'] },
+          { name: 'Maximum XOR with Element from Array', difficulty: 'hard', tags: ['problems'] },
+          { name: 'Count Distinct Substrings', difficulty: 'hard', tags: ['problems'] }
+        ]
+      }
+    };
+
+    // ===== STATE MANAGEMENT =====
+    let completedProblems = JSON.parse(localStorage.getItem('dsa_completed') || '{}');
+
+    // ===== FUNCTIONS =====
+    function getTopicStats(topicId) {
+      const topic = dsaTopics[topicId];
+      if (!topic) return { total: 0, solved: 0 };
+      const total = topic.problems.length;
+      const solved = topic.problems.filter((_, idx) => 
+        completedProblems[`${topicId}_${idx}`]
+      ).length;
+      return { total, solved };
+    }
+
+    function updateTopicCard(topicId) {
+      const card = document.querySelector(`[data-topic="${topicId}"]`);
+      if (!card) return;
+
+      const { total, solved } = getTopicStats(topicId);
+      const percentage = total > 0 ? Math.round((solved / total) * 100) : 0;
+
+      // Update counts
+      const countEls = card.querySelectorAll('.topic-meta-item .count');
+      if (countEls[1]) countEls[1].textContent = solved;
+
+      // Update progress bar
+      const progressFill = card.querySelector('.topic-progress-fill');
+      const progressValue = card.querySelector('.topic-progress-value');
+      if (progressFill) progressFill.style.width = `${percentage}%`;
+      if (progressValue) progressValue.textContent = `${percentage}%`;
+
+      // Update status
+      const statusEl = card.querySelector('.topic-status');
+      if (statusEl) {
+        if (solved === 0) {
+          statusEl.textContent = 'Not Started';
+          statusEl.className = 'topic-status not-started';
+        } else if (solved === total) {
+          statusEl.textContent = 'Completed';
+          statusEl.className = 'topic-status completed';
+        } else {
+          statusEl.textContent = 'In Progress';
+          statusEl.className = 'topic-status in-progress';
+        }
+      }
+    }
+
+    function updateOverallProgress() {
+      let totalProblems = 0;
+      let solvedProblems = 0;
+
+      Object.keys(dsaTopics).forEach(topicId => {
+        const { total, solved } = getTopicStats(topicId);
+        totalProblems += total;
+        solvedProblems += solved;
+      });
+
+      const percentage = totalProblems > 0 ? Math.round((solvedProblems / totalProblems) * 100) : 0;
+
+      // Update hero progress
+      document.getElementById('totalProgress').textContent = `${percentage}%`;
+      document.getElementById('completedCount').textContent = solvedProblems;
+
+      // Update progress ring
+      const ring = document.querySelector('.progress-ring-fill');
+      if (ring) {
+        const circumference = 2 * Math.PI * 80; // r = 80
+        const offset = circumference - (percentage / 100) * circumference;
+        ring.style.strokeDashoffset = offset;
+      }
+    }
+
+    function openTopicModal(topicId) {
+      const topic = dsaTopics[topicId];
+      if (!topic) return;
+
+      const modal = document.getElementById('topicModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const problemList = document.getElementById('problemList');
+
+      modalTitle.innerHTML = `<span class="icon">${topic.icon}</span><span>${topic.title}</span>`;
+
+      problemList.innerHTML = topic.problems.map((problem, idx) => {
+        const isCompleted = completedProblems[`${topicId}_${idx}`];
+        return `
+          <div class="problem-item ${isCompleted ? 'completed' : ''}" data-topic="${topicId}" data-idx="${idx}">
+            <div class="problem-checkbox ${isCompleted ? 'checked' : ''}" onclick="toggleProblem('${topicId}', ${idx})"></div>
+            <div class="problem-info">
+              <div class="problem-name">${problem.name}</div>
+              <div class="problem-tags">
+                ${problem.tags.map(tag => `<span class="problem-tag">${tag}</span>`).join('')}
+              </div>
+            </div>
+            <span class="problem-difficulty ${problem.difficulty}">${problem.difficulty}</span>
+          </div>
+        `;
+      }).join('');
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('topicModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function toggleProblem(topicId, idx) {
+      const key = `${topicId}_${idx}`;
+      completedProblems[key] = !completedProblems[key];
+      
+      if (!completedProblems[key]) {
+        delete completedProblems[key];
+      }
+
+      localStorage.setItem('dsa_completed', JSON.stringify(completedProblems));
+
+      // Update UI in modal
+      const problemItem = document.querySelector(`[data-topic="${topicId}"][data-idx="${idx}"]`);
+      if (problemItem) {
+        const checkbox = problemItem.querySelector('.problem-checkbox');
+        checkbox.classList.toggle('checked');
+        problemItem.classList.toggle('completed');
+      }
+
+      // Update topic card
+      updateTopicCard(topicId);
+      updateOverallProgress();
+    }
+
+    // ===== TAB NAVIGATION =====
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+        btn.classList.add('active');
+        document.getElementById(tab).classList.add('active');
+      });
+    });
+
+    // ===== FILTER CHIPS =====
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        const filter = chip.dataset.filter;
+        document.querySelectorAll('.topic-card').forEach(card => {
+          const status = card.querySelector('.topic-status');
+          const statusText = status.textContent.toLowerCase().replace(' ', '-');
+          
+          if (filter === 'all' || statusText === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // ===== MODAL CLOSE ON OUTSIDE CLICK =====
+    document.getElementById('topicModal').addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-overlay')) {
+        closeModal();
+      }
+    });
+
+    // ===== ESC KEY TO CLOSE MODAL =====
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // ===== INITIALIZE =====
+    Object.keys(dsaTopics).forEach(updateTopicCard);
+    updateOverallProgress();
+
+    // Animate progress ring on load
+    setTimeout(() => {
+      const ring = document.querySelector('.progress-ring-fill');
+      if (ring) {
+        ring.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        updateOverallProgress();
+      }
+    }, 300);
+  </script>
+  <script src="../../js/darkmode.js"></script>
+</body>
+</html>
