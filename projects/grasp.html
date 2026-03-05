@@ -17,7 +17,7 @@
       min-height: 100vh;
     }
     .container {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 40px 20px;
     }
@@ -36,11 +36,17 @@
       font-size: 2.5rem;
       font-weight: 900;
       color: #1a202c;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+    }
+    .project-subtitle {
+      font-size: 1.1rem;
+      color: #6b7280;
+      font-weight: 500;
+      margin-bottom: 16px;
     }
     .status-badge {
       display: inline-block;
-      background: #8b5cf6;
+      background: #f97316;
       color: white;
       padding: 6px 16px;
       border-radius: 20px;
@@ -90,13 +96,15 @@
     }
     ul {
       list-style: none;
-      padding-left: 0;
+      padding-left: 1.5em;
+    }
+    ul li {
+      position: relative;
     }
     ul li:before {
       content: "🤖";
-      display: inline-block;
-      width: 1.5em;
-      margin-left: -1.5em;
+      position: absolute;
+      left: -1.5em;
     }
     .highlight-box {
       background: #fef3c7;
@@ -104,6 +112,21 @@
       padding: 16px;
       border-radius: 8px;
       margin: 20px 0;
+    }
+    .research-question {
+      background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+      border: 2px solid #f9a8d4;
+      padding: 24px;
+      border-radius: 12px;
+      margin: 24px 0;
+      text-align: center;
+    }
+    .research-question p {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #831843;
+      font-style: italic;
+      margin: 0;
     }
     .back-button {
       display: inline-block;
@@ -119,15 +142,6 @@
     .back-button:hover {
       background: #dc4558;
     }
-    .availability-note {
-      background: #dbeafe;
-      border-left: 4px solid #3b82f6;
-      padding: 16px;
-      border-radius: 8px;
-      margin: 20px 0;
-      font-weight: 500;
-      color: #1e40af;
-    }
     .lab-badge {
       background: #dcfce7;
       color: #166534;
@@ -138,6 +152,103 @@
       display: inline-block;
       margin-top: 8px;
     }
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+    .results-table th {
+      background: #f9fafb;
+      color: #374151;
+      font-weight: 600;
+      padding: 12px;
+      text-align: left;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    .results-table td {
+      padding: 12px;
+      border-bottom: 1px solid #e5e7eb;
+      color: #4b5563;
+    }
+    .results-table tr:hover {
+      background: #f9fafb;
+    }
+    .metric-highlight {
+      background: #dcfce7;
+      color: #166534;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .status-complete {
+      color: #16a34a;
+      font-weight: 600;
+    }
+    .status-ongoing {
+      color: #f97316;
+      font-weight: 600;
+    }
+    .experiment-card {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 16px 0;
+      border-left: 4px solid #8b5cf6;
+    }
+    .experiment-card h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 8px;
+    }
+    .experiment-card .question {
+      font-style: italic;
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+    .lesson-box {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+    .lesson-box strong {
+      color: #1e40af;
+    }
+    .repo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1f2937;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+      margin-right: 12px;
+    }
+    .repo-link:hover {
+      background: #374151;
+    }
+    .hf-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fbbf24;
+      color: #1f2937;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+    .hf-link:hover {
+      background: #f59e0b;
+    }
   </style>
 </head>
 <body>
@@ -145,114 +256,199 @@
     <div class="card">
       <div class="header-section">
         <h1 class="project-title">Project GRASP</h1>
-        <div class="status-badge">Foundation Models for Robotic Control</div>
+        <p class="project-subtitle">Generalizable Robotic Action Models for Sensorimotor Policies</p>
+        <div class="status-badge">Active Research</div>
         <p class="timeline">May 2025 – Present</p>
-        <span class="lab-badge">iBot club, IIT Madras</span>
+        <span class="lab-badge">iBot Club, IIT Madras</span>
         <div class="tech-stack">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">PyTorch</span>
+          <span class="tech-tag">Python 3.10+</span>
+          <span class="tech-tag">PyTorch 2.0+</span>
+          <span class="tech-tag">LeRobot</span>
           <span class="tech-tag">Transformers</span>
+          <span class="tech-tag">MetaWorld</span>
           <span class="tech-tag">OpenCV</span>
-          <span class="tech-tag">Generability</span>
-          <span class="tech-tag">interpretability</span>
+          <span class="tech-tag">GradCAM</span>
         </div>
       </div>
 
-      <div class="availability-note">
-        📦 <strong>Code Availability:</strong> Detailed codebase will be publicly available by end of April 2025 after research tenure completion.
+      <div class="research-question">
+        <p>Can robots learn generalizable manipulation skills from a handful of demonstrations?</p>
       </div>
 
       <h2>Overview</h2>
       <p>
-        Developing vision-language-action (VLA) models that combine visual perception, natural language understanding, and robotic control for generalizable manipulation tasks. This research represents the frontier of foundation models applied to robotics, bridging the gap between high-level understanding and low-level control.
+        <strong>GRASP</strong> is a research project investigating how robots can learn to manipulate objects from <strong>limited human demonstrations</strong> and generalize these skills beyond the exact conditions under which they were trained.
+      </p>
+      <p>
+        Classical robotics requires accurate system models, controlled environments, and deterministic pipelines. These systems fail in unstructured real-world settings where object positions, lighting, backgrounds, and scene clutter vary unpredictably. Robot learning through imitation offers flexibility — but faces a fundamental constraint: <strong>data scarcity</strong>. Unlike language or vision, there are no internet-scale robot datasets.
+      </p>
+      <p>
+        This project explores six complementary experimental threads, each probing a different angle on the same core question: <em>How do we train sensorimotor policies that generalize from fewer demonstrations?</em>
       </p>
 
-      <h2>Research Focus</h2>
-
-      <h3>1. Vision-Language-Action (VLA) Models</h3>
+      <h2>Motivation</h2>
+      <p>Human beings generalize manipulation skills effortlessly. We:</p>
       <ul>
-        <li>Combining CLIP-based encoders with transformer policies</li>
-        <li>Multimodal alignment for visuomotor tasks</li>
-        <li>Behavior cloning from human demonstrations</li>
-        <li>End-to-end learning from pixels to actions</li>
+        <li>Build <strong>object-centric representations</strong> that abstract away irrelevant scene structure</li>
+        <li>Learn <strong>invariant features</strong> robust to changes in lighting, background, and viewpoint</li>
+        <li>Maintain <strong>world models</strong> that support planning and prediction under uncertainty</li>
       </ul>
+      <p>
+        Standard end-to-end pixel-to-action models struggle with generalization because they learn <strong>spurious correlations</strong> — background colors, camera angles, irrelevant nearby objects — rather than the true causal structure of the manipulation task. We investigate <strong>structural inductive biases</strong> as the lever: modifications to representation, architecture, perception pipeline, and policy conditioning that encode the right prior knowledge without requiring thousands of demonstrations.
+      </p>
 
-      <h3>2. In-Context Learning for Robotics</h3>
-      <ul>
-        <li><strong>RoboPrompt</strong> – Few-shot learning for robotic tasks</li>
-        <li>Object-centric representations for scene understanding</li>
-        <li>Adaptive control in unseen environments</li>
-        <li>Transfer learning across manipulation tasks</li>
-      </ul>
+      <h2>Key Results</h2>
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Experiment</th>
+            <th>Key Finding</th>
+            <th>Metric</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ACT Architecture Modification</td>
+            <td>Image-conditioned CVAE encoder improves representation quality</td>
+            <td><span class="metric-highlight">27.8% lower</span> validation loss</td>
+          </tr>
+          <tr>
+            <td>Vision-Only ACT</td>
+            <td>Removing joint inputs forces visual grounding</td>
+            <td>HuggingFace-compatible module</td>
+          </tr>
+          <tr>
+            <td>GradCAM for VLAs</td>
+            <td>Attention pooling yields instruction-specific saliency maps</td>
+            <td><span class="metric-highlight">85% reduction</span> in cross-instruction correlation</td>
+          </tr>
+          <tr>
+            <td>Classical Pipeline</td>
+            <td>Open-vocabulary detection + geometric planning generalizes without demos</td>
+            <td><span class="metric-highlight">~90% success</span> in simulation</td>
+          </tr>
+          <tr>
+            <td>RoboPrompt Integration</td>
+            <td>LLM in-context learning bridges language to robot actions</td>
+            <td>End-to-end pipeline validated</td>
+          </tr>
+          <tr>
+            <td>Multi-task ACT</td>
+            <td>Task conditioning reduces negative transfer across tasks</td>
+            <td><span class="metric-highlight">+10pp</span> success with task embedding</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <h3>3. Key Technical Areas</h3>
+      <h2>Research Directions</h2>
 
-      <div style="margin-left: 20px;">
-        <h3>GradCAM Integration with RL</h3>
-        <ul>
-          <li>Visual attention mechanisms for policy interpretability</li>
-          <li>Saliency maps for understanding robot decision-making</li>
-          <li>Currently developing integration framework</li>
-        </ul>
-
-        <h3>VLA Architectures Explored</h3>
-        <ul>
-          <li><strong>MoleVLA</strong> – Molecular-level action representations</li>
-          <li><strong>SmolVLA</strong> – Lightweight VLA for edge deployment</li>
-          <li><strong>ATK (Action Tokenization Kernel)</strong> – Novel action encoding</li>
-        </ul>
-
-        <h3>Dataset Development</h3>
-        <ul>
-          <li><strong>SO-101 Dataset</strong> – Standard objects manipulation</li>
-          <li>Teleoperation systems for data collection</li>
-          <li>Large-scale demonstration datasets</li>
-        </ul>
+      <div class="experiment-card">
+        <h4>1. ACT Architecture Modifications</h4>
+        <p class="question">Can conditioning the CVAE encoder on visual observations improve policy representation quality?</p>
+        <p>The standard ACT CVAE encoder processes only joint states and action sequences. Our modification adds ResNet18-encoded image features into the encoder, so the latent code is conditioned on both <em>what the robot sees</em> and <em>where it is</em>.</p>
+        <p><strong>Result:</strong> Modified ACT achieves 27.8% lower validation loss (0.0931 vs 0.1289).</p>
+        <p><span class="status-complete">✅ Complete</span></p>
       </div>
 
-      <h2>Technical Achievements</h2>
-
-      <h3>Sim-to-Real Transfer</h3>
-      <ul>
-        <li>Diffusion-based policy generation for robust control</li>
-        <li>Domain randomization techniques for visual transfer</li>
-        <li>Reality gap bridging strategies</li>
-      </ul>
-
-      <h3>Object-Centric Representations</h3>
-      <ul>
-        <li>Decomposing scenes into manipulable objects</li>
-        <li>Compositional understanding for manipulation</li>
-        <li>Transfer learning across object categories</li>
-      </ul>
-
-      <h2>Research Contributions</h2>
-      <div class="highlight-box">
-        <ul>
-          <li>Comprehensive literature review on foundation models for robotics</li>
-          <li>Explored latest VLA architectures (MoleVLA, SmolVLA)</li>
-          <li>Investigated in-context learning paradigms for robots</li>
-          <li>Studied behavior cloning and imitation learning methodologies</li>
-        </ul>
+      <div class="experiment-card">
+        <h4>2. Vision-Only ACT (LeRobot)</h4>
+        <p class="question">Does removing proprioceptive inputs force the policy to learn more generalizable visual representations?</p>
+        <p>Removed all joint angle inputs from ACT policy. The model receives only image observations — no end-effector positions, no joint angles. Delivered as a HuggingFace-compatible drop-in module for LeRobot.</p>
+        <p><strong>Why it matters:</strong> A policy that relies on joint angles can achieve low training loss by trajectory memorization. Visual grounding is a prerequisite for genuine generalization.</p>
+        <p><span class="status-complete">✅ Complete</span></p>
       </div>
 
-      <h2>Experimental Work</h2>
-      <ul>
-        <li>Building intuitive teleoperation interfaces</li>
-        <li>Collecting high-quality manipulation datasets</li>
-        <li>Training transformer-based policies from demonstrations</li>
-        <li>Evaluating sim-to-real transfer performance</li>
-      </ul>
+      <div class="experiment-card">
+        <h4>3. Classical Pipeline</h4>
+        <p class="question">How much can explicit structure — open-vocabulary detection + geometric planning — achieve without any demonstrations?</p>
+        <p>Uses open-vocabulary visual detector (prompted with natural language) to localize objects, computes 3D coordinates via camera intrinsics + depth, plans top-down grasps geometrically, and executes via IK.</p>
+        <p><strong>Result:</strong> ~90% success in simulation on fixed objects. New objects handled by changing text prompt.</p>
+        <p><span class="status-ongoing">🔄 Ongoing</span></p>
+      </div>
+
+      <div class="experiment-card">
+        <h4>4. GradCAM for Vision-Language-Action Models</h4>
+        <p class="question">Can we build attribution maps that show which image regions drive each action dimension, conditioned on the language instruction?</p>
+        <p><strong>The problem:</strong> Standard ViT-based VLAs use mean pooling before the action head, giving every patch the same gradient — making GradCAM produce uniform, meaningless saliency maps.</p>
+        <p><strong>The fix:</strong> Replace mean pooling with cross-attention, where the text instruction queries the visual patches.</p>
+        <p><strong>Result:</strong> Cross-instruction saliency correlation reduced from 0.896 → 0.134 (85% improvement).</p>
+        <p><span class="status-complete">✅ Complete</span></p>
+      </div>
+
+      <div class="experiment-card">
+        <h4>5. RoboPrompt — In-Context Learning for Robots</h4>
+        <p class="question">Can LLMs specify complex robot behaviors via in-context learning, with only a handful of demonstration examples in the prompt?</p>
+        <p>Uses an LLM to convert natural language task descriptions into discretized robot actions via in-context examples. A bridge module converts discretized actions to continuous poses and then to joint commands via IK.</p>
+        <p><strong>Why ICL?</strong> Fine-tuning requires large datasets. ICL requires 3–10 examples, generalizes without gradient updates, and works with any LLM API.</p>
+        <p><span class="status-ongoing">🔄 Ongoing</span></p>
+      </div>
+
+      <div class="experiment-card">
+        <h4>6. Multi-task ACT</h4>
+        <p class="question">Can a single ACT policy learn to perform multiple distinct manipulation tasks, and how do we mitigate negative task transfer?</p>
+        <p>Train ACT on combined datasets from 7 MetaWorld tasks. Explored unconditioned shared policy, task-embedding-conditioned policy, and mixture-of-experts architectures.</p>
+        <p><strong>Result:</strong> Unconditioned multi-task policy averaged ~45% success vs ~65% for per-task oracles. Adding task embedding raised this to ~55%.</p>
+        <p><span class="status-ongoing">🔄 Ongoing</span></p>
+      </div>
+
+      <h2>Lessons Learned</h2>
+
+      <div class="lesson-box">
+        <strong>1. Data Diversity is the Primary Bottleneck</strong><br>
+        Training ACT with demonstrations from a single fixed initial state yielded 0% evaluation success despite excellent training loss. After re-collecting demonstrations from randomized initial states, evaluation success improved substantially.
+      </div>
+
+      <div class="lesson-box">
+        <strong>2. Architecture Improvements Are Necessary But Not Sufficient</strong><br>
+        The modified CVAE encoder produced a 27.8% improvement in validation loss, but this architectural gain was masked by the data diversity problem. Both improvements are required together.
+      </div>
+
+      <div class="lesson-box">
+        <strong>3. The Mean-Pooling Trap in VLA Interpretability</strong><br>
+        Any mean-pooling operation before the prediction head makes gradient attribution meaningless — every patch receives the same gradient weight. Attention-weighted pooling restores spatial gradient information.
+      </div>
+
+      <div class="lesson-box">
+        <strong>4. Classical Pipelines Quantify the Value of Demonstrations</strong><br>
+        The classical pipeline achieves strong performance on simple tasks without any demonstrations. This provides a direct baseline: if your learned policy cannot exceed 90% on these tasks, something is wrong with your training setup.
+      </div>
+
+      <div class="lesson-box">
+        <strong>5. Multi-task Transfer Depends on Task Similarity</strong><br>
+        Tasks with similar motor patterns transferred positively (reach ↔ pick-place), while contact-rich tasks with different force profiles interfered (push ↔ door-open). Task conditioning mitigates this.
+      </div>
 
       <h2>Future Directions</h2>
       <ul>
-        <li>Scaling up VLA models with larger, diverse datasets</li>
-        <li>Real robot deployment and validation in lab settings</li>
-        <li>Multi-task learning frameworks for generalization</li>
-        <li>Long-horizon task planning with foundation models</li>
+        <li><strong>Object-centric representations:</strong> Replace dense image features with explicit object-level tokens as policy inputs</li>
+        <li><strong>Foundation model integration:</strong> Use pre-trained visual foundation models (DINOv2, SAM) as frozen vision encoders</li>
+        <li><strong>Scaling GradCAM to large VLAs:</strong> Extend attention-pooling approach to OpenVLA and RT-2-scale models</li>
+        <li><strong>World model-augmented planning:</strong> Integrate learned dynamics model for imagined rollouts</li>
+        <li><strong>Multi-step RoboPrompt tasks:</strong> Scale language-conditioned ICL to longer-horizon tasks with sub-goal decomposition</li>
+        <li><strong>Curriculum learning for multi-task ACT:</strong> Design curricula that reduce negative transfer using task similarity metrics</li>
+        <li><strong>Real-world evaluation:</strong> Deploy full pipeline on real robot arm with varied lighting and object configurations</li>
       </ul>
 
+      <h2>Pre-trained Models</h2>
+      <div class="highlight-box">
+        <p><strong>Models hosted on HuggingFace Hub:</strong></p>
+        <ul style="margin-bottom: 0;">
+          <li><code>aryannzzz/act-metaworld-shelf-standard</code> — Standard ACT (joints + actions encoder)</li>
+          <li><code>aryannzzz/act-metaworld-shelf-modified</code> — Modified ACT (images + joints + actions encoder)</li>
+        </ul>
+      </div>
+
       <div style="text-align: center; margin-top: 40px;">
+        <a href="https://github.com/aryannzzz/grasp-research-showcase" class="repo-link" target="_blank">
+          <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+          View on GitHub
+        </a>
+        <a href="https://huggingface.co/aryannzzz" class="hf-link" target="_blank">
+          🤗 HuggingFace Models
+        </a>
+      </div>
+
+      <div style="text-align: center; margin-top: 30px;">
         <a href="../projects.html" class="back-button">← Back to Projects</a>
       </div>
     </div>
