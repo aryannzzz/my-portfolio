@@ -423,7 +423,7 @@ For multi-task ACT, tasks with similar motor patterns transferred positively (re
 
 ---
 
-## Citation
+<!-- ## Citation
 
 If you use this code or findings in your research, please cite:
 
@@ -437,7 +437,7 @@ If you use this code or findings in your research, please cite:
                language-conditioned robot learning.},
   url       = {https://github.com/aryannzzz/grasp-research-showcase}
 }
-```
+``` -->
 
 ---
 
