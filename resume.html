@@ -3,181 +3,620 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resume & About Me | Aryan's Portfolio</title>
-  <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+  <title>About | Aryan Jain</title>
+  <meta name="description" content="Aryan Jain — B.Tech Chemical Engineering, IIT Madras. Research intern at IISc StochLab. NeurIPS 2026 and ACL 2026 author. Working on quadruped locomotion, LLM agents, and neuroprosthetics." />
+  <meta name="keywords" content="Aryan Jain about, IIT Madras, IISc, research experience, AI researcher, robotics, LLM, NeurIPS, ACL" />
+  <meta property="og:title" content="About | Aryan Jain" />
+  <meta property="og:description" content="B.Tech Chemical Engineering at IIT Madras. Research intern at IISc. NeurIPS 2026 and ACL 2026 publications." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
   <link rel="stylesheet" href="css/header.css" />
   <link rel="stylesheet" href="css/darkmode.css" />
-  <link rel="stylesheet" href="css/resume.css" />
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+      min-height: 100vh; margin: 0;
+    }
+    .main-content { max-width: 900px; margin: 0 auto; padding: 48px 40px 80px; }
+
+    /* About hero */
+    .about-hero {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 56px;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 36px;
+    }
+    .about-avatar {
+      width: 120px; height: 120px;
+      border-radius: 16px;
+      background-size: cover;
+      background-position: center;
+      border: 3px solid #e2e8f0;
+      flex-shrink: 0;
+    }
+    .about-hero-text h1 { font-size: 2rem; font-weight: 900; color: #101419; margin: 0 0 6px; }
+    .about-hero-text .role { font-size: 1.05rem; color: #2563eb; font-weight: 600; margin-bottom: 10px; }
+    .about-hero-text p { font-size: 0.95rem; line-height: 1.75; color: #475569; margin: 0 0 16px; }
+    .about-links { display: flex; gap: 10px; flex-wrap: wrap; }
+    .about-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 14px; border-radius: 7px; font-size: 0.82rem; font-weight: 600;
+      text-decoration: none; border: 2px solid #e2e8f0; color: #374151;
+      transition: all 0.2s;
+    }
+    .about-link:hover { border-color: #2563eb; color: #2563eb; background: #eff6ff; }
+
+    /* Section headers */
+    .section-heading {
+      font-size: 1.3rem; font-weight: 800; color: #101419;
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e2e8f0;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section-heading .icon { font-size: 1.1rem; }
+
+    /* Experience timeline */
+    .experience-list { display: flex; flex-direction: column; gap: 16px; }
+    .exp-card {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px 28px;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .exp-card:hover { border-color: #93c5fd; box-shadow: 0 8px 24px rgba(37,99,235,0.1); }
+    .exp-card.active { border-left: 4px solid #2563eb; }
+    .exp-card.past { border-left: 4px solid #e2e8f0; }
+
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+    .exp-title { font-size: 1rem; font-weight: 700; color: #101419; margin: 0 0 3px; }
+    .exp-org { font-size: 0.9rem; color: #2563eb; font-weight: 600; margin: 0; }
+    .exp-date { font-size: 0.8rem; color: #94a3b8; font-weight: 500; white-space: nowrap; }
+    .exp-status {
+      display: inline-block;
+      padding: 2px 8px; border-radius: 4px;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em;
+      margin-top: 6px;
+    }
+    .exp-status.active { background: #d1fae5; color: #065f46; }
+    .exp-status.past { background: #f1f5f9; color: #64748b; }
+
+    .exp-bullets {
+      list-style: none; padding: 0; margin: 14px 0 0;
+    }
+    .exp-bullets li {
+      font-size: 0.88rem; line-height: 1.7; color: #475569;
+      padding-left: 18px; position: relative; margin-bottom: 6px;
+    }
+    .exp-bullets li::before {
+      content: '–'; position: absolute; left: 0; color: #2563eb; font-weight: 700;
+    }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+    .exp-tag { padding: 2px 9px; background: #f1f5f9; color: #475569; border-radius: 4px; font-size: 0.75rem; font-weight: 500; }
+
+    /* Education */
+    .edu-card {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px 28px;
+    }
+    .edu-degree { font-size: 1.1rem; font-weight: 800; color: #101419; margin: 0 0 4px; }
+    .edu-inst { font-size: 1rem; color: #2563eb; font-weight: 600; margin: 0 0 4px; }
+    .edu-meta { font-size: 0.88rem; color: #64748b; }
+    .edu-cgpa { font-size: 1.5rem; font-weight: 800; color: #2563eb; margin-top: 10px; }
+    .edu-cgpa span { font-size: 0.85rem; font-weight: 500; color: #64748b; }
+
+    /* Skills grid */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+    .skill-group {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+    .skill-group-title {
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #94a3b8; margin-bottom: 10px;
+    }
+    .skill-items { display: flex; flex-wrap: wrap; gap: 5px; }
+    .skill-item { padding: 3px 9px; background: #f8fafc; border: 1px solid #e2e8f0; color: #374151; border-radius: 4px; font-size: 0.78rem; font-weight: 500; }
+
+    /* Achievements */
+    .achievement-list { display: flex; flex-direction: column; gap: 12px; }
+    .achievement-item {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .achievement-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .achievement-text { font-size: 0.9rem; line-height: 1.6; color: #374151; }
+    .achievement-text strong { color: #101419; }
+
+    /* Certifications */
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+    .cert-card {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex; flex-direction: column; gap: 3px;
+    }
+    .cert-name { font-size: 0.88rem; font-weight: 700; color: #101419; }
+    .cert-org { font-size: 0.8rem; color: #2563eb; font-weight: 600; }
+    .cert-date { font-size: 0.75rem; color: #94a3b8; }
+
+    /* Resume download */
+    .resume-cta {
+      background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
+      border: 2px solid #93c5fd;
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    .resume-cta p { color: #475569; font-size: 0.95rem; margin-bottom: 14px; }
+    .download-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #2563eb; color: white;
+      padding: 12px 28px; border-radius: 10px;
+      font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .download-btn:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.3); }
+
+    /* Dark mode */
+    body.dark-mode { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+    body.dark-mode .about-hero { background: #1e293b; border-color: #334155; }
+    body.dark-mode .about-hero-text h1 { color: #f1f5f9; }
+    body.dark-mode .about-hero-text p { color: #94a3b8; }
+    body.dark-mode .about-link { border-color: #334155; color: #94a3b8; }
+    body.dark-mode .about-link:hover { border-color: #60a5fa; color: #60a5fa; background: #1e3a5f; }
+    body.dark-mode .section-heading { color: #f1f5f9; border-color: #334155; }
+    body.dark-mode .exp-card, body.dark-mode .edu-card,
+    body.dark-mode .skill-group, body.dark-mode .achievement-item,
+    body.dark-mode .cert-card { background: #1e293b; border-color: #334155; }
+    body.dark-mode .exp-card:hover { border-color: #60a5fa; }
+    body.dark-mode .exp-title, body.dark-mode .edu-degree, body.dark-mode .achievement-text strong { color: #f1f5f9; }
+    body.dark-mode .exp-bullets li { color: #94a3b8; }
+    body.dark-mode .exp-tag, body.dark-mode .skill-item { background: #334155; border-color: #475569; color: #cbd5e1; }
+    body.dark-mode .skill-group-title { color: #64748b; }
+    body.dark-mode .achievement-text { color: #94a3b8; }
+    body.dark-mode .cert-name { color: #f1f5f9; }
+    body.dark-mode .cert-date { color: #64748b; }
+    body.dark-mode .resume-cta { background: #1e293b; border-color: #334155; }
+    body.dark-mode .resume-cta p { color: #94a3b8; }
+
+    @media (max-width: 680px) {
+      .main-content { padding: 32px 16px 60px; }
+      .about-hero { grid-template-columns: 1fr; }
+      .about-avatar { width: 90px; height: 90px; }
+    }
+  </style>
 </head>
 <body>
-  <div class="layout-container flex flex-col min-h-screen bg-white">
-    <!-- Header -->
-    <header class="header">
-      <div class="header-left">
-        <a href="index.html" class="logo-link" aria-label="Home">
-          <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_6_319)">
-              <path
-                d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
-                fill="currentColor"
-              ></path>
-            </g>
-            <defs>
-              <clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"></rect></clipPath>
-            </defs>
-          </svg>
-          <span class="site-title">Portfolio</span>
-        </a>
-      </div>
-      <nav class="header-nav" aria-label="Main navigation">
-        <a href="projects.html">Projects</a>
-        <a href="resume.html" class="active">Resume/About Me</a>
-        <a href="roadmap.html">Roadmap</a>
-        <a href="blogs.html">Blogs/Insights</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <button class="mode-toggle" aria-label="Toggle light/dark mode">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
-            <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
-          </svg>
-        </button>
-        <div class="profile-pic" style='background-image: url("assets/profile.jpg");' aria-label="Profile picture"></div>
-      </div>
-    </header>
+  <header class="header">
+    <div class="header-left">
+      <a href="index.html" class="logo-link" aria-label="Home">
+        <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+          </g>
+          <defs><clipPath id="clip0"><rect width="48" height="48" fill="white"></rect></clipPath></defs>
+        </svg>
+        <span class="site-title">Aryan Jain</span>
+      </a>
+    </div>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="projects.html">Projects</a>
+      <a href="resume.html" class="active">About</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="blogs.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="mode-toggle" aria-label="Toggle light/dark mode">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+          <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+        </svg>
+      </button>
+      <div class="profile-pic" style='background-image: url("assets/profile.jpg");' aria-label="Profile picture"></div>
+    </div>
+  </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <section class="resume-header">
-        <h1>Resume & About Me</h1>
-      </section>
+  <main class="main-content">
 
-      <section class="resume-section">
-        <h2>Resume</h2>
-        <div class="resume-grid">
-          <div class="resume-label">Education</div>
-          <div class="resume-content">
-            <strong>Bachelor of Technology in Chemical Engineering</strong><br>
-            Indian Institute of Technology, Madras | 2024-2028<br>
-            <strong>CGPA: 9.06/10</strong>
-          </div>
-
-          <div class="resume-label">Technical Skills</div>
-          <div class="resume-content">
-            <div class="skills-list">
-              <div>
-                <span class="skills-title">Languages:</span>
-                Python, C++, JavaScript, SQL
-              </div>
-              <div>
-                <span class="skills-title">Frameworks:</span>
-                PyTorch, TensorFlow, Scikit-learn, Keras
-              </div>
-              <div>
-                <span class="skills-title">AI/ML Tools:</span>
-                Hugging Face, LangChain, OpenCV, NLTK, spaCy, Weights & Biases
-              </div>
-              <div>
-                <span class="skills-title">Domains:</span>
-                Large Language Models, Computer Vision, Reinforcement Learning, Multi-Agent Systems, Generative AI
-              </div>
-              <div>
-                <span class="skills-title">Dev Tools:</span>
-                Git, Docker, Jupyter, NumPy, Pandas, Matplotlib, Linux
-              </div>
-            </div>
-          </div>
-
-          <div class="resume-label">Projects & Research</div>
-          <div class="resume-content">
-            <strong>Inter IIT Pathway PS — Real-Time Agentic Generative Systems</strong> | Oct 2025 – Present
-            <ul class="resume-bullets">
-              <li>Architecting a streaming GenAI pipeline using Pathway for real-time orchestration with sub-second latency and dynamic data retrieval.</li>
-              <li>Implementing multi-agent coordination with persistent memory, reasoning chains, and adaptive context for long-horizon planning.</li>
-              <li>Integrating LLM-driven decision loops with structured tool APIs for autonomous problem-solving in dynamic environments.</li>
-            </ul>
-
-            <strong>Project GRASP — Foundation Models for Robotic Control</strong> | May 2025 – Present
-            <ul class="resume-bullets">
-              <li>Developing vision-language-action (VLA) models combining CLIP-based encoders and transformer policies for visuomotor tasks.</li>
-              <li>Researching multimodal alignment and behavior cloning from demonstrations for generalizable manipulation.</li>
-              <li>Exploring diffusion-based policy generation and sim-to-real transfer for adaptive control in unseen environments.</li>
-            </ul>
-
-            <strong>Project NeuroSpike — Biologically-Inspired Neural Networks</strong> | May 2025 – Present
-            <ul class="resume-bullets">
-              <li>Investigating spiking neural networks (SNNs) and STDP learning for neuromorphic, low-power computation.</li>
-              <li>Designing hybrid architectures combining continuous and event-driven dynamics for adaptive, biologically-plausible learning.</li>
-              <li>Studying temporal attention mechanisms for bridging neuroscience and AI in energy-efficient neural models.</li>
-            </ul>
-
-            <strong>AxiomML — Educational ML Framework from Scratch</strong> | Aug 2025 – Present
-            <ul class="resume-bullets">
-              <li>Re-implemented foundational ML algorithms (SVM, PCA, Random Forests, K-Means) in pure NumPy for full mathematical transparency.</li>
-              <li>Built modular API mirroring Scikit-learn; validated 99.9% accuracy parity with improved interpretability.</li>
-              <li>Used by 50+ students as a conceptual teaching tool for ML internals.</li>
-            </ul>
-
-            <strong>Pokémon Tactical Strike — Multimodal RL System</strong> | 2025
-            <ul class="resume-bullets">
-              <li>Developed simulator integrating Vision Transformers for visual encoding and GPT-based tactical reasoning.</li>
-              <li>Implemented hierarchical reinforcement learning using reward-conditioned language primitives for interpretable decisions.</li>
-              <li>Achieved 85% win rate vs baseline agents through hybrid vision-text reward shaping.</li>
-            </ul>
-          </div>
-
-          <div class="resume-label">Leadership & Research Experience</div>
-          <div class="resume-content">
-            <strong>Coordinator — iBot Club, Centre for Innovation (CFI), IIT Madras</strong> | 2025 – Present
-            <ul class="resume-bullets">
-              <li>Leading Computer Vision & RL wing with 30+ members; developing PPO-based SpiderBot locomotion and sim-to-real pipelines.</li>
-              <li>Organizing workshops on SLAM, sensor fusion, and model-based RL for robotics applications.</li>
-            </ul>
-
-            <strong>Research Assistant — SenAI Lab, IIT Madras</strong> | 2025 – Present
-            <ul class="resume-bullets">
-              <li>Conducting research on neuroscience-inspired AI architectures focusing on temporal dynamics and hybrid spiking models.</li>
-              <li>Exploring biologically plausible learning for continual and few-shot adaptation.</li>
-            </ul>
-
-            <strong>Core Member — Game Development Guild, IIT Madras</strong> | 2025 – Present
-            <ul class="resume-bullets">
-              <li>Designing Clash Royale RL simulator using CTDE paradigm and game-theoretic reward shaping for multi-agent coordination.</li>
-              <li>Implementing model-based RL with learned world models for strategic decision-making in RTS games.</li>
-            </ul>
-          </div>
-
-          <div class="resume-label">Achievements & Impact</div>
-          <div class="resume-content">
-            <ul class="resume-bullets">
-              <li><strong>Selected for Inter IIT Tech Meet High-Prep Problem Statement (2025)</strong> — among top teams from 23 IITs.</li>
-              <li><strong>Created open-source AxiomML framework</strong>, used as an educational ML toolkit across institutes.</li>
-              <li><strong>Active contributor</strong> to interdisciplinary AI research spanning robotics, neuroscience, and generative systems.</li>
-            </ul>
-          </div>
+    <!-- About Hero -->
+    <div class="about-hero">
+      <div class="about-avatar" style='background-image: url("assets/profile.jpg");'></div>
+      <div class="about-hero-text">
+        <h1>Aryan Jain</h1>
+        <p class="role">Research Intern · StochLab, RBCCPS, IISc Bangalore</p>
+        <p>
+          I'm a first-year undergraduate at IIT Madras (Chemical Engineering) whose research has drifted entirely toward AI and robotics. I'm currently at IISc training quadruped locomotion controllers on Isaac Sim and deploying them on real hardware. I've published at NeurIPS 2026 (MLAuditBench, an RL environment for LLM agent evaluation) and ACL 2026 (TRELLIS, a streaming financial agent architecture).
+        </p>
+        <p>
+          My interests span legged robotics, foundation models for manipulation, LLM agent benchmarking, and neuroscience-inspired computing. I try to pick problems where the engineering constraints and the research questions point in the same direction.
+        </p>
+        <div class="about-links">
+          <a href="mailto:ch24b040@smail.iitm.ac.in" class="about-link">✉ Email</a>
+          <a href="https://github.com/aryannzzz" target="_blank" rel="noopener" class="about-link">⌥ GitHub</a>
+          <a href="https://www.linkedin.com/in/aryan-jain-iitm/" target="_blank" rel="noopener" class="about-link">in LinkedIn</a>
+          <a href="assets/resume.pdf" download class="about-link">↓ Resume PDF</a>
         </div>
-        <div class="resume-download">
-          <a href="assets/resume.pdf" class="download-btn" download>Download Resume (PDF)</a>
-        </div>
-      </section>
+      </div>
+    </div>
 
-      <section class="about-section">
-        <h2>About Me</h2>
-        <p>
-          I'm Aryan Jain, an AI/ML and Robotics enthusiast with a passion for building innovative solutions. I love exploring new technologies and applying them to real-world problems. My journey in tech has been driven by curiosity and a desire to make an impact.
-        </p>
-        <p>
-          Currently pursuing B.Tech in Chemical Engineering at IIT Madras with a CGPA of 9.06, I've been actively involved in cutting-edge research across multiple domains including foundation models for robotics, biologically-inspired neural networks, and real-time agentic systems. My work spans from developing production-grade AI pipelines to contributing to open-source educational frameworks used by students across institutes.
-        </p>
-        <p>
-          Beyond academics, I serve as a Coordinator for iBot Club at CFI, leading the Computer Vision & RL wing, and work as a Research Assistant at SenAI Lab. I'm passionate about making AI more accessible, interpretable, and aligned with biological intelligence principles.
-        </p>
-      </section>
-    </main>
-  </div>
+    <!-- Education -->
+    <div class="section-heading"><span class="icon">🎓</span> Education</div>
+    <div class="edu-card">
+      <div class="edu-degree">Bachelor of Technology — Chemical Engineering</div>
+      <div class="edu-inst">Indian Institute of Technology, Madras</div>
+      <div class="edu-meta">2024 – 2028 (expected)</div>
+      <div class="edu-cgpa">8.88 <span>/ 10 &nbsp;·&nbsp; through 4th semester</span></div>
+    </div>
+
+    <!-- Research & Industry Experience -->
+    <div class="section-heading"><span class="icon">🔬</span> Research & Industry Experience</div>
+    <div class="experience-list">
+
+      <div class="exp-card active">
+        <div class="exp-header">
+          <div>
+            <p class="exp-title">Research Intern · Legged Locomotion</p>
+            <p class="exp-org">StochLab, RBCCPS · IISc Bangalore &nbsp;·&nbsp; <em>Supervisor: Dr. Shishir N. Y. Kolathaya</em></p>
+            <span class="exp-status active">● Active</span>
+          </div>
+          <div class="exp-date">May 2026 – Jul 2026</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Training PPO-based locomotion controllers for quadruped robots in NVIDIA Isaac Sim with terrain curriculum (flat → stairs → slopes → irregular) and domain randomization over friction, mass, and actuator parameters.</li>
+          <li>Bridging sim-to-real gap via learned actuator network modeling and latency injection; deploying trained policies to physical quadrupeds at Strider Robotics / Artpark.</li>
+          <li>Integrating vision-language action models (VLA) for task-conditioned locomotion — enabling natural language instruction following on-hardware.</li>
+          <li>Evaluating HuggingFace LeRobot framework as imitation learning baseline for manipulation-adjacent locomotion tasks.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">IsaacSim</span><span class="exp-tag">PPO</span><span class="exp-tag">Sim-to-Real</span><span class="exp-tag">VLA</span><span class="exp-tag">ROS2</span><span class="exp-tag">LeRobot</span><span class="exp-tag">PyTorch</span></div>
+      </div>
+
+      <div class="exp-card active">
+        <div class="exp-header">
+          <div>
+            <p class="exp-title">Undergraduate Research Credit (UGRC) · Bridging NL to CFD</p>
+            <p class="exp-org">Dept. Chemical Engineering, IIT Madras &nbsp;·&nbsp; <em>Guided by Prof. Abhinav S. Raman</em></p>
+            <span class="exp-status past">● Completed</span>
+          </div>
+          <div class="exp-date">Jan 2026 – May 2026</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Built an LLM-orchestrated agent that converts natural language problem descriptions into validated OpenFOAM CFD simulations end-to-end — no manual configuration required.</li>
+          <li>Architected schema-constrained NL-to-CFD pipeline with Reynolds-aware model selection matrix covering 12 solvers and 13 turbulence models; achieved 100% pass rate across 5 canonical flow regimes.</li>
+          <li>Validated pipeline against literature benchmarks (cylinder Re=100, backward-facing step) with sub-6% error — within RANS turbulence modeling accuracy expectations.</li>
+          <li>Formally verified by Prof. Raman: <em>"His contribution has been immense, and I look forward to his continued involvement in the project."</em></li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">LLM Agents</span><span class="exp-tag">OpenFOAM</span><span class="exp-tag">CFD</span><span class="exp-tag">Schema-Constrained Generation</span><span class="exp-tag">Multi-Agent</span><span class="exp-tag">DWSIM</span></div>
+      </div>
+
+      <div class="exp-card active">
+        <div class="exp-header">
+          <div>
+            <p class="exp-title">Barclays Mentorship Programme</p>
+            <p class="exp-org">Barclays</p>
+            <span class="exp-status active">● Active</span>
+          </div>
+          <div class="exp-date">Jun 2026 – Present</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Selected through a rigorous assessment covering finance, probability, Python, and data structures & algorithms.</li>
+          <li>Working with Barclays business leaders on structured case studies, business strategy, and a final team-based case presentation.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">Finance</span><span class="exp-tag">Case Studies</span><span class="exp-tag">Python</span><span class="exp-tag">DSA</span></div>
+      </div>
+
+      <div class="exp-card past">
+        <div class="exp-header">
+          <div>
+            <p class="exp-title">Undergraduate Student Researcher</p>
+            <p class="exp-org">SENAI Lab, IIT Madras</p>
+            <span class="exp-status past">Completed</span>
+          </div>
+          <div class="exp-date">Sep 2025 – Nov 2025</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Worked on neuroscience-inspired AI at the intersection of theoretical mathematics and computational modeling: differential geometry, PCA, ICA, and neural manifold structure.</li>
+          <li>Implemented rigorous coding pipelines for mathematical analysis and critically reviewed research papers toward novel publishable contributions.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">Computational Neuroscience</span><span class="exp-tag">Differential Geometry</span><span class="exp-tag">PCA / ICA</span><span class="exp-tag">NeuroAI</span></div>
+      </div>
+
+    </div>
+
+    <!-- Leadership & Campus Roles -->
+    <div class="section-heading"><span class="icon">🏛️</span> Leadership &amp; Campus Roles</div>
+    <div class="experience-list">
+
+      <div class="exp-card active">
+        <div class="exp-header">
+          <div>
+            <p class="exp-title">Project Lead — Regensis</p>
+            <p class="exp-org">iBot Club, Centre for Innovation (CFI), IIT Madras</p>
+            <span class="exp-status active">● Active</span>
+          </div>
+          <div class="exp-date">Apr 2026 – Present</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Leading development of an AI-driven EEG-EMG neuroprosthetic for upper-limb rehabilitation, integrating neural signal processing, motor synergy analysis, and CNN-based intent decoding.</li>
+          <li>Integrating musculoskeletal simulation to enable intuitive, adaptive prosthetic control without surgical implants.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">EEG / EMG</span><span class="exp-tag">CNN</span><span class="exp-tag">Neuroprosthetics</span><span class="exp-tag">Signal Processing</span></div>
+      </div>
+
+      <div class="exp-card past">
+        <div class="exp-header">
+          <div>
+            <p class="exp-title">Project Member — GRASP</p>
+            <p class="exp-org">iBot Club, Centre for Innovation (CFI), IIT Madras</p>
+            <span class="exp-status past">Completed</span>
+          </div>
+          <div class="exp-date">May 2025 – Apr 2026</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Part of a 9-person team developing a robotic foundation model integrating vision, language, and action for generalizable visuomotor control.</li>
+          <li>Designed transformer-based VLA architectures, contributed GradCAM interpretability framework (85% saliency improvement), and modified ACT encoder achieving 27.8% lower validation loss.</li>
+          <li>Built HuggingFace-compatible vision-only ACT module; models hosted on HuggingFace Hub.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">VLA Models</span><span class="exp-tag">PyTorch</span><span class="exp-tag">ACT</span><span class="exp-tag">GradCAM</span><span class="exp-tag">LeRobot</span></div>
+      </div>
+
+      <div class="exp-card past">
+        <div class="exp-header">
+          <div>
+            <p class="exp-title">Coordinator — Computer Vision &amp; RL Wing</p>
+            <p class="exp-org">iBot Club, Centre for Innovation (CFI), IIT Madras</p>
+            <span class="exp-status past">Completed</span>
+          </div>
+          <div class="exp-date">May 2025 – Mar 2026</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Mentored 45+ freshers through software robotics fundamentals: computer vision, graph theory, and reinforcement learning.</li>
+          <li>Delivered a 4-day Computer Vision bootcamp covering NumPy image processing through production model deployment.</li>
+          <li>Organized workshops on SLAM, sensor fusion, and model-based RL; developed PPO-based SpiderBot locomotion pipeline.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">Computer Vision</span><span class="exp-tag">Reinforcement Learning</span><span class="exp-tag">SLAM</span><span class="exp-tag">Teaching</span></div>
+      </div>
+
+      <div class="exp-card past">
+        <div class="exp-header">
+          <div>
+            <p class="exp-title">Project Member — NeuroSpike</p>
+            <p class="exp-org">Biotech Club, IIT Madras</p>
+            <span class="exp-status past">Completed</span>
+          </div>
+          <div class="exp-date">May 2025 – Apr 2026</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Team of 4 building brain-inspired learning systems using SNNs, Brian2 simulations, and FPGA/Verilog hardware implementation of LIF neuron circuits.</li>
+          <li>Implemented predictive coding, STDP learning rules, and continual learning mechanisms for neuromorphic systems.</li>
+          <li>Presented at IIT Madras Research Conclave (November 2025).</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">SNNs</span><span class="exp-tag">Brian2</span><span class="exp-tag">FPGA / Verilog</span><span class="exp-tag">Predictive Coding</span></div>
+      </div>
+
+      <div class="exp-card past">
+        <div class="exp-header">
+          <div>
+            <p class="exp-title">Teaching Assistant — GN1002</p>
+            <p class="exp-org">Indian Institute of Technology, Madras</p>
+            <span class="exp-status past">Completed</span>
+          </div>
+          <div class="exp-date">Jan 2026 – Apr 2026</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Undergraduate TA for the GN1002 course at IIT Madras.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">Teaching</span><span class="exp-tag">IIT Madras</span></div>
+      </div>
+
+      <div class="exp-card past">
+        <div class="exp-header">
+          <div>
+            <p class="exp-title">Student Mentor — Saathi</p>
+            <p class="exp-org">IIT Madras</p>
+            <span class="exp-status past">Completed</span>
+          </div>
+          <div class="exp-date">Jul 2025 – Apr 2026</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Mentored incoming students through Saathi, IIT Madras's peer mentorship programme for freshers.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">Mentorship</span><span class="exp-tag">Peer Support</span></div>
+      </div>
+
+      <div class="exp-card past">
+        <div class="exp-header">
+          <div>
+            <p class="exp-title">Member — Inter-IIT AI Contingent &amp; Hack Vertical</p>
+            <p class="exp-org">AI Club, IIT Madras</p>
+            <span class="exp-status past">Completed</span>
+          </div>
+          <div class="exp-date">Sep 2025 – May 2026</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Part of the AI club contingent for nationwide hackathons including Inter-IIT Tech Meet (23 IITs).</li>
+          <li>Selected for Pathway problem statement at Inter-IIT 2025 — one of 15 students from IIT Madras.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">Inter-IIT</span><span class="exp-tag">AI Hackathon</span><span class="exp-tag">Competitions</span></div>
+      </div>
+
+      <div class="exp-card past">
+        <div class="exp-header">
+          <div>
+            <p class="exp-title">Core Member — Game Development Guild</p>
+            <p class="exp-org">IIT Madras</p>
+            <span class="exp-status past">Completed</span>
+          </div>
+          <div class="exp-date">2025 – 2026</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Designed Clash Royale RL simulator using CTDE paradigm and game-theoretic reward shaping for multi-agent coordination.</li>
+          <li>Implemented model-based RL with learned world models for strategic decision-making in real-time strategy games.</li>
+        </ul>
+        <div class="exp-tags"><span class="exp-tag">Reinforcement Learning</span><span class="exp-tag">Game AI</span><span class="exp-tag">CTDE</span><span class="exp-tag">World Models</span></div>
+      </div>
+
+    </div>
+
+    <!-- Technical Skills -->
+    <div class="section-heading"><span class="icon">⚙️</span> Technical Skills</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-items">
+          <span class="skill-item">Python</span>
+          <span class="skill-item">C++</span>
+          <span class="skill-item">JavaScript</span>
+          <span class="skill-item">SQL</span>
+          <span class="skill-item">Verilog</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">ML Frameworks</div>
+        <div class="skill-items">
+          <span class="skill-item">PyTorch</span>
+          <span class="skill-item">TensorFlow</span>
+          <span class="skill-item">Scikit-learn</span>
+          <span class="skill-item">Keras</span>
+          <span class="skill-item">Hugging Face</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Robotics & Simulation</div>
+        <div class="skill-items">
+          <span class="skill-item">IsaacSim</span>
+          <span class="skill-item">ROS2</span>
+          <span class="skill-item">LeRobot</span>
+          <span class="skill-item">MetaWorld</span>
+          <span class="skill-item">OpenFOAM</span>
+          <span class="skill-item">DWSIM</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">AI / LLM Tooling</div>
+        <div class="skill-items">
+          <span class="skill-item">LangChain</span>
+          <span class="skill-item">OpenCV</span>
+          <span class="skill-item">spaCy</span>
+          <span class="skill-item">W&amp;B</span>
+          <span class="skill-item">LiteLLM</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Scientific Computing</div>
+        <div class="skill-items">
+          <span class="skill-item">NumPy</span>
+          <span class="skill-item">Pandas</span>
+          <span class="skill-item">Matplotlib</span>
+          <span class="skill-item">Brian2</span>
+          <span class="skill-item">Jupyter</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Dev Tools</div>
+        <div class="skill-items">
+          <span class="skill-item">Git</span>
+          <span class="skill-item">Docker</span>
+          <span class="skill-item">Linux</span>
+          <span class="skill-item">FastAPI</span>
+          <span class="skill-item">ChromaDB</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Achievements -->
+    <div class="section-heading"><span class="icon">🏆</span> Achievements</div>
+    <div class="achievement-list">
+      <div class="achievement-item">
+        <div class="achievement-icon">📄</div>
+        <div class="achievement-text"><strong>NeurIPS 2026</strong> — First author on MLAuditBench, the first RL environment for evaluating LLM agents on ML experiment integrity auditing. GPT-4.1-mini matches human auditors; results discriminate at frontier capability levels.</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-icon">📄</div>
+        <div class="achievement-text"><strong>ACL 2026</strong> — Co-author on TRELLIS, a streaming-native tool-grounded agent architecture for structured financial data. Introduces bounded orchestration to prevent LLM-induced computation errors.</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-icon">🏛️</div>
+        <div class="achievement-text"><strong>Inter-IIT Tech Meet 2025</strong> — Selected for the high-prep Pathway problem statement, one of 15 students from IIT Madras competing among top teams from 23 IITs.</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-icon">🤖</div>
+        <div class="achievement-text"><strong>IITM AI Hackathon</strong> — Selected with top ranking for the AI hackathon vertical with Pokémon Tactical Strike, a multimodal RL system achieving 85% win rate against baseline agents.</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-icon">📚</div>
+        <div class="achievement-text"><strong>AxiomML</strong> — Open-source educational ML framework (SVM, PCA, Random Forests, K-Means) in pure NumPy with 99.9% Scikit-learn parity. Used by 50+ students across institutes as a teaching tool.</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-icon">🏦</div>
+        <div class="achievement-text"><strong>Barclays Mentorship Programme</strong> — Selected through a competitive assessment covering finance, probability, Python, and DSA. One of few undergraduates chosen for structured mentorship with Barclays business leaders.</div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-icon">🔬</div>
+        <div class="achievement-text"><strong>Indian Patent Application No. 202641050670</strong> — Co-inventor on a patent filed 21 April 2026 through IIT Madras (IC&amp;SR), represented by Remfry &amp; Sagar (Attorney IN/PA-1510). Filed under the Patents Act, 1970.</div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="section-heading"><span class="icon">📜</span> Certifications</div>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-name">Financial Markets</div>
+        <div class="cert-org">Yale University</div>
+        <div class="cert-date">September 2025 &nbsp;·&nbsp; ID: DRB273ZAHLEV</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Python for Data Science, AI &amp; Development</div>
+        <div class="cert-org">IBM</div>
+        <div class="cert-date">January 2025 &nbsp;·&nbsp; ID: ZLW01NQ8JQJV</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Machine Learning Specialization</div>
+        <div class="cert-org">DeepLearning.AI / Andrew Ng</div>
+        <div class="cert-date">Completed March 2025</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-name">Generative AI with LLMs</div>
+        <div class="cert-org">AWS / DeepLearning.AI</div>
+        <div class="cert-date">Completed April 2025</div>
+      </div>
+    </div>
+
+    <!-- Resume Download -->
+    <div class="resume-cta">
+      <p>Need a single-page summary? Download the full PDF resume.</p>
+      <a href="assets/resume.pdf" class="download-btn" download>
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
+          <path d="M224,152v56a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V152a8,8,0,0,1,16,0v56H208V152a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,132.69V40a8,8,0,0,0-16,0v92.69L93.66,106.34a8,8,0,0,0-11.32,11.32Z"></path>
+        </svg>
+        Download Resume PDF
+      </a>
+    </div>
+
+  </main>
   <script src="js/darkmode.js"></script>
 </body>
 </html>

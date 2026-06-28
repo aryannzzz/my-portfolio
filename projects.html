@@ -1,437 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projects | Aryan's Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Sans:wght@400;500;700&display=swap"
-    />
-    <link rel="stylesheet" href="css/header.css" />
-    <link rel="stylesheet" href="css/darkmode.css" />
-    <link rel="stylesheet" href="css/projects.css" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  </head>
-
-  <body>
-    <div class="layout-container flex flex-col min-h-screen bg-white">
-      <!-- Header -->
-      <header class="header">
-        <div class="header-left">
-          <a href="index.html" class="logo-link" aria-label="Home">
-            <svg
-              class="logo-icon"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(#clip0_6_319)">
-                <path
-                  d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"
-                  fill="currentColor"
-                ></path>
-              </g>
-              <defs>
-                <clipPath id="clip0_6_319">
-                  <rect width="48" height="48" fill="white"></rect>
-                </clipPath>
-              </defs>
-            </svg>
-            <span class="site-title">Portfolio</span>
-          </a>
-        </div>
-
-        <nav class="header-nav" aria-label="Main navigation">
-          <a href="projects.html" class="active">Projects</a>
-          <a href="resume.html">Resume/About Me</a>
-          <a href="roadmap.html">Roadmap</a>
-          <a href="blogs.html">Blogs/Insights</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-
-        <div class="header-actions">
-          <button class="mode-toggle" aria-label="Toggle light/dark mode">
-            <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
-              <path
-                d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"
-              ></path>
-            </svg>
-          </button>
-          <div
-            class="profile-pic"
-            style='background-image: url("assets/profile.jpg");'
-            aria-label="Profile picture"
-          ></div>
-        </div>
-      </header>
-
-      <!-- Main Content -->
-      <main class="main-content">
-        <section class="projects-header">
-          <h1>Projects</h1>
-        </section>
-
-        <section class="featured-project">
-          <h2>Featured Projects</h2>
-          <div class="featured-projects-list">
-            <!-- CamBrain -->
-            <div class="featured-project-card project-hover">
-              <div
-                class="featured-image"
-                style='background-image: url("assets/projects/cambrain.jpg"); background-color: #0f172a;'
-              ></div>
-              <div class="featured-info">
-                <h3>CamBrain — AI Desktop Automation Agent</h3>
-                <p class="tech-stack">
-                  Python, Computer Vision, LLMs, ReAct, PaddleOCR, FastAPI
-                </p>
-                <p class="description">
-                  Vision-language desktop agent that sees, understands, plans, and 
-                  executes tasks autonomously with 162 passing tests.<br />
-                  <a href="projects/cambrain.html" class="read-more">Read more &rarr;</a>
-                </p>
-              </div>
-            </div>
-
-            <!-- Inter IIT Pathway PS -->
-            <div class="featured-project-card project-hover">
-              <div
-                class="featured-image"
-                style='background-image: url("assets/projects/pathway.jpg");'
-              ></div>
-              <div class="featured-info">
-                <h3>Inter IIT Pathway PS — Real-Time Agentic Systems</h3>
-                <p class="tech-stack">
-                  Python, Pathway, LLMs, LangChain, Multi-Agent Systems
-                </p>
-                <p class="description">
-                  Production-grade streaming GenAI pipeline for quantitative finance
-                  with sub-second latency, multi-agent coordination, and real-time RAG
-                  systems.<br />
-                  <a href="projects/pathway.html" class="read-more">Read more &rarr;</a>
-                </p>
-              </div>
-            </div>
-
-            <!-- GRASP -->
-            <div class="featured-project-card project-hover">
-              <div
-                class="featured-image"
-                style='background-image: url("assets/projects/grasp.jpg");'
-              ></div>
-              <div class="featured-info">
-                <h3>GRASP — Foundation Models for Robotic Control</h3>
-                <p class="tech-stack">
-                  Python, PyTorch, VLA, Transformers, Robotics
-                </p>
-                <p class="description">
-                  Vision-language-action models for visuomotor tasks with multimodal
-                  alignment and behavior cloning.<br />
-                  <a href="projects/grasp.html" class="read-more">Read more &rarr;</a>
-                </p>
-              </div>
-            </div>
-
-            <!-- NeuroSpike -->
-            <div class="featured-project-card project-hover">
-              <div
-                class="featured-image"
-                style='background-image: url("assets/projects/neurospike.jpg");'
-              ></div>
-              <div class="featured-info">
-                <h3>Project NeuroSpike</h3>
-                <p class="tech-stack">Python, Brian2, SNNs, Predictive Coding</p>
-                <p class="description">
-                  Biologically-inspired neural networks with SNNs and STDP learning.<br />
-                  <a href="projects/neurospike.html" class="read-more">Read more &rarr;</a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="all-projects">
-          <h2>All Projects</h2>
-          <div class="projects-grid">
-            <!-- CamBrain -->
-            <div class="project-card project-hover">
-              <div
-                class="project-image"
-                style='background-image: url("assets/projects/cambrain.jpg"); background-color: #0f172a;'
-              ></div>
-              <div>
-                <p class="project-title">CamBrain</p>
-                <p class="project-tech">Python, CV, LLMs, ReAct, FastAPI</p>
-                <p class="project-desc">
-                  AI desktop automation agent with vision-language understanding.
-                </p>
-                <a href="projects/cambrain.html" class="read-more">Read more &rarr;</a>
-              </div>
-            </div>
-
-            <!-- Inter IIT Pathway PS -->
-            <div class="project-card project-hover">
-              <div
-                class="project-image"
-                style='background-image: url("assets/projects/pathway.jpg");'
-              ></div>
-              <div>
-                <p class="project-title">Inter IIT Pathway PS</p>
-                <p class="project-tech">
-                  Python, Pathway, LLMs, Multi-Agent Systems
-                </p>
-                <p class="project-desc">
-                  Real-time agentic generative systems for quantitative finance.
-                </p>
-                <a href="projects/pathway.html" class="read-more">Read more &rarr;</a>
-              </div>
-            </div>
-
-            <!-- GRASP -->
-            <div class="project-card project-hover">
-              <div
-                class="project-image"
-                style='background-image: url("assets/projects/grasp.jpg");'
-              ></div>
-              <div>
-                <p class="project-title">Project GRASP</p>
-                <p class="project-tech">Python, PyTorch, VLA, Transformers</p>
-                <p class="project-desc">
-                  Foundation models for robotic control with vision-language-action.
-                </p>
-                <a href="projects/grasp.html" class="read-more">Read more &rarr;</a>
-              </div>
-            </div>
-
-            <!-- NeuroSpike -->
-            <div class="project-card project-hover">
-              <div
-                class="project-image"
-                style='background-image: url("assets/projects/neurospike.jpg");'
-              ></div>
-              <div>
-                <p class="project-title">Project NeuroSpike</p>
-                <p class="project-tech">Python, Brian2, SNNs, Predictive Coding</p>
-                <p class="project-desc">
-                  Biologically-inspired neural networks with SNNs and STDP learning.
-                </p>
-                <a href="projects/neurospike.html" class="read-more">Read more &rarr;</a>
-              </div>
-            </div>
-
-            <!-- AxiomML -->
-            <div class="project-card project-hover">
-              <div
-                class="project-image"
-                style='background-image: url("assets/projects/axiomml.jpg");'
-              ></div>
-              <div>
-                <p class="project-title">AxiomML</p>
-                <p class="project-tech">Python, NumPy, Machine Learning</p>
-                <p class="project-desc">
-                  Educational ML framework from scratch with 99.9% accuracy parity.
-                  Used by 50+ students.
-                </p>
-                <a href="projects/axiomml.html" class="read-more">Read more &rarr;</a>
-              </div>
-            </div>
-
-            <!-- Pokémon Tactical Strike -->
-            <div class="project-card project-hover">
-              <div
-                class="project-image"
-                style='background-image: url("assets/projects/pokemon.jpg");'
-              ></div>
-              <div>
-                <p class="project-title">Pokémon Tactical Strike</p>
-                <p class="project-tech">
-                  Python, PyTorch, RL, Vision Transformers
-                </p>
-                <p class="project-desc">
-                  Multimodal RL system with hierarchical learning. 85% win rate vs
-                  baselines.
-                </p>
-                <a href="projects/pokemon.html" class="read-more">Read more &rarr;</a>
-              </div>
-            </div>
-
-            <!-- Assassin's Creed -->
-            <div class="project-card project-hover">
-              <div
-                class="project-image"
-                style='background-image: url("assets/projects/assassinscreed.jpg");'
-              ></div>
-              <div>
-                <p class="project-title">
-                  Assassin's Creed: Arunodaya Protocol
-                  <span class="project-meta">(Unofficial Concept)</span>
-                </p>
-                <p class="project-tech">Unity, C#, Game AI</p>
-                <p class="project-desc">
-                  Stealth game with AI guards and creative level design.
-                </p>
-                <a href="projects/assassinscreed.html" class="read-more">Read more &rarr;</a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | Aryan Jain</title>
+  <meta name="description" content="Research projects by Aryan Jain — MLAuditBench (NeurIPS 2026), TRELLIS (ACL 2026), IISc Quadruped locomotion, Regensis neuroprosthetics, GRASP, NeuroSpike, and more." />
+  <meta name="keywords" content="Aryan Jain projects, MLAuditBench, TRELLIS, quadruped locomotion, Regensis, GRASP, NeuroSpike, IIT Madras, IISc, AI research projects" />
+  <meta name="author" content="Aryan Jain" />
+  <meta property="og:title" content="Projects | Aryan Jain" />
+  <meta property="og:description" content="AI research projects: NeurIPS 2026 and ACL 2026 publications, quadruped RL locomotion, EEG/EMG neuroprosthetics, and more." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/darkmode.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+      margin: 0; padding: 0;
+      position: relative; overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image:
+        linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none; z-index: 0;
+    }
+    body.dark-mode { background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); }
+    .layout-container { min-height: 100vh; display: flex; flex-direction: column; position: relative; z-index: 1; }
+    .content-container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; width: 100%; }
+    .page-hero { text-align: center; padding: 3rem 0 2rem; }
+    .page-hero h1 { font-size: 2.5rem; font-weight: 800; color: #1e293b; margin-bottom: 0.75rem; }
+    .page-hero p { color: #64748b; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+    body.dark-mode .page-hero h1 { color: #f1f5f9; }
+    body.dark-mode .page-hero p { color: #94a3b8; }
+    .filter-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2.5rem; }
+    .filter-tab { padding: 0.4rem 1rem; border-radius: 999px; border: 1.5px solid #e2e8f0; background: #fff; color: #475569; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.15s; }
+    .filter-tab:hover, .filter-tab.active { background: #2563eb; border-color: #2563eb; color: #fff; }
+    body.dark-mode .filter-tab { background: #1e293b; border-color: #334155; color: #94a3b8; }
+    body.dark-mode .filter-tab:hover, body.dark-mode .filter-tab.active { background: #2563eb; border-color: #2563eb; color: #fff; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .project-card {
+      background: rgba(255,255,255,0.85);
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 1.5rem;
+      border-left-width: 4px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      opacity: 0; transform: translateY(20px);
+    }
+    .project-card.visible { opacity: 1; transform: translateY(0); transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s; }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(37,99,235,0.1); }
+    body.dark-mode .project-card { background: rgba(30,41,59,0.85); border-color: #334155; }
+    .card-blue { border-left-color: #2563eb; }
+    .card-green { border-left-color: #16a34a; }
+    .card-amber { border-left-color: #d97706; }
+    .card-purple { border-left-color: #7c3aed; }
+    .card-teal { border-left-color: #0891b2; }
+    .card-rose { border-left-color: #e11d48; }
+    .card-orange { border-left-color: #ea580c; }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; gap: 0.5rem; }
+    .card-title { font-size: 1.1rem; font-weight: 700; color: #1e293b; line-height: 1.3; }
+    body.dark-mode .card-title { color: #f1f5f9; }
+    .card-badges { display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem; }
+    .badge { font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 999px; white-space: nowrap; }
+    .badge-green { background: #dcfce7; color: #15803d; }
+    .badge-amber { background: #fef3c7; color: #b45309; }
+    .badge-blue { background: #dbeafe; color: #1d4ed8; }
+    .badge-purple { background: #f3e8ff; color: #7c3aed; }
+    .badge-teal { background: #cffafe; color: #0e7490; }
+    .badge-rose { background: #ffe4e6; color: #be123c; }
+    .badge-active { background: #d1fae5; color: #065f46; }
+    .badge-past { background: #f1f5f9; color: #475569; }
+    body.dark-mode .badge-past { background: #334155; color: #94a3b8; }
+    .card-desc { font-size: 0.9rem; color: #475569; line-height: 1.6; margin-bottom: 1rem; }
+    body.dark-mode .card-desc { color: #94a3b8; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
+    .tag { font-size: 0.72rem; background: #f1f5f9; color: #334155; padding: 0.18rem 0.55rem; border-radius: 5px; }
+    body.dark-mode .tag { background: #334155; color: #94a3b8; }
+    .card-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .card-link { font-size: 0.8rem; font-weight: 600; color: #2563eb; text-decoration: none; }
+    .card-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="layout-container">
+  <header class="header">
+    <div class="header-left">
+      <a href="index.html" class="logo-link" aria-label="Home">
+        <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_6_319)">
+            <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"/>
+          </g>
+          <defs><clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"/></clipPath></defs>
+        </svg>
+        <span class="site-title">Aryan Jain</span>
+      </a>
     </div>
-  </body>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="research.html">Research</a>
+      <a href="publications.html">Publications</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="resume.html">About</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="blogs.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="mode-toggle" aria-label="Toggle light/dark mode">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+          <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/>
+        </svg>
+      </button>
+      <div class="profile-pic" style='background-image: url("assets/profile.jpg");' aria-label="Profile picture"></div>
+    </div>
+  </header>
 
-  <script>
-    // Enhanced project card interactions
-    document.addEventListener('DOMContentLoaded', function() {
-      const projectCards = document.querySelectorAll('.project-card, .featured-project-card');
-      
-      // Parallax effect on mouse move
-      projectCards.forEach(card => {
-        const image = card.querySelector('.project-image, .featured-image');
-        
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          
-          const deltaX = (x - centerX) / centerX;
-          const deltaY = (y - centerY) / centerY;
-          
-          // Subtle parallax effect
-          if (image) {
-            const scale = card.classList.contains('project-card') ? 1.12 : 1.1;
-            image.style.transform = `scale(${scale}) translate(${deltaX * 8}px, ${deltaY * 8}px)`;
-          }
-        });
-        
-        card.addEventListener('mouseleave', () => {
-          if (image) {
-            image.style.transform = '';
-          }
-        });
-      });
+  <main class="content-container">
+    <div class="page-hero">
+      <h1>Projects</h1>
+      <p>Research systems and engineering projects — from RL locomotion to LLM evaluation benchmarks and neural prosthetics.</p>
+    </div>
 
-      // Staggered fade-in animation on page load
-      const allCards = [...document.querySelectorAll('.featured-project-card'), ...document.querySelectorAll('.project-card')];
-      allCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        
-        setTimeout(() => {
-          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, index * 80);
-      });
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">All</button>
+      <button class="filter-tab" data-filter="research">Research</button>
+      <button class="filter-tab" data-filter="robotics">Robotics</button>
+      <button class="filter-tab" data-filter="llm">LLM / Agents</button>
+      <button class="filter-tab" data-filter="neuro">Neuro</button>
+      <button class="filter-tab" data-filter="quant">Quant Finance</button>
+      <button class="filter-tab" data-filter="ml">ML</button>
+    </div>
 
-      // Ripple effect on click
-      projectCards.forEach(card => {
-        card.addEventListener('click', function(e) {
-          // Don't add ripple if clicking the read more link directly
-          if (e.target.classList.contains('read-more') || e.target.closest('.read-more')) {
-            return;
-          }
-          
-          const ripple = document.createElement('div');
-          ripple.className = 'ripple-effect';
-          
-          const rect = card.getBoundingClientRect();
-          const size = Math.max(rect.width, rect.height);
-          const x = e.clientX - rect.left - size / 2;
-          const y = e.clientY - rect.top - size / 2;
-          
-          ripple.style.width = ripple.style.height = size + 'px';
-          ripple.style.left = x + 'px';
-          ripple.style.top = y + 'px';
-          
-          card.appendChild(ripple);
-          
-          setTimeout(() => {
-            ripple.remove();
-          }, 600);
-        });
-      });
+    <div class="projects-grid" id="projects-grid">
 
-      // Add tech badge to featured projects
-      document.querySelectorAll('.featured-project-card').forEach((card, index) => {
-        if (index === 0) {
-          const badge = document.createElement('div');
-          badge.className = 'featured-badge';
-          badge.textContent = '⭐ Latest';
-          card.appendChild(badge);
-        }
+      <div class="project-card card-green" data-categories="research llm ml">
+        <div class="card-header">
+          <div class="card-title">MLAuditBench</div>
+          <div class="card-badges">
+            <span class="badge badge-green">NeurIPS 2026</span>
+            <span class="badge badge-active">Published</span>
+          </div>
+        </div>
+        <p class="card-desc">A reproducibility and scientific-integrity benchmark for ML experiments. Covers 62 experiments across 8 violation types. GPT-4.1-mini achieves human-level auditing accuracy on targeted probing.</p>
+        <div class="card-tags">
+          <span class="tag">LLM Agents</span>
+          <span class="tag">Benchmarking</span>
+          <span class="tag">Scientific Integrity</span>
+          <span class="tag">Reproducibility</span>
+        </div>
+        <div class="card-links">
+          <a href="projects/mlauditbench.html" class="card-link">→ Details</a>
+          <a href="publications.html" class="card-link">→ Publication</a>
+        </div>
+      </div>
+
+      <div class="project-card card-amber" data-categories="research llm ml">
+        <div class="card-header">
+          <div class="card-title">TRELLIS</div>
+          <div class="card-badges">
+            <span class="badge badge-amber">ACL 2026</span>
+            <span class="badge badge-active">Published</span>
+          </div>
+        </div>
+        <p class="card-desc">Bounded orchestration framework for streaming LLM financial agents. Enables reliable, latency-aware multi-step reasoning with hard resource constraints and structured output guarantees.</p>
+        <div class="card-tags">
+          <span class="tag">LLM Orchestration</span>
+          <span class="tag">Streaming Agents</span>
+          <span class="tag">Finance</span>
+          <span class="tag">Tool Use</span>
+        </div>
+        <div class="card-links">
+          <a href="projects/trellis.html" class="card-link">→ Details</a>
+          <a href="publications.html" class="card-link">→ Publication</a>
+        </div>
+      </div>
+
+      <div class="project-card card-blue" data-categories="research robotics">
+        <div class="card-header">
+          <div class="card-title">IISc Quadruped Locomotion</div>
+          <div class="card-badges">
+            <span class="badge badge-blue">StochLab · IISc</span>
+            <span class="badge badge-active">Active</span>
+          </div>
+        </div>
+        <p class="card-desc">RL-based locomotion control for quadruped robots using Isaac Sim. Training PPO policies with sim-to-real transfer, terrain curriculum, and vision-language action model integration for task-conditioned control.</p>
+        <div class="card-tags">
+          <span class="tag">Reinforcement Learning</span>
+          <span class="tag">Isaac Sim</span>
+          <span class="tag">PPO</span>
+          <span class="tag">Sim-to-Real</span>
+          <span class="tag">VLA</span>
+        </div>
+        <div class="card-links">
+          <a href="projects/iscquad.html" class="card-link">→ Details</a>
+        </div>
+      </div>
+
+      <div class="project-card card-teal" data-categories="research neuro">
+        <div class="card-header">
+          <div class="card-title">Regensis</div>
+          <div class="card-badges">
+            <span class="badge badge-teal">CFI · iBot Club</span>
+            <span class="badge badge-active">Active</span>
+          </div>
+        </div>
+        <p class="card-desc">EEG-EMG hybrid neuroprosthetic hand. Decodes motor intent from neural signals using SNNs on FPGA. Targeting sub-50ms decode latency with Brian2 simulation pipeline for model validation.</p>
+        <div class="card-tags">
+          <span class="tag">EEG / EMG</span>
+          <span class="tag">Spiking Neural Nets</span>
+          <span class="tag">FPGA</span>
+          <span class="tag">Brian2</span>
+          <span class="tag">Neuroprosthetics</span>
+        </div>
+        <div class="card-links">
+          <a href="projects/regensis.html" class="card-link">→ Details</a>
+        </div>
+      </div>
+
+      <div class="project-card card-purple" data-categories="robotics ml">
+        <div class="card-header">
+          <div class="card-title">GRASP</div>
+          <div class="card-badges">
+            <span class="badge badge-purple">iBot Club · IITM</span>
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">Generalized robotic arm for adaptive task solving. Built manipulation pipelines with computer vision for object detection and grasping, using ROS2 and reinforcement learning for adaptive control.</p>
+        <div class="card-tags">
+          <span class="tag">Manipulation</span>
+          <span class="tag">ROS2</span>
+          <span class="tag">Computer Vision</span>
+          <span class="tag">Grasping</span>
+        </div>
+        <div class="card-links">
+          <a href="projects/grasp.html" class="card-link">→ Details</a>
+        </div>
+      </div>
+
+      <div class="project-card card-rose" data-categories="neuro ml">
+        <div class="card-header">
+          <div class="card-title">NeuroSpike</div>
+          <div class="card-badges">
+            <span class="badge badge-rose">Biotech Club · IITM</span>
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">Spike sorting and neural signal classification system. Signal processing pipelines for extracellular recordings, clustering spike waveforms with dimensionality reduction and unsupervised learning.</p>
+        <div class="card-tags">
+          <span class="tag">Spike Sorting</span>
+          <span class="tag">Neural Signals</span>
+          <span class="tag">Clustering</span>
+          <span class="tag">Signal Processing</span>
+        </div>
+        <div class="card-links">
+          <a href="projects/neurospike.html" class="card-link">→ Details</a>
+        </div>
+      </div>
+
+      <div class="project-card card-orange" data-categories="ml neuro">
+        <div class="card-header">
+          <div class="card-title">CamBrain</div>
+          <div class="card-badges">
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">Neuromorphic vision system mapping camera input to spiking neural network representations. Explored event-driven computation paradigms for energy-efficient visual processing.</p>
+        <div class="card-tags">
+          <span class="tag">Neuromorphic</span>
+          <span class="tag">Spiking NNs</span>
+          <span class="tag">Computer Vision</span>
+        </div>
+        <div class="card-links">
+          <a href="projects/cambrain.html" class="card-link">→ Details</a>
+        </div>
+      </div>
+
+      <div class="project-card card-blue" data-categories="llm ml">
+        <div class="card-header">
+          <div class="card-title">Pathway Streaming Agent</div>
+          <div class="card-badges">
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">Real-time data pipeline agent built on Pathway framework. Streaming LLM inference with live data ingestion for low-latency question answering over continuously updating sources.</p>
+        <div class="card-tags">
+          <span class="tag">Pathway</span>
+          <span class="tag">Streaming</span>
+          <span class="tag">LLM</span>
+          <span class="tag">RAG</span>
+        </div>
+        <div class="card-links">
+          <a href="projects/pathway.html" class="card-link">→ Details</a>
+        </div>
+      </div>
+
+      <div class="project-card card-green" data-categories="ml">
+        <div class="card-header">
+          <div class="card-title">AxiomML</div>
+          <div class="card-badges">
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">ML education initiative at IIT Madras reaching 50+ students. Structured curriculum covering classical ML, deep learning, and practical implementation with hands-on projects.</p>
+        <div class="card-tags">
+          <span class="tag">ML Education</span>
+          <span class="tag">Deep Learning</span>
+          <span class="tag">Curriculum Design</span>
+        </div>
+        <div class="card-links">
+          <a href="projects/axiomml.html" class="card-link">→ Details</a>
+        </div>
+      </div>
+
+      <div class="project-card card-amber" data-categories="ml">
+        <div class="card-header">
+          <div class="card-title">Pokédex AI</div>
+          <div class="card-badges">
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">Fine-tuned vision model for Pokémon species classification with custom training pipeline and data augmentation, achieving high accuracy on multi-class image recognition.</p>
+        <div class="card-tags">
+          <span class="tag">Computer Vision</span>
+          <span class="tag">Fine-tuning</span>
+          <span class="tag">Image Classification</span>
+        </div>
+        <div class="card-links">
+          <a href="projects/pokemon.html" class="card-link">→ Details</a>
+        </div>
+      </div>
+
+      <!-- NL-to-CFD Agent -->
+      <div class="project-card card-green" data-categories="research llm ml">
+        <div class="card-header">
+          <div class="card-title">NL-to-CFD Agent</div>
+          <div class="card-badges">
+            <span class="badge badge-blue">UGRC · IITM</span>
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">LLM-orchestrated agent automating CFD workflows via OpenFOAM. Schema-constrained NL-to-CFD pipeline with Reynolds-aware model selection (12 solvers, 13 models). 100% pass rate across 5 flow regimes, &lt;6% error on canonical benchmarks.</p>
+        <div class="card-tags">
+          <span class="tag">LLM Agents</span>
+          <span class="tag">OpenFOAM</span>
+          <span class="tag">CFD</span>
+          <span class="tag">Multi-Agent</span>
+          <span class="tag">ChE AI</span>
+        </div>
+        <div class="card-links">
+          <a href="projects/cfd-agent.html" class="card-link">→ Details</a>
+        </div>
+      </div>
+
+      <!-- CrisisOps -->
+      <div class="project-card card-rose" data-categories="llm ml research">
+        <div class="card-header">
+          <div class="card-title">CrisisOps</div>
+          <div class="card-badges">
+            <span class="badge badge-rose">OpenEnv · GRPO</span>
+            <span class="badge badge-active">Live Demo</span>
+          </div>
+        </div>
+        <p class="card-desc">OpenEnv-compatible RL environment training LLM agents to detect deceptive engineers during software crises. 6 novel mechanisms including dynamic candor evolution and social testimony graphs. GRPO-trained Qwen2.5-1.5B with W&B tracking.</p>
+        <div class="card-tags">
+          <span class="tag">GRPO</span>
+          <span class="tag">RL Environment</span>
+          <span class="tag">LLM Training</span>
+          <span class="tag">Multi-Agent</span>
+          <span class="tag">HuggingFace</span>
+        </div>
+        <div class="card-links">
+          <a href="projects/crisisops.html" class="card-link">→ Details</a>
+          <a href="https://huggingface.co/spaces/aryannzzz/crisisops" target="_blank" rel="noopener" class="card-link">→ Live Demo</a>
+          <a href="https://github.com/aryannzzz/CrisisOps" target="_blank" rel="noopener" class="card-link">→ GitHub</a>
+        </div>
+      </div>
+
+      <!-- LOB Simulator -->
+      <div class="project-card card-amber" data-categories="quant ml">
+        <div class="card-header">
+          <div class="card-title">LOB Simulator & Market Making</div>
+          <div class="card-badges">
+            <span class="badge badge-amber">Quant Finance</span>
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">Price-time priority limit order book with Hawkes self-excitation arrivals, Avellaneda-Stoikov market making (HJB reservation price), and PPO RL agent. FIFO queues, partial fills, inventory-aware quoting, and mark-to-market PnL.</p>
+        <div class="card-tags">
+          <span class="tag">Limit Order Book</span>
+          <span class="tag">Market Making</span>
+          <span class="tag">Hawkes Process</span>
+          <span class="tag">PPO</span>
+          <span class="tag">Microstructure</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/aryannzzz/lob-simulator" target="_blank" rel="noopener" class="card-link">→ GitHub</a>
+        </div>
+      </div>
+
+      <!-- Statistical Arbitrage -->
+      <div class="project-card card-amber" data-categories="quant ml">
+        <div class="card-header">
+          <div class="card-title">Statistical Arbitrage Platform</div>
+          <div class="card-badges">
+            <span class="badge badge-amber">Quant Finance</span>
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">Equity pairs trading on NSE with Engle-Granger cointegration, Kalman dynamic hedge ratios, HMM regime filtering, and walk-forward backtesting. LOB integration for execution slippage modeling.</p>
+        <div class="card-tags">
+          <span class="tag">Pairs Trading</span>
+          <span class="tag">Kalman Filter</span>
+          <span class="tag">HMM</span>
+          <span class="tag">NSE</span>
+          <span class="tag">Cointegration</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/aryannzzz/stat-arb" target="_blank" rel="noopener" class="card-link">→ GitHub</a>
+        </div>
+      </div>
+
+      <!-- Options Pricing Engine -->
+      <div class="project-card card-orange" data-categories="quant ml">
+        <div class="card-header">
+          <div class="card-title">Options Pricing Engine</div>
+          <div class="card-badges">
+            <span class="badge badge-amber">Quant Finance</span>
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">Production-quality options library from scratch: Black-Scholes, Heston stochastic vol, Monte Carlo, Crank-Nicolson FD, full Greeks, and real-market implied vol surface calibration — without QuantLib.</p>
+        <div class="card-tags">
+          <span class="tag">Black-Scholes</span>
+          <span class="tag">Heston Model</span>
+          <span class="tag">Monte Carlo</span>
+          <span class="tag">Greeks</span>
+          <span class="tag">Implied Vol</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/aryannzzz/options-pricing-engine" target="_blank" rel="noopener" class="card-link">→ GitHub</a>
+        </div>
+      </div>
+
+      <!-- Bond Intent Router -->
+      <div class="project-card card-blue" data-categories="quant llm ml">
+        <div class="card-header">
+          <div class="card-title">Bond Intent Router</div>
+          <div class="card-badges">
+            <span class="badge badge-blue">Finance NLP</span>
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">Fine-tuned DeBERTa-v3-small for bond query intent classification with 15 intents (13 bond-specific + 2 routing intents). Predicts sector multi-labels, rating bucket, duration bucket, and 5 constraint flags. Trained on synthetic + Gemini-augmented data.</p>
+        <div class="card-tags">
+          <span class="tag">DeBERTa</span>
+          <span class="tag">Fine-tuning</span>
+          <span class="tag">Intent Classification</span>
+          <span class="tag">Bond Markets</span>
+          <span class="tag">Financial NLP</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/aryannzzz/Finetuning-SLM-with-Financial-Data" target="_blank" rel="noopener" class="card-link">→ GitHub</a>
+        </div>
+      </div>
+
+      <!-- Demand Forecasting Dashboard -->
+      <div class="project-card card-blue" data-categories="ml">
+        <div class="card-header">
+          <div class="card-title">Demand Forecast Dashboard</div>
+          <div class="card-badges">
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">FMCG supply chain forecasting dashboard: Prophet + XGBoost demand forecasting, safety stock / EOQ / ROP inventory optimization, and replenishment simulation across a multi-store retail network. Streamlit frontend.</p>
+        <div class="card-tags">
+          <span class="tag">Prophet</span>
+          <span class="tag">XGBoost</span>
+          <span class="tag">Inventory Optimization</span>
+          <span class="tag">Supply Chain</span>
+          <span class="tag">Streamlit</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/aryannzzz/demand-forecast-dashboard" target="_blank" rel="noopener" class="card-link">→ GitHub</a>
+        </div>
+      </div>
+
+      <!-- ESN / ChE Soft Sensing -->
+      <div class="project-card card-green" data-categories="ml research">
+        <div class="card-header">
+          <div class="card-title">ESN Soft Sensor (SRU)</div>
+          <div class="card-badges">
+            <span class="badge badge-green">ChE · Time-Series</span>
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">Echo State Network soft sensor for sulfur recovery unit tail-gas quality prediction (H₂S, SO₂). Fixed reservoir with controlled spectral radius, leaky integrator state update, ridge regression readout. Term paper for CH5440 Multivariate Data Analysis.</p>
+        <div class="card-tags">
+          <span class="tag">Echo State Networks</span>
+          <span class="tag">Reservoir Computing</span>
+          <span class="tag">Process Control</span>
+          <span class="tag">Time-Series</span>
+          <span class="tag">Chemical Engineering</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/aryannzzz/ESN-implementation" target="_blank" rel="noopener" class="card-link">→ GitHub</a>
+        </div>
+      </div>
+
+      <!-- CLIPSCOPE -->
+      <div class="project-card card-purple" data-categories="ml research">
+        <div class="card-header">
+          <div class="card-title">CLIPSCOPE</div>
+          <div class="card-badges">
+            <span class="badge badge-purple">Interpretability</span>
+            <span class="badge badge-past">Completed</span>
+          </div>
+        </div>
+        <p class="card-desc">Sparse Autoencoder applied to CLIP vision-language model representations. Explores mechanistic interpretability of multimodal embeddings by decomposing CLIP features into sparse, human-interpretable components.</p>
+        <div class="card-tags">
+          <span class="tag">CLIP</span>
+          <span class="tag">Sparse Autoencoder</span>
+          <span class="tag">Interpretability</span>
+          <span class="tag">Vision-Language</span>
+        </div>
+        <div class="card-links">
+          <a href="https://github.com/aryannzzz/CLIPSCOPE" target="_blank" rel="noopener" class="card-link">→ GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="js/darkmode.js"></script>
+<script>
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      document.querySelectorAll('.project-card').forEach(card => {
+        const cats = card.dataset.categories || '';
+        card.style.display = (filter === 'all' || cats.includes(filter)) ? '' : 'none';
       });
     });
-  </script>
+  });
 
-  <style>
-    /* Ripple effect */
-    .ripple-effect {
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(37, 99, 235, 0.25);
-      transform: scale(0);
-      animation: ripple-animation 0.6s ease-out;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    @keyframes ripple-animation {
-      to {
-        transform: scale(2);
-        opacity: 0;
-      }
-    }
-
-    /* Featured badge */
-    .featured-badge {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 20px;
-      z-index: 4;
-      box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
-      }
-      50% {
-        transform: scale(1.05);
-        box-shadow: 0 6px 16px rgba(251, 191, 36, 0.6);
-      }
-    }
-
-    /* Smooth scroll */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Focus visible for accessibility */
-    .project-card:focus-visible,
-    .featured-project-card:focus-visible {
-      outline: 3px solid #2563eb;
-      outline-offset: 4px;
-    }
-
-    /* Loading animation for project images */
-    .project-image, .featured-image {
-      background-color: #e5e7eb;
-    }
-  </style>
-
-  <script src="js/darkmode.js"></script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.project-card').forEach(el => observer.observe(el));
+</script>
+</body>
 </html>

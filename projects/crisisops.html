@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrisisOps | Aryan Jain</title>
+  <meta name="description" content="CrisisOps — OpenEnv-compatible RL environment training LLM agents to detect deceptive engineers in software crises. GRPO training on Qwen2.5-1.5B, HuggingFace Space, W&B tracked." />
+  <meta name="keywords" content="CrisisOps, RL environment, GRPO, LLM training, deception detection, multi-agent, HuggingFace, Aryan Jain" />
+  <meta name="author" content="Aryan Jain" />
+  <meta property="og:title" content="CrisisOps | Aryan Jain" />
+  <meta property="og:description" content="RL environment training PM agents to detect deceptive engineers during software crises. GRPO on Qwen2.5-1.5B." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/darkmode.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    body { font-family: 'Inter','Noto Sans',sans-serif; background: linear-gradient(135deg,#f8fafc 0%,#e0e7ff 100%); margin:0; padding:0; overflow-x:hidden; }
+    body::before { content:''; position:fixed; top:0;left:0;width:100%;height:100%; background-image:linear-gradient(rgba(37,99,235,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.03) 1px,transparent 1px); background-size:50px 50px; pointer-events:none; z-index:0; }
+    body.dark-mode { background: linear-gradient(135deg,#0f172a 0%,#1e1b4b 100%); }
+    .layout-container { min-height:100vh; display:flex; flex-direction:column; position:relative; z-index:1; }
+    .content-container { max-width:860px; margin:0 auto; padding:2rem 1.5rem 5rem; width:100%; }
+    .back-link { display:inline-flex; align-items:center; gap:0.4rem; color:#2563eb; font-size:0.85rem; font-weight:600; text-decoration:none; margin-bottom:2rem; }
+    .back-link:hover { text-decoration:underline; }
+    .proj-hero { margin-bottom:2.5rem; }
+    .venue-badge { display:inline-block; font-size:0.75rem; font-weight:700; padding:0.25rem 0.75rem; border-radius:999px; margin-bottom:0.5rem; margin-right:0.4rem; }
+    .badge-red { background:#ffe4e6; color:#be123c; }
+    .badge-purple { background:#f3e8ff; color:#7c3aed; }
+    .badge-active { background:#d1fae5; color:#065f46; }
+    .proj-hero h1 { font-size:2.2rem; font-weight:800; color:#1e293b; margin-bottom:0.5rem; line-height:1.2; }
+    .proj-hero .subtitle { color:#64748b; font-size:1rem; margin-bottom:1.25rem; }
+    body.dark-mode .proj-hero h1 { color:#f1f5f9; }
+    body.dark-mode .proj-hero .subtitle { color:#94a3b8; }
+    .meta-row { display:flex; flex-wrap:wrap; gap:1.5rem; font-size:0.85rem; color:#475569; margin-bottom:1.5rem; }
+    body.dark-mode .meta-row { color:#94a3b8; }
+    .cta-row { display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:2.5rem; }
+    .btn { padding:0.5rem 1.25rem; border-radius:8px; font-size:0.875rem; font-weight:600; text-decoration:none; transition:all 0.15s; }
+    .btn-primary { background:#e11d48; color:#fff; }
+    .btn-primary:hover { background:#be123c; }
+    .btn-outline { border:1.5px solid #e2e8f0; color:#475569; background:#fff; }
+    .btn-outline:hover { border-color:#e11d48; color:#e11d48; }
+    body.dark-mode .btn-outline { background:#1e293b; border-color:#334155; color:#94a3b8; }
+    .divider { border:none; border-top:1.5px solid #e2e8f0; margin:2rem 0; }
+    body.dark-mode .divider { border-color:#334155; }
+    .section-label { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#e11d48; margin-bottom:0.5rem; }
+    .section-title { font-size:1.3rem; font-weight:700; color:#1e293b; margin-bottom:1rem; }
+    body.dark-mode .section-title { color:#f1f5f9; }
+    .prose { font-size:0.95rem; color:#475569; line-height:1.75; }
+    body.dark-mode .prose { color:#94a3b8; }
+    .prose p { margin-bottom:1rem; }
+    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; margin:1.5rem 0; }
+    .stat-card { background:#fff; border:1.5px solid #e2e8f0; border-radius:12px; padding:1rem 1.25rem; text-align:center; }
+    body.dark-mode .stat-card { background:#1e293b; border-color:#334155; }
+    .stat-value { font-size:1.5rem; font-weight:800; color:#e11d48; }
+    .stat-label { font-size:0.78rem; color:#64748b; margin-top:0.25rem; }
+    body.dark-mode .stat-label { color:#94a3b8; }
+    .tag-list { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1rem; }
+    .tag { font-size:0.75rem; background:#f1f5f9; color:#334155; padding:0.2rem 0.6rem; border-radius:6px; }
+    body.dark-mode .tag { background:#334155; color:#94a3b8; }
+    .feature-card { background:#fff; border:1.5px solid #e2e8f0; border-left:4px solid #e11d48; border-radius:10px; padding:1rem 1.25rem; margin-bottom:0.75rem; }
+    body.dark-mode .feature-card { background:#1e293b; border-color:#334155; border-left-color:#e11d48; }
+    .feature-card h4 { font-size:0.9rem; font-weight:700; color:#1e293b; margin-bottom:0.3rem; }
+    body.dark-mode .feature-card h4 { color:#f1f5f9; }
+    .feature-card p { font-size:0.85rem; color:#64748b; margin:0; }
+    body.dark-mode .feature-card p { color:#94a3b8; }
+    .results-table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+    .results-table th { background:#f1f5f9; color:#334155; font-weight:700; padding:0.5rem 0.75rem; text-align:left; border-bottom:2px solid #e2e8f0; }
+    .results-table td { padding:0.5rem 0.75rem; border-bottom:1px solid #e2e8f0; color:#475569; }
+    body.dark-mode .results-table th { background:#334155; color:#e2e8f0; border-color:#475569; }
+    body.dark-mode .results-table td { color:#94a3b8; border-color:#334155; }
+    .quote-block { background:#fff1f2; border-left:4px solid #e11d48; border-radius:0 8px 8px 0; padding:1rem 1.25rem; margin:1.5rem 0; font-style:italic; color:#475569; font-size:0.9rem; }
+    body.dark-mode .quote-block { background:#1a0a0e; color:#94a3b8; }
+  </style>
+</head>
+<body>
+<div class="layout-container">
+  <header class="header">
+    <div class="header-left">
+      <a href="../index.html" class="logo-link" aria-label="Home">
+        <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_6_319)">
+            <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"/>
+          </g>
+          <defs><clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"/></clipPath></defs>
+        </svg>
+        <span class="site-title">Aryan Jain</span>
+      </a>
+    </div>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="../research.html">Research</a>
+      <a href="../publications.html">Publications</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../resume.html">About</a>
+      <a href="../roadmap.html">Roadmap</a>
+      <a href="../blogs.html">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="mode-toggle" aria-label="Toggle light/dark mode">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+          <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/>
+        </svg>
+      </button>
+      <div class="profile-pic" style='background-image: url("../assets/profile.jpg");' aria-label="Profile picture"></div>
+    </div>
+  </header>
+
+  <main class="content-container">
+    <a href="../projects.html" class="back-link">← Back to Projects</a>
+
+    <div class="proj-hero">
+      <div>
+        <span class="venue-badge badge-red">OpenEnv · RL Environment</span>
+        <span class="venue-badge badge-purple">GRPO · Qwen2.5</span>
+        <span class="venue-badge badge-active">Live Demo</span>
+      </div>
+      <h1>CrisisOps</h1>
+      <p class="subtitle">RL training environment for LLM agents learning to detect adversarially deceptive engineers during software crises</p>
+      <div class="meta-row">
+        <span>🏛 IIT Madras · Personal Project</span>
+        <span>🤗 HuggingFace Space</span>
+        <span>📊 W&B Training Curves</span>
+      </div>
+      <div class="cta-row">
+        <a href="https://huggingface.co/spaces/aryannzzz/crisisops" target="_blank" rel="noopener" class="btn btn-primary">Live Demo →</a>
+        <a href="https://github.com/aryannzzz/CrisisOps" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+        <a href="https://wandb.ai/a-jacked-nerd-iit-madras/crisisops-grpo" target="_blank" rel="noopener" class="btn btn-outline">W&B Curves</a>
+      </div>
+    </div>
+
+    <div class="quote-block">"Logs don't lie. Engineers do." — CrisisOps trains AI project managers to detect deliberate human deception during software crises.</div>
+
+    <hr class="divider" />
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">+0.15</div>
+        <div class="stat-label">LLM agent beats greedy baseline (pre-training)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">30</div>
+        <div class="stat-label">Step long-horizon episodes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">6</div>
+        <div class="stat-label">Novel RL mechanisms</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">GRPO</div>
+        <div class="stat-label">Training algorithm (Qwen2.5-1.5B)</div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-label">Problem</div>
+    <div class="section-title">The Core Challenge</div>
+    <div class="prose">
+      <p>Standard RL environments simulate physics. CrisisOps simulates a rarer and harder problem: strategic human deception. In a software crisis scenario, some engineers over-report their progress to avoid accountability. The agent playing the PM role must cross-reference self-reports against observable ground-truth signals — commit activity, ticket ages, peer mentions — to detect who is lying before the project collapses.</p>
+      <p>This is framed as a counterfactual reward problem: the agent's score is its final project outcome minus what a naive greedy PM (who trusts all self-reports) would have achieved on the same episode. This forces the agent to learn to extract information value from its limited query budget, not just perform random due diligence.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-label">Novel Mechanisms</div>
+    <div class="section-title">6 New RL Design Contributions</div>
+
+    <div class="feature-card">
+      <h4>Dynamic Candor Evolution</h4>
+      <p>Caught liars become more honest mid-episode; unchecked liars grow bolder. Deception dynamics evolve based on the agent's intervention history, requiring adaptive strategies.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Social Testimony Graph</h4>
+      <p>query_peer_opinion action lets the PM triangulate through peer-to-peer intel. Deceptive allies give coordinated alibis; the agent must break the alibi chain.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Political Capital Resource</h4>
+      <p>Second earned resource (alongside action budget). Spend to compel truth (force_truth) or tip off a whistleblower. Introduces resource allocation tradeoffs beyond simple query optimization.</p>
+    </div>
+    <div class="feature-card">
+      <h4>LLM-Powered Adversarial Agent</h4>
+      <p>One team member per episode uses Ollama (qwen2.5:3b) with OpenAI fallback for adaptive deception. Rule-based liars are too easy — the LLM opponent generates coherent cover stories that must be actively probed.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Long-Horizon Memory Buffer</h4>
+      <p>Episode history compressed every 8 steps and injected into observation. Agent must track deception patterns across 30 steps without losing context, testing temporal reasoning.</p>
+    </div>
+    <div class="feature-card">
+      <h4>Adaptive Crisis Generator</h4>
+      <p>EMA weakness tracking dynamically increases exposure to the agent's current blind spots — harder deception types appear more frequently as the agent gets better at easy cases.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-label">Training Results</div>
+    <div class="section-title">GRPO on Qwen2.5-1.5B</div>
+
+    <table class="results-table">
+      <thead>
+        <tr><th>Agent</th><th>Mean Project Score</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Greedy PM (baseline)</td><td>~0.50</td><td>Trusts all self-reports</td></tr>
+        <tr><td>LLM agent (qwen2.5 via Ollama)</td><td>~0.65+</td><td>Cross-verifies without training</td></tr>
+        <tr><td>Random agent</td><td>−0.34 CF reward</td><td>Calibration lower bound</td></tr>
+        <tr><td>Oracle agent</td><td>+0.34 CF reward</td><td>Perfect deception detection</td></tr>
+      </tbody>
+    </table>
+
+    <div class="prose" style="margin-top:1rem;">
+      <p>GRPO training on Qwen2.5-1.5B-Instruct (LoRA r=16, batch 4, G=4 generations per prompt) shows increasing training-reward rolling average. Full live curves — reward, std, KL, completion length — tracked on W&B.</p>
+    </div>
+
+    <div class="tag-list">
+      <span class="tag">Reinforcement Learning</span>
+      <span class="tag">GRPO</span>
+      <span class="tag">LLM Training</span>
+      <span class="tag">Qwen2.5</span>
+      <span class="tag">Multi-Agent</span>
+      <span class="tag">Long-Horizon RL</span>
+      <span class="tag">Deception Detection</span>
+      <span class="tag">OpenEnv</span>
+      <span class="tag">HuggingFace</span>
+      <span class="tag">Counterfactual Reward</span>
+    </div>
+  </main>
+</div>
+<script src="../js/darkmode.js"></script>
+</body>
+</html>

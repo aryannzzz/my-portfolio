@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRELLIS | Aryan Jain</title>
+  <meta name="description" content="TRELLIS — ACL 2026. Bounded orchestration framework for streaming LLM financial agents. Latency-aware multi-step reasoning with hard resource constraints." />
+  <meta name="keywords" content="TRELLIS, ACL 2026, LLM agents, orchestration, streaming, financial agents, Aryan Jain" />
+  <meta name="author" content="Aryan Jain" />
+  <meta property="og:title" content="TRELLIS | ACL 2026" />
+  <meta property="og:description" content="Bounded orchestration for streaming LLM financial agents — reliable multi-step reasoning under latency and resource constraints." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/darkmode.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    body { font-family: 'Inter','Noto Sans',sans-serif; background: linear-gradient(135deg,#f8fafc 0%,#e0e7ff 100%); margin:0; padding:0; overflow-x:hidden; }
+    body::before { content:''; position:fixed; top:0;left:0;width:100%;height:100%; background-image:linear-gradient(rgba(37,99,235,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.03) 1px,transparent 1px); background-size:50px 50px; pointer-events:none; z-index:0; }
+    body.dark-mode { background: linear-gradient(135deg,#0f172a 0%,#1e1b4b 100%); }
+    .layout-container { min-height:100vh; display:flex; flex-direction:column; position:relative; z-index:1; }
+    .content-container { max-width:860px; margin:0 auto; padding:2rem 1.5rem 5rem; width:100%; }
+    .back-link { display:inline-flex; align-items:center; gap:0.4rem; color:#2563eb; font-size:0.85rem; font-weight:600; text-decoration:none; margin-bottom:2rem; }
+    .back-link:hover { text-decoration:underline; }
+    .proj-hero { margin-bottom:2.5rem; }
+    .venue-badge { display:inline-block; background:#fef3c7; color:#b45309; font-size:0.75rem; font-weight:700; padding:0.25rem 0.75rem; border-radius:999px; margin-bottom:1rem; }
+    .proj-hero h1 { font-size:2.2rem; font-weight:800; color:#1e293b; margin-bottom:0.5rem; line-height:1.2; }
+    .proj-hero .subtitle { color:#64748b; font-size:1rem; margin-bottom:1.25rem; }
+    body.dark-mode .proj-hero h1 { color:#f1f5f9; }
+    body.dark-mode .proj-hero .subtitle { color:#94a3b8; }
+    .meta-row { display:flex; flex-wrap:wrap; gap:1.5rem; font-size:0.85rem; color:#475569; margin-bottom:1.5rem; }
+    body.dark-mode .meta-row { color:#94a3b8; }
+    .cta-row { display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:2.5rem; }
+    .btn { padding:0.5rem 1.25rem; border-radius:8px; font-size:0.875rem; font-weight:600; text-decoration:none; transition:all 0.15s; }
+    .btn-primary { background:#d97706; color:#fff; }
+    .btn-primary:hover { background:#b45309; }
+    .btn-outline { border:1.5px solid #e2e8f0; color:#475569; background:#fff; }
+    .btn-outline:hover { border-color:#d97706; color:#d97706; }
+    body.dark-mode .btn-outline { background:#1e293b; border-color:#334155; color:#94a3b8; }
+    .divider { border:none; border-top:1.5px solid #e2e8f0; margin:2rem 0; }
+    body.dark-mode .divider { border-color:#334155; }
+    .section-label { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#d97706; margin-bottom:0.5rem; }
+    .section-title { font-size:1.3rem; font-weight:700; color:#1e293b; margin-bottom:1rem; }
+    body.dark-mode .section-title { color:#f1f5f9; }
+    .prose { font-size:0.95rem; color:#475569; line-height:1.75; }
+    body.dark-mode .prose { color:#94a3b8; }
+    .prose p { margin-bottom:1rem; }
+    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; margin:1.5rem 0; }
+    .stat-card { background:#fff; border:1.5px solid #e2e8f0; border-radius:12px; padding:1rem 1.25rem; text-align:center; }
+    body.dark-mode .stat-card { background:#1e293b; border-color:#334155; }
+    .stat-value { font-size:1.75rem; font-weight:800; color:#d97706; }
+    .stat-label { font-size:0.78rem; color:#64748b; margin-top:0.25rem; }
+    body.dark-mode .stat-label { color:#94a3b8; }
+    .tag-list { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1rem; }
+    .tag { font-size:0.75rem; background:#f1f5f9; color:#334155; padding:0.2rem 0.6rem; border-radius:6px; }
+    body.dark-mode .tag { background:#334155; color:#94a3b8; }
+    .finding-card { background:#fff; border:1.5px solid #e2e8f0; border-left:4px solid #d97706; border-radius:10px; padding:1rem 1.25rem; margin-bottom:0.75rem; }
+    body.dark-mode .finding-card { background:#1e293b; border-color:#334155; border-left-color:#d97706; }
+    .finding-card h4 { font-size:0.9rem; font-weight:700; color:#1e293b; margin-bottom:0.3rem; }
+    body.dark-mode .finding-card h4 { color:#f1f5f9; }
+    .finding-card p { font-size:0.85rem; color:#64748b; margin:0; }
+    body.dark-mode .finding-card p { color:#94a3b8; }
+    .arch-block { background:#fffbeb; border:1.5px solid #fde68a; border-radius:12px; padding:1.25rem 1.5rem; margin:1.25rem 0; }
+    body.dark-mode .arch-block { background:#1c1708; border-color:#78350f; }
+    .arch-block h4 { font-size:0.9rem; font-weight:700; color:#92400e; margin-bottom:0.5rem; }
+    body.dark-mode .arch-block h4 { color:#fcd34d; }
+    .arch-block p { font-size:0.85rem; color:#78350f; margin:0; line-height:1.6; }
+    body.dark-mode .arch-block p { color:#fde68a; }
+  </style>
+</head>
+<body>
+<div class="layout-container">
+  <header class="header">
+    <div class="header-left">
+      <a href="../index.html" class="logo-link" aria-label="Home">
+        <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_6_319)">
+            <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"/>
+          </g>
+          <defs><clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"/></clipPath></defs>
+        </svg>
+        <span class="site-title">Aryan Jain</span>
+      </a>
+    </div>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="../research.html">Research</a>
+      <a href="../publications.html">Publications</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../resume.html">About</a>
+      <a href="../roadmap.html">Roadmap</a>
+      <a href="../blogs.html">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="mode-toggle" aria-label="Toggle light/dark mode">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+          <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/>
+        </svg>
+      </button>
+      <div class="profile-pic" style='background-image: url("../assets/profile.jpg");' aria-label="Profile picture"></div>
+    </div>
+  </header>
+
+  <main class="content-container">
+    <a href="../projects.html" class="back-link">← Back to Projects</a>
+
+    <div class="proj-hero">
+      <div class="venue-badge">ACL 2026</div>
+      <h1>TRELLIS</h1>
+      <p class="subtitle">When LLMs Orchestrate but Do Not Compute: Tool-Grounded Agents over Structured Streaming Financial Data</p>
+      <div class="meta-row">
+        <span>📅 Published March 26, 2026</span>
+        <span>🏛 IIT Madras · Aryan Jain (sole author)</span>
+        <span>🏷 ACL 2026</span>
+      </div>
+      <div class="cta-row">
+        <a href="../publications.html" class="btn btn-primary">View Publication</a>
+        <a href="../publications.html" class="btn btn-outline">BibTeX</a>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">2-Plane</div>
+        <div class="stat-label">Bounded Orchestration Architecture</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">MCTS</div>
+        <div class="stat-label">LLM-as-Value-Function Routing</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">5 Domains</div>
+        <div class="stat-label">Treasury Benchmark Coverage</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">4-Layer</div>
+        <div class="stat-label">Evaluation Framework</div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-label">Problem</div>
+    <div class="section-title">The Computation–Orchestration Boundary</div>
+    <div class="prose">
+      <p>Large language models are increasingly used as interfaces to analytical systems, but live high-stakes financial domains require more than fluent generation: outputs must remain grounded, current, and auditable. The core failure mode is what TRELLIS calls <em>LLM-induced computation</em> — when the model performs numerical calculations directly rather than delegating to deterministic tools, introducing silent errors that compound across multi-step reasoning chains.</p>
+      <p>TRELLIS enforces a hard architectural boundary: the LLM handles intent understanding, routing, tool planning, and response synthesis. Deterministic pipelines remain the sole source of analytical truth. Unlike prior tool-use systems that assume a static or implicitly consistent world state, TRELLIS explicitly addresses execution-time drift between planning and tool outputs through structured execution semantics.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-label">Architecture</div>
+    <div class="section-title">Bounded Orchestration — Two Planes</div>
+
+    <div class="arch-block">
+      <h4>Orchestration Plane (LLM)</h4>
+      <p>The language model operates exclusively in the orchestration plane: parsing natural language intent, routing to the correct deterministic pipeline, constructing tool call sequences, and synthesising human-readable responses from structured tool outputs. The model never computes numerical values directly.</p>
+    </div>
+    <div class="arch-block">
+      <h4>Execution Plane (Deterministic Pipelines)</h4>
+      <p>All computation — cashflow DCF, bond yield-to-maturity, equity Greeks, FX cross-rates, news sentiment aggregation — runs in deterministic, versioned pipeline modules. Results are returned as structured JSON artifacts with provenance metadata. The orchestration plane consumes but never overrides these artifacts.</p>
+    </div>
+    <div class="arch-block">
+      <h4>MCTS-Guided Routing with LLM-as-Value-Function</h4>
+      <p>Tool selection across the multi-domain treasury benchmark uses Monte Carlo Tree Search where the LLM serves as the value function: scoring candidate tool sequences based on semantic alignment with the query intent. This avoids greedy routing failures on ambiguous cross-domain queries (e.g., a cashflow question that requires FX normalisation).</p>
+    </div>
+    <div class="arch-block">
+      <h4>Temporal Consistency Constraint</h4>
+      <p>Streaming financial data introduces execution-time drift — the market state at planning time may differ from the state when tool calls execute. TRELLIS enforces a temporal consistency constraint: <strong>max|τ(z_i) − τ(z_j)| &lt; ε</strong> across all tool outputs in a single response, where τ(z) is the timestamp of artifact z. Responses that would violate this bound trigger a consistency-preserving re-query.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-label">Benchmark</div>
+    <div class="section-title">Multi-Domain Treasury Coverage</div>
+    <div class="prose">
+      <p>The treasury benchmark covers five financial domains: <strong>cashflow</strong> (DCF, NPV, IRR, working capital), <strong>bonds</strong> (YTM, duration, convexity, spread analysis), <strong>equities</strong> (Greeks, P&amp;L attribution, factor exposure), <strong>foreign exchange</strong> (spot, forward, cross-rate, carry), and <strong>market news</strong> (sentiment, event extraction, earnings interpretation). Each domain has a dedicated deterministic pipeline module.</p>
+      <p>TRELLIS is evaluated against three baselines: Tauric Research Trading Agent (specialist financial agent), FinBot (retrieval-augmented financial QA), and a direct-LLM baseline (GPT-4 with no tool grounding). The temporal consistency constraint and MCTS routing are ablated independently to isolate their contributions.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-label">Evaluation</div>
+    <div class="section-title">4-Layer Framework</div>
+
+    <div class="finding-card">
+      <h4>Layer 1 — Routing Accuracy</h4>
+      <p>Does the orchestrator correctly identify which deterministic pipeline(s) to invoke given a natural language query? Evaluated on 200 held-out queries spanning all five treasury domains.</p>
+    </div>
+    <div class="finding-card">
+      <h4>Layer 2 — Tool Planning</h4>
+      <p>Given correct routing, does the agent construct the right sequence of tool calls with correctly parameterised inputs? Measures parameter extraction accuracy and call-order correctness on multi-step queries.</p>
+    </div>
+    <div class="finding-card">
+      <h4>Layer 3 — Multi-Turn Statefulness</h4>
+      <p>Does the agent maintain coherent state across a multi-turn dialogue? Tests include follow-up questions, context carryover, and correction handling — where the user revises a prior assumption mid-conversation.</p>
+    </div>
+    <div class="finding-card">
+      <h4>Layer 4 — Robustness</h4>
+      <p>Adversarial probing: ambiguous queries designed to elicit direct LLM computation (bypassing the execution plane), conflicting data across streaming sources, and queries that require cross-domain tool composition. TRELLIS shows strong boundary enforcement — LLM-computation bypass rate near zero.</p>
+    </div>
+
+    <div class="tag-list">
+      <span class="tag">Tool-Grounded Agents</span>
+      <span class="tag">Bounded Orchestration</span>
+      <span class="tag">MCTS Routing</span>
+      <span class="tag">Streaming Financial Data</span>
+      <span class="tag">Temporal Consistency</span>
+      <span class="tag">Financial NLP</span>
+      <span class="tag">LLM Orchestration</span>
+      <span class="tag">ACL 2026</span>
+      <span class="tag">IIT Madras</span>
+    </div>
+  </main>
+</div>
+<script src="../js/darkmode.js"></script>
+</body>
+</html>

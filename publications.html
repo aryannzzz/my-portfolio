@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications | Aryan Jain</title>
+  <meta name="description" content="Aryan Jain's published research — NeurIPS 2026 (MLAuditBench) and ACL 2026 (TRELLIS). Research on LLM agent evaluation, RL environments, and streaming financial agents." />
+  <meta name="keywords" content="Aryan Jain publications, MLAuditBench NeurIPS 2026, TRELLIS ACL 2026, LLM agent benchmark, RL environment, IIT Madras research" />
+  <meta property="og:title" content="Publications | Aryan Jain" />
+  <meta property="og:description" content="NeurIPS 2026 and ACL 2026 publications on LLM agent evaluation and streaming financial agents." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/darkmode.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans', sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+      min-height: 100vh;
+      margin: 0;
+    }
+    .main-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 40px 80px;
+    }
+    .page-header { margin-bottom: 48px; }
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #101419;
+      margin: 0 0 10px;
+    }
+    .page-header p {
+      font-size: 1.05rem;
+      color: #64748b;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .pub-stats {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .pub-stat {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 16px 24px;
+      text-align: center;
+      min-width: 120px;
+    }
+    .pub-stat-number { font-size: 1.875rem; font-weight: 800; color: #2563eb; }
+    .pub-stat-label { font-size: 0.8rem; color: #64748b; font-weight: 500; margin-top: 2px; }
+
+    .pub-card {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 28px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .pub-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 6px; height: 100%;
+    }
+    .pub-card.neurips::before { background: linear-gradient(180deg, #059669, #047857); }
+    .pub-card.acl::before    { background: linear-gradient(180deg, #b45309, #92400e); }
+    .pub-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+      border-color: #93c5fd;
+    }
+
+    .pub-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+    .venue-badge {
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .venue-neurips { background: #d1fae5; color: #065f46; }
+    .venue-acl     { background: #fef3c7; color: #92400e; }
+    .pub-date { font-size: 0.82rem; color: #94a3b8; font-weight: 500; }
+    .pub-status {
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .status-published { background: #d1fae5; color: #065f46; }
+
+    .pub-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #101419;
+      margin: 0 0 12px;
+      line-height: 1.35;
+    }
+    .pub-authors {
+      font-size: 0.88rem;
+      color: #64748b;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .pub-authors .me { font-weight: 700; color: #2563eb; }
+
+    .pub-abstract {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: #475569;
+      margin-bottom: 20px;
+    }
+    .abstract-toggle {
+      background: none;
+      border: none;
+      color: #2563eb;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .abstract-toggle:hover { text-decoration: underline; }
+    .abstract-content { display: none; }
+    .abstract-content.open { display: block; }
+
+    .pub-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .pub-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+    .pub-btn-primary { background: #2563eb; color: white; }
+    .pub-btn-primary:hover { background: #1d4ed8; }
+    .pub-btn-outline { background: white; color: #374151; border-color: #e2e8f0; }
+    .pub-btn-outline:hover { border-color: #94a3b8; background: #f8fafc; }
+    .pub-btn-github { background: #1f2937; color: white; }
+    .pub-btn-github:hover { background: #111827; }
+
+    .bibtex-block {
+      background: #0f172a;
+      color: #94a3b8;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 16px;
+      overflow-x: auto;
+      white-space: pre;
+      line-height: 1.6;
+      display: none;
+    }
+    .bibtex-block.open { display: block; }
+    .bibtex-toggle {
+      background: none;
+      border: 1px solid #e2e8f0;
+      color: #64748b;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .bibtex-toggle:hover { background: #f1f5f9; border-color: #94a3b8; }
+
+    .pub-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .pub-tag { padding: 3px 10px; background: #eff6ff; color: #2563eb; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+
+    /* Dark mode */
+    body.dark-mode {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+    body.dark-mode .page-header h1 { color: #f1f5f9; }
+    body.dark-mode .page-header p { color: #94a3b8; }
+    body.dark-mode .pub-stat { background: #1e293b; border-color: #334155; }
+    body.dark-mode .pub-stat-number { color: #60a5fa; }
+    body.dark-mode .pub-stat-label { color: #94a3b8; }
+    body.dark-mode .pub-card { background: #1e293b; border-color: #334155; }
+    body.dark-mode .pub-card:hover { border-color: #60a5fa; }
+    body.dark-mode .pub-title { color: #f1f5f9; }
+    body.dark-mode .pub-abstract { color: #94a3b8; }
+    body.dark-mode .pub-btn-outline { background: #334155; color: #cbd5e1; border-color: #475569; }
+    body.dark-mode .bibtex-block { background: #0a0f1a; }
+
+    @media (max-width: 600px) {
+      .main-content { padding: 32px 16px 60px; }
+      .pub-card { padding: 24px; }
+      .pub-title { font-size: 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <a href="index.html" class="logo-link" aria-label="Home">
+        <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0)">
+            <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"></path>
+          </g>
+          <defs><clipPath id="clip0"><rect width="48" height="48" fill="white"></rect></clipPath></defs>
+        </svg>
+        <span class="site-title">Aryan Jain</span>
+      </a>
+    </div>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="research.html">Research</a>
+      <a href="publications.html" class="active">Publications</a>
+      <a href="projects.html">Projects</a>
+      <a href="resume.html">About</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="blogs.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="mode-toggle" aria-label="Toggle light/dark mode">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+          <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"></path>
+        </svg>
+      </button>
+      <div class="profile-pic" style='background-image: url("assets/profile.jpg");' aria-label="Profile picture"></div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Publications</h1>
+      <p>Peer-reviewed papers and preprints. Research spanning LLM agent evaluation, streaming agent architectures, and scientific computing.</p>
+    </div>
+
+    <div class="pub-stats">
+      <div class="pub-stat">
+        <div class="pub-stat-number">2</div>
+        <div class="pub-stat-label">Papers</div>
+      </div>
+      <div class="pub-stat">
+        <div class="pub-stat-number">1</div>
+        <div class="pub-stat-label">Patents Filed</div>
+      </div>
+      <div class="pub-stat">
+        <div class="pub-stat-number">2</div>
+        <div class="pub-stat-label">Top Venues</div>
+      </div>
+      <div class="pub-stat">
+        <div class="pub-stat-number">2026</div>
+        <div class="pub-stat-label">Latest Year</div>
+      </div>
+    </div>
+
+    <!-- Paper 1: MLAuditBench -->
+    <div class="pub-card neurips">
+      <div class="pub-meta">
+        <span class="venue-badge venue-neurips">NeurIPS 2026</span>
+        <span class="pub-status status-published">Published</span>
+        <span class="pub-date">May 6, 2026</span>
+      </div>
+
+      <h2 class="pub-title">
+        MLAuditBench: An Interactive Reinforcement Learning Environment for Evaluating LLM Agents on ML Experiment Integrity Auditing
+      </h2>
+
+      <p class="pub-authors">
+        <span class="me">Aryan Jain</span> et al.
+      </p>
+
+      <button class="abstract-toggle" onclick="toggleAbstract('abs1', this)">
+        ▶ Show Abstract
+      </button>
+      <div class="abstract-content" id="abs1">
+        <p class="pub-abstract">
+          Reproducibility failures in published machine learning (ML) research are widespread, yet existing detection tools rely on static code analysis that cannot capture the cross-artifact, sequential reasoning real auditing demands. We introduce MLAuditBench, the first reinforcement learning (RL) environment designed for ML experiment integrity auditing. Agents interact with synthetic experiments spanning 8 violation types from the Kapoor-Narayanan taxonomy, 5 ML archetypes, and 62 unique experiments across three difficulty tiers. Rather than simply flagging violations, agents must cite exact quoted evidence from the artifacts they inspect, and submit a verdict within a fixed step budget. To prevent gaming, the benchmark includes adversarially clean episodes, planted red herrings, and a fabricated-evidence penalty, with reward structured as 80% violation detection, 10% efficiency, and 10% verdict accuracy. We evaluate three frontier OpenAI models, an interactive Claude Sonnet 4.6 expert audit, a Qwen2.5-72B open-weight baseline, and a 10-seed ML-trained human baseline, all under identical grading conditions. GPT-4.1-mini matches or surpasses the human baseline on every tier (0.900/0.901/0.819 vs. 0.82/0.86/0.57), while o4-mini suffers systematic hallucination failures, and all automated agents fall below the interactive expert ceiling of 0.954, confirming the benchmark discriminates at frontier capability levels. MLAuditBench is released as an OpenEnv-compliant Docker container with fixed seeds, full per-seed logs, and a public human-evaluation kit.
+        </p>
+      </div>
+
+      <div class="pub-tags">
+        <span class="pub-tag">RL Environment</span>
+        <span class="pub-tag">LLM Evaluation</span>
+        <span class="pub-tag">Benchmarking</span>
+        <span class="pub-tag">Reproducibility</span>
+        <span class="pub-tag">OpenEnv</span>
+        <span class="pub-tag">Scientific Integrity</span>
+      </div>
+
+      <div class="pub-actions">
+        <a href="projects/mlauditbench.html" class="pub-btn pub-btn-primary">Project Page</a>
+        <a href="https://github.com/aryannzzz" target="_blank" rel="noopener" class="pub-btn pub-btn-github">
+          <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+          GitHub
+        </a>
+        <button class="bibtex-toggle" onclick="toggleBibtex('bib1', this)">BibTeX</button>
+      </div>
+
+      <div class="bibtex-block" id="bib1">@inproceedings{jain2026mlauditbench,
+  title     = {{MLAuditBench}: An Interactive Reinforcement Learning Environment
+               for Evaluating {LLM} Agents on {ML} Experiment Integrity Auditing},
+  author    = {Jain, Aryan and others},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2026},
+  month     = {May},
+}</div>
+    </div>
+
+    <!-- Paper 2: TRELLIS -->
+    <div class="pub-card acl">
+      <div class="pub-meta">
+        <span class="venue-badge venue-acl">ACL 2026</span>
+        <span class="pub-status status-published">Published</span>
+        <span class="pub-date">March 26, 2026</span>
+      </div>
+
+      <h2 class="pub-title">
+        When LLMs Orchestrate but Do Not Compute: Tool-Grounded Agents over Structured Streaming Financial Data
+      </h2>
+
+      <p class="pub-authors">
+        <span class="me">Aryan Jain</span> (sole author) · IIT Madras · ch24b040@smail.iitm.ac.in
+      </p>
+
+      <button class="abstract-toggle" onclick="toggleAbstract('abs2', this)">
+        ▶ Show Abstract
+      </button>
+      <div class="abstract-content" id="abs2">
+        <p class="pub-abstract">
+          Large language models are increasingly used as interfaces to analytical systems, but live high-stakes domains require more than fluent generation: outputs must remain grounded, current, and auditable. We present TRELLIS, a streaming-native, tool-grounded agent architecture built around bounded orchestration: the language model handles intent understanding, routing, tool planning, and response synthesis, while deterministic pipelines remain the sole source of analytical truth. Unlike prior tool-use systems that assume a static or implicitly consistent world state, we explicitly address execution-time drift between planning and tool outputs through structured execution semantics. MCTS-guided routing with an LLM-as-Value-Function handles cross-domain tool selection, and a temporal consistency constraint (max|τ(z_i)−τ(z_j)| &lt; ε) prevents execution-time drift across streaming tool outputs. The system preserves structured intermediate artifacts throughout execution and supports interaction across cashflow, bonds, equities, foreign exchange, and market news.
+        </p>
+      </div>
+
+      <div class="pub-tags">
+        <span class="pub-tag">Tool-Grounded Agents</span>
+        <span class="pub-tag">Streaming Data</span>
+        <span class="pub-tag">Financial NLP</span>
+        <span class="pub-tag">LLM Orchestration</span>
+        <span class="pub-tag">Bounded Orchestration</span>
+      </div>
+
+      <div class="pub-actions">
+        <a href="projects/trellis.html" class="pub-btn pub-btn-primary">Project Page</a>
+        <a href="https://github.com/aryannzzz" target="_blank" rel="noopener" class="pub-btn pub-btn-github">
+          <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+          GitHub
+        </a>
+        <button class="bibtex-toggle" onclick="toggleBibtex('bib2', this)">BibTeX</button>
+      </div>
+
+      <div class="bibtex-block" id="bib2">@inproceedings{jain2026trellis,
+  title     = {When {LLMs} Orchestrate but Do Not Compute: Tool-Grounded Agents
+               over Structured Streaming Financial Data},
+  author    = {Jain, Aryan and others},
+  booktitle = {Proceedings of the Annual Meeting of the Association
+               for Computational Linguistics (ACL)},
+  year      = {2026},
+  month     = {March},
+}</div>
+    </div>
+    <!-- Patent -->
+    <div class="pub-card" style="border-left: none;">
+      <div style="position:absolute;top:0;left:0;width:6px;height:100%;background:linear-gradient(180deg,#7c3aed,#5b21b6);border-radius:4px 0 0 4px;"></div>
+      <div class="pub-meta">
+        <span class="venue-badge" style="background:#ede9fe;color:#5b21b6;">Indian Patent</span>
+        <span class="pub-status" style="background:#ede9fe;color:#5b21b6;">Filed</span>
+        <span class="pub-date">21 April 2026</span>
+      </div>
+
+      <h2 class="pub-title">
+        Indian Patent Application No. 202641050670
+      </h2>
+
+      <p class="pub-authors">
+        <span class="me">Aryan Jain</span> (co-inventor) · IIT Madras (IC&amp;SR), applicant · ~20 co-inventors · Attorney: Remfry &amp; Sagar (IN/PA-1510)
+      </p>
+
+      <div class="pub-abstract" style="margin-top:12px;">
+        Patent application filed under the Patents Act, 1970 through IIT Madras IC&amp;SR. Filed 21 April 2026 via Remfry &amp; Sagar. Aryan Jain listed as co-inventor. Application is currently under examination by the Indian Patent Office.
+      </div>
+
+      <div class="pub-tags">
+        <span class="pub-tag" style="background:#ede9fe;color:#5b21b6;">IIT Madras</span>
+        <span class="pub-tag" style="background:#ede9fe;color:#5b21b6;">IC&amp;SR</span>
+        <span class="pub-tag" style="background:#ede9fe;color:#5b21b6;">Patents Act 1970</span>
+        <span class="pub-tag" style="background:#ede9fe;color:#5b21b6;">Filed 2026</span>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/darkmode.js"></script>
+  <script>
+    function toggleAbstract(id, btn) {
+      const el = document.getElementById(id);
+      el.classList.toggle('open');
+      btn.textContent = el.classList.contains('open') ? '▼ Hide Abstract' : '▶ Show Abstract';
+    }
+    function toggleBibtex(id, btn) {
+      const el = document.getElementById(id);
+      el.classList.toggle('open');
+      btn.textContent = el.classList.contains('open') ? 'Hide BibTeX' : 'BibTeX';
+    }
+  </script>
+</body>
+</html>

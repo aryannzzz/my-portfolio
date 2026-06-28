@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NL-to-CFD Agent | Aryan Jain</title>
+  <meta name="description" content="Bridging Natural Language to CFD — AI agent automating computational fluid dynamics workflows with LLM orchestration, OpenFOAM, and Reynolds-aware model selection. UGRC project under Prof. Abhinav S. Raman, IIT Madras." />
+  <meta name="keywords" content="CFD agent, NL to CFD, OpenFOAM, LLM orchestration, computational fluid dynamics, IIT Madras, Abhinav Raman, chemical engineering AI, Aryan Jain" />
+  <meta name="author" content="Aryan Jain" />
+  <meta property="og:title" content="NL-to-CFD Agent | Aryan Jain" />
+  <meta property="og:description" content="AI agent converting natural language to CFD simulations via OpenFOAM. 100% pass rate across 5 flow regimes, sub-6% error on canonical benchmarks." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:wght@400;500;700;900&display=swap" />
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/darkmode.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <style>
+    body { font-family: 'Inter','Noto Sans',sans-serif; background: linear-gradient(135deg,#f8fafc 0%,#e0e7ff 100%); margin:0; padding:0; overflow-x:hidden; }
+    body::before { content:''; position:fixed; top:0;left:0;width:100%;height:100%; background-image:linear-gradient(rgba(37,99,235,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.03) 1px,transparent 1px); background-size:50px 50px; pointer-events:none; z-index:0; }
+    body.dark-mode { background: linear-gradient(135deg,#0f172a 0%,#1e1b4b 100%); }
+    .layout-container { min-height:100vh; display:flex; flex-direction:column; position:relative; z-index:1; }
+    .content-container { max-width:860px; margin:0 auto; padding:2rem 1.5rem 5rem; width:100%; }
+    .back-link { display:inline-flex; align-items:center; gap:0.4rem; color:#2563eb; font-size:0.85rem; font-weight:600; text-decoration:none; margin-bottom:2rem; }
+    .back-link:hover { text-decoration:underline; }
+    .proj-hero { margin-bottom:2.5rem; }
+    .venue-badge { display:inline-block; font-size:0.75rem; font-weight:700; padding:0.25rem 0.75rem; border-radius:999px; margin-bottom:0.5rem; margin-right:0.4rem; }
+    .badge-green { background:#dcfce7; color:#15803d; }
+    .badge-blue { background:#dbeafe; color:#1d4ed8; }
+    .badge-active { background:#d1fae5; color:#065f46; }
+    .badge-past { background:#f1f5f9; color:#475569; }
+    .proj-hero h1 { font-size:2.2rem; font-weight:800; color:#1e293b; margin-bottom:0.5rem; line-height:1.2; }
+    .proj-hero .subtitle { color:#64748b; font-size:1rem; margin-bottom:1.25rem; }
+    body.dark-mode .proj-hero h1 { color:#f1f5f9; }
+    body.dark-mode .proj-hero .subtitle { color:#94a3b8; }
+    .meta-row { display:flex; flex-wrap:wrap; gap:1.5rem; font-size:0.85rem; color:#475569; margin-bottom:1.5rem; }
+    body.dark-mode .meta-row { color:#94a3b8; }
+    .divider { border:none; border-top:1.5px solid #e2e8f0; margin:2rem 0; }
+    body.dark-mode .divider { border-color:#334155; }
+    .section-label { font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#16a34a; margin-bottom:0.5rem; }
+    .section-title { font-size:1.3rem; font-weight:700; color:#1e293b; margin-bottom:1rem; }
+    body.dark-mode .section-title { color:#f1f5f9; }
+    .prose { font-size:0.95rem; color:#475569; line-height:1.75; }
+    body.dark-mode .prose { color:#94a3b8; }
+    .prose p { margin-bottom:1rem; }
+    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1rem; margin:1.5rem 0; }
+    .stat-card { background:#fff; border:1.5px solid #e2e8f0; border-radius:12px; padding:1rem 1.25rem; text-align:center; }
+    body.dark-mode .stat-card { background:#1e293b; border-color:#334155; }
+    .stat-value { font-size:1.6rem; font-weight:800; color:#16a34a; }
+    .stat-label { font-size:0.78rem; color:#64748b; margin-top:0.25rem; }
+    body.dark-mode .stat-label { color:#94a3b8; }
+    .tag-list { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:1rem; }
+    .tag { font-size:0.75rem; background:#f1f5f9; color:#334155; padding:0.2rem 0.6rem; border-radius:6px; }
+    body.dark-mode .tag { background:#334155; color:#94a3b8; }
+    .result-card { background:#fff; border:1.5px solid #e2e8f0; border-left:4px solid #16a34a; border-radius:10px; padding:1rem 1.25rem; margin-bottom:0.75rem; }
+    body.dark-mode .result-card { background:#1e293b; border-color:#334155; border-left-color:#16a34a; }
+    .result-card h4 { font-size:0.9rem; font-weight:700; color:#1e293b; margin-bottom:0.3rem; }
+    body.dark-mode .result-card h4 { color:#f1f5f9; }
+    .result-card p { font-size:0.85rem; color:#64748b; margin:0; }
+    body.dark-mode .result-card p { color:#94a3b8; }
+    .pipeline-block { background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:12px; padding:1.25rem 1.5rem; margin:0.75rem 0; }
+    body.dark-mode .pipeline-block { background:#052e16; border-color:#166534; }
+    .pipeline-block h4 { font-size:0.9rem; font-weight:700; color:#166534; margin-bottom:0.5rem; }
+    body.dark-mode .pipeline-block h4 { color:#86efac; }
+    .pipeline-block p { font-size:0.85rem; color:#15803d; margin:0; line-height:1.6; }
+    body.dark-mode .pipeline-block p { color:#4ade80; }
+    .cta-row { display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:2rem; }
+    .btn { padding:0.5rem 1.25rem; border-radius:8px; font-size:0.875rem; font-weight:600; text-decoration:none; transition:all 0.15s; }
+    .btn-primary { background:#16a34a; color:#fff; }
+    .btn-primary:hover { background:#15803d; }
+    .btn-outline { border:1.5px solid #e2e8f0; color:#475569; background:#fff; }
+    .btn-outline:hover { border-color:#16a34a; color:#16a34a; }
+    body.dark-mode .btn-outline { background:#1e293b; border-color:#334155; color:#94a3b8; }
+  </style>
+</head>
+<body>
+<div class="layout-container">
+  <header class="header">
+    <div class="header-left">
+      <a href="../index.html" class="logo-link" aria-label="Home">
+        <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_6_319)">
+            <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="currentColor"/>
+          </g>
+          <defs><clipPath id="clip0_6_319"><rect width="48" height="48" fill="white"/></clipPath></defs>
+        </svg>
+        <span class="site-title">Aryan Jain</span>
+      </a>
+    </div>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="../research.html">Research</a>
+      <a href="../publications.html">Publications</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../resume.html">About</a>
+      <a href="../roadmap.html">Roadmap</a>
+      <a href="../blogs.html">Blog</a>
+      <a href="../contact.html">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="mode-toggle" aria-label="Toggle light/dark mode">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
+          <path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/>
+        </svg>
+      </button>
+      <div class="profile-pic" style='background-image: url("../assets/profile.jpg");' aria-label="Profile picture"></div>
+    </div>
+  </header>
+
+  <main class="content-container">
+    <a href="../projects.html" class="back-link">← Back to Projects</a>
+
+    <div class="proj-hero">
+      <div>
+        <span class="venue-badge badge-blue">UGRC · IIT Madras</span>
+        <span class="venue-badge badge-green">Chemical Engineering · AI</span>
+        <span class="venue-badge badge-past">Completed May 2026</span>
+      </div>
+      <h1>Bridging Natural Language to CFD</h1>
+      <p class="subtitle">LLM-orchestrated agent for automated computational fluid dynamics — natural language in, validated OpenFOAM simulation out</p>
+      <div class="meta-row">
+        <span>📅 Jan 2026 – May 2026</span>
+        <span>🏛 Dept. Chemical Engineering, IIT Madras</span>
+        <span>👨‍🏫 Prof. Abhinav S. Raman</span>
+      </div>
+      <div class="cta-row">
+        <a href="https://www.abhinavsraman.com" target="_blank" rel="noopener" class="btn btn-primary">Prof. Raman's Lab</a>
+        <a href="../research.html" class="btn btn-outline">Research Area →</a>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">100%</div>
+        <div class="stat-label">Pass rate across 5 flow regimes</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">&lt;6%</div>
+        <div class="stat-label">Error on canonical CFD benchmarks</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">12</div>
+        <div class="stat-label">Solvers covered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">13</div>
+        <div class="stat-label">Turbulence models</div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-label">Problem</div>
+    <div class="section-title">Why NL-to-CFD?</div>
+    <div class="prose">
+      <p>Computational fluid dynamics requires deep expertise to set up: choosing the right solver, turbulence model, mesh strategy, and boundary conditions for a given flow regime demands significant domain knowledge. Even experienced engineers spend hours configuring OpenFOAM cases for problems they've solved before.</p>
+      <p>The goal of this UGRC project was to collapse that workflow — letting engineers describe their problem in plain English ("simulate turbulent flow over a backward-facing step at Re=100") and have an AI agent autonomously handle mesh generation, solver selection, case configuration, execution, and validation. The agent operates as part of a multi-agent scientific platform where it exposes a structured interface to upstream orchestrators.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-label">Architecture</div>
+    <div class="section-title">Pipeline Components</div>
+
+    <div class="pipeline-block">
+      <h4>1 · NL-to-Schema Parser</h4>
+      <p>Schema-constrained LLM call converts the user's natural language description into a structured problem specification: geometry type, flow regime, Reynolds number, boundary condition constraints, and output quantities of interest. Structured output prevents hallucinated parameter values from propagating to execution.</p>
+    </div>
+    <div class="pipeline-block">
+      <h4>2 · Reynolds-Aware Model Selector</h4>
+      <p>Explicit compatibility matrix maps (geometry type, Re range, flow class) to valid (solver, turbulence model) pairs. Covers 12 OpenFOAM solvers and 13 turbulence models. Deterministic selection prevents the model from inventing solver configurations that don't exist in OpenFOAM.</p>
+    </div>
+    <div class="pipeline-block">
+      <h4>3 · LLM Mesh Generation Engine</h4>
+      <p>Generates blockMeshDict and snappyHexMesh configurations from the structured problem specification. The LLM is prompted with domain-specific grounding about mesh quality requirements (aspect ratio, y+ targeting, refinement zones) for the chosen solver and Re.</p>
+    </div>
+    <div class="pipeline-block">
+      <h4>4 · OpenFOAM Execution & Validation</h4>
+      <p>Programmatically configures and runs OpenFOAM cases. Post-execution, compares key quantities (drag coefficient, velocity profiles, pressure drop) against literature reference values. Validation gates prevent reporting results that exceed error thresholds without flagging.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-label">Results</div>
+    <div class="section-title">Benchmark Performance</div>
+
+    <div class="result-card">
+      <h4>100% pass rate across 5 canonical flow regimes</h4>
+      <p>Lid-driven cavity, cylinder flow (Re=100), backward-facing step (BFS), pipe flow, and channel flow — all complete without manual intervention and produce physically plausible results.</p>
+    </div>
+    <div class="result-card">
+      <h4>Sub-6% error on literature references</h4>
+      <p>Cylinder Re=100 drag coefficient and BFS reattachment length match published DNS and experimental values within 6% — within the range expected from RANS turbulence modeling.</p>
+    </div>
+    <div class="result-card">
+      <h4>12 solvers × 13 turbulence models covered</h4>
+      <p>Reynolds-aware selector handles incompressible, compressible, and buoyancy-driven flow scenarios. Correct solver-model pairing is critical for physical accuracy and numerical stability.</p>
+    </div>
+    <div class="result-card">
+      <h4>Verified by Prof. Abhinav S. Raman</h4>
+      <p>Formally acknowledged via UGRC letter: "Aryan has been working with me for the past semester on the development of an agent that orchestrates CFD workflows. His contribution has been immense."</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="section-label">Significance</div>
+    <div class="section-title">Why This Matters</div>
+    <div class="prose">
+      <p>This project sits at the intersection of two distinct domains: large language models and computational fluid dynamics. Most LLM-for-science work either stays at the level of text (summarization, QA) or relies on surrogate models. This agent works with real simulation software — OpenFOAM — making it closer to an autonomous scientific computing assistant than a standard code generator.</p>
+      <p>The schema-constrained approach and Reynolds-aware selection matrix are deliberate design choices to prevent the LLM from confabulating plausible-sounding but physically incorrect configurations. This is the core challenge in applying LLMs to engineering workflows where errors have real consequences.</p>
+    </div>
+
+    <div class="tag-list">
+      <span class="tag">LLM Agents</span>
+      <span class="tag">OpenFOAM</span>
+      <span class="tag">Computational Fluid Dynamics</span>
+      <span class="tag">Multi-Agent Systems</span>
+      <span class="tag">Schema-Constrained Generation</span>
+      <span class="tag">Reynolds-Aware Selection</span>
+      <span class="tag">Turbulence Modeling</span>
+      <span class="tag">Chemical Engineering AI</span>
+      <span class="tag">UGRC · IITM</span>
+    </div>
+  </main>
+</div>
+<script src="../js/darkmode.js"></script>
+</body>
+</html>
